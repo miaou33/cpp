@@ -3,7 +3,7 @@
 ################################################################################
 
 #PROGRAM
-NAME = PhoneBook
+NAME = Zombie
 
 #DIRECTORIES
 SRC_DIR  = ./srcs
@@ -13,8 +13,6 @@ INC_DIR = ./includes
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
-			PhoneBook.cpp \
-			Contact.cpp
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
 #DEPS

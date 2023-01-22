@@ -12,74 +12,57 @@
 
 #include "PhoneBook.hpp"
 
-static void	PrintFormatContact (std::string s)
-{
-	if (s.length () > 10)
-	{
-		s.resize(9);
-		s.append(".");
-	}
-	std::cout << std::setw (10);
-	std::cout << s;
-}
-
-void	PhoneBook::PrintContactElem (Contact c)
-{
-	for (size_t i = 0; i < number; i++)
-	{
-		PrintFormatContact(c.Infos[i]);
-		if (i != nickname)
-			std::cout << '|';
-	}
-	std::cout << std::endl;
-}
-
-static void		PrintContactList (PhoneBook p)
+void		PhoneBook::PrintContactList ()
 {
 	std::cout  << std::endl \
 		<< std::setw (10) << "INDEX" << '|' \
 		<< std::setw (10) << "FIRSTNAME" << '|' \
 		<< std::setw (10) << "LASTNAME" << '|' \
 		<< std::setw (10) << "NICKNAME" << std::endl;
-	for (size_t j = 0; j < p.ContactNb; j++)
+	for (size_t j = 0; j < ContactNb; j++)
 	{
 		std::cout << std::setw (10) << j + 1 << '|';
-		p.PrintContactElem (p.ContactList[j]);
+		ContactList[j].PrintFormatContact ();
 	}
 }
 
-static u_int8_t		GetIndex (PhoneBook p)
+u_int8_t		PhoneBook::GetIndex ()
 {
 	std::string		input;
-	int				index = -1;
+	int				i = -1;
 
-	while (index == -1)
+	while (i == -1)
 	{
-		std::cout << std::endl << "Index of contact u wanna look at: ";
+		std::cout << std::endl << "index of contact u wanna look at: ";
 		if (!std::getline (std::cin, input))
 			return (-1);
-		if (input.length () > 1 || !isdigit (input[0]))
-			index = -1;
-		else
-		{
-			index = atoi (input.c_str ());
-			if (index <= 0 || index > 8 || index > (int)p.ContactNb)
-				index = -1;
-		}
-		if (index == -1)
+		i = (input.length () > 1 || !isdigit (input[0])) ? -1 : atoi (input.c_str ());
+		if (i <= 0 || i > 8 || i > (int)ContactNb)
+			i = -1;
+		if (i == -1)
 			std::cout << "You wont gonna get any contact with this index" << std::endl;
 	}
-	return (index);
+	return (i);
 }
 
-static void		PrintFullContact (Contact c)
+void	PhoneBook::SearchContact ()
 {
-	c.PrintOneContact (c);
+	PrintContactList ();
+	int i = GetIndex ();
+	ContactList[i - 1].PrintFullContact ();
 }
 
-void	PhoneBook::SearchContact (PhoneBook p)
+void	PhoneBook::AddContact ()
 {
-	PrintContactList (p);
-	int i = GetIndex (p);
-	PrintFullContact (p.ContactList[i - 1]);
+	static size_t	i = 0;
+
+	ContactList[i % 8].FillContact ();
+	if (ContactNb != 8)
+		ContactNb++;
+	i++;
+}
+
+PhoneBook::PhoneBook()
+{
+	ContactNb = 0;
 }
