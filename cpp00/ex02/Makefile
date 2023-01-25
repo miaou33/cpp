@@ -29,7 +29,7 @@ BUILD_DIR  = ./objs
 
 #SOURCES
 S_EXT = .cpp
-SRC_FILES =	test.cpp \
+SRC_FILES =	tests.cpp \
 			Account.cpp
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
@@ -58,7 +58,7 @@ ${NAME}: ${OBJS}
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}"
+	@echo "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
 	@${CC} ${CFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
@@ -70,11 +70,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo "${UNDER}${RED}deleted${END}${RED}: ${BUILD_DIR}"
+	@echo "${UNDER}${RED}deleted${END}${RED}: ${BUILD_DIR}${END}"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo "${UNDER}${RED}deleted${END}${RED}: ${NAME}"
+	@echo "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}"
 
 gitm:
 	git add .

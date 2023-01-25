@@ -54,7 +54,7 @@ int		main (void) {
 		  it.first != acc_end && it.second != wit_end;
 		  ++(it.first), ++(it.second)) {
 
-		(*(it.first)).makeWithdrawal (*(it.second));
+//		(*(it.first)).makeWithdrawal (*(it.second));
 	}
 
 	Account::displayAccountsInfos();
