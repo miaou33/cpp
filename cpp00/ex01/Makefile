@@ -8,7 +8,6 @@ NAME = PhoneBook
 #DIRECTORIES
 SRC_DIR  = ./srcs
 BUILD_DIR  = ./objs
-INC_DIR = ./includes
 
 #SOURCES
 S_EXT = .cpp
@@ -28,7 +27,6 @@ OBJS = ${subst ${SRC_DIR}/, ${BUILD_DIR}/, ${SRCS:%${S_EXT}=%${O_EXT}}}
 #COMPILING
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-INCLUDES = -I ${INC_DIR}
 RM = rm -rf
 
 ################################################################################
@@ -44,7 +42,7 @@ ${NAME}: ${OBJS}
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
 	@echo create: ${@:%=%}
-	@${CC} ${CFLAGS} -MMD ${INCLUDES} -o $@ -c $<
+	@${CC} ${CFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
 #                              ADDITIONAL RULES								   #

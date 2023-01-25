@@ -37,8 +37,7 @@ u_int8_t		PhoneBook::GetIndex ()
 		if (!std::getline (std::cin, input))
 			return (-1);
 		i = (input.length () > 1 || !isdigit (input[0])) ? -1 : atoi (input.c_str ());
-		if (i <= 0 || i > 8 || i > (int)ContactNb)
-			i = -1;
+		i = (i <= 0 || i > 8 || i > (int)ContactNb) ? -1 : i;
 		if (i == -1)
 			std::cout << "You wont gonna get any contact with this index" << std::endl;
 	}
