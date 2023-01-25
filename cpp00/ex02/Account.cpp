@@ -1,13 +1,14 @@
 #include "Account.hpp"
 #include <string>
 #include <iostream>
+#include <chrono>
 
 Account::Account(void) {}
 
 Account::Account(int initial_deposit)
 {
 /* 	++_nbAccounts; */
-	_accountIndex = ++_nbAccounts;
+/* 	_accountIndex = ++_nbAccounts; */
 }
 
 int	Account::getNbAccounts (void)
@@ -32,7 +33,10 @@ int	Account::getNbWithdrawals (void)
 
 void	Account::displayAccountsInfos (void)
 {
-	std::cout << _nbAccounts << std::endl;
+/* 	for (size_t i = 0; i < _nbAccounts; i++)
+	{
+		_displayTimestamp();
+	} */
 }
 
 void	Account::makeDeposit (int deposit)
@@ -57,5 +61,8 @@ void	Account::displayStatus (void) const
 
 void	_displayTimestamp  (void)
 {
-
+/* 	std::cout << "[" << clock::now () << "]";	 */
+   std::time_t result = std::time(nullptr);
+    std::cout << std::asctime(std::localtime(&result))
+              << result << " seconds since the Epoch\n";
 }
