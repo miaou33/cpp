@@ -24,7 +24,7 @@ REV=\033[7m
 NAME = Account
 
 #DIRECTORIES
-SRC_DIR  = ./srcs
+SRC_DIR  = ./
 BUILD_DIR  = ./objs
 
 #SOURCES
@@ -53,6 +53,7 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+	@echo "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
 
 -include ${DEPS}
 
@@ -70,11 +71,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo "${UNDER}${RED}deleted${END}${RED}: ${BUILD_DIR}${END}"
+	@echo "${UNDER}${RED}deleted${END}${RED}: objs & deps${END}"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}"
+	@echo "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}\n"
 
 gitm:
 	git add .

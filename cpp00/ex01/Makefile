@@ -1,4 +1,22 @@
 ################################################################################
+#								COLORS										   #
+################################################################################
+
+GREY=\033[30m
+RED=\033[31m
+GREEN=\033[32m
+YELLOW=\033[33m
+BLUE=\033[34m
+PURPLE=\033[35m
+CYAN=\033[36m
+WHITE=\033[37m
+
+END=\033[0m
+BOLD=\033[1m
+UNDER=\033[4m
+REV=\033[7m
+
+################################################################################
 #                                VARIABLES									   #
 ################################################################################
 
@@ -6,7 +24,7 @@
 NAME = PhoneBook
 
 #DIRECTORIES
-SRC_DIR  = ./srcs
+SRC_DIR  = ./
 BUILD_DIR  = ./objs
 
 #SOURCES
@@ -36,12 +54,13 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+	@echo "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
 
 -include ${DEPS}
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo create: ${@:%=%}
+	@echo "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
 	@${CC} ${CFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
@@ -53,11 +72,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo "objs deleted"
+	@echo "${UNDER}${RED}deleted${END}${RED}: objs & deps${END}"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo "program deleted"
+	@echo "${UNDER}${RED}deleted${END}${RED}: program${END}\n"
 
 gitm:
 	git add .
