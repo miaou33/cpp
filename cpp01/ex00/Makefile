@@ -30,7 +30,9 @@ BUILD_DIR  = ./objs
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
-			Zombie.cpp
+			Zombie.cpp \
+			newZombie.cpp \
+			randomChump.cpp
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
 #DEPS
@@ -43,7 +45,7 @@ OBJS = ${subst ${SRC_DIR}/, ${BUILD_DIR}/, ${SRCS:%${S_EXT}=%${O_EXT}}}
 
 #COMPILING
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = ##-Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 ################################################################################
@@ -67,7 +69,7 @@ ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 ################################################################################
 
 val: ${NAME}
-	valgrind ./${NAME}
+	valgrind --leak-check=full --show-reachable=yes ./${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
