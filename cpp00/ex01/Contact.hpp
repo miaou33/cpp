@@ -6,12 +6,12 @@
 /*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:12:17 by nfauconn          #+#    #+#             */
-/*   Updated: 2023/01/22 21:22:43 by nfauconn         ###   ########.fr       */
+/*   Updated: 2023/01/26 18:42:14 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <iostream>
 #include <iomanip>

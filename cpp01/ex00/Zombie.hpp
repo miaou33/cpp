@@ -6,7 +6,7 @@
 /*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:44:25 by nfauconn          #+#    #+#             */
-/*   Updated: 2023/01/26 17:35:25 by nfauconn         ###   ########.fr       */
+/*   Updated: 2023/01/26 18:11:22 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Zombie {
 		std::string	_name;
 
 	public:
-		Zombie (void);
 		Zombie (std::string name);
 		~Zombie (void);
 
