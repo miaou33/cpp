@@ -9,17 +9,4 @@ Zombie	*zombieHorde (int N, std::string name)
 		z[i].addName (name);
 	}
 	return (z);
-	
-/* 	while (N--)
-	{
-		*Z
-	} */
-/* 	Zombie	Z[N];
-	
-	for (int i = N; i > 0; i--)
-	{
-		Z[i] = new Zombie (name);
-	}
-	return (Z[0]); */
-
 }

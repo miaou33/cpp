@@ -35,7 +35,24 @@ int	main (int ac, char **av)
 		std::ofstream	copyfile (newfilename_c);
 
 		// COPY FILE IN COPY FILE : utilisation de l'operator << qui permet d'ecrire dans le fichier
-		copyfile << original_file.rdbuf ();
+//		copyfile << original_file.rdbuf ();
+
+		std::string	line;
+		std::size_t	s1_i;
+		std::string	newline;
+		while (std::getline (original_file, line))
+		{
+			line += '\n';
+			s1_i = line.find(av[2]);
+			while (s1_i != std::string::npos)
+			{
+				newline = line.substr (0, line.find(av[2]));
+				newline += av[3];
+				copyfile << line.substr(0, line.find(av[2]));
+			}
+			copyfile << line.substr(0, line.find(av[2]));
+
+		}
 
 		// CLOSE FILES
 		original_file.close ();
