@@ -6,7 +6,7 @@
 /*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:44:25 by nfauconn          #+#    #+#             */
-/*   Updated: 2023/01/26 18:11:22 by nfauconn         ###   ########.fr       */
+/*   Updated: 2023/02/03 16:52:03 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Zombie {
 		Zombie (std::string name);
 		~Zombie (void);
 
-		void	announce (void);
+		void	announce (void) const;
 };
 
 void	randomChump (std::string name);

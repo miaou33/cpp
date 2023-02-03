@@ -12,7 +12,7 @@ class	HumanB {
 	public:
 		HumanB (std::string name);
 		void	setWeapon (Weapon &weapon); // receives a REF so when the obj is sent in param, it is received with its address
-		void	attack ();
+		void	attack () const;
 };
 
 #endif

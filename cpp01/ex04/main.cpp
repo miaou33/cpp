@@ -22,7 +22,6 @@ int	main (int ac, char **av)
 	{
 		// OPEN FILE GIVEN AS FIRST ARG
 		std::ifstream	original_file;
-
 		if (!open_file (&original_file, av[1]))
 			return (1);
 
@@ -39,25 +38,33 @@ int	main (int ac, char **av)
 
 		std::string	line;
 		std::size_t	s1_i;
+		std::string	s2 = av[3];
 		std::string	newline;
-		while (std::getline (original_file, line))
+		while (std::getline (original_file, line, '\0'))
 		{
-			line += '\n';
+			std::cout<<"line read"<<std::endl;
 			s1_i = line.find(av[2]);
-			while (s1_i != std::string::npos)
+			if (s1_i == std::string::npos)
+				copyfile << line;
+			else
 			{
-				newline = line.substr (0, line.find(av[2]));
-				newline += av[3];
-				copyfile << line.substr(0, line.find(av[2]));
+				while (s1_i != std::string::npos)
+				{
+					newline += line.substr (0, s1_i);
+					newline += s2;
+					line = line.substr(s1_i + s2.length(), line.length());
+					s1_i = line.find(av[2]);
+				}
+				copyfile << newline;
 			}
-			copyfile << line.substr(0, line.find(av[2]));
-
 		}
 
-		// CLOSE FILES
+		std::cout << "check if file = dir !!!" << std::endl;
+	/* 	// CLOSE FILES
 		original_file.close ();
-		copyfile.close ();
+		copyfile.close (); */
 
 	}
 	return 0;
 }
+

@@ -23,7 +23,7 @@ REV=\033[7m
 ################################################################################
 
 #PROGRAM
-NAME = bonjouricilecerveau
+NAME = pgm
 
 #DIRECTORIES
 SRC_DIR  = ./

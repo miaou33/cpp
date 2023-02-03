@@ -10,9 +10,12 @@ class	Weapon {
 		std::string	_type;
 
 	public:
+		/* CONSTRUCTOR & DESTRUCTOR */
 		Weapon ();
 		Weapon (std::string type);
-		const std::string	&getType (void);
+
+		/* METHODS */
+		std::string const	&getType (void) const;
 		void				setType (std::string type);
 
 };
