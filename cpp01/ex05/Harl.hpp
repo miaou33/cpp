@@ -5,11 +5,11 @@
 # include <iostream>
 
 enum e_Levels {
-	DEBUG = 0,
-	INFOS,
-	WARNING,
-	ERROR,
-	NOT_VALID
+	debug = 0,
+	infos,
+	warning,
+	error,
+	not_valid
 };
 
 class	Harl {
