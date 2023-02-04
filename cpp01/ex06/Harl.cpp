@@ -23,11 +23,21 @@ void	Harl::error (void) {
 void	Harl::complain (std::string level) {
 
 	std::string	s[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*p[4]) () = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	int i = 0;
+	int lvl = 0;
 
-	while (i < not_valid && s[i].compare(level) != 0)
-		i++;
-	if (i != not_valid)
-		(this->*p[i]) ();
+	while (lvl < 4 && s[lvl].compare(level) != 0)
+		lvl++;
+	if (lvl == 4)
+		return ;
+	switch (lvl)
+	{
+		case ERROR:
+			error ();
+		case WARNING:
+			warning ();
+		case INFO:
+			info ();
+		case DEBUG:
+			debug ();
+	}
 }
