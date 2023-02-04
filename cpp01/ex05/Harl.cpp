@@ -17,9 +17,27 @@ void	Harl::warning (void) {
 
 void	Harl::error (void) {
 
-	std::cout << "hate u. wanna speak to manager rn" << std::endl;
+	std::cout << ".>-<. wanna speak to manager rn" << std::endl;
 }
+
+static __uint8_t	level_index (std::string level) {
+
+	std::string	levels[4] = {"DEBUG", "INFOS", "WARNING", "ERROR"};
+
+	for (__uint8_t i = 0; i < 4; ++i)
+	{
+		if (levels[i] == level)
+			return (i);
+	}
+	return (ERROR);
+}
+
+typedef void	(Harl::*complainPtr) (void);
 
 void	Harl::complain (std::string level) {
 
+	complainPtr	HarlComplain[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
+	__uint8_t	level_i = level_index(level);
+	(this->*HarlComplain[level_i]) ();
 }

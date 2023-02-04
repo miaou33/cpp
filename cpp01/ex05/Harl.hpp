@@ -4,6 +4,13 @@
 # include <string>
 # include <iostream>
 
+enum e_Levels {
+	DEBUG = 0,
+	INFOS,
+	WARNING,
+	ERROR
+};
+
 class	Harl {
 
 	private:
@@ -17,5 +24,6 @@ class	Harl {
 	
 		void	complain (std::string level);
 };
+
 
 #endif
