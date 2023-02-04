@@ -45,7 +45,7 @@ OBJS = ${subst ${SRC_DIR}/, ${BUILD_DIR}/, ${SRCS:%${S_EXT}=%${O_EXT}}}
 
 #COMPILING
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 ################################################################################
@@ -54,7 +54,7 @@ RM = rm -rf
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
 	@echo "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
 
 -include ${DEPS}
@@ -62,7 +62,7 @@ ${NAME}: ${OBJS}
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
 	@echo "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
-	@${CC} ${CFLAGS} -MMD -o $@ -c $<
+	@${CC} ${CXXFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
 #                              ADDITIONAL RULES								   #
