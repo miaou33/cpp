@@ -12,7 +12,7 @@ void	Harl::info (void) {
 
 void	Harl::warning (void) {
 
-	std::cout << "give me bacon for free nah ? i come often" << std::endl;
+	std::cout << "give me bacon for free stp i come often" << std::endl;
 }
 
 void	Harl::error (void) {
@@ -29,15 +29,19 @@ static __uint8_t	level_index (std::string level) {
 		if (levels[i] == level)
 			return (i);
 	}
-	return (ERROR);
+	return (NOT_VALID);
 }
 
 typedef void	(Harl::*complainPtr) (void);
 
 void	Harl::complain (std::string level) {
 
+	__uint8_t	i;
 	complainPtr	HarlComplain[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	__uint8_t	level_i = level_index(level);
-	(this->*HarlComplain[level_i]) ();
+	if (level.empty ())
+		return ;
+	i = level_index(level);
+	if (i != NOT_VALID)
+		(this->*HarlComplain[i]) ();
 }

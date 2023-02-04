@@ -8,7 +8,8 @@ enum e_Levels {
 	DEBUG = 0,
 	INFOS,
 	WARNING,
-	ERROR
+	ERROR,
+	NOT_VALID
 };
 
 class	Harl {

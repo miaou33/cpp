@@ -21,7 +21,7 @@ REV=\033[7m
 ################################################################################
 
 #PROGRAM
-NAME = copyreplace
+NAME = Harl
 
 #DIRECTORIES
 SRC_DIR  = ./
