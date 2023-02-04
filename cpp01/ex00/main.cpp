@@ -2,9 +2,13 @@
 
 int	main (void)
 {
-	Zombie	*z = newZombie("heapZomb");
 	randomChump ("stackZomb");
+
+	std::cout << std::endl;
+	
+	Zombie	*z = newZombie("heapZomb");
 	z->announce();
 	delete z;
+
 	return (0);
 }
