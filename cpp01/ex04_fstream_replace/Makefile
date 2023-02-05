@@ -28,8 +28,10 @@ SRC_DIR  = ./
 BUILD_DIR  = ./objs
 
 #SOURCES
-S_EXT = 0432
-SRC_FILES =	main0432 
+S_EXT = .cpp
+SRC_FILES =	\
+	main_using_replace.cpp
+	#main.cpp 
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 

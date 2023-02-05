@@ -48,17 +48,15 @@ void	Harl::complain (std::string level) {
 	{
 		case expressionConstante1:
 			//
-		case expressionConstante2
+		case expressionConstante2:
+			//
+		case expressionConstante3:
+			//
+		case expressionConstante4:
+			//
+		default (aucun des cas):
+			//
 	}
 
-
-    We first get the index correspondant a la string entree.
-    The switch statement is then used.
-        If the level is error,  calls error ().
-        If the level is warning,  calls warning ().
-        If the level is info,  calls info ().
-        If the level is debug,  calls debug ().
-        If the level is none of them,  displays message.
-
-Notice that the break statement is not used inside each case block. 
-=> All cases after the correct case are executed. */
+	--> tout sera execute a compter du premier correct case (sauf si break)
+*/
