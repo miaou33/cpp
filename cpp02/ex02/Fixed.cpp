@@ -38,13 +38,30 @@ Fixed&	Fixed::operator= (Fixed const& right) {
 	return (*this);
 }
 
-Fixed&	Fixed::operator+ (Fixed const& right) {
+Fixed	Fixed::operator+ (Fixed const& right) {
 
-	Fixed const&	res (;
-
-	res._rawBits = _rawBits + right.getRawBits ();
+	Fixed res (this->toFloat () + right.toFloat ());
 	return (res);
 }
+
+Fixed	Fixed::operator- (Fixed const& right) {
+
+	Fixed res (this->toFloat () - right.toFloat ());
+	return (res);
+}
+
+Fixed	Fixed::operator* (Fixed const& right) {
+
+	Fixed res (this->toFloat () * right.toFloat ());
+	return (res);
+}
+
+Fixed	Fixed::operator/ (Fixed const& right) {
+
+	Fixed res (this->toFloat () / right.toFloat ());
+	return (res);
+}
+
 
 /* ************************************************* */
 /* 				COMPARISON  OPERATORS				 */

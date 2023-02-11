@@ -22,16 +22,19 @@ class	Fixed {
 		~Fixed ();
 	
 		// ARITHMETIC OPERATORS
-		Fixed&	operator= (Fixed const &right);
-		Fixed&	operator+ (Fixed const &right);
+		Fixed&	operator= (Fixed const& right);
+		Fixed	operator+ (Fixed const& right);
+		Fixed	operator- (Fixed const& right);
+		Fixed	operator* (Fixed const& right);
+		Fixed	operator/ (Fixed const& right);
 
 		// COMPARISON OPERATORS
-		bool	operator> (Fixed const &right) const;
-		bool	operator< (Fixed const &right) const;
-		bool	operator>= (Fixed const &right) const;
-		bool	operator<= (Fixed const &right) const;
-		bool	operator== (Fixed const &right) const;
-		bool	operator!= (Fixed const &right) const;
+		bool	operator> (Fixed const& right) const;
+		bool	operator< (Fixed const& right) const;
+		bool	operator>= (Fixed const& right) const;
+		bool	operator<= (Fixed const& right) const;
+		bool	operator== (Fixed const& right) const;
+		bool	operator!= (Fixed const& right) const;
 
 		// GETTERS / SETTERS
 		int 	getRawBits (void) const;
@@ -40,6 +43,10 @@ class	Fixed {
 		// OTHERS
 		int		toInt (void) const;
 		float	toFloat (void) const;
+
+		static Fixed&	min(Fixed const& left, Fixed const& right);
+		static Fixed&	max(Fixed const& left, Fixed const& right);
+		static Fixed&	
 };
 
 std::ostream&	operator<< (std::ostream& o, Fixed const& right);
