@@ -7,7 +7,7 @@
 class	Fixed {
 
 	private:
-		int					_val;
+		int					_rawBits;
 		static int const	_nb_bits_fractionnal = 8;
 
 	public:
