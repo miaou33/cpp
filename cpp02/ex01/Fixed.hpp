@@ -33,6 +33,6 @@ class	Fixed {
 		float	toFloat (void) const;
 };
 
-std::ostream	&operator << (std::ostream& o, Fixed const& rhs);
+std::ostream&	operator<< (std::ostream& o, Fixed const& rhs);
 
 #endif

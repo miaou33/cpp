@@ -11,11 +11,11 @@ class	Fixed {
 		static int const	_nb_bits_fractionnal = 8;
 
 	public:
-		Fixed ();
-		Fixed (Fixed const& copy);
-		~Fixed ();
+		Fixed ();										// canonical
+		Fixed (Fixed const& copy);						// canonical
+		~Fixed ();										// canonical (just miss virtual)
 
-		Fixed&	operator= (Fixed const& rhs);
+		Fixed&	operator= (Fixed const& rhs);			// canonical
 
 		int 	getRawBits (void) const;
 		void	setRawBits (int const raw);

@@ -4,7 +4,7 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Fixed::Fixed (void) :	_val(0) {
+Fixed::Fixed (void) : _val(0) {
 
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -24,7 +24,7 @@ Fixed::Fixed (int const toFix) {
 Fixed::Fixed (float const toFix) {
 
 	std::cout << "Float constructor called" << std::endl;
-	_val = roundf(toFix);
+	_val = roundf (toFix) * 1 << _nb_bits_fractionnal;
 }
 
 Fixed::~Fixed (void) {
@@ -37,7 +37,7 @@ Fixed::~Fixed (void) {
 /* 					   OPERATORS					 */
 /* ************************************************* */
 
-Fixed&	Fixed::operator = (Fixed const& rhs) {
+Fixed&	Fixed::operator= (Fixed const& rhs) {
 
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_val = rhs.getRawBits ();
@@ -68,3 +68,9 @@ void	Fixed::setRawBits (int const raw) {
 /* ************************************************* */
 /* 					   OTHERS						 */
 /* ************************************************* */
+
+std::ostream&	operator<< (std::ostream& o, Fixed const& rhs) {
+
+	o << rhs.getRawBits ();
+	return (o);
+}
