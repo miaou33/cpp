@@ -21,7 +21,7 @@ REV=\033[7m
 ################################################################################
 
 #PROGRAM
-NAME = HarlFilter
+NAME = a.out
 
 #DIRECTORIES
 SRC_DIR  = ./
@@ -30,7 +30,7 @@ BUILD_DIR  = ./objs
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
-			Harl.cpp
+			Fixed.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
