@@ -8,6 +8,7 @@
 class	Fixed {
 
 	private:
+
 		int					_val;
 		static int const	_nb_bits_fractionnal = 8;
 
@@ -21,7 +22,7 @@ class	Fixed {
 		~Fixed ();
 
 		// OPERATORS
-		Fixed &operator = (Fixed const &rhs);
+		Fixed&	operator= (Fixed const &rhs);
 
 		// GETTERS / SETTERS
 		int 	getRawBits (void) const;
@@ -31,5 +32,7 @@ class	Fixed {
 		int		toInt (void) const;
 		float	toFloat (void) const;
 };
+
+std::ostream	&operator << (std::ostream& o, Fixed const& rhs);
 
 #endif

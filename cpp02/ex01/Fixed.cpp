@@ -9,25 +9,22 @@ Fixed::Fixed (void) :	_val(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed (Fixed const &original) {
+Fixed::Fixed (Fixed const& original) {
 
 	std::cout << "Copy constructor called" << std::endl;
-
 	_val = original.getRawBits ();
 }
 
 Fixed::Fixed (int const toFix) {
 
 	std::cout << "Int constructor called" << std::endl;
-
 	_val = toFix;
 }
 
 Fixed::Fixed (float const toFix) {
 
 	std::cout << "Float constructor called" << std::endl;
-
-	_val = toFix;
+	_val = roundf(toFix);
 }
 
 Fixed::~Fixed (void) {
@@ -40,14 +37,12 @@ Fixed::~Fixed (void) {
 /* 					   OPERATORS					 */
 /* ************************************************* */
 
-Fixed	&Fixed::operator = (Fixed const & rhs) {
+Fixed&	Fixed::operator = (Fixed const& rhs) {
 
 	std::cout << "Copy assignment operator called" << std::endl;
-
 	this->_val = rhs.getRawBits ();
 	return (*this);
 }
-
 
 /* ************************************************* */
 /* 					   GETTERS						 */
@@ -56,7 +51,6 @@ Fixed	&Fixed::operator = (Fixed const & rhs) {
 int Fixed::getRawBits (void) const {
 
 	std::cout << "getRawBits member function called" << std::endl;
-	
 	return (_val);
 }
 
