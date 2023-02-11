@@ -38,10 +38,10 @@ Fixed::~Fixed (void) {
 /* 					   OPERATORS					 */
 /* ************************************************* */
 
-Fixed&	Fixed::operator= (Fixed const& rhs) {
+Fixed&	Fixed::operator= (Fixed const& right) {
 
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_rawBits = rhs.getRawBits ();
+	this->_rawBits = right.getRawBits ();
 	return (*this);
 }
 
@@ -69,9 +69,9 @@ void	Fixed::setRawBits (int const raw) {
 /* 					   OTHERS						 */
 /* ************************************************* */
 
-std::ostream&	operator<< (std::ostream& o, Fixed const& rhs) {
+std::ostream&	operator<< (std::ostream& o, Fixed const& right) {
 
-	o << rhs.toFloat ();
+	o << right.toFloat ();
 	return (o);
 }
 

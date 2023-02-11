@@ -15,7 +15,7 @@ class	Fixed {
 		Fixed (Fixed const& copy);						// canonical
 		~Fixed ();										// canonical (just miss virtual)
 
-		Fixed&	operator= (Fixed const& rhs);			// canonical
+		Fixed&	operator= (Fixed const& right);			// canonical
 
 		int 	getRawBits (void) const;
 		void	setRawBits (int const raw);

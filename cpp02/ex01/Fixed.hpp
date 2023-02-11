@@ -22,7 +22,7 @@ class	Fixed {
 		~Fixed ();
 
 		// OPERATORS
-		Fixed&	operator= (Fixed const &rhs);
+		Fixed&	operator= (Fixed const &right);
 
 		// GETTERS / SETTERS
 		int 	getRawBits (void) const;
@@ -33,6 +33,6 @@ class	Fixed {
 		float	toFloat (void) const;
 };
 
-std::ostream&	operator<< (std::ostream& o, Fixed const& rhs);
+std::ostream&	operator<< (std::ostream& o, Fixed const& right);
 
 #endif
