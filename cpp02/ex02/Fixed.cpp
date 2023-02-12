@@ -33,7 +33,7 @@ Fixed::~Fixed (void) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-int Fixed::getRawBits (void) const {
+int 	Fixed::getRawBits (void) const {
 
 	return (_rawBits);
 }
@@ -133,7 +133,7 @@ bool	Fixed::operator!= (Fixed const& right) const {
 /* ************************************************* */
 
 
-static Fixed const&	min(Fixed const& left, Fixed const& right) {
+Fixed const&	Fixed::min(Fixed const& left, Fixed const& right) {
 
 	if (left.getRawBits () < right.getRawBits ())
 		return (left);
@@ -141,7 +141,7 @@ static Fixed const&	min(Fixed const& left, Fixed const& right) {
 		return (right);
 }
 
-static Fixed const&	max(Fixed const& left, Fixed const& right) {
+Fixed const&	Fixed::max(Fixed const& left, Fixed const& right) {
 
 	if (left.getRawBits () > right.getRawBits ())
 		return (left);
@@ -149,7 +149,7 @@ static Fixed const&	max(Fixed const& left, Fixed const& right) {
 		return (right);
 }
 
-static Fixed&	min(Fixed& left, Fixed &right) {
+Fixed&			Fixed::min(Fixed& left, Fixed &right) {
 
 	if (left.getRawBits () < right.getRawBits ())
 		return (left);
@@ -157,7 +157,7 @@ static Fixed&	min(Fixed& left, Fixed &right) {
 		return (right);
 }
 
-static Fixed&	max(Fixed& left, Fixed &right) {
+Fixed&			Fixed::max(Fixed& left, Fixed &right) {
 
 	if (left.getRawBits () > right.getRawBits ())
 		return (left);
@@ -171,12 +171,35 @@ static Fixed&	max(Fixed& left, Fixed &right) {
 /* ************************************************* */
 
 // PREFIX
-Fixed	Fixed::operator++ (int) {}
-Fixed	Fixed::operator-- (int) {}
+Fixed&	Fixed::operator++ () {
+
+	_rawBits += 1;
+	return (*this);
+}
+
+Fixed&	Fixed::operator-- () {
+
+	_rawBits -= 1;
+	return (*this);
+}
 
 // POSTFIX
-Fixed&	Fixed::operator++ () {}
-Fixed&	Fixed::operator-- () {}
+Fixed	Fixed::operator++ (int) {
+
+	Fixed	prevFixed (*this);
+
+	_rawBits += 1;
+	return (prevFixed);
+}
+
+Fixed	Fixed::operator-- (int) {
+
+	Fixed	prevFixed (*this);
+
+	_rawBits -= 1;
+	return (prevFixed);
+}
+
 
 /* ************************************************* */
 /* 				OFSTREAM OPERATOR					 */

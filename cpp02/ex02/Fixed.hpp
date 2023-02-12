@@ -44,13 +44,13 @@ class	Fixed {
 		bool	operator== (Fixed const& right) const;
 		bool	operator!= (Fixed const& right) const;
 
-		// POSTFIX INCREMENT / DECREMENT OPERATORS
-		Fixed	operator++ (int);
-		Fixed	operator-- (int);
-
 		// PREFIX INCREMENT / DECREMENT OPERATORS
 		Fixed&	operator++ ();
 		Fixed&	operator-- ();
+
+		// POSTFIX INCREMENT / DECREMENT OPERATORS
+		Fixed	operator++ (int);
+		Fixed	operator-- (int);
 
 		// MIN / MAX FINDERS
 		static Fixed const&	min(Fixed const& left, Fixed const& right);
