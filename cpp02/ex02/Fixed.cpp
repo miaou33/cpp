@@ -28,6 +28,37 @@ Fixed::~Fixed (void) {
 
 }
 
+
+/* ************************************************* */
+/* 					GETTERS / SETTERS				 */
+/* ************************************************* */
+
+int Fixed::getRawBits (void) const {
+
+	return (_rawBits);
+}
+
+void	Fixed::setRawBits (int const raw) {
+
+	_rawBits = raw;
+}
+
+
+/* ************************************************* */
+/* 					CONVERTERS				 		 */
+/* ************************************************* */
+
+int		Fixed::toInt (void) const {
+
+	return (_rawBits >> _nb_bits_fractionnal);
+}
+
+float	Fixed::toFloat (void) const {
+
+	return ((float)_rawBits / (1 << _nb_bits_fractionnal));
+}
+
+
 /* ************************************************* */
 /* 				ARITHMETIC OPERATORS				 */
 /* ************************************************* */
@@ -98,27 +129,45 @@ bool	Fixed::operator!= (Fixed const& right) const {
 }
 
 /* ************************************************* */
-/* 					   GETTERS						 */
+/* 				MIN / MAX FINDERS					 */
 /* ************************************************* */
 
-int Fixed::getRawBits (void) const {
 
-	return (_rawBits);
+static Fixed const&	min(Fixed const& left, Fixed const& right) {
+
+	if (left.getRawBits () < right.getRawBits ())
+		return (left);
+	else
+		return (right);
+}
+
+static Fixed const&	max(Fixed const& left, Fixed const& right) {
+
+	if (left.getRawBits () > right.getRawBits ())
+		return (left);
+	else
+		return (right);
+}
+
+static Fixed&	min(Fixed& left, Fixed &right) {
+
+	if (left.getRawBits () < right.getRawBits ())
+		return (left);
+	else
+		return (right);
+}
+
+static Fixed&	max(Fixed& left, Fixed &right) {
+
+	if (left.getRawBits () > right.getRawBits ())
+		return (left);
+	else
+		return (right);
 }
 
 
 /* ************************************************* */
-/* 					   SETTERS						 */
-/* ************************************************* */
-
-void	Fixed::setRawBits (int const raw) {
-
-	_rawBits = raw;
-}
-
-
-/* ************************************************* */
-/* 					   OTHERS						 */
+/* 				OFSTREAM OPERATOR					 */
 /* ************************************************* */
 
 std::ostream&	operator<< (std::ostream& o, Fixed const& right) {
@@ -127,12 +176,3 @@ std::ostream&	operator<< (std::ostream& o, Fixed const& right) {
 	return (o);
 }
 
-int		Fixed::toInt (void) const {
-
-	return (_rawBits >> _nb_bits_fractionnal);
-}
-
-float	Fixed::toFloat (void) const {
-
-	return ((float)_rawBits / (1 << _nb_bits_fractionnal));
-}
