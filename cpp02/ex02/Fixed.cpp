@@ -167,6 +167,18 @@ static Fixed&	max(Fixed& left, Fixed &right) {
 
 
 /* ************************************************* */
+/* 				INCREMENT / DECREMENT				 */
+/* ************************************************* */
+
+// PREFIX
+Fixed	Fixed::operator++ (int) {}
+Fixed	Fixed::operator-- (int) {}
+
+// POSTFIX
+Fixed&	Fixed::operator++ () {}
+Fixed&	Fixed::operator-- () {}
+
+/* ************************************************* */
 /* 				OFSTREAM OPERATOR					 */
 /* ************************************************* */
 
