@@ -16,13 +16,13 @@ class	Fixed {
 
 		// CONSTRUCTORS
 		Fixed ();
-		Fixed (Fixed const &copy);
+		Fixed (Fixed const& copy);
 		Fixed (int const intVal);
 		Fixed (float const floatVal);
 		~Fixed ();
 
 		// OPERATORS
-		Fixed&	operator= (Fixed const &right);
+		Fixed&	operator= (Fixed const& right);
 
 		// GETTERS / SETTERS
 		int 	getRawBits (void) const;
