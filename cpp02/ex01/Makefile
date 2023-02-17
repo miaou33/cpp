@@ -1,20 +1,4 @@
-################################################################################
-#								COLORS										   #
-################################################################################
 
-GREY=\033[30m
-RED=\033[31m
-GREEN=\033[32m
-YELLOW=\033[33m
-BLUE=\033[34m
-PURPLE=\033[35m
-CYAN=\033[36m
-WHITE=\033[37m
-
-END=\033[0m
-BOLD=\033[1m
-UNDER=\033[4m
-REV=\033[7m
 
 ################################################################################
 #                               VARIABLES									   #
@@ -54,13 +38,13 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
-	@echo "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
+	@echo "\ncreated: ${NAME}"
 
 -include ${DEPS}
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
+	@echo "created: ${@:%=%}"
 	@${CC} ${CXXFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
@@ -72,11 +56,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo "${UNDER}${RED}deleted${END}${RED}: objs & deps${END}"
+	@echo "deleted: objs & deps"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}\n"
+	@echo "deleted: ${NAME}\n"
 
 gitm:
 	git add .

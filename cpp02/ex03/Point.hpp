@@ -21,8 +21,10 @@ class	Point {
 		Point&	operator= (Point const& right);
 		
 		// GETTERS / SETTERS
-		int 	getRawBits (void) const;
-		void	setRawBits (int const raw);
+		Fixed const	getX (void) const;
+		Fixed const	getY (void) const;
+		void		setX (Fixed const x);
+		void		setY (Fixed const y);
 		
 };
 
