@@ -13,7 +13,7 @@ class	Point {
 
 		// CONSTRUCTORS
 		Point ();
-		Point (Point const& copy);
+		Point (Point const& original);
 		Point (float const x, float const y);
 		~Point ();
 	

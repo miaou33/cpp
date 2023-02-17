@@ -6,7 +6,17 @@
 
 Point::Point () : _x(0), _y(0) {}
 
-Point::Point (Point const& copy) {}
+Point::Point (Point const& original) : {
+	
+	*this = original;
+}
+
+Point::Point (float const x, float const y) : {
+
+	_x = x;
+	_y = y;
+}
+
 
 /* ************************************************* */
 /* 					GETTERS / SETTERS				 */
