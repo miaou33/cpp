@@ -23,9 +23,8 @@ class	Point {
 		// GETTERS / SETTERS
 		Fixed const	getX (void) const;
 		Fixed const	getY (void) const;
-		void		setX (Fixed const x);
-		void		setY (Fixed const y);
 		
 };
+
 
 #endif
