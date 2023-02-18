@@ -1,8 +1,14 @@
-#include "Point.hpp"
+#include "ClapTrap.hpp"
 
 /* ************************************************* */
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
+
+ClapTrap::ClapTrap () {}
+
+ClapTrap::ClapTrap (ClapTrap const& original) {}
+
+ClapTrap::~ClapTrap () {}
 
 
 /* ************************************************* */
@@ -15,10 +21,6 @@
 /* ************************************************* */
 
 // ASSIGNMENT
+ClapTrap&	ClapTrap::operator= (ClapTrap const& right) {
 
-// OSTREAM
-std::ostream&	operator<< (std::ostream& o, Point const& right) {
-
-	return (o);
 }
-
