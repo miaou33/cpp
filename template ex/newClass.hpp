@@ -1,7 +1,8 @@
 #ifndef NEWCLASS_HPP
 # define NEWCLASS_HPP
 
-#include "newClass.hpp"
+# include <string>
+# include <iostream>
 
 class	newClass {
 
