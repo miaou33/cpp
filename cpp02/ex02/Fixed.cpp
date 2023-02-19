@@ -10,17 +10,13 @@ Fixed::Fixed (Fixed const& original) :	_rawBits(original.getRawBits()) {}
 
 Fixed::Fixed (int const intVal) : _rawBits (intVal << _nb_bits_fractionnal) {}
 
-Fixed::Fixed (float const floatVal) {
+Fixed::Fixed (float const floatVal) : _rawBits(roundf (floatVal * (1 << _nb_bits_fractionnal))) {}
 
 //	floats and doubles have internal structure (specific bit for sign, some bits for exponent, some for exponent, some for mantissa)
 //	x = 2.0 = 1 * 2^1   : sign = 0, mantissa = 1, exponent = 1 -> 0 10000000 00000000000000000000000
 //	=> shifting de 1 donne la valeur -0 (car bit de sign est desormais a 1 -> on voit que ce process n a pas de sens)
-	setRawBits (roundf (floatVal * (1 << _nb_bits_fractionnal)));
-}
 
-Fixed::~Fixed (void) {
-
-}
+Fixed::~Fixed (void) {}
 
 
 /* ************************************************* */
@@ -30,11 +26,6 @@ Fixed::~Fixed (void) {
 int 	Fixed::getRawBits (void) const {
 
 	return (_rawBits);
-}
-
-void	Fixed::setRawBits (int const raw) {
-
-	_rawBits = raw;
 }
 
 

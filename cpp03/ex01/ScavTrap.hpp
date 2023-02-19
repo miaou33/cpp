@@ -3,11 +3,9 @@
 
 # include <string>
 # include <iostream>
+# include "ClapTrap.hpp"
 
-class	ScavTrap {
-
-	private:
-
+class	ScavTrap : public ClapTrap {
 
 	public:
 

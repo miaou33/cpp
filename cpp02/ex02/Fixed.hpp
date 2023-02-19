@@ -23,7 +23,6 @@ class	Fixed {
 	
 		// GETTERS / SETTERS
 		int 	getRawBits (void) const;
-		void	setRawBits (int const raw);
 		
 		// CONVERTERS
 		int		toInt (void) const;
