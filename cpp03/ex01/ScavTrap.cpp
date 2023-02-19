@@ -23,4 +23,5 @@ ScavTrap::~ScavTrap () {}
 // ASSIGNMENT
 ScavTrap&	ScavTrap::operator= (ScavTrap const& right) {
 
+
 }

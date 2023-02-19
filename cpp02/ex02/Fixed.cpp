@@ -4,23 +4,17 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Fixed::Fixed (void) {
+Fixed::Fixed (void) : _rawBits(0) {}
 
-	setRawBits (0);
-}
+Fixed::Fixed (Fixed const& original) :	_rawBits(original.getRawBits()) {}
 
-Fixed::Fixed (Fixed const& original) {
-
-	*this = original;
-}
-
-Fixed::Fixed (int const intVal) {
-
-	setRawBits (intVal << _nb_bits_fractionnal);
-}
+Fixed::Fixed (int const intVal) : _rawBits (intVal << _nb_bits_fractionnal) {}
 
 Fixed::Fixed (float const floatVal) {
 
+//	floats and doubles have internal structure (specific bit for sign, some bits for exponent, some for exponent, some for mantissa)
+//	x = 2.0 = 1 * 2^1   : sign = 0, mantissa = 1, exponent = 1 -> 0 10000000 00000000000000000000000
+//	=> shifting de 1 donne la valeur -0 (car bit de sign est desormais a 1 -> on voit que ce process n a pas de sens)
 	setRawBits (roundf (floatVal * (1 << _nb_bits_fractionnal)));
 }
 
@@ -83,12 +77,18 @@ Fixed	Fixed::operator- (Fixed const& right) {
 
 Fixed	Fixed::operator* (Fixed const& right) {
 
-	Fixed res (this->toFloat () * right.toFloat ());
-	return (res);
+	_rawBits = (((long long)(_rawBits * right.getRawBits ())) >>  _nb_bits_fractionnal);
+/*     this->_rawBits = ((long long)this->_rawBits * (long long)right.getRawBits()) >> this->_nb_bits_fractionnal; */
+    return *this;
 }
 
 Fixed	Fixed::operator/ (Fixed const& right) {
 
+	if (right == 0)
+	{
+		std::cout << "Error: Division by 0" << std::endl;
+		return (0);
+	}
 	Fixed res (this->toFloat () / right.toFloat ());
 	return (res);
 }
