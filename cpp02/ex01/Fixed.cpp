@@ -19,13 +19,13 @@ Fixed::Fixed (Fixed const& original) {
 Fixed::Fixed (int const intVal) {
 
 	std::cout << "Int constructor called" << std::endl;
-	setRawBits (intVal << _nb_bits_fractionnal);
+	setRawBits (intVal << _mantissa_sz);
 }
 
 Fixed::Fixed (float const floatVal) {
 
 	std::cout << "Float constructor called" << std::endl;
-	setRawBits (roundf (floatVal * (1 << _nb_bits_fractionnal)));
+	setRawBits (roundf (floatVal * (1 << _mantissa_sz)));
 }
 
 Fixed::~Fixed (void) {
@@ -77,10 +77,10 @@ std::ostream&	operator<< (std::ostream& o, Fixed const& right) {
 
 int		Fixed::toInt (void) const {
 
-	return (_rawBits >> _nb_bits_fractionnal);
+	return (_rawBits >> _mantissa_sz);
 }
 
 float	Fixed::toFloat (void) const {
 
-	return ((float)_rawBits / (1 << _nb_bits_fractionnal));
+	return ((float)_rawBits / (1 << _mantissa_sz));
 }

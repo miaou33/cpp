@@ -8,7 +8,7 @@ class	Fixed {
 
 	private:
 		int					_rawBits;
-		static int const	_nb_bits_fractionnal = 8;
+		static int const	_mantissa_sz = 8;
 
 	public:
 		Fixed ();										// canonical
