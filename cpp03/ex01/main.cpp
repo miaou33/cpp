@@ -18,4 +18,5 @@ int	main (void)
 	NESS.attack ("PAULA");
 	if (NESS.getHitPoints () && NESS.getEnergyPoints ())
 		PAULA.takeDamage (NESS.getAttackDamage ());
+
 }
