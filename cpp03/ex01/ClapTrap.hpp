@@ -1,8 +1,10 @@
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include <iostream>
+# include <limits.h>
+# include "colors.hpp"
 
 class	ClapTrap {
 
@@ -28,10 +30,6 @@ class	ClapTrap {
 		unsigned int 		getHitPoints () const;
 		unsigned int		getEnergyPoints () const;
 		unsigned int		getAttackDamage () const;
-
-/* 		void				setHitPoints (unsigned int newPoints);
-		void				setEnergyPoints (unsigned int newPoints);
-		void				setAttackDamage (unsigned int newPoints); */
 
 		// OTHERS
 		void				attack (const std::string& target);

@@ -10,8 +10,7 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_energyPoints (10),
 										_attackDamage (0) {
 
-	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl;
-}
+	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 												_hitPoints (original.getHitPoints ()),
@@ -25,7 +24,7 @@ ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 
 ClapTrap::~ClapTrap () {
 
-	std::cout << "ClapTrap " << _name << " is dead 🌠" << std::endl;
+	std::cout << "ClapTrap " << _name << " is destructed by the player 🌠" << std::endl;
 }
 
 
@@ -76,12 +75,21 @@ ClapTrap&	ClapTrap::operator= (ClapTrap const& right) {
 
 void	ClapTrap::takeDamage (unsigned int amount) {
 
-	if (_hitPoints) {
-		std::cout << _name << " loses " << amount << " HP " << std::endl;
-		_hitPoints -= amount;
+	if (_hitPoints > 0)
+	{
+		int	res = _hitPoints;
+		res -= amount < 0 ? 0 : res;
+		_hitPoints = res;
+		std::cout 	<< _name
+					<< " loses " << amount
+					<< GREY << " -> HP now is " << _hitPoints << NEUTRAL
+					<< std::endl;
 	}
-	else {
-		std::cout << _name << " is already dead ! leave him alone" << std::endl;
+	else
+	{
+		std::cout	<< _name 
+					<< " is already on de ground ! leave them alone 😵"
+					<< std::endl;
 	}
 }
 
@@ -89,29 +97,63 @@ void	ClapTrap::beRepaired (unsigned int amount) {
 
 	if (_energyPoints)
 	{
-		_energyPoints--;
-		_hitPoints ++;
+		int	res = _energyPoints;
+		_energyPoints = --res < 0 ? 0 : res;
+		std::cout 	<< _name << " uses beRepaired. ";
+		
+		unsigned long res1 = _hitPoints + amount;
+		_hitPoints = res1 > UINT_MAX ?
+						_maxHitPoints : 
+						(unsigned int) res1;
+
 		if (_hitPoints >= _maxHitPoints)
 		{
-			std::cout << _name << "'s HP are maxed out !" << std::endl;
+			std::cout 	<< _name << "'s HP are maxed out !" 
+						<< GREY << " -> HP now is " << _hitPoints << NEUTRAL
+						<< std::endl;
 			_hitPoints = _maxHitPoints;
 		}
 		else
-			std::cout << _name << " is repaired of " << amount << std::endl;
+			std::cout 	<< _name
+						<< " is repaired of "
+						<< amount
+						<< GREY << " -> HP now is " << _hitPoints << NEUTRAL
+						<< std::endl;
 	}
 	else
 	{
-		std::cout << _name << " cant be repaired coz no PP anymore x_x" << std::endl;
+		std::cout	<< _name
+					<< " cant be repaired coz no PP anymore x_x"
+					<< std::endl;
 	}
 }
 
-void	ClapTrap::attack (const std::string& target) {
+void	ClapTrap::attack (const std::string& target)
+{
 
-	if (_energyPoints) {
-		std::cout << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
-		_energyPoints--;
+	if (!_hitPoints)
+	{
+		std:: cout	<< _name << " tries to attack "<< target
+					<< " but they just crawl sadly in their blood "
+					<< std::endl;
+		return ;
 	}
-	else {
-		std::cout << _name << " cant attack " << target << " coz no PP anymore x_x" << std::endl;
+	if (_energyPoints)
+	{
+		int	res = _energyPoints;
+		_energyPoints = --res < 0 ? 0 : res;
+		std::cout 	<< _name 
+					<< " attacks " << target
+					<< ",  aiming to cause " << _attackDamage 
+					<< " points of damage! "
+					<< std::endl;
+	}
+	else
+	{
+		std::cout 	<< "🚫 "
+					<< _name 
+					<< " cant attack " << target 
+					<< " coz no PP anymore x_x 🚫"
+					<< std::endl;
 	}
 }

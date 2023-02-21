@@ -10,14 +10,16 @@ class	ScavTrap : public ClapTrap {
 	public:
 
 		// CONSTRUCTORS / DESTRUCTOR
-		ScavTrap ();
+		ScavTrap (std::string name);
 		ScavTrap (ScavTrap const& original);
 		~ScavTrap ();
 	 
 	 	// OPERATORS
 		ScavTrap&	operator= (ScavTrap const& right);
 		
-		// GETTERS / SETTERS
+		// GETTERS / SETTERS : inherited by ClapTrap
+
+		void	highFivesGuys (void);
 		
 };
 

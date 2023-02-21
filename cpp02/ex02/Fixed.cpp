@@ -94,13 +94,13 @@ Fixed	Fixed::operator/ (Fixed const& right) {
 // PREFIX
 Fixed&	Fixed::operator++ () {
 
-	_rawBits += 1 << _mantissa_sz;
+	_rawBits += 1;
 	return *this;
 }
 
 Fixed&	Fixed::operator-- () {
 
-	_rawBits -= 1 << _mantissa_sz;
+	_rawBits -= 1;
 	return *this;
 }
 
@@ -109,7 +109,7 @@ Fixed	Fixed::operator++ (int) {
 
 	Fixed	prevFixed (*this);
 
-	_rawBits += 1 << _mantissa_sz;
+	_rawBits += 1;
 	return prevFixed;
 }
 
@@ -117,7 +117,7 @@ Fixed	Fixed::operator-- (int) {
 
 	Fixed	prevFixed (*this);
 
-	_rawBits -= 1 << _mantissa_sz;
+	_rawBits -= 1;
 	return prevFixed;
 }
 
