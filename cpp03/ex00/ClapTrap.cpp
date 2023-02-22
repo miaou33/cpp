@@ -6,7 +6,6 @@
 
 ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_HP (10),
-										_maxHP (_HP),
 										_PP (10),
 										_attackDamage (0) {
 
@@ -14,7 +13,6 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 												_HP (original.getHP ()),
-												_maxHP (_HP),
 												_PP (original.getPP ()),
 												_attackDamage (original.getAttackDamage ()) {	
 
