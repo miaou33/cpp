@@ -11,11 +11,11 @@ class	Fixed {
 		static int const	_mantissa_sz = 8;
 
 	public:
-		Fixed ();										// canonical
-		Fixed (Fixed const& copy);						// canonical
-		~Fixed ();										// canonical (just miss virtual)
+		Fixed ();										
+		Fixed (Fixed const& copy);						
+		~Fixed ();	
 
-		Fixed&	operator= (Fixed const& right);			// canonical
+		Fixed&	operator= (Fixed const& right);			
 
 		int 	getRawBits (void) const;
 		void	setRawBits (int const raw);

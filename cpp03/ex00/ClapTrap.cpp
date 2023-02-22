@@ -5,17 +5,17 @@
 /* ************************************************* */
 
 ClapTrap::ClapTrap (std::string name) :	_name (name),
-										_hitPoints (10),
-										_maxHitPoints (_hitPoints),
-										_energyPoints (10),
+										_HP (10),
+										_maxHP (_HP),
+										_PP (10),
 										_attackDamage (0) {
 
 	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
-												_hitPoints (original.getHitPoints ()),
-												_maxHitPoints (_hitPoints),
-												_energyPoints (original.getEnergyPoints ()),
+												_HP (original.getHitPoints ()),
+												_maxHP (_HP),
+												_PP (original.getEnergyPoints ()),
 												_attackDamage (original.getAttackDamage ()) {	
 
 	_name += "copy";
@@ -40,12 +40,12 @@ std::string const	ClapTrap::getName () const {
 
 unsigned int		ClapTrap::getHitPoints () const {
 
-	return _hitPoints;
+	return _HP;
 }
 
 unsigned int		ClapTrap::getEnergyPoints () const {
 
-	return _energyPoints;
+	return _PP;
 }
 
 unsigned int		ClapTrap::getAttackDamage () const {
@@ -75,14 +75,14 @@ ClapTrap&	ClapTrap::operator= (ClapTrap const& right) {
 
 void	ClapTrap::takeDamage (unsigned int amount) {
 
-	if (_hitPoints > 0)
+	if (_HP > 0)
 	{
-		int	res = _hitPoints;
+		int	res = _HP;
 		res -= amount < 0 ? 0 : res;
-		_hitPoints = res;
+		_HP = res;
 		std::cout 	<< _name
 					<< " loses " << amount
-					<< GREY << " -> HP now is " << _hitPoints << NEUTRAL
+					<< GREY << " -> HP now is " << _HP << NEUTRAL
 					<< std::endl;
 	}
 	else
@@ -95,29 +95,29 @@ void	ClapTrap::takeDamage (unsigned int amount) {
 
 void	ClapTrap::beRepaired (unsigned int amount) {
 
-	if (_energyPoints)
+	if (_PP)
 	{
-		int	res = _energyPoints;
-		_energyPoints = --res < 0 ? 0 : res;
+		int	res = _PP;
+		_PP = --res < 0 ? 0 : res;
 		std::cout 	<< _name << " uses beRepaired. ";
 		
-		unsigned long res1 = _hitPoints + amount;
-		_hitPoints = res1 > UINT_MAX ?
-						_maxHitPoints : 
+		t_ul res1 = _HP + amount;
+		_HP = res1 > UINT_MAX ?
+						_maxHP : 
 						(unsigned int) res1;
 
-		if (_hitPoints >= _maxHitPoints)
+		if (_HP >= _maxHP)
 		{
 			std::cout 	<< _name << "'s HP are maxed out !" 
-						<< GREY << " -> HP now is " << _hitPoints << NEUTRAL
+						<< GREY << " -> HP now is " << _HP << NEUTRAL
 						<< std::endl;
-			_hitPoints = _maxHitPoints;
+			_HP = _maxHP;
 		}
 		else
 			std::cout 	<< _name
 						<< " is repaired of "
 						<< amount
-						<< GREY << " -> HP now is " << _hitPoints << NEUTRAL
+						<< GREY << " -> HP now is " << _HP << NEUTRAL
 						<< std::endl;
 	}
 	else
@@ -131,17 +131,17 @@ void	ClapTrap::beRepaired (unsigned int amount) {
 void	ClapTrap::attack (const std::string& target)
 {
 
-	if (!_hitPoints)
+	if (!_HP)
 	{
 		std:: cout	<< _name << " tries to attack "<< target
 					<< " but they just crawl sadly in their blood "
 					<< std::endl;
 		return ;
 	}
-	if (_energyPoints)
+	if (_PP)
 	{
-		int	res = _energyPoints;
-		_energyPoints = --res < 0 ? 0 : res;
+		int	res = _PP;
+		_PP = --res < 0 ? 0 : res;
 		std::cout 	<< _name 
 					<< " attacks " << target
 					<< ",  aiming to cause " << _attackDamage 

@@ -6,8 +6,8 @@
 
 ScavTrap::ScavTrap (std::string name) : ClapTrap (name) {
 	
-	_hitPoints = 100;
-	_energyPoints = 100;
+	_HP = 100;
+	_PP = 100;
 	_attackDamage = 30;
 	std::cout 	<< "... ! ScavTrap "
 				<< _name << " is born 🛸" << std::endl;
@@ -22,12 +22,6 @@ ScavTrap::~ScavTrap () {
 				<< NEUTRAL << _name << " is destructed by the player 🎐" << std::endl;
 }
 
-
-/* ************************************************* */
-/* 					GETTERS / SETTERS				 */
-/* ************************************************* */
-
-
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
 /* ************************************************* */
@@ -37,4 +31,15 @@ ScavTrap&	ScavTrap::operator= (ScavTrap const& right) {
 
 	ClapTrap::operator= (right);
 	return *this;
+}
+
+/* ************************************************* */
+/* 						OTHERS						 */
+/* ************************************************* */
+
+void	ScavTrap::highFivesGuys (void) {
+
+	std::cout	<< _name
+				<< " does a High Five ! nothing happens"
+				<< std::endl;
 }
