@@ -1,0 +1,26 @@
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
+
+# include <string>
+# include <iostream>
+# include "ClapTrap.hpp"
+
+class	FragTrap : public ClapTrap {
+
+	public:
+
+		// CONSTRUCTORS / DESTRUCTOR
+		FragTrap (std::string name);
+		FragTrap (FragTrap const& original);
+		~FragTrap ();
+	 
+	 	// OPERATORS
+		FragTrap&	operator= (FragTrap const& right);
+		
+		// GETTERS / SETTERS : inherited by ClapTrap
+
+		void	highFivesGuys (void);
+};
+
+
+#endif
