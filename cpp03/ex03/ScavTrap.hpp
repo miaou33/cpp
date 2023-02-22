@@ -18,7 +18,10 @@ class	ScavTrap : virtual public ClapTrap {
 	 	// OPERATORS
 		ScavTrap&	operator= (ScavTrap const& right);
 		
-		// GETTERS / SETTERS : inherited by ClapTrap
+		// GETTERS / SETTERS
+		unsigned int 		getHP () const;
+		unsigned int		getPP () const;
+		unsigned int		getAttackDamage () const;
 
 		void	guardGate (void);
 };

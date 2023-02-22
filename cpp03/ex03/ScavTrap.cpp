@@ -21,6 +21,18 @@ ScavTrap::~ScavTrap () {
 	std::cout 	<< "... ScavTrap " << RESET << _name << " is destructed by the player 🎐" << std::endl;
 }
 
+
+/* ************************************************* */
+/* 					GETTERS / SETTERS				 */
+/* ************************************************* */
+
+unsigned int		ScavTrap::getHP () const { return _HP; }
+
+unsigned int		ScavTrap::getPP () const { return this->_PP; }
+
+unsigned int		ScavTrap::getAttackDamage () const { return _attackDamage; }
+
+
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
 /* ************************************************* */

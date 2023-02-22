@@ -18,8 +18,11 @@ class	FragTrap : virtual public ClapTrap {
 	 	// OPERATORS
 		FragTrap&	operator= (FragTrap const& right);
 		
-		// GETTERS / SETTERS : inherited by ClapTrap
-
+		// GETTERS / SETTERS
+		unsigned int 		getHP () const;
+		unsigned int		getPP () const;
+		unsigned int		getAttackDamage () const;
+		
 		void	highFivesGuys (void);
 };
 

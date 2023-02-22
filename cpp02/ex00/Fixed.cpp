@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed (void) :	_rawBits(0) {
+Fixed::Fixed (void) : _rawBits(0) {
 
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -22,7 +22,6 @@ Fixed&	Fixed::operator= (Fixed const& right) {
 	this->_rawBits = right.getRawBits ();
 	return (*this);
 }
-
 
 int Fixed::getRawBits (void) const {
 

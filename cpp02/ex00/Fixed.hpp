@@ -11,7 +11,7 @@ class	Fixed {
 		static int const	_mantissa_sz = 8;
 
 	public:
-		Fixed ();										
+		Fixed ();						
 		Fixed (Fixed const& copy);						
 		~Fixed ();	
 

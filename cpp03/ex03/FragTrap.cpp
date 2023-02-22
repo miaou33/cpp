@@ -21,6 +21,18 @@ FragTrap::~FragTrap () {
 	std::cout 	<< "... FragTrap " << RESET << _name << " is destructed by the player 🕋" << std::endl;
 }
 
+
+/* ************************************************* */
+/* 					GETTERS / SETTERS				 */
+/* ************************************************* */
+
+unsigned int		FragTrap::getHP () const { return _HP; }
+
+unsigned int		FragTrap::getPP () const { return _PP; }
+
+unsigned int		FragTrap::getAttackDamage () const { return _attackDamage; }
+
+
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
 /* ************************************************* */
