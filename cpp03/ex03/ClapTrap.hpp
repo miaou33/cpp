@@ -1,5 +1,5 @@
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef _CLAPTRAP_HPP_
+# define _CLAPTRAP_HPP_
 
 # include <string>
 # include <iostream>
@@ -22,7 +22,7 @@ class	ClapTrap {
 		// CONSTRUCTORS / DESTRUCTOR
 		ClapTrap (std::string name);
 		ClapTrap (ClapTrap const& original);
-		~ClapTrap ();
+		virtual ~ClapTrap ();
 	 
 	 	// OPERATORS
 		ClapTrap&	operator= (ClapTrap const& right);
@@ -40,5 +40,6 @@ class	ClapTrap {
 		
 };
 
+std::ostream&	operator<< (std::ostream& o, ClapTrap const& right);
 
 #endif

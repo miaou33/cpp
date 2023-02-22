@@ -1,11 +1,11 @@
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef _SCAVTRAP_HPP_
+# define _SCAVTRAP_HPP_
 
 # include <string>
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	ScavTrap : virtual public ClapTrap {
 
 	public:
 

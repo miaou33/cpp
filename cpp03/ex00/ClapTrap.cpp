@@ -80,7 +80,7 @@ void	ClapTrap::takeDamage (unsigned int amount) {
 		_HP = res;
 		std::cout 	<< _name
 					<< " loses " << amount
-					<< GREY << " -> HP now is " << _HP << NEUTRAL
+					<< GREY << " -> HP now is " << _HP << RESET
 					<< std::endl;
 	}
 	else
@@ -107,7 +107,7 @@ void	ClapTrap::beRepaired (unsigned int amount) {
 		if (_HP >= _maxHP)
 		{
 			std::cout 	<< _name << "'s HP are maxed out !" 
-						<< GREY << " -> HP now is " << _HP << NEUTRAL
+						<< GREY << " -> HP now is " << _HP << RESET
 						<< std::endl;
 			_HP = _maxHP;
 		}
@@ -115,7 +115,7 @@ void	ClapTrap::beRepaired (unsigned int amount) {
 			std::cout 	<< _name
 						<< " is repaired of "
 						<< amount
-						<< GREY << " -> HP now is " << _HP << NEUTRAL
+						<< GREY << " -> HP now is " << _HP << RESET
 						<< std::endl;
 	}
 	else

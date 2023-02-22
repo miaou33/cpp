@@ -9,7 +9,7 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_PP (10),
 										_attackDamage (0) {
 
-	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl; }
+	std::cout << "ClapTrap " << _name << " is born" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 												_HP (original.getHP ()),
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 												_attackDamage (original.getAttackDamage ()) {	
 
 	_name += "copy";
-	std::cout << "ClapTrap " << _name << " is born 👾👾" << std::endl;
+	std::cout << "ClapTrap " << _name << " is born" << std::endl;
 }
 
 ClapTrap::~ClapTrap () {
@@ -66,6 +66,14 @@ ClapTrap&	ClapTrap::operator= (ClapTrap const& right) {
 	return *this;
 }
 
+std::ostream&	operator<< (std::ostream& o, ClapTrap const& right) {
+
+	o << UNDER << "Name" << RESET << ": " << right.getName () << std::endl
+		<< UNDER << "HP" << RESET << ": " << right.getHP () << std::endl
+		<< UNDER << "PP" << RESET << ": " << right.getPP () << std::endl
+		<< UNDER << "attackDamage" << RESET << ": " << right.getAttackDamage () << std::endl;
+	return (o);
+}
 
 /* ************************************************* */
 /* 						OTHERS				 		 */
@@ -78,10 +86,10 @@ void	ClapTrap::takeDamage (unsigned int amount) {
 		t_ll res = (t_ll) _HP - (t_ll) amount;
 		res = res < 0 ? 0 : res;
 		_HP = res;
-		std::cout << _name << " loses " << amount << GREY << " -> HP now is " << _HP << NEUTRAL << std::endl;
+		std::cout << "--> " << _name << " loses " << amount << GREY << " -> HP now is " << _HP << RESET << std::endl;
 	}
 	else
-		std::cout << _name << " is already on the ground ! leave them alone 😵" << std::endl;
+		std::cout << "--> " << _name << " is already on the ground ! leave them alone 😵" << std::endl;
 }
 
 void	ClapTrap::beRepaired (unsigned int amount) {
@@ -92,7 +100,7 @@ void	ClapTrap::beRepaired (unsigned int amount) {
 		t_ul res = (t_ul) _HP + (t_ul) amount;
 		res = res > ULONG_MAX ? ULONG_MAX : res;
 		_HP = res;
-		std::cout << _name << " is repaired of " << amount << GREY << " -> HP now is " << _HP << NEUTRAL << std::endl;
+		std::cout << _name << " is repaired of " << amount << GREY << " -> HP now is " << _HP << RESET << std::endl;
 		_PP--;
 	}
 	else
@@ -110,3 +118,4 @@ void	ClapTrap::attack (const std::string& target)
 	else
 		std:: cout	<< _name << " tries to attack "<< target << " but they just crawl sadly in their blood " << std::endl;
 }
+

@@ -16,7 +16,7 @@ FragTrap::FragTrap (FragTrap const& original) : ClapTrap (original) {}
 
 FragTrap::~FragTrap () {
 
-	std::cout 	<< "...... FragTrap " << NEUTRAL << _name << " is destructed by the player 🕋" << std::endl;
+	std::cout 	<< "...... FragTrap " << RESET << _name << " is destructed by the player 🕋" << std::endl;
 }
 
 /* ************************************************* */

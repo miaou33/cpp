@@ -78,7 +78,7 @@ void	ClapTrap::takeDamage (unsigned int amount) {
 		t_ll res = (t_ll) _HP - (t_ll) amount;
 		res = res < 0 ? 0 : res;
 		_HP = res;
-		std::cout << _name << " loses " << amount << GREY << " -> HP now is " << _HP << NEUTRAL << std::endl;
+		std::cout << _name << " loses " << amount << GREY << " -> HP now is " << _HP << RESET << std::endl;
 	}
 	else
 		std::cout << _name << " is already on the ground ! leave them alone 😵" << std::endl;
@@ -92,7 +92,7 @@ void	ClapTrap::beRepaired (unsigned int amount) {
 		t_ul res = (t_ul) _HP + (t_ul) amount;
 		res = res > ULONG_MAX ? ULONG_MAX : res;
 		_HP = res;
-		std::cout << _name << " is repaired of " << amount << GREY << " -> HP now is " << _HP << NEUTRAL << std::endl;
+		std::cout << _name << " is repaired of " << amount << GREY << " -> HP now is " << _HP << RESET << std::endl;
 		_PP--;
 	}
 	else

@@ -9,14 +9,14 @@ FragTrap::FragTrap (std::string name) : ClapTrap (name) {
 											_PP = 100;
 											_attackDamage = 30;
 
-	std::cout 	<< "...... ! FragTrap " << _name << " is born 🌞" << std::endl;
+	std::cout 	<< "... ! FragTrap " << _name << " is born 🌞" << std::endl;
 }
 
 FragTrap::FragTrap (FragTrap const& original) : ClapTrap (original) {}
 
 FragTrap::~FragTrap () {
 
-	std::cout 	<< "...... FragTrap " << NEUTRAL << _name << " is destructed by the player 🕋" << std::endl;
+	std::cout 	<< "... FragTrap " << RESET << _name << " is destructed by the player 🕋" << std::endl;
 }
 
 /* ************************************************* */

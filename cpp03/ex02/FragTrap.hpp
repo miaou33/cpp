@@ -1,5 +1,5 @@
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef _FRAGTRAP_HPP_
+# define _FRAGTRAP_HPP_
 
 # include <string>
 # include <iostream>

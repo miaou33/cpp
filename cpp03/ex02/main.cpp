@@ -10,7 +10,7 @@ int	main (void)
 	FragTrap	FRAGTRAP("FRAGTRAP");
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i << NEUTRAL << std::endl;
+	std::cout << UNDER << "ROUND " << ++i << RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	PAULA.guardGate ();
 	NESS.attack ("PAULA");
@@ -21,7 +21,7 @@ int	main (void)
 		NESS.takeDamage (CLAPTRAP.getAttackDamage());
 	
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  NEUTRAL <<std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  RESET <<std::endl;
 	FRAGTRAP.attack ("PAULA");
 	if (FRAGTRAP.getHP () && FRAGTRAP.getPP ())
 		PAULA.takeDamage (FRAGTRAP.getAttackDamage ());
@@ -30,7 +30,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 	
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  NEUTRAL << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.beRepaired (2);
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
@@ -41,7 +41,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  NEUTRAL << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
@@ -52,7 +52,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  NEUTRAL << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("FRAGTRAP");
 	if (PAULA.getHP () && PAULA.getPP ())
@@ -63,7 +63,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  NEUTRAL << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
@@ -74,7 +74,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  NEUTRAL << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())

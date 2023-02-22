@@ -17,7 +17,8 @@ S_EXT = .cpp
 SRC_FILES =	main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp \
-			FragTrap.cpp 
+			FragTrap.cpp \
+			DiamondTrap.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
@@ -31,7 +32,7 @@ OBJS = ${subst ${SRC_DIR}/, ${BUILD_DIR}/, ${SRCS:%${S_EXT}=%${O_EXT}}}
 
 #COMPILING
 CC = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 #-fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -Wshadow -Wno-shadow #-fsanitize=address
 RM = rm -rf
 
 ################################################################################

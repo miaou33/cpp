@@ -1,7 +1,7 @@
-#ifndef COLORS_HPP
-# define COLORS_HPP
+#ifndef _COLORS_HPP_
+# define _COLORS_HPP_
 
-#define NEUTRAL "\033[0m"
+#define RESET "\033[0m"
 #define BOLD  "\033[1m"
 #define UNDER  "\033[4m"
 #define REV  "\033[7m"

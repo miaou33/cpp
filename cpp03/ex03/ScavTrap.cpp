@@ -16,7 +16,7 @@ ScavTrap::ScavTrap (ScavTrap const& original) : ClapTrap (original) {}
 
 ScavTrap::~ScavTrap () {
 
-	std::cout 	<< "... ScavTrap " << NEUTRAL << _name << " is destructed by the player 🎐" << std::endl;
+	std::cout 	<< "... ScavTrap " << RESET << _name << " is destructed by the player 🎐" << std::endl;
 }
 
 /* ************************************************* */
