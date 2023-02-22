@@ -41,21 +41,18 @@ std::string const	ClapTrap::getName () const {
 	return name;
 }
 
-unsigned int		ClapTrap::getHP () const {
+unsigned int		ClapTrap::getHP () const { return _HP; }
 
-	return _HP;
-}
+unsigned int		ClapTrap::getPP () const { return _PP; }
 
-unsigned int		ClapTrap::getPP () const {
+unsigned int		ClapTrap::getAttackDamage () const { return _attackDamage; }
 
-	return _PP;
-}
 
-unsigned int		ClapTrap::getAttackDamage () const {
+void				ClapTrap::setHP (unsigned int amount)  { this->_HP = amount; }
 
-	return _attackDamage;
-}
+void				ClapTrap::setPP (unsigned int amount)  { this->_PP = amount; }
 
+void				ClapTrap::setAttackDamage (unsigned int amount)  { this->_attackDamage = amount; }
 
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */

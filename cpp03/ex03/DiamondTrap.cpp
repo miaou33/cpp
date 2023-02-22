@@ -4,21 +4,18 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-DiamondTrap::DiamondTrap (std::string name) :	ClapTrap (name),
-												ScavTrap (name),
-												FragTrap (name) {
+DiamondTrap::DiamondTrap (std::string name) : ClapTrap (name + "_clap_name"), ScavTrap (name), FragTrap (name) {
 
-	_name = _name + "_clap_name";
-	_HP = FragTrap::getHP ();
-	_PP = this->ScavTrap::_PP;
-	_attackDamage = FragTrap::getAttackDamage ();
+	_name = name;
+	//ClapTrap::_name = name + "_clap_name";
+	setHP (FragTrap::_HP);
+	setPP (ScavTrap::_PP);
+	setAttackDamage (FragTrap::_attackDamage);
 
 	std::cout 	<< "...... ! DiamondTrap " << _name << " is born 🛸" << std::endl;
 }
 
-DiamondTrap::DiamondTrap (DiamondTrap const& original) :	ClapTrap (original),
-															ScavTrap (original),
-															FragTrap (original) {}
+DiamondTrap::DiamondTrap (DiamondTrap const& original) : ClapTrap (original), ScavTrap (original), FragTrap (original) {}
 
 DiamondTrap::~DiamondTrap () {
 

@@ -33,6 +33,10 @@ class	ClapTrap {
 		unsigned int 		getHP () const;
 		unsigned int		getPP () const;
 		unsigned int		getAttackDamage () const;
+		
+		void		 		setHP (unsigned int amount);
+		void				setPP (unsigned int amount);
+		void				setAttackDamage (unsigned int amount);
 
 		// OTHERS
 		void				attack (const std::string& target);
