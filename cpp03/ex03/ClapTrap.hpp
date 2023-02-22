@@ -20,6 +20,7 @@ class	ClapTrap {
 	public:
 
 		// CONSTRUCTORS / DESTRUCTOR
+		ClapTrap ();
 		ClapTrap (std::string name);
 		ClapTrap (ClapTrap const& original);
 		virtual ~ClapTrap ();

@@ -2,7 +2,6 @@
 
 int	main (void)
 {
-	int i = 0;
 	ClapTrap	CLAPTRAP("\033[0;32mCLAPTRAP\033[0m");
 	ScavTrap	NESS("\033[0;31mSCAVTRAP\033[0m");
 	FragTrap	FRAGTRAP("\033[0;33mFRAGTRAP\033[0m");
@@ -14,6 +13,7 @@ int	main (void)
 	std::cout << FRAGTRAP << std::endl;
 	std::cout << DIAMONDTRAP << std::endl;
 
+/* 	int i = 0;
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i << RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
@@ -85,7 +85,7 @@ int	main (void)
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
 		NESS.takeDamage (DIAMONDTRAP.getAttackDamage ());
 	NESS.guardGate ();
-	CLAPTRAP.beRepaired (1);
+	CLAPTRAP.beRepaired (1); */
 
 	std::cout << std::endl;
 }

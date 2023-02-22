@@ -4,6 +4,8 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
+ScavTrap::ScavTrap () : ClapTrap () {}
+
 ScavTrap::ScavTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
 											_PP = 50;

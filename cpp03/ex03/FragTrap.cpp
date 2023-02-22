@@ -4,6 +4,8 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
+FragTrap::FragTrap () : ClapTrap () {}
+
 FragTrap::FragTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
 											_PP = 100;

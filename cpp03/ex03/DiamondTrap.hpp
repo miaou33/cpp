@@ -8,8 +8,11 @@
 
 class	DiamondTrap : public ScavTrap, public FragTrap {
 
-	private:
-		std::string _name;
+	protected:
+		using ClapTrap:: _name;
+		using FragTrap:: _HP;
+		using ScavTrap:: _PP;
+		using FragTrap:: _attackDamage;
 
 	public:
 

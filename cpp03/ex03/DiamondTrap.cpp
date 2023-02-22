@@ -8,10 +8,10 @@ DiamondTrap::DiamondTrap (std::string name) :	ClapTrap (name),
 												ScavTrap (name),
 												FragTrap (name) {
 
-											_name = ClapTrap::_name + "_clap_name";
-											_HP = FragTrap::_HP;
-											_PP = ScavTrap::_PP;
-											_attackDamage = FragTrap::_attackDamage;
+	_name = _name + "_clap_name";
+	_HP = FragTrap::getHP ();
+	_PP = this->ScavTrap::_PP;
+	_attackDamage = FragTrap::getAttackDamage ();
 
 	std::cout 	<< "...... ! DiamondTrap " << _name << " is born 🛸" << std::endl;
 }

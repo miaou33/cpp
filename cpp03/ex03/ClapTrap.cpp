@@ -4,6 +4,11 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
+ClapTrap::ClapTrap () : _name ("ANON"),
+						_HP (0),
+						_PP (0),
+						_attackDamage (0) {}
+
 ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_HP (10),
 										_PP (10),
