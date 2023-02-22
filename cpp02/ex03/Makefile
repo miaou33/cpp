@@ -15,7 +15,8 @@ BUILD_DIR  = ./objs
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
 			Fixed.cpp \
-			Point.cpp
+			Point.cpp \
+			bsp.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 

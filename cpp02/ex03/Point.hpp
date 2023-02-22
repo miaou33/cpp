@@ -21,10 +21,11 @@ class	Point {
 		Point&	operator= (Point const& right);
 		
 		// GETTERS / SETTERS
-		Fixed const	getX (void) const;
-		Fixed const	getY (void) const;
+		Fixed X (void) const;
+		Fixed Y (void) const;
 		
 };
 
+std::ostream&	operator<< (std::ostream& o, Point const& right);
 
 #endif
