@@ -13,9 +13,9 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
-												_HP (original.getHitPoints ()),
+												_HP (original.getHP ()),
 												_maxHP (_HP),
-												_PP (original.getEnergyPoints ()),
+												_PP (original.getPP ()),
 												_attackDamage (original.getAttackDamage ()) {	
 
 	_name += "copy";
@@ -38,12 +38,12 @@ std::string const	ClapTrap::getName () const {
 	return name;
 }
 
-unsigned int		ClapTrap::getHitPoints () const {
+unsigned int		ClapTrap::getHP () const {
 
 	return _HP;
 }
 
-unsigned int		ClapTrap::getEnergyPoints () const {
+unsigned int		ClapTrap::getPP () const {
 
 	return _PP;
 }
@@ -92,11 +92,9 @@ void	ClapTrap::beRepaired (unsigned int amount) {
 	{
 		std::cout << _name << " uses beRepaired. ";
 		t_ul res = (t_ul) _HP + (t_ul) amount;
-		res = res > _maxHP ? _maxHP : res;
+		res = res > ULONG_MAX ? ULONG_MAX : res;
 		_HP = res;
-		_HP == _maxHP ?
-			std::cout 	<< _name << "'s HP are maxed out !" << GREY << " -> HP now is " << _HP << NEUTRAL << std::endl
-			: std::cout << _name << " is repaired of " << amount << GREY << " -> HP now is " << _HP << NEUTRAL << std::endl;
+		std::cout << _name << " is repaired of " << amount << GREY << " -> HP now is " << _HP << NEUTRAL << std::endl;
 		_PP--;
 	}
 	else

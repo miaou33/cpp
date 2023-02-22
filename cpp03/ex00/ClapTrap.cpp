@@ -13,9 +13,9 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
-												_HP (original.getHitPoints ()),
+												_HP (original.getHP ()),
 												_maxHP (_HP),
-												_PP (original.getEnergyPoints ()),
+												_PP (original.getPP ()),
 												_attackDamage (original.getAttackDamage ()) {	
 
 	_name += "copy";
@@ -38,12 +38,12 @@ std::string const	ClapTrap::getName () const {
 	return name;
 }
 
-unsigned int		ClapTrap::getHitPoints () const {
+unsigned int		ClapTrap::getHP () const {
 
 	return _HP;
 }
 
-unsigned int		ClapTrap::getEnergyPoints () const {
+unsigned int		ClapTrap::getPP () const {
 
 	return _PP;
 }

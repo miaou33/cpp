@@ -30,8 +30,8 @@ class	ClapTrap {
 		
 		// GETTERS / SETTERS
 		std::string const	getName () const;
-		unsigned int 		getHitPoints () const;
-		unsigned int		getEnergyPoints () const;
+		unsigned int 		getHP () const;
+		unsigned int		getPP () const;
 		unsigned int		getAttackDamage () const;
 
 		// OTHERS
