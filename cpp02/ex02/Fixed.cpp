@@ -68,19 +68,17 @@ Fixed	Fixed::operator- (Fixed const& right) {
 
 Fixed	Fixed::operator* (Fixed const& right) {
 
-	_rawBits = (long long)
-				((_rawBits * right.getRawBits ())) >>  _mantissa_sz;
-    return *this;
-//	Fixed res ((int)((long long)((_rawBits * right.getRawBits ())) >>  _mantissa_sz));//(this->toFloat () * right.toFloat ());
-//	return (res);
+	Fixed  res (this->toFloat () * right.toFloat ());
+	return (res);
 }
 
 Fixed	Fixed::operator/ (Fixed const& right) {
 
 	if (right == 0)
 	{
-		std::cout << "Error: Division by 0" << std::endl;
-		return 0;
+		std::cout << "Error: Division by 0. Res set to 0. ";
+		Fixed error (0);
+		return (error);
 	}
 	Fixed res (this->toFloat () / right.toFloat ());
 	return res;

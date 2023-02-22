@@ -35,14 +35,6 @@ class	Fixed {
 		Fixed	operator* (Fixed const& right);
 		Fixed	operator/ (Fixed const& right);
 
-		// COMPARISON OPERATORS
-		bool	operator> (Fixed const& right) const;
-		bool	operator< (Fixed const& right) const;
-		bool	operator>= (Fixed const& right) const;
-		bool	operator<= (Fixed const& right) const;
-		bool	operator== (Fixed const& right) const;
-		bool	operator!= (Fixed const& right) const;
-
 		// PREFIX INCREMENT / DECREMENT OPERATORS
 		Fixed&	operator++ ();
 		Fixed&	operator-- ();
@@ -50,6 +42,14 @@ class	Fixed {
 		// POSTFIX INCREMENT / DECREMENT OPERATORS
 		Fixed	operator++ (int);
 		Fixed	operator-- (int);
+
+		// COMPARISON OPERATORS
+		bool	operator> (Fixed const& right) const;
+		bool	operator< (Fixed const& right) const;
+		bool	operator>= (Fixed const& right) const;
+		bool	operator<= (Fixed const& right) const;
+		bool	operator== (Fixed const& right) const;
+		bool	operator!= (Fixed const& right) const;
 
 		// MIN / MAX FINDERS
 		static Fixed const&	min(Fixed const& left, Fixed const& right);
