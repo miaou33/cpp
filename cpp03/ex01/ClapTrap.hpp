@@ -15,7 +15,7 @@ class	ClapTrap {
 		std::string			_name;
 		unsigned int		_HP;
 		unsigned int		_PP;
-		unsigned int		_attackDamage;
+		unsigned int		_AD;
 
 	public:
 
@@ -25,13 +25,13 @@ class	ClapTrap {
 		~ClapTrap ();
 	 
 	 	// OPERATORS
-		ClapTrap&	operator= (ClapTrap const& right);
+		ClapTrap&	operator= (ClapTrap const& source);
 		
 		// GETTERS / SETTERS
 		std::string const	getName () const;
 		unsigned int 		getHP () const;
 		unsigned int		getPP () const;
-		unsigned int		getAttackDamage () const;
+		unsigned int		getAD () const;
 
 		// OTHERS
 		void				attack (const std::string& target);

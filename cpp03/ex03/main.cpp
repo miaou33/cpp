@@ -3,57 +3,57 @@
 int	main (void)
 {
 	ClapTrap	CLAPTRAP("\033[0;32mCLAPTRAP\033[0m");
-	ScavTrap	NESS("\033[0;31mSCAVTRAP\033[0m");
+	ScavTrap	SCAVTRAP("\033[0;31mSCAVTRAP\033[0m");
 	FragTrap	FRAGTRAP("\033[0;33mFRAGTRAP\033[0m");
 	DiamondTrap	DIAMONDTRAP("\033[0;34mDIAMONDTRAP\033[0m");
 
 	std::cout << std::endl;
 	std::cout << CLAPTRAP << std::endl;
-	std::cout << NESS << std::endl;
+	std::cout << SCAVTRAP << std::endl;
 	std::cout << FRAGTRAP << std::endl;
 	std::cout << DIAMONDTRAP << std::endl;
 
-/* 	int i = 0;
+	int i = 0;
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i << RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	DIAMONDTRAP.whoAmI ();
-	NESS.attack ("DIAMONDTRAP");
-	if (NESS.getHP () && NESS.getPP ())
-		DIAMONDTRAP.takeDamage (NESS.getAttackDamage ());
-	CLAPTRAP.attack ("NESS");
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	CLAPTRAP.attack ("SCAVTRAP");
 	if (CLAPTRAP.getHP () && CLAPTRAP.getPP ())
-		NESS.takeDamage (CLAPTRAP.getAttackDamage());
+		SCAVTRAP.takeDamage (CLAPTRAP.getAD());
 	
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i <<  RESET <<std::endl;
 	FRAGTRAP.attack ("DIAMONDTRAP");
 	if (FRAGTRAP.getHP () && FRAGTRAP.getPP ())
-		DIAMONDTRAP.takeDamage (FRAGTRAP.getAttackDamage ());
+		DIAMONDTRAP.takeDamage (FRAGTRAP.getAD ());
 	DIAMONDTRAP.beRepaired (2);
-	NESS.guardGate ();
+	SCAVTRAP.guardGate ();
 	CLAPTRAP.beRepaired (1);
 	
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.beRepaired (2);
-	DIAMONDTRAP.attack ("NESS");
+	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
-		NESS.takeDamage (DIAMONDTRAP.getAttackDamage ());
-	NESS.attack ("DIAMONDTRAP");
-	if (NESS.getHP () && NESS.getPP ())
-		DIAMONDTRAP.takeDamage (NESS.getAttackDamage ());
+		SCAVTRAP.takeDamage (DIAMONDTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
-	DIAMONDTRAP.attack ("NESS");
+	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
-		NESS.takeDamage (DIAMONDTRAP.getAttackDamage ());
-	NESS.attack ("DIAMONDTRAP");
-	if (NESS.getHP () && NESS.getPP ())
-		DIAMONDTRAP.takeDamage (NESS.getAttackDamage ());
+		SCAVTRAP.takeDamage (DIAMONDTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
@@ -61,31 +61,31 @@ int	main (void)
 	FRAGTRAP.highFivesGuys ();
 	DIAMONDTRAP.attack ("FRAGTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
-		FRAGTRAP.takeDamage (DIAMONDTRAP.getAttackDamage ());
-	NESS.attack ("DIAMONDTRAP");
-	if (NESS.getHP () && NESS.getPP ())
-		DIAMONDTRAP.takeDamage (NESS.getAttackDamage ());
+		FRAGTRAP.takeDamage (DIAMONDTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
-	DIAMONDTRAP.attack ("NESS");
+	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
-		NESS.takeDamage (DIAMONDTRAP.getAttackDamage ());
-	NESS.attack ("DIAMONDTRAP");
-	if (NESS.getHP () && NESS.getPP ())
-		DIAMONDTRAP.takeDamage (NESS.getAttackDamage ());
+		SCAVTRAP.takeDamage (DIAMONDTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
 	FRAGTRAP.highFivesGuys ();
-	DIAMONDTRAP.attack ("NESS");
+	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
-		NESS.takeDamage (DIAMONDTRAP.getAttackDamage ());
-	NESS.guardGate ();
-	CLAPTRAP.beRepaired (1); */
+		SCAVTRAP.takeDamage (DIAMONDTRAP.getAD ());
+	SCAVTRAP.guardGate ();
+	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 }

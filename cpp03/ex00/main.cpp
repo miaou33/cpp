@@ -7,9 +7,9 @@ int	main (void)
 	ClapTrap	Jeff("Jeff");
 
 	Ness.attack ("Paula");
-	Paula.takeDamage (Ness.getAttackDamage ());
+	Paula.takeDamage (Ness.getAD ());
 	Paula.beRepaired (2);
 	Jeff.attack ("Ness");
-	Ness.takeDamage (Jeff.getAttackDamage ());
+	Ness.takeDamage (Jeff.getAD ());
 
 }

@@ -16,13 +16,9 @@ class	ScavTrap : virtual public ClapTrap {
 		~ScavTrap ();
 	 
 	 	// OPERATORS
-		ScavTrap&	operator= (ScavTrap const& right);
+		ScavTrap&	operator= (ClapTrap const& source);
 		
-		// GETTERS / SETTERS
-		unsigned int 		getHP () const;
-		unsigned int		getPP () const;
-		unsigned int		getAttackDamage () const;
-
+		void	attack (const std::string& target);
 		void	guardGate (void);
 };
 

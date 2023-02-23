@@ -7,19 +7,19 @@
 ClapTrap::ClapTrap () : _name ("ANON"),
 						_HP (0),
 						_PP (0),
-						_attackDamage (0) {}
+						_AD (0) {}
 
 ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_HP (10),
 										_PP (10),
-										_attackDamage (0) {
+										_AD (0) {
 
 	std::cout << "ClapTrap " << _name << " is born" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 												_HP (original.getHP ()),
 												_PP (original.getPP ()),
-												_attackDamage (original.getAttackDamage ()) {	
+												_AD (original.getAD ()) {	
 
 	_name += "copy";
 	std::cout << "ClapTrap " << _name << " is born" << std::endl;
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 
 ClapTrap::~ClapTrap () {
 
-	std::cout << "ClapTrap " << _name << " is destructed by the player 🌠" << std::endl;
+	std::cout << "ClapTrap " << _name << " is destructed by the player" << std::endl;
 }
 
 
@@ -45,35 +45,29 @@ unsigned int		ClapTrap::getHP () const { return _HP; }
 
 unsigned int		ClapTrap::getPP () const { return _PP; }
 
-unsigned int		ClapTrap::getAttackDamage () const { return _attackDamage; }
+unsigned int		ClapTrap::getAD () const { return _AD; }
 
-
-void				ClapTrap::setHP (unsigned int amount)  { this->_HP = amount; }
-
-void				ClapTrap::setPP (unsigned int amount)  { this->_PP = amount; }
-
-void				ClapTrap::setAttackDamage (unsigned int amount)  { this->_attackDamage = amount; }
 
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
 /* ************************************************* */
 
 // ASSIGNMENT
-ClapTrap&	ClapTrap::operator= (ClapTrap const& right) {
+ClapTrap&	ClapTrap::operator= (ClapTrap const& source) {
 
-	if (this == &right)
+	if (this == &source)
 		return (*this);
-	right.~ClapTrap();
-	new (this) ClapTrap (right);
+	source.~ClapTrap();
+	new (this) ClapTrap (source);
 	return *this;
 }
 
-std::ostream&	operator<< (std::ostream& o, ClapTrap const& right) {
+std::ostream&	operator<< (std::ostream& o, ClapTrap const& source) {
 
-	o << UNDER << "Name" << RESET << ": " << right.getName () << std::endl
-		<< UNDER << "HP" << RESET << ": " << right.getHP () << std::endl
-		<< UNDER << "PP" << RESET << ": " << right.getPP () << std::endl
-		<< UNDER << "attackDamage" << RESET << ": " << right.getAttackDamage () << std::endl;
+	o << UNDER << "Name" << RESET << ": " << source.getName () << std::endl
+		<< UNDER << "HP" << RESET << ": " << source.getHP () << std::endl
+		<< UNDER << "PP" << RESET << ": " << source.getPP () << std::endl
+		<< UNDER << "AD" << RESET << ": " << source.getAD () << std::endl;
 	return (o);
 }
 
@@ -114,7 +108,7 @@ void	ClapTrap::attack (const std::string& target)
 	if (_HP)
 	{
 		_PP-- ?
-			std::cout 	<< _name << " attacks " << target << ",  aiming to cause " << _attackDamage << " points of damage! "<< std::endl
+			std::cout 	<< _name << " attacks " << target << ",  aiming to cause " << _AD << " points of damage! "<< std::endl
 			: std::cout 	<< "🚫 " << _name << " cant attack " << target << " coz no PP anymore x_x 🚫" << std::endl;
 	}
 	else

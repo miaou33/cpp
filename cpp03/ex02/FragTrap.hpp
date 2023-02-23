@@ -15,7 +15,7 @@ class	FragTrap : public ClapTrap {
 		~FragTrap ();
 	 
 	 	// OPERATORS
-		FragTrap&	operator= (FragTrap const& right);
+		FragTrap&	operator= (FragTrap const& source);
 		
 		// GETTERS / SETTERS : inherited by ClapTrap
 

@@ -15,7 +15,7 @@ class	ScavTrap : public ClapTrap {
 		~ScavTrap ();
 	 
 	 	// OPERATORS
-		ScavTrap&	operator= (ScavTrap const& right);
+		ScavTrap&	operator= (ScavTrap const& source);
 		
 		// GETTERS / SETTERS : inherited by ClapTrap
 

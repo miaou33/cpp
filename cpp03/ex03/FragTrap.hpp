@@ -16,12 +16,7 @@ class	FragTrap : virtual public ClapTrap {
 		~FragTrap ();
 	 
 	 	// OPERATORS
-		FragTrap&	operator= (FragTrap const& right);
-		
-		// GETTERS / SETTERS
-		unsigned int 		getHP () const;
-		unsigned int		getPP () const;
-		unsigned int		getAttackDamage () const;
+		FragTrap&	operator= (ClapTrap const& source);
 		
 		void	highFivesGuys (void);
 };

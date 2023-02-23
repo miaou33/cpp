@@ -7,14 +7,14 @@
 ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_HP (10),
 										_PP (10),
-										_attackDamage (0) {
+										_AD (0) {
 
 	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 												_HP (original.getHP ()),
 												_PP (original.getPP ()),
-												_attackDamage (original.getAttackDamage ()) {	
+												_AD (original.getAD ()) {	
 
 	_name += "copy";
 	std::cout << "ClapTrap " << _name << " is born 👾👾" << std::endl;
@@ -46,9 +46,9 @@ unsigned int		ClapTrap::getPP () const {
 	return _PP;
 }
 
-unsigned int		ClapTrap::getAttackDamage () const {
+unsigned int		ClapTrap::getAD () const {
 
-	return _attackDamage;
+	return _AD;
 }
 
 
@@ -57,12 +57,12 @@ unsigned int		ClapTrap::getAttackDamage () const {
 /* ************************************************* */
 
 // ASSIGNMENT
-ClapTrap&	ClapTrap::operator= (ClapTrap const& right) {
+ClapTrap&	ClapTrap::operator= (ClapTrap const& source) {
 
-	if (this == &right)
+	if (this == &source)
 		return (*this);
-	right.~ClapTrap();
-	new (this) ClapTrap (right);
+	source.~ClapTrap();
+	new (this) ClapTrap (source);
 	return *this;
 }
 
@@ -104,7 +104,7 @@ void	ClapTrap::attack (const std::string& target)
 	if (_HP)
 	{
 		_PP-- ?
-			std::cout 	<< _name << " attacks " << target << ",  aiming to cause " << _attackDamage << " points of damage! "<< std::endl
+			std::cout 	<< _name << " attacks " << target << ",  aiming to cause " << _AD << " points of damage! "<< std::endl
 			: std::cout 	<< "🚫 " << _name << " cant attack " << target << " coz no PP anymore x_x 🚫" << std::endl;
 	}
 	else

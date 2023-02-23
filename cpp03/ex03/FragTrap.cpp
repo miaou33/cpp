@@ -9,28 +9,21 @@ FragTrap::FragTrap () : ClapTrap () {}
 FragTrap::FragTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
 											_PP = 100;
-											_attackDamage = 30;
+											_AD = 30;
 
-	std::cout 	<< "... ! FragTrap " << _name << " is born 🌞" << std::endl;
+	std::cout 	<< "... ! FragTrap " << _name << " is born" << std::endl;
 }
 
-FragTrap::FragTrap (FragTrap const& original) : ClapTrap (original) {}
+FragTrap::FragTrap (FragTrap const& original) : ClapTrap (original) {
+
+	*this = original;
+	std::cout 	<< "... ! a copyFragTrap " << _name << " is born" << std::endl;
+}
 
 FragTrap::~FragTrap () {
 
-	std::cout 	<< "... FragTrap " << RESET << _name << " is destructed by the player 🕋" << std::endl;
+	std::cout 	<< "... FragTrap " << RESET << _name << " is destructed by the player" << std::endl;
 }
-
-
-/* ************************************************* */
-/* 					GETTERS / SETTERS				 */
-/* ************************************************* */
-
-unsigned int		FragTrap::getHP () const { return _HP; }
-
-unsigned int		FragTrap::getPP () const { return _PP; }
-
-unsigned int		FragTrap::getAttackDamage () const { return _attackDamage; }
 
 
 /* ************************************************* */
@@ -38,9 +31,12 @@ unsigned int		FragTrap::getAttackDamage () const { return _attackDamage; }
 /* ************************************************* */
 
 // ASSIGNMENT
-FragTrap&	FragTrap::operator= (FragTrap const& right) {
+FragTrap&	FragTrap::operator= (ClapTrap const& source) {
 
-	ClapTrap::operator= (right);
+	_name = source.getName ();
+	_HP = source.getHP ();
+	_PP = source.getPP ();
+	_AD = source.getAD ();
 	return *this;
 }
 

@@ -12,10 +12,10 @@ int	main (void)
 	PAULA.guardGate ();
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.attack ("NESS");
 	if (CLAPTRAP.getHP () && CLAPTRAP.getPP ())
-		NESS.takeDamage (CLAPTRAP.getAttackDamage());
+		NESS.takeDamage (CLAPTRAP.getAD());
 	
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i <<  std::endl;
@@ -27,47 +27,47 @@ int	main (void)
 	std::cout << UNDER << "ROUND " << ++i << std::endl;
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i << std::endl;
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i << std::endl;
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i << std::endl;
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i << std::endl;
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.guardGate ();
 	CLAPTRAP.beRepaired (1);
 

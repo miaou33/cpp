@@ -15,7 +15,7 @@ class	ClapTrap {
 		std::string			_name;
 		unsigned int		_HP;
 		unsigned int		_PP;
-		unsigned int		_attackDamage;
+		unsigned int		_AD;
 
 	public:
 
@@ -26,17 +26,13 @@ class	ClapTrap {
 		virtual ~ClapTrap ();
 	 
 	 	// OPERATORS
-		ClapTrap&	operator= (ClapTrap const& right);
+		ClapTrap&	operator= (ClapTrap const& source);
 		
 		// GETTERS / SETTERS
 		std::string const	getName () const;
 		unsigned int 		getHP () const;
 		unsigned int		getPP () const;
-		unsigned int		getAttackDamage () const;
-		
-		void		 		setHP (unsigned int amount);
-		void				setPP (unsigned int amount);
-		void				setAttackDamage (unsigned int amount);
+		unsigned int		getAD () const;
 
 		// OTHERS
 		void				attack (const std::string& target);
@@ -45,6 +41,6 @@ class	ClapTrap {
 		
 };
 
-std::ostream&	operator<< (std::ostream& o, ClapTrap const& right);
+std::ostream&	operator<< (std::ostream& o, ClapTrap const& source);
 
 #endif

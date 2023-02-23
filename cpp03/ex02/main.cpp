@@ -15,16 +15,16 @@ int	main (void)
 	PAULA.guardGate ();
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.attack ("NESS");
 	if (CLAPTRAP.getHP () && CLAPTRAP.getPP ())
-		NESS.takeDamage (CLAPTRAP.getAttackDamage());
+		NESS.takeDamage (CLAPTRAP.getAD());
 	
 	std::cout << std::endl;
 	std::cout << UNDER << "ROUND " << ++i <<  RESET <<std::endl;
 	FRAGTRAP.attack ("PAULA");
 	if (FRAGTRAP.getHP () && FRAGTRAP.getPP ())
-		PAULA.takeDamage (FRAGTRAP.getAttackDamage ());
+		PAULA.takeDamage (FRAGTRAP.getAD ());
 	PAULA.beRepaired (2);
 	NESS.guardGate ();
 	CLAPTRAP.beRepaired (1);
@@ -34,10 +34,10 @@ int	main (void)
 	FRAGTRAP.beRepaired (2);
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
@@ -45,10 +45,10 @@ int	main (void)
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
@@ -56,10 +56,10 @@ int	main (void)
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("FRAGTRAP");
 	if (PAULA.getHP () && PAULA.getPP ())
-		FRAGTRAP.takeDamage (PAULA.getAttackDamage ());
+		FRAGTRAP.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
@@ -67,10 +67,10 @@ int	main (void)
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.attack ("PAULA");
 	if (NESS.getHP () && NESS.getPP ())
-		PAULA.takeDamage (NESS.getAttackDamage ());
+		PAULA.takeDamage (NESS.getAD ());
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
@@ -78,7 +78,7 @@ int	main (void)
 	FRAGTRAP.highFivesGuys ();
 	PAULA.attack ("NESS");
 	if (PAULA.getHP () && PAULA.getPP ())
-		NESS.takeDamage (PAULA.getAttackDamage ());
+		NESS.takeDamage (PAULA.getAD ());
 	NESS.guardGate ();
 	CLAPTRAP.beRepaired (1);
 

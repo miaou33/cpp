@@ -8,29 +8,22 @@ ScavTrap::ScavTrap () : ClapTrap () {}
 
 ScavTrap::ScavTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
-											_PP = 50;
-											_attackDamage = 20;
+											_PP = 0;
+											_AD = 20;
 
-	std::cout 	<< "... ! ScavTrap " << _name << " is born 🛸" << std::endl;
+	std::cout 	<< "... ! ScavTrap " << _name << " is born" << std::endl;
 }
 
-ScavTrap::ScavTrap (ScavTrap const& original) : ClapTrap (original) {}
+ScavTrap::ScavTrap (ScavTrap const& original) : ClapTrap (original) {
+
+	*this = original;
+	std::cout 	<< "... !  a copyScavTrap " << _name << " is born" << std::endl;
+}
 
 ScavTrap::~ScavTrap () {
 
-	std::cout 	<< "... ScavTrap " << RESET << _name << " is destructed by the player 🎐" << std::endl;
+	std::cout 	<< "... ScavTrap " << RESET << _name << " is destructed by the player" << std::endl;
 }
-
-
-/* ************************************************* */
-/* 					GETTERS / SETTERS				 */
-/* ************************************************* */
-
-unsigned int		ScavTrap::getHP () const { return _HP; }
-
-unsigned int		ScavTrap::getPP () const { return this->_PP; }
-
-unsigned int		ScavTrap::getAttackDamage () const { return _attackDamage; }
 
 
 /* ************************************************* */
@@ -38,15 +31,30 @@ unsigned int		ScavTrap::getAttackDamage () const { return _attackDamage; }
 /* ************************************************* */
 
 // ASSIGNMENT
-ScavTrap&	ScavTrap::operator= (ScavTrap const& right) {
+ScavTrap&	ScavTrap::operator= (ClapTrap const& source) {
 
-	ClapTrap::operator= (right);
+	_name = source.getName ();
+	_HP = source.getHP ();
+	_PP = source.getPP ();
+	_AD = source.getAD ();
 	return *this;
 }
 
 /* ************************************************* */
 /* 						OTHERS						 */
 /* ************************************************* */
+
+void	ClapTrap::attack (const std::string& target)
+{
+	if (_HP)
+	{
+		_PP-- ?
+			std::cout 	<< _name << " attacks " << target << ",  aiming to cause " << _AD << " points of damage! "<< std::endl
+			: std::cout 	<< "🚫 " << _name << " cant attack " << target << " coz no PP anymore x_x 🚫" << std::endl;
+	}
+	else
+		std:: cout	<< _name << " tries to attack "<< target << " but they just crawl sadly in their blood " << std::endl;
+}
 
 void	ScavTrap::guardGate (void) {
 

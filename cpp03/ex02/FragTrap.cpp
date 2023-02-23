@@ -7,7 +7,7 @@
 FragTrap::FragTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
 											_PP = 100;
-											_attackDamage = 30;
+											_AD = 30;
 
 	std::cout 	<< "...... ! FragTrap " << _name << " is born 🌞" << std::endl;
 }
@@ -24,9 +24,9 @@ FragTrap::~FragTrap () {
 /* ************************************************* */
 
 // ASSIGNMENT
-FragTrap&	FragTrap::operator= (FragTrap const& right) {
+FragTrap&	FragTrap::operator= (FragTrap const& source) {
 
-	ClapTrap::operator= (right);
+	ClapTrap::operator= (source);
 	return *this;
 }
 

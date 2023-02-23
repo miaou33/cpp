@@ -10,18 +10,20 @@ class	DiamondTrap : public ScavTrap, public FragTrap {
 
 	private:
 		std::string _name;
+		using ScavTrap::_PP;
+		using FragTrap::_HP;
+		using FragTrap::_AD;
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR
 		DiamondTrap (std::string name);
 		DiamondTrap (DiamondTrap const& original);
 		~DiamondTrap ();
 	 
 	 	// OPERATORS
-		DiamondTrap&	operator= (DiamondTrap const& right);
+		DiamondTrap&	operator= (ClapTrap const& source);
 		
-		// GETTERS / SETTERS : inherited by ClapTrap
+		void ScavTrap::attack ();
 
 		void	whoAmI (void);
 };

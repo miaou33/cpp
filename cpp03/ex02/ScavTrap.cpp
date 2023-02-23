@@ -7,7 +7,7 @@
 ScavTrap::ScavTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
 											_PP = 50;
-											_attackDamage = 20;
+											_AD = 20;
 
 	std::cout 	<< "... ! ScavTrap " << _name << " is born 🛸" << std::endl;
 }
@@ -24,9 +24,9 @@ ScavTrap::~ScavTrap () {
 /* ************************************************* */
 
 // ASSIGNMENT
-ScavTrap&	ScavTrap::operator= (ScavTrap const& right) {
+ScavTrap&	ScavTrap::operator= (ScavTrap const& source) {
 
-	ClapTrap::operator= (right);
+	ClapTrap::operator= (source);
 	return *this;
 }
 
