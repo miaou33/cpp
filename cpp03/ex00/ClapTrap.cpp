@@ -78,7 +78,7 @@ void	ClapTrap::attack (const std::string& target)
 	if (_HP)
 	{
 		_PP-- ?
-			std::cout << _name << " attacks " << target << ", aiming to cause " << _AD << " points of damage! "<< std::endl
+			std::cout << _name << " attacks " << target << ", aiming to cause " << _AD << " points of damage ! "
 			: std::cout << "🚫 " << _name << " cant attack " << target << " coz no PP anymore x_x 🚫" << std::endl;
 	}
 	else
@@ -100,7 +100,7 @@ void	ClapTrap::takeDamage (t_ui amount) {
 
 void	ClapTrap::beRepaired (t_ui amount) {
 
-	if (_PP)
+	if (_PP--)
 	{
 		std::cout << _name << " uses beRepaired. ";
 		t_ul res = _HP + amount;
