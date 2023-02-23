@@ -2,10 +2,9 @@
 
 int	main (void)
 {
-	int i = 0;
-	ClapTrap	CLAPTRAP("\033[0;33mCLAPT\033[0m");
-	ScavTrap	SCAV1("\033[0;31mSCAV1\033[0m");
-	ScavTrap	SCAV2("\033[0;31mSCAV2\033[0m");
+	ClapTrap	CLAPTRAP("CLAPT");
+	ScavTrap	SCAV1("SCAV1");
+	ScavTrap	SCAV2("SCAV2");
 	
 	std::cout << std::endl;
 	std::cout << CLAPTRAP << std::endl;
@@ -13,7 +12,6 @@ int	main (void)
 	std::cout << SCAV2 << std::endl;
 	
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i << std::endl;
 	SCAV2.attack ("CLAPTRAP");
 	if (SCAV2.getHP () && SCAV2.getPP ())
 		CLAPTRAP.takeDamage (SCAV2.getAD ());	
@@ -30,7 +28,6 @@ int	main (void)
 	std::cout << SCAV2 << std::endl;
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  std::endl;
 	SCAV2.beRepaired (2);
 	SCAV1.guardGate ();
 	CLAPTRAP.beRepaired (10);
