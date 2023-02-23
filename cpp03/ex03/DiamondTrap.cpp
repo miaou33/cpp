@@ -11,18 +11,18 @@ DiamondTrap::DiamondTrap (std::string name) : ClapTrap (name + "_clap_name"), Sc
 	ScavTrap::setDefaultPP ();
 //	_PP = ScavTrap::_PP;
 	_AD = FragTrap::_AD;
-	std::cout 	<< "...... ! DiamondTrap " << _name << " is born" << std::endl;
+	std::cout << "...... ! DiamondTrap " << _name << " is born" << std::endl;
 }
 
 DiamondTrap::DiamondTrap (DiamondTrap const& original) : ClapTrap (original), ScavTrap (original), FragTrap (original) {
 
 	*this = original;
-	std::cout 	<< "...... ! DiamondTrap " << _name << " is born" << std::endl;
+	std::cout << "...... ! DiamondTrap " << _name << " is born" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap () {
 
-	std::cout 	<< "...... DiamondTrap " << RESET << _name << " is destructed by the player" << std::endl;
+	std::cout << "...... DiamondTrap " << END << _name << " is destructed by the player" << std::endl;
 }
 
 /* ************************************************* */
@@ -50,6 +50,6 @@ DiamondTrap&	DiamondTrap::operator= (ClapTrap const& source) {
 void	DiamondTrap::whoAmI (void) {
 
 	_HP ?
-		std::cout	<< _name << " asks themself who they are. the answer is double : " << ClapTrap::_name << ", and " << _name << std::endl
+		std::cout << _name << " asks themself who they are. the answer is double : " << ClapTrap::_name << ", and " << _name << std::endl
 		: std::cout << _name << " asks themself who they are, crawling sadly in their blood" << std::endl;
 }

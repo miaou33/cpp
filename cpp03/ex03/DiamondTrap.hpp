@@ -10,9 +10,9 @@ class	DiamondTrap : public ScavTrap, public FragTrap {
 
 	private:
 		std::string 	_name;
-		unsigned int	_PP;
-		unsigned int	_HP;
-		unsigned int	_AD;
+		t_ui	_PP;
+		t_ui	_HP;
+		t_ui	_AD;
 //		DiamondTrap ();
 
 	public:

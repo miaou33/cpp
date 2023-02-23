@@ -6,6 +6,9 @@ int	main (void)
 	ClapTrap	Paula("Paula");
 	ClapTrap	Jeff("Jeff");
 
+	std::cout << Ness << std::endl;
+	std::cout << Paula << std::endl;
+	std::cout << Jeff << std::endl;
 	Ness.attack ("Paula");
 	Paula.takeDamage (Ness.getAD ());
 	Paula.beRepaired (2);

@@ -1,7 +1,7 @@
 #ifndef _COLORS_HPP_
 # define _COLORS_HPP_
 
-#define RESET "\033[0m"
+#define END "\033[0m"
 #define BOLD  "\033[1m"
 #define UNDER  "\033[4m"
 #define REV  "\033[7m"

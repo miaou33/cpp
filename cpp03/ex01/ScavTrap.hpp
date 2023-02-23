@@ -5,7 +5,7 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	ScavTrap : virtual public ClapTrap {
 
 	public:
 
@@ -13,12 +13,16 @@ class	ScavTrap : public ClapTrap {
 		ScavTrap (std::string name);
 		ScavTrap (ScavTrap const& original);
 		~ScavTrap ();
-	 
-	 	// OPERATORS
-		ScavTrap&	operator= (ScavTrap const& source);
-		
-		// GETTERS / SETTERS : inherited by ClapTrap
 
+	  	// SETTER
+		void	setDefaultHP ();
+		void	setDefaultPP ();
+		void	setDefaultAD ();
+
+	 	// OPERATORS
+		ScavTrap&	operator= (ClapTrap const& source);
+		
+		void	attack (const std::string& target);
 		void	guardGate (void);
 };
 

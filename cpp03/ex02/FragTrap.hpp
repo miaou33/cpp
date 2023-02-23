@@ -14,11 +14,15 @@ class	FragTrap : public ClapTrap {
 		FragTrap (FragTrap const& original);
 		~FragTrap ();
 	 
-	 	// OPERATORS
-		FragTrap&	operator= (FragTrap const& source);
-		
-		// GETTERS / SETTERS : inherited by ClapTrap
+	  	// SETTER
+		void	setDefaultHP ();
+		void	setDefaultPP ();
+		void	setDefaultAD ();
 
+	 	// OPERATORS
+		FragTrap&	operator= (ClapTrap const& source);
+		
+		void	attack (const std::string& target);
 		void	highFivesGuys (void);
 };
 

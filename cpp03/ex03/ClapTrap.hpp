@@ -7,32 +7,33 @@
 # include "colors.hpp"
 
 typedef unsigned long t_ul;
+typedef unsigned int t_ui;
 typedef long long t_ll;
 
 class	ClapTrap {
 
+
 	protected:
-		std::string			_name;
-		unsigned int		_HP;
-		unsigned int		_PP;
-		unsigned int		_AD;
+		std::string		_name;
+		t_ui			_HP;
+		t_ui			_PP;
+		t_ui			_AD;
 
 	public:
 
 		// CONSTRUCTORS / DESTRUCTOR
-		ClapTrap ();
 		ClapTrap (std::string name);
 		ClapTrap (ClapTrap const& original);
-		virtual ~ClapTrap ();
+		~ClapTrap ();
 	 
 	 	// OPERATORS
-		ClapTrap& operator= (ClapTrap const& source);
+		ClapTrap&	operator= (ClapTrap const& source);
 		
-		// GETTERS
+		// GETTERS / SETTERS
 		std::string const	getName () const;
-		unsigned int 		getHP () const;
-		unsigned int		getPP () const;
-		unsigned int		getAD () const;
+		t_ui				getHP () const;
+		t_ui				getPP () const;
+		t_ui				getAD () const;
 
 	  	// SETTERS
 		void				setDefaultHP ();
@@ -41,8 +42,8 @@ class	ClapTrap {
 
 		// OTHERS
 		void				attack (const std::string& target);
-		void				takeDamage (unsigned int amount);
-		void				beRepaired (unsigned int amount);
+		void				takeDamage (t_ui amount);
+		void				beRepaired (t_ui amount);
 		
 };
 

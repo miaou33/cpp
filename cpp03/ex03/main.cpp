@@ -15,7 +15,7 @@ int	main (void)
 
 	int i = 0;
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i << RESET << std::endl;
+	std::cout << UNDER << "ROUND " << ++i << END << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	DIAMONDTRAP.whoAmI ();
 	SCAVTRAP.attack ("DIAMONDTRAP");
@@ -26,7 +26,7 @@ int	main (void)
 		SCAVTRAP.takeDamage (CLAPTRAP.getAD());
 	
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  RESET <<std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  END <<std::endl;
 	FRAGTRAP.attack ("DIAMONDTRAP");
 	if (FRAGTRAP.getHP () && FRAGTRAP.getPP ())
 		DIAMONDTRAP.takeDamage (FRAGTRAP.getAD ());
@@ -35,7 +35,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 	
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  END << std::endl;
 	FRAGTRAP.beRepaired (2);
 	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
@@ -46,7 +46,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  END << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
@@ -57,7 +57,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  END << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	DIAMONDTRAP.attack ("FRAGTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
@@ -68,7 +68,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  END << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
@@ -79,7 +79,7 @@ int	main (void)
 	CLAPTRAP.beRepaired (1);
 
 	std::cout << std::endl;
-	std::cout << UNDER << "ROUND " << ++i <<  RESET << std::endl;
+	std::cout << UNDER << "ROUND " << ++i <<  END << std::endl;
 	FRAGTRAP.highFivesGuys ();
 	DIAMONDTRAP.attack ("SCAVTRAP");
 	if (DIAMONDTRAP.getHP () && DIAMONDTRAP.getPP ())
