@@ -26,13 +26,18 @@ class	ClapTrap {
 		virtual ~ClapTrap ();
 	 
 	 	// OPERATORS
-		ClapTrap&	operator= (ClapTrap const& source);
+		ClapTrap& operator= (ClapTrap const& source);
 		
-		// GETTERS / SETTERS
+		// GETTERS
 		std::string const	getName () const;
 		unsigned int 		getHP () const;
 		unsigned int		getPP () const;
 		unsigned int		getAD () const;
+
+	  	// SETTERS
+		void				setDefaultHP ();
+		void				setDefaultPP ();
+		void				setDefaultAD ();
 
 		// OTHERS
 		void				attack (const std::string& target);

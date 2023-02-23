@@ -17,7 +17,7 @@ ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
 												_AD (original.getAD ()) {	
 
 	_name += "copy";
-	std::cout << "ClapTrap " << _name << " is born 👾👾" << std::endl;
+	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl;
 }
 
 ClapTrap::~ClapTrap () {

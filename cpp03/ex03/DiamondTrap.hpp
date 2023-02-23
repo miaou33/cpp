@@ -9,10 +9,11 @@
 class	DiamondTrap : public ScavTrap, public FragTrap {
 
 	private:
-		std::string _name;
-		using ScavTrap::_PP;
-		using FragTrap::_HP;
-		using FragTrap::_AD;
+		std::string 	_name;
+		unsigned int	_PP;
+		unsigned int	_HP;
+		unsigned int	_AD;
+//		DiamondTrap ();
 
 	public:
 		// CONSTRUCTORS / DESTRUCTOR
@@ -23,7 +24,7 @@ class	DiamondTrap : public ScavTrap, public FragTrap {
 	 	// OPERATORS
 		DiamondTrap&	operator= (ClapTrap const& source);
 		
-		void ScavTrap::attack ();
+		using ScavTrap::attack;
 
 		void	whoAmI (void);
 };

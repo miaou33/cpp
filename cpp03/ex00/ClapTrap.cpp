@@ -8,7 +8,7 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_HP (10),
 										_PP (10),
 										_AD (0) {
-
+	_maxHP = _HP;
 	std::cout << "ClapTrap " << _name << " is born 👾" << std::endl; }
 
 ClapTrap::ClapTrap (ClapTrap const& original) :	_name (original.getName ()),
@@ -75,48 +75,26 @@ void	ClapTrap::takeDamage (unsigned int amount) {
 
 	if (_HP > 0)
 	{
-		int	res = _HP;
-		res -= amount < 0 ? 0 : res;
+		t_ll res = (t_ll) _HP - (t_ll) amount;
+		res = res < 0 ? 0 : res;
 		_HP = res;
-		std::cout 	<< _name
-					<< " loses " << amount
-					<< GREY << " -> HP now is " << _HP << RESET
-					<< std::endl;
+		std::cout << _name << " loses " << amount << GREY << " -> HP now is " << _HP << RESET << std::endl;
 	}
 	else
-	{
-		std::cout	<< _name 
-					<< " is already on de ground ! leave them alone 😵"
-					<< std::endl;
-	}
+		std::cout << _name << " is already on the ground ! leave them alone 😵" << std::endl;
 }
 
 void	ClapTrap::beRepaired (unsigned int amount) {
 
 	if (_PP)
 	{
-		int	res = _PP;
-		_PP = --res < 0 ? 0 : res;
-		std::cout 	<< _name << " uses beRepaired. ";
-		
-		t_ul res1 = _HP + amount;
-		_HP = res1 > UINT_MAX ?
-						_maxHP : 
-						(unsigned int) res1;
-
-		if (_HP >= _maxHP)
-		{
-			std::cout 	<< _name << "'s HP are maxed out !" 
-						<< GREY << " -> HP now is " << _HP << RESET
-						<< std::endl;
-			_HP = _maxHP;
-		}
-		else
-			std::cout 	<< _name
-						<< " is repaired of "
-						<< amount
-						<< GREY << " -> HP now is " << _HP << RESET
-						<< std::endl;
+		std::cout << _name << " uses beRepaired. ";
+		t_ul res = (t_ul) _HP + (t_ul) amount;
+		res = res > _maxHP ? _maxHP : res;
+		_HP = res;
+		_HP == _maxHP ?
+			std::cout << _name << " is repaired of " << amount << GREY << " -> HP now is " << _HP << RESET << std::endl
+			: std::cout	<< _name << "'s HP are maxed out !" << GREY << " -> HP now is " << _HP << RESET << std::endl;
 	}
 	else
 	{

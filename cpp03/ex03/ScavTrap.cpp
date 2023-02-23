@@ -4,11 +4,9 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-ScavTrap::ScavTrap () : ClapTrap () {}
-
 ScavTrap::ScavTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
-											_PP = 0;
+											_PP = 50;
 											_AD = 20;
 
 	std::cout 	<< "... ! ScavTrap " << _name << " is born" << std::endl;
@@ -25,6 +23,9 @@ ScavTrap::~ScavTrap () {
 	std::cout 	<< "... ScavTrap " << RESET << _name << " is destructed by the player" << std::endl;
 }
 
+void	ScavTrap::setDefaultHP () { _HP = 100; }
+void	ScavTrap::setDefaultPP () { _PP = 50; }
+void	ScavTrap::setDefaultAD () { _AD = 20; }
 
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
@@ -33,10 +34,13 @@ ScavTrap::~ScavTrap () {
 // ASSIGNMENT
 ScavTrap&	ScavTrap::operator= (ClapTrap const& source) {
 
-	_name = source.getName ();
-	_HP = source.getHP ();
-	_PP = source.getPP ();
-	_AD = source.getAD ();
+	if (this != &source)
+	{
+		_name = source.getName ();
+		_HP = source.getHP ();
+		_PP = source.getPP ();
+		_AD = source.getAD ();
+	}
 	return *this;
 }
 
@@ -44,7 +48,7 @@ ScavTrap&	ScavTrap::operator= (ClapTrap const& source) {
 /* 						OTHERS						 */
 /* ************************************************* */
 
-void	ClapTrap::attack (const std::string& target)
+void	ScavTrap::attack (const std::string& target)
 {
 	if (_HP)
 	{

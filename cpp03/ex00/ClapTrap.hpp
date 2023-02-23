@@ -6,7 +6,13 @@
 # include <limits.h>
 # include "colors.hpp"
 
+typedef unsigned long t_ul;
+typedef long long t_ll;
+
 class	ClapTrap {
+
+	private:
+		unsigned int		_maxHP;
 
 	protected:
 		std::string			_name;

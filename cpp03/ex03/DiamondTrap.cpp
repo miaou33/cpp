@@ -7,9 +7,10 @@
 DiamondTrap::DiamondTrap (std::string name) : ClapTrap (name + "_clap_name"), ScavTrap (name), FragTrap (name) {
 
 	_name = name;
-/* 	_HP = FragTrap::_HP;
-	_PP = ScavTrap::_PP;
-	_AD = FragTrap::_AD; */
+	_HP = FragTrap::_HP;
+	ScavTrap::setDefaultPP ();
+//	_PP = ScavTrap::_PP;
+	_AD = FragTrap::_AD;
 	std::cout 	<< "...... ! DiamondTrap " << _name << " is born" << std::endl;
 }
 
@@ -31,10 +32,13 @@ DiamondTrap::~DiamondTrap () {
 // ASSIGNMENT
 DiamondTrap&	DiamondTrap::operator= (ClapTrap const& source) {
 
-	_name = source.getName ();
-	_HP = source.getHP ();
-	_PP = source.getPP ();
-	_AD = source.getAD ();
+	if (this != &source)
+	{
+		_name = source.getName ();
+		_HP = source.getHP ();
+		_PP = source.getPP ();
+		_AD = source.getAD ();
+	}
 	return *this;
 }
 

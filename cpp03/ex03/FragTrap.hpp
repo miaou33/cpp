@@ -10,11 +10,15 @@ class	FragTrap : virtual public ClapTrap {
 	public:
 
 		// CONSTRUCTORS / DESTRUCTOR
-		FragTrap ();
 		FragTrap (std::string name);
 		FragTrap (FragTrap const& original);
 		~FragTrap ();
 	 
+	  	// SETTER
+		void	setDefaultHP ();
+		void	setDefaultPP ();
+		void	setDefaultAD ();
+
 	 	// OPERATORS
 		FragTrap&	operator= (ClapTrap const& source);
 		

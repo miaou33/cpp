@@ -4,8 +4,6 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-FragTrap::FragTrap () : ClapTrap () {}
-
 FragTrap::FragTrap (std::string name) : ClapTrap (name) {
 											_HP = 100;
 											_PP = 100;
@@ -25,6 +23,9 @@ FragTrap::~FragTrap () {
 	std::cout 	<< "... FragTrap " << RESET << _name << " is destructed by the player" << std::endl;
 }
 
+void	FragTrap::setDefaultHP () { _HP = 100; }
+void	FragTrap::setDefaultPP () { _PP = 100; }
+void	FragTrap::setDefaultAD () { _AD = 30; }
 
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
@@ -33,10 +34,13 @@ FragTrap::~FragTrap () {
 // ASSIGNMENT
 FragTrap&	FragTrap::operator= (ClapTrap const& source) {
 
-	_name = source.getName ();
-	_HP = source.getHP ();
-	_PP = source.getPP ();
-	_AD = source.getAD ();
+	if (this != &source)
+	{
+		_name = source.getName ();
+		_HP = source.getHP ();
+		_PP = source.getPP ();
+		_AD = source.getAD ();
+	}
 	return *this;
 }
 

@@ -41,12 +41,13 @@ std::string const	ClapTrap::getName () const {
 	return name;
 }
 
-unsigned int		ClapTrap::getHP () const { return _HP; }
+unsigned int	ClapTrap::getHP () const { return _HP; }
+unsigned int	ClapTrap::getPP () const { return _PP; }
+unsigned int	ClapTrap::getAD () const { return _AD; }
 
-unsigned int		ClapTrap::getPP () const { return _PP; }
-
-unsigned int		ClapTrap::getAD () const { return _AD; }
-
+void			ClapTrap::setDefaultHP () { _HP = 10; }
+void			ClapTrap::setDefaultPP () { _PP = 10; }
+void			ClapTrap::setDefaultAD () { _AD = 0; }
 
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
@@ -55,10 +56,13 @@ unsigned int		ClapTrap::getAD () const { return _AD; }
 // ASSIGNMENT
 ClapTrap&	ClapTrap::operator= (ClapTrap const& source) {
 
-	if (this == &source)
-		return (*this);
-	source.~ClapTrap();
-	new (this) ClapTrap (source);
+	if (this != &source)
+	{
+		_name = source.getName ();
+		_HP = source.getHP ();
+		_PP = source.getPP ();
+		_AD = source.getAD ();
+	}
 	return *this;
 }
 
