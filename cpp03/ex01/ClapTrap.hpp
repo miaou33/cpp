@@ -12,7 +12,6 @@ typedef long long t_ll;
 
 class	ClapTrap {
 
-
 	protected:
 		std::string		_name;
 		t_ui			_HP;

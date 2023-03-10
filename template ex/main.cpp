@@ -1,4 +1,4 @@
-#include "newClass.hpp"
+#include "Class.hpp"
 
 int	main (void)
 {

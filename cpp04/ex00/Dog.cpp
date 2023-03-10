@@ -1,14 +1,14 @@
-#include "newClass.hpp"
+#include "Dog.hpp"
 
 /* ************************************************* */
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-newClass::newClass () {}
+Dog::Dog () : Animal::_type ("Dog") {}
 
-newClass::newClass (newClass const& original) {}
+Dog::Dog (Dog const& original) {}
 
-newClass::~newClass () {}
+Dog::~Dog () {}
 
 
 /* ************************************************* */
@@ -21,6 +21,6 @@ newClass::~newClass () {}
 /* ************************************************* */
 
 // ASSIGNMENT
-newClass&	newClass::operator= (newClass const& right) {
+Dog&	Dog::operator= (Dog const& right) {
 
 }
