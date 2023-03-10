@@ -1,8 +1,9 @@
-#include "Animal.hpp"
+# include "Animal.hpp"
+# include "Dog.hpp"
 
 int	main (void)
 {
-	Animal Oiseau;
-	Oiseau.getType ();
+	Dog		dog;
+	dog.makeSound ();
 	return (0);
 }

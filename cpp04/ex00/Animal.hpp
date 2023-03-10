@@ -24,7 +24,8 @@ class	Animal {
 		std::string getType () const;
 
 		// OTHER
-		void		announce (Animal const &animal, std::string announceType) const;
+		void	announce (std::string const who, std::string const what) const;
+		void	makeSound ();
 };
 
 

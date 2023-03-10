@@ -4,23 +4,25 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Dog::Dog () : Animal::_type ("Dog") {}
+Dog::Dog () {  _type = "Dog";
+	
+	announce ("Dog", "constructor");
+}
 
-Dog::Dog (Dog const& original) {}
+Dog::Dog (Dog const& original) { _type = original.getType (); 
 
-Dog::~Dog () {}
+	announce ("Dog", "copy constructor");
+}
 
+Dog::~Dog () {
 
-/* ************************************************* */
-/* 					GETTERS / SETTERS				 */
-/* ************************************************* */
+	announce ("Dog", "destructor");
+}
 
+// OPERATOR =
+Dog&	Dog::operator= (Dog const& source) {
 
-/* ************************************************* */
-/* 					OPERATOR OVERLOADS		 		 */
-/* ************************************************* */
-
-// ASSIGNMENT
-Dog&	Dog::operator= (Dog const& right) {
-
+	if (this != &source)
+		_type = source.getType ();
+	return (*this);
 }
