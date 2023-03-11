@@ -7,21 +7,21 @@
 class	Brain {
 
 	private:
-		std::string ideas [100] ;
+		std::string _ideas [100];
 
 	public:
 
-		// CONSTRUCTORS / DESTRUCTOR
+		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Brain ();
 		Brain (Brain const& original);
 		~Brain ();
-	 
-	 	// OPERATORS
 		Brain&	operator= (Brain const& source);
 		
-		// GETTERS / SETTERS
-		std::string	*getIdeas ();
-		
+		// GETTER
+		std::string	getIdea (int i) const;
+
+		// OTHER
+		void	announce (std::string const who, std::string const what) const;
 };
 
 

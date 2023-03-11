@@ -12,15 +12,13 @@ class	Animal {
 
 	public:
 
-		// CONSTRUCTORS / DESTRUCTOR
+		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Animal ();
 		Animal (Animal const& original);
 		~Animal ();
-	 
-	 	// OPERATORS
 		Animal&	operator= (Animal const& right);
 		
-		// GETTERS / SETTERS
+		// GETTER
 		std::string getType () const;
 
 		// OTHER

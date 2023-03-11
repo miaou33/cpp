@@ -17,6 +17,7 @@ S_EXT = .cpp
 SRC_FILES =	main.cpp \
 			Animal.cpp \
 			Dog.cpp \
+			Cat.cpp \
 			Brain.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}

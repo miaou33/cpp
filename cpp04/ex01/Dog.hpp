@@ -4,18 +4,24 @@
 # include <string>
 # include <iostream>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class	Dog : public Animal {
 
+	private:
+		Brain*	_brain;
+
 	public:
 
-		// CONSTRUCTORS / DESTRUCTOR
+		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Dog ();
 		Dog (Dog const& original);
 		~Dog ();
-	 
-	 	// OPERATORS
-		Dog&	operator= (Dog const& right);
+		Dog& operator= (Dog const& right);
+
+		// GETTER
+		Brain*	getBrain () const;
+
 };
 
 

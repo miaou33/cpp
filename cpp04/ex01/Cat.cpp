@@ -1,29 +1,29 @@
-#include "Dog.hpp"
+#include "Cat.hpp"
 
 /* ************************************************* */
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Dog::Dog () {	_type = "Dog";
+Cat::Cat () {	_type = "Cat"; 
 				_brain = new Brain ();
 
-	announce ("Dog", "constructor");
+	announce ("Cat", "constructor");
 }
 
-Dog::Dog (Dog const& original) {
+Cat::Cat (Cat const& original) {
 	
 	*this = original;
-	announce ("Dog", "copy constructor");
+	announce ("Cat", "copy constructor");
 }
 
-Dog::~Dog () {
+Cat::~Cat () {
 
 	delete _brain;
-	announce ("Dog", "destructor");
+	announce ("Cat", "destructor");
 }
 
-// OPERATOR =
-Dog&	Dog::operator= (Dog const& source) {
+// OPERATOR = 
+Cat&	Cat::operator= (Cat const& source) {
 
 	if (this != &source)
 	{
@@ -33,9 +33,8 @@ Dog&	Dog::operator= (Dog const& source) {
 	return *this;
 }
 
-
 /* ************************************************* */
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-Brain*	Dog::getBrain () const { return _brain; }
+Brain*	Cat::getBrain () const { return _brain; }
