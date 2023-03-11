@@ -7,19 +7,19 @@
 Dog::Dog () {	_type = "Dog";
 				_brain = new Brain ();
 
-	announce ("Dog", "constructor");
+	announce ("constructor");
 }
 
 Dog::Dog (Dog const& original) {
 	
 	*this = original;
-	announce ("Dog", "copy constructor");
+	announce ("copy constructor");
 }
 
 Dog::~Dog () {
 
 	delete _brain;
-	announce ("Dog", "destructor");
+	announce ("destructor");
 }
 
 // OPERATOR =
@@ -40,3 +40,18 @@ Dog&	Dog::operator= (Dog const& source) {
 /* ************************************************* */
 
 Brain*	Dog::getBrain () const { return _brain; }
+
+
+/* ************************************************* */
+/* 						OTHER						 */
+/* ************************************************* */
+
+void	Dog::announce (std::string const func) const {
+
+	std::cout << "Dog " << func << " called" << std::endl;
+}
+
+void	Dog::makeSound () const {
+
+	std::cout << "waf" << std::endl;
+}

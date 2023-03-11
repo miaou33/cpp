@@ -4,19 +4,20 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Cat::Cat () { _type = "Cat"; 
+Cat::Cat () {	_type = "Cat"; 
 
-	announce ("Cat", "constructor");
+	announce ("constructor");
 }
 
-Cat::Cat (Cat const& original) { _type = original.getType ();
-
-	announce ("Cat", "copy constructor");
+Cat::Cat (Cat const& original) {
+	
+	*this = original;
+	announce ("copy constructor");
 }
 
 Cat::~Cat () {
 
-	announce ("Cat", "destructor");
+	announce ("destructor");
 }
 
 // OPERATOR = 
@@ -24,10 +25,20 @@ Cat&	Cat::operator= (Cat const& source) {
 
 	if (this != &source)
 		_type = source.getType ();
-	return (*this);
+	return *this;
 }
 
+
 /* ************************************************* */
-/* 					GETTERS / SETTERS				 */
+/* 						OTHER						 */
 /* ************************************************* */
 
+void	Cat::announce (std::string const func) const {
+
+	std::cout << "Cat " << func << " called" << std::endl;
+}
+
+void	Cat::makeSound () const {
+
+	std::cout << "meow" << std::endl;
+}

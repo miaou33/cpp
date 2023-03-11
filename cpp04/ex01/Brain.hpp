@@ -21,7 +21,7 @@ class	Brain {
 		std::string	getIdea (int i) const;
 
 		// OTHER
-		void	announce (std::string const who, std::string const what) const;
+		void	announce (std::string const func) const;
 };
 
 

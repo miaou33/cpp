@@ -15,15 +15,15 @@ class	Animal {
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Animal ();
 		Animal (Animal const& original);
-		~Animal ();
+		virtual ~Animal ();
 		Animal&	operator= (Animal const& right);
 		
 		// GETTER
 		std::string getType () const;
 
 		// OTHER
-		void	announce (std::string const who, std::string const what) const;
-		void	makeSound ();
+		virtual void	announce (std::string const func) const;
+		virtual void	makeSound () const;
 };
 
 

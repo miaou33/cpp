@@ -16,11 +16,15 @@ class	Dog : public Animal {
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Dog ();
 		Dog (Dog const& original);
-		~Dog ();
+		virtual ~Dog ();
 		Dog& operator= (Dog const& right);
 
 		// GETTER
 		Brain*	getBrain () const;
+
+		// OTHER
+		virtual void	announce (std::string const func) const;
+		virtual void	makeSound () const;
 
 };
 

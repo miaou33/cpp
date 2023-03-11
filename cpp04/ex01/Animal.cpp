@@ -6,18 +6,18 @@
 
 Animal::Animal () : _type ("Animal") {
 
-	announce ("Animal", "constructor");
+	announce ("constructor");
 }
 
 Animal::Animal (Animal const& original) {
 
 	*this = original;
-	announce ("Animal", "copy constructor");
+	announce ("copy constructor");
 }
 
 Animal::~Animal () {
 
-	announce ("Animal", "destructor");
+	announce ("destructor");
 }
 
 // OPERATOR=
@@ -39,20 +39,12 @@ std::string	Animal::getType () const { return _type; }
 /* 						OTHER						 */
 /* ************************************************* */
 
-void	Animal::announce (std::string const who, std::string const what) const {
+void	Animal::announce (std::string const func) const {
 
-	std::cout << who << " " << what << " called" << std::endl;
+	std::cout << "Animal " << func << " called" << std::endl;
 }
 
-void	Animal::makeSound () {
+void	Animal::makeSound () const {
 
-	std::string	sound;
-
-	if (_type == "Dog")
-		sound = "waf";
-	else if (_type == "Cat")
-		sound = "meow";
-	else
-		sound = "???";
-	std::cout << sound << std::endl;
+	std::cout << "anon animal sound" << std::endl;
 }

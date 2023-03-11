@@ -9,13 +9,15 @@ class	Cat : public Animal {
 
 	public:
 
-		// CONSTRUCTORS / DESTRUCTOR
+		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Cat ();
 		Cat (Cat const& original);
-		~Cat ();
-	 
-	 	// OPERATORS
-		Cat&	operator= (Cat const& source);
+		virtual ~Cat ();
+		Cat& operator= (Cat const& source);
+
+		// OTHER
+		virtual void	announce (std::string const func) const;
+		virtual void	makeSound () const;
 };
 
 

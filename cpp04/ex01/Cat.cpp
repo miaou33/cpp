@@ -7,19 +7,19 @@
 Cat::Cat () {	_type = "Cat"; 
 				_brain = new Brain ();
 
-	announce ("Cat", "constructor");
+	announce ("constructor");
 }
 
 Cat::Cat (Cat const& original) {
 	
 	*this = original;
-	announce ("Cat", "copy constructor");
+	announce ("copy constructor");
 }
 
 Cat::~Cat () {
 
 	delete _brain;
-	announce ("Cat", "destructor");
+	announce ("destructor");
 }
 
 // OPERATOR = 
@@ -39,3 +39,18 @@ Cat&	Cat::operator= (Cat const& source) {
 /* ************************************************* */
 
 Brain*	Cat::getBrain () const { return _brain; }
+
+
+/* ************************************************* */
+/* 						OTHER						 */
+/* ************************************************* */
+
+void	Cat::announce (std::string const func) const {
+
+	std::cout << "Cat " << func << " called" << std::endl;
+}
+
+void	Cat::makeSound () const {
+
+	std::cout << "meow" << std::endl;
+}

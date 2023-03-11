@@ -8,18 +8,18 @@ Brain::Brain () {
 
 	for (int i = 0; i < 100; i++)
 		_ideas [i] = "?";
-	announce ("Brain", "constructor");
+	announce ("constructor");
 }
 
 Brain::Brain (Brain const& original) { 
 	
 	*this = original;
-	announce ("Brain", "copy constructor");
+	announce ("copy constructor");
 }
 
 Brain::~Brain () {
 
-	announce ("Brain", "destructor");
+	announce ("destructor");
 }
 
 // OPERATOR = 
@@ -43,7 +43,7 @@ std::string	Brain::getIdea (int i) const { return _ideas [i]; }
 /* 						OTHER						 */
 /* ************************************************* */
 
-void	Brain::announce (std::string const who, std::string const what) const {
+void	Brain::announce (std::string const func) const {
 
-	std::cout << who << " " << what << " called" << std::endl;
+	std::cout << "Brain " << func << " called" << std::endl;
 }
