@@ -5,27 +5,18 @@
 
 int	main (void)
 {
-/* 	Animal	*animalArray;
+ 	Animal	*animalArray [10];
+	int		arrayHalf = 5;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < arrayHalf; i++)
 	{
-		Dog *dog = new Dog ();
-		animalArray [i] = *dog;
+		animalArray [i] = new Dog ();
+		animalArray [arrayHalf + i] = new Cat ();
 	}
-	for (int i = 5; i < 10; i++)
-	{
-		Cat	*cat = new Cat ();
-		animalArray [i] = *cat;
-	}
+	animalArray[3]->makeSound ();
+	animalArray[9]->makeSound ();
+
 	for (int i = 0; i < 10; i++)
-		delete *animalArray;
-	delete [] animalArray;
-	return (0); */
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	j->makeSound();
-	i->makeSound();
-	delete j;//should not create a leak
-	delete i;
+		delete animalArray [i];
 	return 0;
 }
