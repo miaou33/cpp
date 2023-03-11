@@ -28,6 +28,7 @@ Dog&	Dog::operator= (Dog const& source) {
 	if (this != &source)
 	{
 		_type = source.getType ();
+		_brain = new Brain ();
 		_brain = source.getBrain ();
 	}
 	return *this;

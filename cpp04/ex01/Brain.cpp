@@ -6,7 +6,7 @@
 
 Brain::Brain () {
 
-	for (int i = 100; i != 0; i--)
+	for (int i = 0; i < 100; i++)
 		_ideas [i] = "?";
 	announce ("Brain", "constructor");
 }
