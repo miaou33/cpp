@@ -9,6 +9,7 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_PP (10),
 										_AD (0) {
 
+	_maxHP = _HP;
 	std::cout << "ClapTrap " << _name << " is born" << std::endl; 
 }
 
@@ -84,8 +85,8 @@ void	ClapTrap::attack (const std::string& target)
 	if (_HP)
 	{
 		_PP ?
-			std::cout << "💥 " << _name << " attacks " << target << ", aiming to cause " << _AD << " points of damage 💥" << std::endl
-			: std::cout << "❌ " << _name << " cant attack " << target << " coz no PP anymore x_x ❌" << std::endl;
+			std::cout << "💥 " << _name << " attacks " << target << " 💥" << std::endl
+			: std::cout << "❌ " << _name << " cant attack " << target << " coz no PP ❌" << std::endl;
 
 		t_ll res = (t_ll) _PP--;
 		_PP = res >= 0 ? (t_ui) res : 0;
@@ -103,8 +104,8 @@ void	ClapTrap::takeDamage (t_ui amount) {
 		res = res < 0 ? 0 : res;
 		_HP = res;
 		_HP ?
-			std::cout << _name << " loses " << amount << std::endl
-			: std::cout << "💀 " << _name << " is KO " << " 💀" << std::endl;
+			std::cout << "\t\t⤷ " << _name << " loses " << amount << std::endl
+			: std::cout << "\t\t⤷ " << _name << " is KO" << std::endl;
 	}
 	else
 		std::cout << _name << " is already KO x_x" << std::endl;
@@ -116,17 +117,17 @@ void	ClapTrap::beRepaired (t_ui amount) {
 	{
 		if (_PP)
 		{
-			std::cout << "✨ " << _name << " uses beRepaired. ";
+			std::cout << "✨ " << _name << " uses beRepaired ✨" << std::endl;
 			t_ul res = _HP + amount;
-			res = res > UINT_MAX ? UINT_MAX : res;
+			res = res > _maxHP ? _maxHP : res;
 			_HP = res;
-			_HP == UINT_MAX ?
-				std::cout << _name << "'s HP are maxed out" << " ✨" << std::endl
-				: std::cout << _name << " is repaired of " << amount << " ✨" << std::endl;
+			_HP == _maxHP ?
+				std::cout << "\t\t⤷ " << _name << "'s HP are maxed out !" << " " << std::endl
+				: std::cout << "\t\t⤷ " << _name << " is repaired of " << amount << std::endl;
 			_PP--;
 		}
 		else
-			std::cout << "❌" << _name << " cant be repaired coz no PP anymore x_x ❌" << std::endl;
+			std::cout << "❌ " << _name << " cant be repaired coz no PP ❌" << std::endl;
 	}
 	else
 		std::cout << "💀 " << _name << " tries to repair themself but they just crawl in their blood" << " 💀" << std::endl;

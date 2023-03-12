@@ -14,11 +14,6 @@ class	FragTrap : public ClapTrap {
 		FragTrap (FragTrap const& original);
 		~FragTrap ();
 	 
-	  	// SETTER
-		void	setDefaultHP ();
-		void	setDefaultPP ();
-		void	setDefaultAD ();
-
 	 	// OPERATORS
 		FragTrap&	operator= (ClapTrap const& source);
 		

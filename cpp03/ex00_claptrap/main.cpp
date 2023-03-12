@@ -12,8 +12,8 @@ int	main (void)
 	std::cout << Jeff << std::endl;
 	std::cout << std::endl;
 
-	for (int i = 0; i < 11; i++)
-		Ness.beRepaired (1);
+/* 	for (int i = 0; i < 11; i++)
+		Ness.beRepaired (1); */
 	Ness.attack ("Paula");
 	if (Ness.getHP () && Ness.getPP ())
 		Paula.takeDamage (Ness.getAD ());

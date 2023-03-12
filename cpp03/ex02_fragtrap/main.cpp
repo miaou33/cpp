@@ -27,7 +27,9 @@ int	main (void)
 	std::cout << FRAGTRAP << std::endl;
 
 	std::cout << std::endl;
-	FRAGTRAP.beRepaired (2);
+	FRAGTRAP.attack ("CLAPTRAP");
+	if (FRAGTRAP.getHP () && FRAGTRAP.getPP ())
+		CLAPTRAP.takeDamage (FRAGTRAP.getAD());
 	SCAVTRAP.guardGate ();
 	CLAPTRAP.beRepaired (10);
 

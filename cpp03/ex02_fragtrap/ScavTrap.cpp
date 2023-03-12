@@ -5,10 +5,11 @@
 /* ************************************************* */
 
 ScavTrap::ScavTrap (std::string name) : ClapTrap (name) {
-											_HP = 100;
-											_PP = 50;
-											_AD = 20;
 
+	_HP = 100;
+	_PP = 50;
+	_AD = 20;
+	_maxHP = _HP;
 	std::cout << "... ! ScavTrap " << _name << " is born" << std::endl;
 }
 
@@ -23,9 +24,6 @@ ScavTrap::~ScavTrap () {
 	std::cout << "... ScavTrap " << END << _name << " is destructed by the player" << std::endl;
 }
 
-void	ScavTrap::setDefaultHP () { _HP = 100; }
-void	ScavTrap::setDefaultPP () { _PP = 50; }
-void	ScavTrap::setDefaultAD () { _AD = 20; }
 
 /* ************************************************* */
 /* 					OPERATOR OVERLOADS		 		 */
@@ -52,15 +50,15 @@ void	ScavTrap::attack (const std::string& target)
 {
 	if (_HP)
 		_PP-- ?
-			std::cout << _name << " uses scav special attack on " << target << ", aiming to cause " << _AD << " points of damage ! "
+			std::cout << "🛸 " << _name << " uses scav special attack on " << target << " 🛸" << std::endl
 			: std::cout << "❌ " << _name << " cant attack " << target << " coz no PP anymore x_x ❌" << std::endl;
 	else
-		std:: cout	<< _name << " tries to attack "<< target << " but they just crawl sadly in their blood" << std::endl;
+		std::cout << "💀 " << _name << " tries to attack "<< target << " but they just crawl in their blood" << " 💀" << std::endl;
 }
 
 void	ScavTrap::guardGate (void) {
 
 	_HP ?
-		std::cout << _name << " guards the gate ! the gate is guarded" << std::endl
-		: std::cout << _name << " tries to do guardGate but they just crawl sadly in their blood" << std::endl;
+		std::cout << "⛄ " << _name << " guards the gate ! ⛄\n\t\t⤷ the gate is safe" << std::endl
+		: std::cout << "💀 " << _name << " tries to do guardGate but they just crawl sadly in their blood 💀" << std::endl;
 }

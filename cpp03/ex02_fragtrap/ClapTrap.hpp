@@ -15,6 +15,7 @@ class	ClapTrap {
 	protected:
 		std::string		_name;
 		t_ui			_HP;
+		t_ui			_maxHP;
 		t_ui			_PP;
 		t_ui			_AD;
 
