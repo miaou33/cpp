@@ -10,23 +10,21 @@ DiamondTrap::DiamondTrap (std::string name) : ClapTrap (name + "_clap_name"), Sc
 	FragTrap::setDefaultHP ();
 	ScavTrap::setDefaultPP ();
 	FragTrap::setDefaultAD ();
-	std::cout << "...... ! DiamondTrap " << _name << " is born" << std::endl;
+	setMaxHP ();
+	std::cout << "......DiamondTrap constructor called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap (DiamondTrap const& original) : ClapTrap (original), ScavTrap (original), FragTrap (original) {
 
 	*this = original;
-	std::cout << "...... ! DiamondTrap " << _name << " is born" << std::endl;
+	std::cout << "......DiamondTrapcopy constructor called" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap () {
 
-	std::cout << "...... DiamondTrap " << END << _name << " is destructed by the player" << std::endl;
+	std::cout << "......DiamondTrap destructor called" << std::endl;
 }
 
-/* ************************************************* */
-/* 					OPERATOR OVERLOADS		 		 */
-/* ************************************************* */
 
 // ASSIGNMENT
 DiamondTrap&	DiamondTrap::operator= (ClapTrap const& source) {
@@ -41,6 +39,19 @@ DiamondTrap&	DiamondTrap::operator= (ClapTrap const& source) {
 	return *this;
 }
 
+/* ************************************************* */
+/* 					GETTERS / SETTERS				 */
+/* ************************************************* */
+
+std::string const	DiamondTrap::getName () const {
+
+	return (std::string const) _name;
+}
+
+void	DiamondTrap::setMaxHP () {
+	
+	_maxHP = _HP;
+}
 
 /* ************************************************* */
 /* 						OTHERS						 */
@@ -49,6 +60,6 @@ DiamondTrap&	DiamondTrap::operator= (ClapTrap const& source) {
 void	DiamondTrap::whoAmI (void) {
 
 	FragTrap::_HP ?
-		std::cout << _name << " asks themself who they are. They remember their two names : " << ClapTrap::_name << ", and " << _name << std::endl
-		: std::cout << _name << " tells their two names while agonizing : '" << ClapTrap::_name << "', and '" << _name  << "'"<< std::endl;
+		std::cout << "🔮 " << this->getName () << " speaks : \"my grand parent name is " << ClapTrap::_name << ", and mine is " << _name << "\" 🔮" <<  std::endl
+		: std:: cout << "🔮 " << this->getName () << " tries to do a speak but they just crawl in their blood 🔮" << std::endl;
 }

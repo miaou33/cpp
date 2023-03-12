@@ -10,18 +10,18 @@ FragTrap::FragTrap (std::string name) : ClapTrap (name) {
 	_PP = 100;
 	_AD = 30;
 	_maxHP = _HP;
-	std::cout << "... ! FragTrap " << _name << " is born" << std::endl;
+	std::cout << "...FragTrap constructor called" << std::endl;
 }
 
 FragTrap::FragTrap (FragTrap const& original) : ClapTrap (original) {
 
 	*this = original;
-	std::cout << "... ! a copyFragTrap " << _name << " is born" << std::endl;
+	std::cout << "...FragTrap copy constructor called" << std::endl;
 }
 
 FragTrap::~FragTrap () {
 
-	std::cout << "... FragTrap " << END << _name << " is destructed by the player" << std::endl;
+	std::cout << "...FragTrap destructor called" << std::endl;
 }
 
 

@@ -8,13 +8,13 @@
 class	ScavTrap : virtual public ClapTrap {
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR
 		ScavTrap (std::string name);
 		ScavTrap (ScavTrap const& original);
 		~ScavTrap ();
 
 	  	// SETTER
+		virtual std::string const getName () const;
 		void	setDefaultHP ();
 		void	setDefaultPP ();
 		void	setDefaultAD ();

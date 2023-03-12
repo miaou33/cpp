@@ -3,22 +3,25 @@
 int	main (void)
 {
 	ClapTrap	CLAPTRAP("CLAPTRAP");
+	std::cout << std::endl;
 	ScavTrap	SCAVTRAP("SCAVTRAP");
+	std::cout << std::endl;
 	FragTrap	FRAGTRAP("FRAGTRAP");
+	std::cout << std::endl;
 	DiamondTrap	DIAMONDTRAP("DIAMONDTRAP");
 	
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;
-	std::cout << SCAVTRAP << std::endl;
-	std::cout << FRAGTRAP << std::endl;
-	std::cout << DIAMONDTRAP << std::endl;
+	CLAPTRAP.printStats ();
+	SCAVTRAP.printStats ();
+	FRAGTRAP.printStats ();
+	DIAMONDTRAP.printStats ();
 	
 	std::cout << std::endl;
 	
 	FRAGTRAP.highFivesGuys ();
-	SCAVTRAP.attack ("FRAGTRAP");
+	SCAVTRAP.attack ("DIAMONDTRAP");
 	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
-		FRAGTRAP.takeDamage (SCAVTRAP.getAD ());
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
 	CLAPTRAP.attack ("SCAVTRAP");
 	if (CLAPTRAP.getHP () && CLAPTRAP.getPP ())
 		SCAVTRAP.takeDamage (CLAPTRAP.getAD());
@@ -27,22 +30,25 @@ int	main (void)
 		FRAGTRAP.takeDamage (DIAMONDTRAP.getAD ());	
 
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;	
-	std::cout << SCAVTRAP << std::endl;
-	std::cout << FRAGTRAP << std::endl;
-	std::cout << DIAMONDTRAP << std::endl;
+	CLAPTRAP.printStats ();	
+	SCAVTRAP.printStats ();
+	FRAGTRAP.printStats ();
+	DIAMONDTRAP.printStats ();
 
 	std::cout << std::endl;
 	FRAGTRAP.beRepaired (2);
 	SCAVTRAP.guardGate ();
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
 	CLAPTRAP.beRepaired (10);
 	DIAMONDTRAP.whoAmI ();
 
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;
-	std::cout << SCAVTRAP << std::endl;
-	std::cout << FRAGTRAP << std::endl;
-	std::cout << DIAMONDTRAP << std::endl;
+	CLAPTRAP.printStats ();
+	SCAVTRAP.printStats ();
+	FRAGTRAP.printStats ();
+	DIAMONDTRAP.printStats ();
 
 	std::cout << std::endl;
 

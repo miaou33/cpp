@@ -10,18 +10,18 @@ ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_AD (0) {
 
 	_maxHP = _HP;
-	std::cout << "ClapTrap " << _name << " is born" << std::endl; 
+	std::cout << "ClapTrap constructor called" << std::endl; 
 }
 
 ClapTrap::ClapTrap (ClapTrap const& original) {	
 
 	*this = original;
-	std::cout << "ClapTrap " << _name << " is born" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap () {
 
-	std::cout << "ClapTrap " << _name << " is destructed by the player" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 

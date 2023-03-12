@@ -15,6 +15,7 @@ class	FragTrap : virtual public ClapTrap {
 		~FragTrap ();
 	 
 	  	// SETTER
+		virtual std::string const	getName () const;
 		void	setDefaultHP ();
 		void	setDefaultPP ();
 		void	setDefaultAD ();
