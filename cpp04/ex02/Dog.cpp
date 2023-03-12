@@ -39,6 +39,8 @@ Dog&	Dog::operator= (Dog const& source) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
+std::string	Dog::getType () const { return _type; }
+
 Brain*	Dog::getBrain () const { return _brain; }
 
 

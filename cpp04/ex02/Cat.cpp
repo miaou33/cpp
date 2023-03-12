@@ -38,6 +38,8 @@ Cat&	Cat::operator= (Cat const& source) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
+std::string	Cat::getType () const { return _type; }
+
 Brain*	Cat::getBrain () const { return _brain; }
 
 

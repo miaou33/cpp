@@ -3,10 +3,10 @@
 
 # include <string>
 # include <iostream>
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class	Cat : public Animal {
+class	Cat : virtual public AAnimal {
 
 	private:
 		Brain*	_brain;
@@ -20,6 +20,7 @@ class	Cat : public Animal {
 		Cat& operator= (Cat const& source);
 
 		// GETTER
+		virtual std::string getType () const;
 		Brain*	getBrain () const;
 
 		// OTHER

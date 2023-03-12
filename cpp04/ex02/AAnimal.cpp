@@ -1,27 +1,27 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 /* ************************************************* */
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Animal::Animal () : _type ("Animal") {
+AAnimal::AAnimal () : _type ("AAnimal") {
 
 	announce ("constructor");
 }
 
-Animal::Animal (Animal const& original) {
+AAnimal::AAnimal (AAnimal const& original) {
 
 	*this = original;
 	announce ("copy constructor");
 }
 
-Animal::~Animal () {
+AAnimal::~AAnimal () {
 
 	announce ("destructor");
 }
 
 // OPERATOR=
-Animal&	Animal::operator= (Animal const& source) {
+AAnimal&	AAnimal::operator= (AAnimal const& source) {
 
 	if (this != &source)
 		_type = source.getType ();
@@ -32,19 +32,19 @@ Animal&	Animal::operator= (Animal const& source) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-std::string	Animal::getType () const { return _type; }
+std::string	AAnimal::getType () const { return _type; }
 
 
 /* ************************************************* */
 /* 						OTHER						 */
 /* ************************************************* */
 
-void	Animal::announce (std::string const func) const {
+void	AAnimal::announce (std::string const func) const {
 
-	std::cout << "Animal " << func << " called" << std::endl;
+	std::cout << "AAnimal " << func << " called" << std::endl;
 }
 
-void	Animal::makeSound () const {
+void	AAnimal::makeSound () const {
 
-	std::cout << "anon animal sound" << std::endl;
+	std::cout << "anon AAnimal sound" << std::endl;
 }

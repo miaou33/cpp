@@ -15,7 +15,7 @@ BUILD_DIR  = ./objs
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
-			Animal.cpp \
+			AAnimal.cpp \
 			Dog.cpp \
 			Cat.cpp \
 			Brain.cpp
