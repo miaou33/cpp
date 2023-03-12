@@ -4,7 +4,7 @@
 /*									CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR										  */
 /**********************************************************************************************************************/
 
-AMateria::AMateria () {}
+AMateria::AMateria () : _type ("") {}
 
 AMateria::AMateria (AMateria const & original) {}
 

@@ -15,6 +15,8 @@ class AMateria {
 		~AMateria ();
 		AMateria & operator = (AMateria const & source);
 
+		std::string const &	getType () const;
+
 };
 
 
