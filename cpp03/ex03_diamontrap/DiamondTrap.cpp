@@ -10,18 +10,18 @@ DiamondTrap::DiamondTrap (std::string name) : ClapTrap (name + "_clap_name"), Sc
 	FragTrap::setDefaultHP ();
 	ScavTrap::setDefaultPP ();
 	FragTrap::setDefaultAD ();
-	std::cout << "...... ! DiamondTrap " << _name << " is born 👾" << std::endl;
+	std::cout << "...... ! DiamondTrap " << _name << " is born" << std::endl;
 }
 
 DiamondTrap::DiamondTrap (DiamondTrap const& original) : ClapTrap (original), ScavTrap (original), FragTrap (original) {
 
 	*this = original;
-	std::cout << "...... ! DiamondTrap " << _name << " is born 👾" << std::endl;
+	std::cout << "...... ! DiamondTrap " << _name << " is born" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap () {
 
-	std::cout << "...... DiamondTrap " << END << _name << " is destructed by the player 🌠" << std::endl;
+	std::cout << "...... DiamondTrap " << END << _name << " is destructed by the player" << std::endl;
 }
 
 /* ************************************************* */

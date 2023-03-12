@@ -15,6 +15,7 @@ class	ClapTrap {
 	protected:
 		std::string		_name;
 		t_ui			_HP;
+		t_ui			_maxHP;
 		t_ui			_PP;
 		t_ui			_AD;
 
@@ -33,11 +34,6 @@ class	ClapTrap {
 		t_ui				getHP () const;
 		t_ui				getPP () const;
 		t_ui				getAD () const;
-
-	  	// SETTERS
-		void				setDefaultHP ();
-		void				setDefaultPP ();
-		void				setDefaultAD ();
 
 		// OTHERS
 		void				attack (const std::string& target);

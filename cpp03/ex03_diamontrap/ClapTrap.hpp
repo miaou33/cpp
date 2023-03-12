@@ -12,7 +12,6 @@ typedef long long t_ll;
 
 class	ClapTrap {
 
-
 	protected:
 		std::string		_name;
 		t_ui			_HP;
@@ -34,11 +33,6 @@ class	ClapTrap {
 		t_ui				getHP () const;
 		t_ui				getPP () const;
 		t_ui				getAD () const;
-
-	  	// SETTERS
-		void				setDefaultHP ();
-		void				setDefaultPP ();
-		void				setDefaultAD ();
 
 		// OTHERS
 		void				attack (const std::string& target);

@@ -34,11 +34,6 @@ class	ClapTrap {
 		t_ui				getPP () const;
 		t_ui				getAD () const;
 
-	  	// SETTERS
-		void				setDefaultHP ();
-		void				setDefaultPP ();
-		void				setDefaultAD ();
-
 		// OTHERS
 		void				attack (const std::string& target);
 		void				takeDamage (t_ui amount);
