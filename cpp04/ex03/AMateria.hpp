@@ -6,16 +6,21 @@
 class AMateria {
 
 	protected:
-		std::string const	_type;
+		std::string	_type;
 
 	public:
-		AMateria ();
-		AMateria (AMateria const & original);
+		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
 		AMateria (std::string const & type);
-		~AMateria ();
-		AMateria & operator = (AMateria const & source);
+		AMateria (AMateria const & original);
+		virtual ~AMateria ();
+		AMateria& operator = (AMateria const & source);
 
+		// GETTER
 		std::string const &	getType () const;
+
+		// MEMBER FUNCTIONS
+		virtual AMateria *	clone () const = 0;
+//		virtual void use (ICharacter & target);
 
 };
 
