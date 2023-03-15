@@ -10,9 +10,9 @@ class	WrongCat : public WrongAnimal {
 	public:
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		WrongCat ();
-		WrongCat (WrongCat const& original);
+		WrongCat (WrongCat const & original);
 		virtual ~WrongCat ();
-		WrongCat& operator= (WrongCat const& source);
+		WrongCat& operator= (WrongCat const & source);
 
 		// OTHER
 		void	announce (std::string const func) const;

@@ -18,5 +18,19 @@ int	main (void)
 
 	for (int i = 0; i < 10; i++)
 		delete animalArray [i];
+	
+	std::cout << std::endl;
+	
+	const Cat *	kitty = new Cat ();
+	const Cat * kitty2 = new Cat ();
+	std::cout << "kittyADR = " << &kitty << std::endl;
+	std::cout << "kitty2ADR = " << &kitty2 << std::endl;
+	kitty2 = kitty;
+	kitty->getBrain ()->setIdea (1, "meow");
+	kitty->getBrain ()->displayIdea(1);
+	kitty2->getBrain ()->displayIdea(1);
+
+	delete kitty;
+	delete kitty2;
 	return 0;
 }

@@ -29,7 +29,7 @@ AMateria& AMateria::operator = (AMateria const & source) {
 
 std::string const &	AMateria::getType () const {
 
-	return (std::string const&) _type;
+	return (std::string const &) _type;
 }
 
 

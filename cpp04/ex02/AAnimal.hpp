@@ -12,9 +12,9 @@ class	AAnimal {
 	public:
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		AAnimal ();
-		AAnimal (AAnimal const& original);
+		AAnimal (AAnimal const & original);
 		virtual ~AAnimal ();
-		AAnimal&	operator= (AAnimal const& right);
+		AAnimal&	operator= (AAnimal const & right);
 
 		// GETTER
 		virtual std::string getType () const = 0;

@@ -13,9 +13,9 @@ class	Brain {
 
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Brain ();
-		Brain (Brain const& original);
+		Brain (Brain const & original);
 		~Brain ();
-		Brain&	operator= (Brain const& source);
+		Brain&	operator= (Brain const & source);
 		
 		// GETTER
 		std::string	getIdea (int i) const;

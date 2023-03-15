@@ -9,7 +9,7 @@ Animal::Animal () : _type ("Animal") {
 	announce ("constructor");
 }
 
-Animal::Animal (Animal const& original) {
+Animal::Animal (Animal const & original) {
 
 	*this = original;
 	announce ("copy constructor");
@@ -21,7 +21,7 @@ Animal::~Animal () {
 }
 
 // OPERATOR=
-Animal&	Animal::operator= (Animal const& source) {
+Animal&	Animal::operator= (Animal const & source) {
 
 	if (this != &source)
 		_type = source.getType ();

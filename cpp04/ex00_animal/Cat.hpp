@@ -10,9 +10,9 @@ class	Cat : public Animal {
 	public:
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Cat ();
-		Cat (Cat const& original);
+		Cat (Cat const & original);
 		virtual ~Cat ();
-		Cat& operator= (Cat const& source);
+		Cat& operator= (Cat const & source);
 
 		// OTHER
 		virtual void	announce (std::string const func) const;

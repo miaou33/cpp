@@ -10,7 +10,7 @@ Cat::Cat () {	_type = "Cat";
 	announce ("constructor");
 }
 
-Cat::Cat (Cat const& original) {
+Cat::Cat (Cat const & original) {
 	
 	*this = original;
 	announce ("copy constructor");
@@ -23,7 +23,7 @@ Cat::~Cat () {
 }
 
 // OPERATOR = 
-Cat&	Cat::operator= (Cat const& source) {
+Cat&	Cat::operator= (Cat const & source) {
 
 	if (this != &source)
 	{

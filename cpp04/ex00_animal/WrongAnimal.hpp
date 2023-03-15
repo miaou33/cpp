@@ -12,9 +12,9 @@ class	WrongAnimal {
 	public:
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		WrongAnimal ();
-		WrongAnimal (WrongAnimal const& original);
+		WrongAnimal (WrongAnimal const & original);
 		virtual ~WrongAnimal ();
-		WrongAnimal&	operator= (WrongAnimal const& right);
+		WrongAnimal&	operator= (WrongAnimal const & right);
 		
 		// GETTER
 		std::string getType () const;

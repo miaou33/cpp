@@ -9,7 +9,7 @@ WrongAnimal::WrongAnimal () : _type ("WrongAnimal") {
 	announce ("constructor");
 }
 
-WrongAnimal::WrongAnimal (WrongAnimal const& original) {
+WrongAnimal::WrongAnimal (WrongAnimal const & original) {
 
 	*this = original;
 	announce ("copy constructor");
@@ -21,7 +21,7 @@ WrongAnimal::~WrongAnimal () {
 }
 
 // OPERATOR=
-WrongAnimal&	WrongAnimal::operator= (WrongAnimal const& source) {
+WrongAnimal&	WrongAnimal::operator= (WrongAnimal const & source) {
 
 	if (this != &source)
 		_type = source.getType ();

@@ -11,12 +11,11 @@ class	Animal {
 
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Animal ();
-		Animal (Animal const& original);
+		Animal (Animal const & original);
 		virtual ~Animal ();
-		Animal&	operator= (Animal const& right);
+		Animal&	operator= (Animal const & right);
 		
 		// GETTER
 		std::string getType () const;

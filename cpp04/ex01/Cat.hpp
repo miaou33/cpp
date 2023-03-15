@@ -12,12 +12,11 @@ class	Cat : public Animal {
 		Brain*	_brain;
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Cat ();
-		Cat (Cat const& original);
+		Cat (Cat const & original);
 		virtual ~Cat ();
-		Cat& operator= (Cat const& source);
+		Cat& operator= (Cat const & source);
 
 		// GETTER
 		Brain*	getBrain () const;
