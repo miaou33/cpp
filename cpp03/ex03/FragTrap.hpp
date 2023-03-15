@@ -8,8 +8,8 @@
 class	FragTrap : virtual public ClapTrap {
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR
+		FragTrap ();
 		FragTrap (std::string name);
 		FragTrap (FragTrap const& original);
 		~FragTrap ();

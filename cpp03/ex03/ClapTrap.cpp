@@ -4,6 +4,15 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
+ClapTrap::ClapTrap () :	_name ("Anon"),
+						_HP (10),
+						_PP (10),
+						_AD (0) {
+
+	_maxHP = _HP;
+	std::cout << "ClapTrap constructor called" << std::endl; 
+}
+
 ClapTrap::ClapTrap (std::string name) :	_name (name),
 										_HP (10),
 										_PP (10),
@@ -77,15 +86,15 @@ void	ClapTrap::attack (const std::string& target)
 	if (_HP)
 	{
 		_PP ?
-			std::cout << "💥 " << this->getName () << " attacks " << target << " 💥" << std::endl
-			: std::cout << "❌ " << this->getName () << " cant attack " << target << " coz no PP ❌" << std::endl;
+			std::cout << this->getName () << " attacks " << target << std::endl
+			: std::cout << this->getName () << " cant attack " << target << " coz no PP" << std::endl;
 
 		t_ll res = (t_ll) _PP--;
 		_PP = res >= 0 ? (t_ui) res : 0;
 
 	}
 	else
-		std::cout << "💀 " << this->getName () << " tries to attack "<< target << " but they just crawl in their blood" << " 💀" << std::endl;
+		std::cout << this->getName () << " tries to attack "<< target << " but they are already KO" << std::endl;
 }
 
 void	ClapTrap::takeDamage (t_ui amount) {
@@ -100,7 +109,7 @@ void	ClapTrap::takeDamage (t_ui amount) {
 			: std::cout << "\t\t⤷ " << this->getName () << " is KO" << std::endl;
 	}
 	else
-		std::cout << this->getName () << " is already KO x_x" << std::endl;
+		std::cout << this->getName () << " is already KO" << std::endl;
 }
 
 void	ClapTrap::beRepaired (t_ui amount) {
@@ -109,20 +118,20 @@ void	ClapTrap::beRepaired (t_ui amount) {
 	{
 		if (_PP)
 		{
-			std::cout << "✨ " << this->getName () << " uses beRepaired ✨" << std::endl;
+			std::cout << this->getName () << " uses beRepaired" << std::endl;
 			t_ul res = _HP + amount;
 			res = res > _maxHP ? _maxHP : res;
 			_HP = res;
 			_HP == _maxHP ?
-				std::cout << "\t\t⤷ " << this->getName () << "'s HP are maxed out !" << " " << std::endl
+				std::cout << "\t\t⤷ " << this->getName () << "'s HP are maxed out" << " " << std::endl
 				: std::cout << "\t\t⤷ " << this->getName () << " is repaired of " << amount << std::endl;
 			_PP--;
 		}
 		else
-			std::cout << "❌ " << this->getName () << " cant be repaired coz no PP ❌" << std::endl;
+			std::cout << this->getName () << " cant be repaired coz no PP" << std::endl;
 	}
 	else
-		std::cout << "💀 " << this->getName () << " tries to repair themself but they just crawl in their blood" << " 💀" << std::endl;
+		std::cout << this->getName () << " tries to repair themself but they are already KO" << std::endl;
 }
 
 void	ClapTrap::printStats () {

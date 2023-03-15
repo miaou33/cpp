@@ -7,9 +7,9 @@ int	main (void)
 	ScavTrap	SCAV2("SCAV2");
 	
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;
-	std::cout << SCAV1 << std::endl;
-	std::cout << SCAV2 << std::endl;
+	CLAPTRAP.printStats ();
+	SCAV1.printStats ();
+	SCAV2.printStats ();
 	
 	std::cout << std::endl;
 	SCAV2.attack ("CLAPTRAP");
@@ -23,9 +23,9 @@ int	main (void)
 		SCAV1.takeDamage (CLAPTRAP.getAD());
 
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;	
-	std::cout << SCAV1 << std::endl;
-	std::cout << SCAV2 << std::endl;
+	CLAPTRAP.printStats ();	
+	SCAV1.printStats ();
+	SCAV2.printStats ();
 
 	std::cout << std::endl;
 	SCAV2.beRepaired (2);
@@ -33,9 +33,9 @@ int	main (void)
 	CLAPTRAP.beRepaired (10);
 
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;
-	std::cout << SCAV1 << std::endl;
-	std::cout << SCAV2 << std::endl;
+	CLAPTRAP.printStats ();
+	SCAV1.printStats ();
+	SCAV2.printStats ();
 	
 	std::cout << std::endl;
 }

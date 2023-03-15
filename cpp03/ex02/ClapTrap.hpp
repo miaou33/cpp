@@ -20,8 +20,8 @@ class	ClapTrap {
 		t_ui			_AD;
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR
+		ClapTrap ();
 		ClapTrap (std::string name);
 		ClapTrap (ClapTrap const& original);
 		~ClapTrap ();
@@ -39,9 +39,8 @@ class	ClapTrap {
 		void				attack (const std::string& target);
 		void				takeDamage (t_ui amount);
 		void				beRepaired (t_ui amount);
+		void				printStats ();
 		
 };
-
-std::ostream&	operator<< (std::ostream& o, ClapTrap const& source);
 
 #endif

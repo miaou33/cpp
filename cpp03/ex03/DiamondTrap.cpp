@@ -4,13 +4,13 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-DiamondTrap::DiamondTrap (std::string name) : ClapTrap (name + "_clap_name"), ScavTrap (name), FragTrap (name) {
+DiamondTrap::DiamondTrap (std::string name) {
 
 	_name = name;
+	ClapTrap::_name = name + "_clap_name";
 	FragTrap::setDefaultHP ();
 	ScavTrap::setDefaultPP ();
 	FragTrap::setDefaultAD ();
-	setMaxHP ();
 	std::cout << "......DiamondTrap constructor called" << std::endl;
 }
 
@@ -48,10 +48,6 @@ std::string const	DiamondTrap::getName () const {
 	return (std::string const) _name;
 }
 
-void	DiamondTrap::setMaxHP () {
-	
-	_maxHP = _HP;
-}
 
 /* ************************************************* */
 /* 						OTHERS						 */
@@ -60,6 +56,6 @@ void	DiamondTrap::setMaxHP () {
 void	DiamondTrap::whoAmI (void) {
 
 	FragTrap::_HP ?
-		std::cout << "🔮 " << this->getName () << " speaks : \"my grand parent name is " << ClapTrap::_name << ", and mine is " << _name << "\" 🔮" <<  std::endl
-		: std:: cout << "🔮 " << this->getName () << " tries to do a speak but they just crawl in their blood 🔮" << std::endl;
+		std::cout << this->getName () << "'s subobject name is " << ClapTrap::_name << ", and them is " << _name <<  std::endl
+		: std:: cout << this->getName () << " tries to do a speak but they are already KO" << std::endl;
 }

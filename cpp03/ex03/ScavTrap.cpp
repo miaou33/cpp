@@ -4,12 +4,21 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-ScavTrap::ScavTrap (std::string name) : ClapTrap (name) {
+ScavTrap::ScavTrap () {
 
-	_HP = 100;
-	_PP = 50;
-	_AD = 20;
-	_maxHP = _HP;
+	_name = "AnonScav";
+	setDefaultHP ();
+	setDefaultPP ();
+	setDefaultAD ();
+	std::cout << "...ScavTrap constructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap (std::string name) {
+
+	_name = name;
+	setDefaultHP ();
+	setDefaultPP ();
+	setDefaultAD ();
 	std::cout << "...ScavTrap constructor called" << std::endl;
 }
 
@@ -54,6 +63,7 @@ std::string const	ScavTrap::getName () const {
 void	ScavTrap::setDefaultHP () {
 	
 	_HP = 100;
+	_maxHP = _HP;
 }
 
 void	ScavTrap::setDefaultPP () {
@@ -74,16 +84,21 @@ void	ScavTrap::setDefaultAD () {
 void	ScavTrap::attack (const std::string& target)
 {
 	if (_HP)
-		_PP-- ?
-			std::cout << "🛸 " << this->getName () << " uses scav special attack on " << target << " 🛸" << std::endl
-			: std::cout << "❌ " << _name << " cant attack " << target << " coz no PP anymore x_x ❌" << std::endl;
+	{
+		_PP ?
+			std::cout << this->getName () << " uses scav special attack on " << target << std::endl
+			: std::cout << _name << " cant attack " << target << " coz no PP anymore x_x" << std::endl;
+	
+		t_ll res = (t_ll) _PP--;
+		_PP = res >= 0 ? (t_ui) res : 0;
+	}
 	else
-		std::cout << "💀 " << _name << " tries to attack "<< target << " but they just crawl in their blood" << " 💀" << std::endl;
+		std::cout << _name << " tries to attack "<< target << " but they are already KO" << std::endl;
 }
 
 void	ScavTrap::guardGate (void) {
 
 	_HP ?
-		std::cout << "⛄ " << _name << " guards the gate ! ⛄\n\t\t⤷ the gate is safe" << std::endl
-		: std::cout << "💀 " << _name << " tries to do guardGate but they just crawl sadly in their blood 💀" << std::endl;
+		std::cout << _name << " guards the gate\n\t\t⤷ the gate is safe" << std::endl
+		: std::cout << _name << " tries to do guardGate but they just crawl sadly in their blood" << std::endl;
 }

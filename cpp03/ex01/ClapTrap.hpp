@@ -20,8 +20,8 @@ class	ClapTrap {
 		t_ui			_AD;
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR
+		ClapTrap ();
 		ClapTrap (std::string name);
 		ClapTrap (ClapTrap const& original);
 		~ClapTrap ();
@@ -30,16 +30,17 @@ class	ClapTrap {
 		ClapTrap&	operator= (ClapTrap const& source);
 		
 		// GETTERS / SETTERS
-		virtual std::string const	getName () const;
-		t_ui						getHP () const;
-		t_ui						getPP () const;
-		t_ui						getAD () const;
+		std::string const	getName () const;
+		t_ui				getHP () const;
+		t_ui				getPP () const;
+		t_ui				getAD () const;
 
 		// OTHERS
 		void				attack (const std::string& target);
 		void				takeDamage (t_ui amount);
 		void				beRepaired (t_ui amount);
 		void				printStats ();
+		
 };
 
 #endif

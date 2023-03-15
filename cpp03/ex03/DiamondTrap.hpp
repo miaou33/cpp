@@ -20,7 +20,6 @@ class	DiamondTrap : public ScavTrap, public FragTrap {
 
 		virtual std::string const	getName () const;
 		using	ScavTrap::attack;
-		void	setMaxHP ();
 		void	whoAmI (void);
 };
 

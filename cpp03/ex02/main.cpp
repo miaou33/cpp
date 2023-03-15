@@ -8,9 +8,9 @@ int	main (void)
 	FragTrap	FRAGTRAP("FRAGTRAP");
 	
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;
-	std::cout << SCAVTRAP << std::endl;
-	std::cout << FRAGTRAP << std::endl;
+	CLAPTRAP.printStats ();
+	SCAVTRAP.printStats ();
+	FRAGTRAP.printStats ();
 	
 	std::cout << std::endl;
 	FRAGTRAP.highFivesGuys ();
@@ -22,9 +22,9 @@ int	main (void)
 		SCAVTRAP.takeDamage (CLAPTRAP.getAD());
 
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;	
-	std::cout << SCAVTRAP << std::endl;
-	std::cout << FRAGTRAP << std::endl;
+	CLAPTRAP.printStats ();	
+	SCAVTRAP.printStats ();
+	FRAGTRAP.printStats ();
 
 	std::cout << std::endl;
 	FRAGTRAP.attack ("CLAPTRAP");
@@ -34,9 +34,9 @@ int	main (void)
 	CLAPTRAP.beRepaired (10);
 
 	std::cout << std::endl;
-	std::cout << CLAPTRAP << std::endl;
-	std::cout << SCAVTRAP << std::endl;
-	std::cout << FRAGTRAP << std::endl;
+	CLAPTRAP.printStats ();
+	SCAVTRAP.printStats ();
+	FRAGTRAP.printStats ();
 
 	std::cout << std::endl;
 }
