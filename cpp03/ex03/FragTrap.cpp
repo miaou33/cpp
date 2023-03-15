@@ -86,7 +86,7 @@ void	FragTrap::attack (const std::string& target)
 	if (_HP)
 		_PP-- ?
 			std::cout << _name << " throw a bomb on " << target << std::endl
-			: std::cout << _name << " cant attack " << target << " coz no PP anymore x_x" << std::endl;
+			: std::cout << _name << " cant attack " << target << " coz no PP anymore" << std::endl;
 	else
 		std:: cout << _name << " tries to attack "<< target << " but they are already KO" << std::endl;
 }
