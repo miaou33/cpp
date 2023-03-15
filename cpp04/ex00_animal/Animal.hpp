@@ -9,9 +9,7 @@ class	Animal {
 	protected:
 		std::string	_type;
 
-
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Animal ();
 		Animal (Animal const& original);

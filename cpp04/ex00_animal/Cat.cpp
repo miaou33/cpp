@@ -4,8 +4,9 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Cat::Cat () {	_type = "Cat"; 
-
+Cat::Cat () {
+	
+	_type = "Cat"; 
 	announce ("constructor");
 }
 

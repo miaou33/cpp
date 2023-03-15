@@ -8,7 +8,6 @@
 class	Cat : public Animal {
 
 	public:
-
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Cat ();
 		Cat (Cat const& original);

@@ -1,28 +1,28 @@
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
 /* ************************************************* */
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Dog::Dog () {
+WrongCat::WrongCat () {
 	
-	_type = "Dog";
+	_type = "WrongCat"; 
 	announce ("constructor");
 }
 
-Dog::Dog (Dog const& original) {
+WrongCat::WrongCat (WrongCat const& original) {
 	
 	*this = original;
 	announce ("copy constructor");
 }
 
-Dog::~Dog () {
+WrongCat::~WrongCat () {
 
 	announce ("destructor");
 }
 
-// OPERATOR =
-Dog&	Dog::operator= (Dog const& source) {
+// OPERATOR = 
+WrongCat&	WrongCat::operator= (WrongCat const& source) {
 
 	if (this != &source)
 		_type = source.getType ();
@@ -34,12 +34,12 @@ Dog&	Dog::operator= (Dog const& source) {
 /* 						OTHER						 */
 /* ************************************************* */
 
-void	Dog::announce (std::string const func) const {
+void	WrongCat::announce (std::string const func) const {
 
-	std::cout << "Dog " << func << " called" << std::endl;
+	std::cout << "WrongCat " << func << " called" << std::endl;
 }
 
-void	Dog::makeSound () const {
+void	WrongCat::makeSound () const {
 
-	std::cout << "waf" << std::endl;
+	std::cout << "wrong meow" << std::endl;
 }
