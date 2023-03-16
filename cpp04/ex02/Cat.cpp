@@ -4,13 +4,14 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Cat::Cat () {	_type = "Cat"; 
-				_brain = new Brain ();
-
+Cat::Cat () {
+	
+	_type = "Cat"; 
+	_brain = new Brain ();
 	announce ("constructor");
 }
 
-Cat::Cat (Cat const & original) {
+Cat::Cat (Cat const & original) : AAnimal (original) {
 	
 	*this = original;
 	announce ("copy constructor");
@@ -28,8 +29,7 @@ Cat&	Cat::operator= (Cat const & source) {
 	if (this != &source)
 	{
 		_type = source.getType ();
-		_brain = new Brain ();
-		_brain = source.getBrain ();
+		_brain = new  Brain (*(source.getBrain ()));
 	}
 	return *this;
 }

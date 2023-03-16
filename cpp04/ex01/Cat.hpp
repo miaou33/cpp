@@ -12,16 +12,13 @@ class	Cat : public Animal {
 		Brain*	_brain;
 
 	public:
-		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Cat ();
 		Cat (Cat const & original);
 		virtual ~Cat ();
-		Cat& operator= (Cat const & source);
 
-		// GETTER
-		Brain*	getBrain () const;
+		Cat				&operator= (Cat const & source);
 
-		// OTHER
+		Brain			*getBrain () const;
 		virtual void	announce (std::string const func) const;
 		virtual void	makeSound () const;
 };

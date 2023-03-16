@@ -11,7 +11,7 @@ Cat::Cat () {
 	announce ("constructor");
 }
 
-Cat::Cat (Cat const & original) {
+Cat::Cat (Cat const & original) : Animal (original) {
 	
 	*this = original;
 	announce ("copy constructor");
@@ -29,11 +29,11 @@ Cat&	Cat::operator= (Cat const & source) {
 	if (this != &source)
 	{
 		_type = source.getType ();
-		_brain = new Brain ();
-		*_brain = *(source.getBrain ());
+		_brain = new Brain (*(source.getBrain ()));
 	}
 	return *this;
 }
+
 
 /* ************************************************* */
 /* 					GETTERS / SETTERS				 */

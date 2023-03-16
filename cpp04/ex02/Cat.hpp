@@ -12,20 +12,15 @@ class	Cat : virtual public AAnimal {
 		Brain*	_brain;
 
 	public:
-
-		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Cat ();
 		Cat (Cat const & original);
 		virtual ~Cat ();
 		Cat& operator= (Cat const & source);
 
-		// GETTER
 		virtual std::string getType () const;
 		Brain*	getBrain () const;
-
-		// OTHER
-		virtual void	announce (std::string const func) const;
-		virtual void	makeSound () const;
+		virtual void		announce (std::string const func) const;
+		virtual void		makeSound () const;
 };
 
 

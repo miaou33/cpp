@@ -10,18 +10,14 @@ class	Brain {
 		std::string _ideas [100];
 
 	public:
-
-		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Brain ();
 		Brain (Brain const & original);
 		~Brain ();
-		Brain&	operator= (Brain const & source);
-		
-		// GETTER
-		std::string	getIdea (int i) const;
 
-		// OTHER
-		void	announce (std::string const func) const;
+		Brain		&operator= (Brain const & source);
+		
+		std::string	getIdea (int i) const;
+		void		announce (std::string const func) const;
 };
 
 

@@ -4,13 +4,14 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Dog::Dog () {	_type = "Dog";
-				_brain = new Brain ();
-
+Dog::Dog () {
+	
+	_type = "Dog";
+	_brain = new Brain ();
 	announce ("constructor");
 }
 
-Dog::Dog (Dog const & original) {
+Dog::Dog (Dog const & original) : AAnimal (original) {
 	
 	*this = original;
 	announce ("copy constructor");

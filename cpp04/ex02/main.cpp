@@ -7,7 +7,6 @@ int	main (void)
 {
 	int evensize = 4;
  	AAnimal	*animalArray [evensize];
-//	AAnimal	*animal = new AAnimal (); -> wrong car impossible d instancier une classe abstraite
 	int		arrayHalf = evensize / 2;
 
 	for (int i = 0; i < arrayHalf; i++)

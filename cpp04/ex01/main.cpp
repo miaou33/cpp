@@ -23,12 +23,13 @@ int	main (void)
 	
 	const Cat *	kitty = new Cat ();
 	const Cat * kitty2 = new Cat ();
-	std::cout << "kittyADR = " << &kitty << std::endl;
-	std::cout << "kitty2ADR = " << &kitty2 << std::endl;
+	std::cout << "kitty = " << &kitty << std::endl;
+	std::cout << "kitty2 = " << &kitty2 << std::endl;
 	kitty2 = kitty;
-	kitty->getBrain ()->setIdea (1, "meow");
-	kitty->getBrain ()->displayIdea(1);
-	kitty2->getBrain ()->displayIdea(1);
+	kitty->getBrain ()->setIdea (0, "iii");
+	kitty->getBrain ()->displayIdea (0);
+	kitty2->getBrain ()->displayIdea (0);
+	Animal animal ;
 
 	delete kitty;
 	delete kitty2;

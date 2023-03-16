@@ -4,13 +4,14 @@
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Dog::Dog () {	_type = "Dog";
-				_brain = new Brain ();
-
+Dog::Dog () {
+	
+	_type = "Dog"; 
+	_brain = new Brain ();
 	announce ("constructor");
 }
 
-Dog::Dog (Dog const & original) {
+Dog::Dog (Dog const & original) : Animal (original) {
 	
 	*this = original;
 	announce ("copy constructor");
@@ -22,14 +23,13 @@ Dog::~Dog () {
 	announce ("destructor");
 }
 
-// OPERATOR =
+// OPERATOR = 
 Dog&	Dog::operator= (Dog const & source) {
 
 	if (this != &source)
 	{
 		_type = source.getType ();
-		_brain = new Brain ();
-		_brain = source.getBrain ();
+		_brain = new Brain (*(source.getBrain ()));
 	}
 	return *this;
 }
@@ -53,5 +53,5 @@ void	Dog::announce (std::string const func) const {
 
 void	Dog::makeSound () const {
 
-	std::cout << "waf" << std::endl;
+	std::cout << "meow" << std::endl;
 }
