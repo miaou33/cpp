@@ -12,19 +12,18 @@ class	Dog : public Animal {
 		Brain*	_brain;
 
 	public:
-		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Dog ();
 		Dog (Dog const & original);
 		virtual ~Dog ();
-		Dog& operator= (Dog const & right);
 
-		// GETTER
-		Brain*	getBrain () const;
+		Dog				&operator= (Dog const & source);
 
-		// OTHER
+		Brain			*getBrain () const;
+		std::string		getIdea (int i) const;
+		void			setIdea (int i, std::string idea);
+		void			displayIdea (int i) const;
 		virtual void	announce (std::string const func) const;
 		virtual void	makeSound () const;
-
 };
 
 

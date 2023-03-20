@@ -23,14 +23,18 @@ int	main (void)
 	
 	Cat *	kitty = new Cat ();
 	Cat * kitty2 = new Cat (*kitty);
+	Cat * kitty3 = new Cat ();
+	*kitty3 = *kitty;
 	std::cout << "kitty = " << &kitty << std::endl;
 	std::cout << "kitty2 = " << &kitty2 << std::endl;
 	kitty->setIdea (0, "iii");
 	kitty->displayIdea (0);
 	kitty2->displayIdea (0);
+	kitty3->displayIdea (0);
 	Animal animal ;
 
 	delete kitty;
 	delete kitty2;
+	delete kitty3;
 	return 0;
 }

@@ -13,7 +13,7 @@ Dog::Dog () {
 
 Dog::Dog (Dog const & original) : Animal (original) {
 	
-	*this = original;
+	_brain = new Brain (*(original.getBrain ()));
 	announce ("copy constructor");
 }
 
@@ -24,14 +24,14 @@ Dog::~Dog () {
 }
 
 // OPERATOR = 
-Dog&	Dog::operator= (Dog const & source) {
+Dog&			Dog::operator= (Dog const & source) {
 
 	if (this != &source)
 	{
 		_type = source.getType ();
-		delete _brain;
-		_brain = new Brain (*(source.getBrain ()));
+		(*_brain) = *(source.getBrain ());
 	}
+	announce ("assignment operator");
 	return *this;
 }
 
@@ -40,19 +40,37 @@ Dog&	Dog::operator= (Dog const & source) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-Brain*	Dog::getBrain () const { return _brain; }
+Brain*			Dog::getBrain () const { 
+	
+	return _brain;
+}
+
+std::string		Dog::getIdea (int i) const {
+	
+	return _brain->getIdea (i);
+}
+
+void			Dog::setIdea (int i, std::string idea) {
+
+	_brain->setIdea (i, idea);
+}
+
+void			Dog::displayIdea (int i) const {
+
+	_brain->displayIdea (i);
+}
 
 
 /* ************************************************* */
 /* 						OTHER						 */
 /* ************************************************* */
 
-void	Dog::announce (std::string const func) const {
+void			Dog::announce (std::string const func) const {
 
 	std::cout << "Dog " << func << " called" << std::endl;
 }
 
-void	Dog::makeSound () const {
+void			Dog::makeSound () const {
 
-	std::cout << "meow" << std::endl;
+	std::cout << "bark" << std::endl;
 }
