@@ -15,6 +15,7 @@ class	Brain {
 		~Brain ();
 		Brain&	operator= (Brain const & source);
 		
+		std::string*	getIdeas () const;
 		std::string		getIdea (int i) const;
 		void			setIdea (int i, std::string idea); 
 		void			announce (std::string const func) const;

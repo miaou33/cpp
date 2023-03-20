@@ -19,6 +19,9 @@ class	Cat : public Animal {
 		Cat				&operator= (Cat const & source);
 
 		Brain			*getBrain () const;
+		std::string		getIdea (int i) const;
+		void			setIdea (int i, std::string idea);
+		void			displayIdea (int i) const;
 		virtual void	announce (std::string const func) const;
 		virtual void	makeSound () const;
 };

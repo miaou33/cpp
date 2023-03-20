@@ -11,9 +11,9 @@ Cat::Cat () {
 	announce ("constructor");
 }
 
-Cat::Cat (Cat const & original) : Animal (original) {
+Cat::Cat (Cat const & original) :	Animal (original) {
 	
-	*this = original;
+	_brain = new Brain (*(original.getBrain ()));
 	announce ("copy constructor");
 }
 
@@ -29,6 +29,7 @@ Cat&	Cat::operator= (Cat const & source) {
 	if (this != &source)
 	{
 		_type = source.getType ();
+		delete _brain;
 		_brain = new Brain (*(source.getBrain ()));
 	}
 	return *this;
@@ -39,7 +40,26 @@ Cat&	Cat::operator= (Cat const & source) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-Brain*	Cat::getBrain () const { return _brain; }
+Brain*		Cat::getBrain () const { 
+	
+	return _brain;
+}
+
+std::string	Cat::getIdea (int i) const {
+	
+	return _brain->getIdea (i);
+}
+
+void		Cat::setIdea (int i, std::string idea) {
+
+	_brain->setIdea (i, idea);
+}
+
+void		Cat::displayIdea (int i) const {
+
+	_brain->displayIdea (i);
+
+}
 
 
 /* ************************************************* */

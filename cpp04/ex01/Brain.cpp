@@ -37,7 +37,10 @@ Brain&	Brain::operator= (Brain const & source) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-std::string	Brain::getIdea (int i) const { return _ideas [i]; }
+std::string	Brain::getIdea (int i) const {
+	
+	return _ideas [i];
+}
 
 void		Brain::setIdea (int i, std::string idea) { 
 	
