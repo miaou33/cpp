@@ -43,8 +43,3 @@ void	AAnimal::announce (std::string const func) const {
 
 	std::cout << "AAnimal " << func << " called" << std::endl;
 }
-
-void	AAnimal::makeSound () const {
-
-	std::cout << "anon AAnimal sound" << std::endl;
-}

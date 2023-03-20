@@ -16,11 +16,11 @@ class AMateria {
 		AMateria& operator = (AMateria const & source);
 
 		// GETTER
-		std::string const &	getType () const;
+		std::string const & getType () const;
 
 		// MEMBER FUNCTIONS
 		virtual AMateria *	clone () const = 0;
-//		virtual void use (ICharacter & target);
+/* 		virtual void use (ICharacter & target); */
 
 };
 

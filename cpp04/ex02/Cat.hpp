@@ -6,7 +6,7 @@
 # include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class	Cat : virtual public AAnimal {
+class	Cat : public AAnimal {
 
 	private:
 		Brain*	_brain;
@@ -15,12 +15,15 @@ class	Cat : virtual public AAnimal {
 		Cat ();
 		Cat (Cat const & original);
 		virtual ~Cat ();
-		Cat& operator= (Cat const & source);
 
-		virtual std::string getType () const;
-		Brain*	getBrain () const;
-		virtual void		announce (std::string const func) const;
-		virtual void		makeSound () const;
+		Cat				&operator= (Cat const & source);
+
+		Brain			*getBrain () const;
+		std::string		getIdea (int i) const;
+		void			setIdea (int i, std::string idea);
+		void			displayIdea (int i) const;
+		virtual void	announce (std::string const func) const;
+		virtual void	makeSound () const;
 };
 
 
