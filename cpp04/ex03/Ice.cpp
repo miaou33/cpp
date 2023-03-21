@@ -12,8 +12,10 @@ Ice::~Ice () {}
 
 Ice& Ice::operator = (Ice const & source) {
 
-	if (this != &source)
-		_type = source.getType ();
+	if (&source == this)
+		return *this;
+ 	this->~Ice ();
+	new (this) Ice (source);
 	return *this;
 }
 
@@ -24,7 +26,7 @@ Ice& Ice::operator = (Ice const & source) {
 
 std::string const &	Ice::getType () const {
 
-	return (std::string const &) _type;
+	return _type;
 }
 
 
@@ -37,6 +39,7 @@ Ice *	Ice::clone () const {
 	return new Ice (*this);
 }
 
-/* void	Ice::use (ICharacter & target) {
+void	Ice::use (ICharacter & target) {
 
-} */
+	std::cout << "* shoots an ice bolt at " << target.getName () << " *" << std::endl;
+}

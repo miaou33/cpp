@@ -6,7 +6,7 @@
 class Ice {
 
 	protected:
-		std::string	_type;
+		std::string const	_type;
 
 	public:
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
@@ -20,7 +20,7 @@ class Ice {
 
 		// MEMBER FUNCTIONS
 		virtual Ice *	clone () const;
-//		virtual void use (ICharacter & target);
+		virtual void use (ICharacter & target);
 
 };
 

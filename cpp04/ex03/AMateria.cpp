@@ -12,9 +12,14 @@ AMateria::~AMateria () {}
 
 AMateria& AMateria::operator = (AMateria const & source) {
 
-	if (this != &source)
-		_type = source.getType ();
+	if (&source == this)
+		return *this;
+ 	this->~AMateria ();
+	new (this) AMateria (source);
 	return *this;
+/* 	if (this != &source)
+		_type = source.getType ();
+	return *this; */
 }
 
 
