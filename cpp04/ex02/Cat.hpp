@@ -13,10 +13,10 @@ class	Cat : public AAnimal {
 
 	public:
 		Cat ();
-		Cat (Cat const & original);
+		Cat (Cat const& original);
 		virtual ~Cat ();
 
-		Cat				&operator= (Cat const & source);
+		Cat				&operator= (Cat const& source);
 
 		Brain			*getBrain () const;
 		std::string		getIdea (int i) const;

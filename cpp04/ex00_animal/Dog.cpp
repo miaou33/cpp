@@ -10,7 +10,7 @@ Dog::Dog () {
 	announce ("constructor");
 }
 
-Dog::Dog (Dog const & original) {
+Dog::Dog (Dog const& original) {
 	
 	*this = original;
 	announce ("copy constructor");
@@ -22,7 +22,7 @@ Dog::~Dog () {
 }
 
 // OPERATOR =
-Dog&	Dog::operator= (Dog const & source) {
+Dog&	Dog::operator= (Dog const& source) {
 
 	if (this != &source)
 		_type = source.getType ();

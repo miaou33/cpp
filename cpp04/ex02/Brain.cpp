@@ -11,7 +11,7 @@ Brain::Brain () {
 	announce ("constructor");
 }
 
-Brain::Brain (Brain const & original) { 
+Brain::Brain (Brain const& original) { 
 	
 	*this = original;
 	announce ("copy constructor");
@@ -23,7 +23,7 @@ Brain::~Brain () {
 }
 
 // OPERATOR = 
-Brain&	Brain::operator= (Brain const & source) {
+Brain&	Brain::operator= (Brain const& source) {
 
 	if (this != &source)
 	{

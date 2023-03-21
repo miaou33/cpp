@@ -11,11 +11,11 @@ class Character : virtual public ICharacter {
 	
 	public:
 		Character (std::string name);
-		Character (Character const & original);
+		Character (Character const& original);
 		virtual ~Character ();
-		Character& operator= (Character const & source);
+		Character& operator= (Character const& source);
 
-		virtual std::string const & getName () const;
+		virtual std::string const& getName () const;
 
 		virtual void equip (AMateria* m);
 		virtual void unequip (int idx);

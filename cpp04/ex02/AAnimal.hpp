@@ -11,10 +11,10 @@ class	AAnimal {
 
 	public:
 		AAnimal ();
-		AAnimal (AAnimal const & original);
+		AAnimal (AAnimal const& original);
 		virtual ~AAnimal ();
 		
-		AAnimal		&operator= (AAnimal const & right);
+		AAnimal		&operator= (AAnimal const& right);
 
 		std::string 		getType () const;
 		virtual void		announce (std::string const func) const;

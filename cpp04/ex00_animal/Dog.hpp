@@ -10,9 +10,9 @@ class	Dog : public Animal {
 	public:
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
 		Dog ();
-		Dog (Dog const & original);
+		Dog (Dog const& original);
 		virtual ~Dog ();
-		Dog& operator= (Dog const & right);
+		Dog& operator= (Dog const& right);
 
 		// OTHER
 		virtual void	announce (std::string const func) const;

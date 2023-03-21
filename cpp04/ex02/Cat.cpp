@@ -11,7 +11,7 @@ Cat::Cat () {
 	announce ("constructor");
 }
 
-Cat::Cat (Cat const & original) : AAnimal (original) {
+Cat::Cat (Cat const& original) : AAnimal (original) {
 	
 	_brain = new Brain (*(original.getBrain ()));
 	announce ("copy constructor");
@@ -24,7 +24,7 @@ Cat::~Cat () {
 }
 
 // OPERATOR = 
-Cat&			Cat::operator= (Cat const & source) {
+Cat&			Cat::operator= (Cat const& source) {
 
 	if (this != &source)
 	{

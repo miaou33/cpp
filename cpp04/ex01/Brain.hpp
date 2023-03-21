@@ -11,9 +11,9 @@ class	Brain {
 
 	public:
 		Brain ();
-		Brain (Brain const & original);
+		Brain (Brain const& original);
 		~Brain ();
-		Brain&	operator= (Brain const & source);
+		Brain&	operator= (Brain const& source);
 		
 		std::string*	getIdeas () const;
 		std::string		getIdea (int i) const;

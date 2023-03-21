@@ -12,10 +12,10 @@ class	Animal {
 
 	public:
 		Animal ();
-		Animal (Animal const & original);
+		Animal (Animal const& original);
 		virtual ~Animal ();
 
-		Animal			&operator= (Animal const & right);
+		Animal			&operator= (Animal const& right);
 		
 		std::string		getType () const;
 		virtual void	announce (std::string const func) const;

@@ -13,10 +13,10 @@ class	Dog : public Animal {
 
 	public:
 		Dog ();
-		Dog (Dog const & original);
+		Dog (Dog const& original);
 		virtual ~Dog ();
 
-		Dog				&operator= (Dog const & source);
+		Dog				&operator= (Dog const& source);
 
 		Brain			*getBrain () const;
 		std::string		getIdea (int i) const;

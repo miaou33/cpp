@@ -11,7 +11,7 @@ Dog::Dog () {
 	announce ("constructor");
 }
 
-Dog::Dog (Dog const & original) : AAnimal (original) {
+Dog::Dog (Dog const& original) : AAnimal (original) {
 	
 	_brain = new Brain (*(original.getBrain ()));
 	announce ("copy constructor");
@@ -24,7 +24,7 @@ Dog::~Dog () {
 }
 
 // OPERATOR = 
-Dog&			Dog::operator= (Dog const & source) {
+Dog&			Dog::operator= (Dog const& source) {
 
 	if (this != &source)
 	{

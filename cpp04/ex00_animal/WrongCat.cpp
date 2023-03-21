@@ -10,7 +10,7 @@ WrongCat::WrongCat () {
 	announce ("constructor");
 }
 
-WrongCat::WrongCat (WrongCat const & original) {
+WrongCat::WrongCat (WrongCat const& original) {
 	
 	*this = original;
 	announce ("copy constructor");
@@ -22,7 +22,7 @@ WrongCat::~WrongCat () {
 }
 
 // OPERATOR = 
-WrongCat&	WrongCat::operator= (WrongCat const & source) {
+WrongCat&	WrongCat::operator= (WrongCat const& source) {
 
 	if (this != &source)
 		_type = source.getType ();
