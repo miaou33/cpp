@@ -27,8 +27,10 @@ Character::Character (Character const& original) : _name (original.getName ()) {
 Character::~Character () {
 
 	for (int i = 0; i < _bag_max; i++)
+	{
 		if (_bag [i])
 			delete _bag [i];
+	}
 }
 
 Character& Character::operator= (Character const& toBecome) {
@@ -86,13 +88,19 @@ void	Character::equip (AMateria* m) {
 		while (_bag [i] && i < _bag_max)
 			i++;
 		_bag [i] = m->clone ();
+		_nb_equiped++;
+		std::cout << _name << " equiped " << m->getType ()
+					<< "\n\t-> number of materias in bag = " << _nb_equiped << std::endl;
 	}
 }
 
 void	Character::unequip (int idx) {
 
 	if (is_in_bag (idx) && _bag [idx])
+	{
 		_bag [idx] = NULL;
+		_nb_equiped--;
+	}
 }
 
 void	Character::use (int idx, ICharacter& target) {

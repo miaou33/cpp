@@ -4,7 +4,7 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Cure::Cure () : AMateria ("Cure") {}
+Cure::Cure () : AMateria ("cure") {}
 
 Cure::Cure (std::string const& type) : AMateria (type) {}
 

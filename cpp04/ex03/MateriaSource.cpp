@@ -27,8 +27,10 @@ MateriaSource::MateriaSource (MateriaSource const& original) {
 MateriaSource::~MateriaSource () {
 
 	for (int i = 0; i < _materia_source_max; i++)
+	{
 		if (_materia_source [i])
 			delete (_materia_source [i]);
+	}
 }
 
 MateriaSource&	MateriaSource::operator= (MateriaSource const& toBecome) {
@@ -80,6 +82,7 @@ void		MateriaSource::learnMateria (AMateria *m) {
 		while (_materia_source [i] && i < _materia_source_max)
 			i++;
 		_materia_source [i] = m;
+		_nb_learned++;
 	}
 }
 
