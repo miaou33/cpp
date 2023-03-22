@@ -1,4 +1,5 @@
 # include "AMateria.hpp"
+# include "Character.hpp"
 
 int	main (void)
 {
@@ -18,4 +19,5 @@ int	main (void)
 	delete me;
 	delete src;
 	return 0;
+	// unequip ne delete pas !!! tmp avant
 }

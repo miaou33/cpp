@@ -6,8 +6,10 @@
 class Character : virtual public ICharacter {
 
 	private:
-		std::string	_name;
-		AMateria	**_materias;
+		std::string			_name;
+		static const int	_bag_max = 4;
+		int					_nb_equiped;
+		AMateria			*_bag [_bag_max];
 	
 	public:
 		Character (std::string name);
@@ -15,11 +17,13 @@ class Character : virtual public ICharacter {
 		virtual ~Character ();
 		Character& operator= (Character const& source);
 
-		virtual std::string const& getName () const;
+		virtual std::string const&	getName () const;
+		AMateria 					*getMateria (int i) const;
 
-		virtual void equip (AMateria* m);
-		virtual void unequip (int idx);
-		virtual void use (int idx, ICharacter& target);
+		bool			is_in_bag (int i) const;
+		virtual void	equip (AMateria* m);
+		virtual void	unequip (int idx);
+		virtual void	use (int idx, ICharacter& target);
 };
 
 #endif

@@ -7,6 +7,7 @@ class Ice : public AMateria {
 
 	public:
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
+		Ice ();
 		Ice (std::string const& type);
 		Ice (Ice const& original);
 		virtual ~Ice ();

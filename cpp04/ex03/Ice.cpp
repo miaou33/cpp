@@ -4,6 +4,8 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+Ice::Ice () : AMateria ("ice") {}
+
 Ice::Ice (std::string const& type) : AMateria (type) {}
 
 Ice::Ice (Ice const& original) : AMateria (original) {}
