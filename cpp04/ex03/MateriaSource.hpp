@@ -6,16 +6,22 @@
 class MateriaSource : public IMateriaSource {
 
 	private:
-		static const int	_source_max = 4;
-		AMateria*			_source [_source_max];
+		static const int	_materia_source_max = 4;
+		int					_nb_learned;
+		AMateria*			_materia_source [_materia_source_max];
 
 	public:
+	 	// CONSTRUCTOR DESTRUCTOR ASSIGNMENT
 		MateriaSource ();
 		MateriaSource (MateriaSource const& original);
-		MateriaSource& operator= (MateriaSource const& source);
 		virtual ~MateriaSource ();
+		MateriaSource& operator= (MateriaSource const& toBecome);
+
+		// GETTER
+		AMateria 			*getMateria (int i) const;
 
 		// MEMBER FUNCTIONS
+		bool				is_in_source (int i) const;
 		virtual void		learnMateria (AMateria *);
 		virtual AMateria*	createMateria (std::string const& type);
 };

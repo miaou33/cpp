@@ -10,10 +10,10 @@ AMateria::AMateria (AMateria const& original) : _type (original.getType ()) {}
 
 AMateria::~AMateria () {}
 
-AMateria& AMateria::operator= (AMateria const& source) {
+AMateria& AMateria::operator= (AMateria const& toBecome) {
 
-	if (this != &source)
-		_type = source.getType ();
+	if (this != &toBecome)
+		_type = toBecome.getType ();
 	return *this;
 }
 

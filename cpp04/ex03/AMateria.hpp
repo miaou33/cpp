@@ -3,6 +3,8 @@
 
 # include "ICharacter.hpp"
 
+class ICharacter;
+
 class AMateria {
 
 	protected:
@@ -13,7 +15,7 @@ class AMateria {
 		AMateria (std::string const& type);
 		AMateria (AMateria const& original);
 		virtual ~AMateria ();
-		AMateria& operator= (AMateria const& source);
+		AMateria& operator= (AMateria const& toBecome);
 
 		// GETTER
 		std::string const&	getType () const;

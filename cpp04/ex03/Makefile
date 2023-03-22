@@ -15,8 +15,11 @@ BUILD_DIR  = ./objs
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
+			Character.cpp \
 			AMateria.cpp \
-			Ice.cpp 
+			MateriaSource.cpp \
+			Ice.cpp \
+			Cure.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 

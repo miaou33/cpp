@@ -1,18 +1,18 @@
-# include "Ice.hpp"
+# include "Cure.hpp"
 
 /******************************************************************************************************/
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Ice::Ice () : AMateria ("ice") {}
+Cure::Cure () : AMateria ("Cure") {}
 
-Ice::Ice (std::string const& type) : AMateria (type) {}
+Cure::Cure (std::string const& type) : AMateria (type) {}
 
-Ice::Ice (Ice const& original) : AMateria (original) {}
+Cure::Cure (Cure const& original) : AMateria (original) {}
 
-Ice::~Ice () {}
+Cure::~Cure () {}
 
-Ice& Ice::operator= (Ice const& toBecome) {
+Cure& Cure::operator= (Cure const& toBecome) {
 
 	if (this != &toBecome)
 		_type = toBecome.getType ();
@@ -23,7 +23,7 @@ Ice& Ice::operator= (Ice const& toBecome) {
 /*	GETTERS SETTERS																	  */
 /**************************************************************************************/
 
-std::string const& Ice::getType () const {
+std::string const& Cure::getType () const {
 
 	return (std::string const&) _type;
 }
@@ -32,12 +32,12 @@ std::string const& Ice::getType () const {
 /*	MEMBER FUNCTIONS																				  */
 /******************************************************************************************************/
 
-Ice*	Ice::clone () const {
+Cure*	Cure::clone () const {
 
-	return new Ice (*this);
+	return new Cure (*this);
 }
 
-void	Ice::use (ICharacter& target) {
+void	Cure::use (ICharacter& target) {
 
-	std::cout << "* shoots an ice bolt at " << target.getName () << " *" << std::endl;
+	std::cout << "* heals " << target.getName () << "'s wounds *" << std::endl;
 }

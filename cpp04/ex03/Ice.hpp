@@ -11,7 +11,7 @@ class Ice : public AMateria {
 		Ice (std::string const& type);
 		Ice (Ice const& original);
 		virtual ~Ice ();
-		Ice& operator= (Ice const& source);
+		Ice& operator= (Ice const& toBecome);
 
 		// GETTER
 		std::string const&	getType () const;

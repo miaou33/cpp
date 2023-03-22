@@ -31,19 +31,19 @@ Character::~Character () {
 			delete _bag [i];
 }
 
-Character& Character::operator= (Character const& source) {
+Character& Character::operator= (Character const& toBecome) {
 
-	if (this != &source)
+	if (this != &toBecome)
 	{
-		_name = source.getName ();
+		_name = toBecome.getName ();
 		_nb_equiped = 0;
 		for (int i = 0; i < _bag_max; i++)
 		{
 			if (_bag[i])
 				delete _bag [i];
-			if (source.getMateria (i))
+			if (toBecome.getMateria (i))
 			{
-				_bag [i] = source.getMateria(i)->clone();
+				_bag [i] = toBecome.getMateria(i)->clone();
 				_nb_equiped++;
 			}
 		}
