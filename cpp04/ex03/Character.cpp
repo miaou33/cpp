@@ -87,7 +87,7 @@ void	Character::equip (AMateria* m) {
 		int i = 0;
 		while (_bag [i] && i < _bag_max)
 			i++;
-		_bag [i] = m->clone ();
+		_bag [i] = m;
 		_nb_equiped++;
 		std::cout << _name << " equiped " << m->getType ()
 					<< "\n\t-> number of materias in bag = " << _nb_equiped << std::endl;
