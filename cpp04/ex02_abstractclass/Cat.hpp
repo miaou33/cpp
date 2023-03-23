@@ -16,7 +16,7 @@ class	Cat : public AAnimal {
 		Cat (Cat const& original);
 		virtual ~Cat ();
 
-		Cat				&operator= (Cat const& source);
+		Cat				&operator= (Cat const& toBecome);
 
 		Brain			*getBrain () const;
 		std::string		getIdea (int i) const;

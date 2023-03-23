@@ -12,7 +12,7 @@ class	WrongCat : public WrongAnimal {
 		WrongCat ();
 		WrongCat (WrongCat const& original);
 		virtual ~WrongCat ();
-		WrongCat& operator= (WrongCat const& source);
+		WrongCat& operator= (WrongCat const& toBecome);
 
 		// OTHER
 		void	announce (std::string const func) const;

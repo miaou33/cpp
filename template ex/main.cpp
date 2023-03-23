@@ -1,4 +1,4 @@
-#include "Class.hpp"
+#include "nClass.hpp"
 
 int	main (void)
 {

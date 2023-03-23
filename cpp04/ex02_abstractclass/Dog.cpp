@@ -24,12 +24,12 @@ Dog::~Dog () {
 }
 
 // OPERATOR = 
-Dog&			Dog::operator= (Dog const& source) {
+Dog&			Dog::operator= (Dog const& toBecome) {
 
-	if (this != &source)
+	if (this != &toBecome)
 	{
-		_type = source.getType ();
-		(*_brain) = *(source.getBrain ());
+		_type = toBecome.getType ();
+		(*_brain) = *(toBecome.getBrain ());
 	}
 	announce ("assignment operator");
 	return *this;

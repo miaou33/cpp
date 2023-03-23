@@ -22,10 +22,10 @@ Cat::~Cat () {
 }
 
 // OPERATOR = 
-Cat&	Cat::operator= (Cat const& source) {
+Cat&	Cat::operator= (Cat const& toBecome) {
 
-	if (this != &source)
-		_type = source.getType ();
+	if (this != &toBecome)
+		_type = toBecome.getType ();
 	return *this;
 }
 

@@ -1,35 +1,35 @@
-#include "Dog.hpp"
+#include "Cat.hpp"
 
 /* ************************************************* */
 /* 					 CONSTRUCTORS					 */
 /* ************************************************* */
 
-Dog::Dog () {
+Cat::Cat () {
 	
-	_type = "Dog"; 
+	_type = "Cat"; 
 	_brain = new Brain ();
 	announce ("constructor");
 }
 
-Dog::Dog (Dog const& original) : Animal (original) {
+Cat::Cat (Cat const& original) : Animal (original) {
 	
 	_brain = new Brain (*(original.getBrain ()));
 	announce ("copy constructor");
 }
 
-Dog::~Dog () {
+Cat::~Cat () {
 
 	delete _brain;
 	announce ("destructor");
 }
 
 // OPERATOR = 
-Dog&			Dog::operator= (Dog const& source) {
+Cat&			Cat::operator= (Cat const& toBecome) {
 
-	if (this != &source)
+	if (this != &toBecome)
 	{
-		_type = source.getType ();
-		(*_brain) = *(source.getBrain ());
+		_type = toBecome.getType ();
+		(*_brain) = *(toBecome.getBrain ());
 	}
 	announce ("assignment operator");
 	return *this;
@@ -40,22 +40,22 @@ Dog&			Dog::operator= (Dog const& source) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-Brain*			Dog::getBrain () const { 
+Brain*			Cat::getBrain () const { 
 	
 	return _brain;
 }
 
-std::string		Dog::getIdea (int i) const {
+std::string		Cat::getIdea (int i) const {
 	
 	return _brain->getIdea (i);
 }
 
-void			Dog::setIdea (int i, std::string idea) {
+void			Cat::setIdea (int i, std::string idea) {
 
 	_brain->setIdea (i, idea);
 }
 
-void			Dog::displayIdea (int i) const {
+void			Cat::displayIdea (int i) const {
 
 	_brain->displayIdea (i);
 }
@@ -65,12 +65,12 @@ void			Dog::displayIdea (int i) const {
 /* 						OTHER						 */
 /* ************************************************* */
 
-void			Dog::announce (std::string const func) const {
+void			Cat::announce (std::string const func) const {
 
-	std::cout << "Dog " << func << " called" << std::endl;
+	std::cout << "Cat " << func << " called" << std::endl;
 }
 
-void			Dog::makeSound () const {
+void			Cat::makeSound () const {
 
-	std::cout << "bark" << std::endl;
+	std::cout << "meow" << std::endl;
 }
