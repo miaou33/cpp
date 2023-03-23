@@ -18,6 +18,14 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& toBecome) {
 /*	GETTERS SETTERS																					  */
 /******************************************************************************************************/
 
+std::string const&	Bureaucrat::getName () const {}
+
+__uint8_t const&	Bureaucrat::getGrade () const {}
+
+void				Bureaucrat::lowerGrade () {}
+
+void				Bureaucrat::upperGrade () {}
+
 /******************************************************************************************************/
 /*	MEMBER FUNCTIONS																				  */
 /******************************************************************************************************/
