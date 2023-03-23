@@ -1,21 +1,21 @@
-# include "nClass.hpp"
+# include "Bureaucrat.hpp"
 
 /******************************************************************************************************/
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-nClass::nClass () {}
+Bureaucrat::Bureaucrat () {}
 
-nClass::nClass (nClass const& original) {}
+Bureaucrat::Bureaucrat (Bureaucrat const& original) {}
 
-nClass::~nClass () {}
+Bureaucrat::~Bureaucrat () {}
 
-nClass& nClass::operator= (nClass const& toBecome) {
+Bureaucrat& Bureaucrat::operator= (Bureaucrat const& toBecome) {
 
 }
 
 /******************************************************************************************************/
-/*	GETTERS SETTERS																	  				  */
+/*	GETTERS SETTERS																					  */
 /******************************************************************************************************/
 
 /******************************************************************************************************/
