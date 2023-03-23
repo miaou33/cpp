@@ -3,12 +3,13 @@
 
 # include <string>
 # include <iostream>
+# include <exception>
 
 class Bureaucrat {
 
 	private:
-		std::string	_name;
-		__uint8_t	_grade;
+		std::string const	_name;
+		__uint8_t			_grade;
 
 	public:
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
@@ -27,5 +28,6 @@ class Bureaucrat {
 
 };
 
+std::ostream&	operator<< (std::ostream const& ostream, Bureaucrat const& toDisplay);
 
 # endif
