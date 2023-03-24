@@ -50,6 +50,29 @@ int	main (void)
 	FRAGTRAP.printStats ();
 	DIAMONDTRAP.printStats ();
 
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	SCAVTRAP.attack ("DIAMONDTRAP");
+	if (SCAVTRAP.getHP () && SCAVTRAP.getPP ())
+		DIAMONDTRAP.takeDamage (SCAVTRAP.getAD ());
+	DIAMONDTRAP.whoAmI ();
+
 	std::cout << std::endl;
 
 }

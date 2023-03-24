@@ -5,6 +5,10 @@
 # include <iostream>
 # include <exception>
 
+typedef unsigned long t_ul;
+typedef unsigned int t_ui;
+typedef long long t_ll;
+
 class Bureaucrat {
 
 	private:
@@ -13,7 +17,7 @@ class Bureaucrat {
 
 	public:
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
-		Bureaucrat ();
+		Bureaucrat (std::string const name, t_ll grade);
 		Bureaucrat (Bureaucrat const& original);
 		virtual ~Bureaucrat ();
 		Bureaucrat& operator= (Bureaucrat const& toBecome);

@@ -7,7 +7,6 @@
 DiamondTrap::DiamondTrap (std::string name) {
 
 	_name = name;
-	ClapTrap::_name = name + "_clap_name";
 	FragTrap::setDefaultHP ();
 	ScavTrap::setDefaultPP ();
 	FragTrap::setDefaultAD ();
@@ -55,7 +54,7 @@ std::string const	DiamondTrap::getName () const {
 
 void	DiamondTrap::whoAmI (void) {
 
-	FragTrap::_HP ?
+	_HP ?
 		std::cout << this->getName () << "'s subobject name is " << ClapTrap::_name << ", and them is " << _name <<  std::endl
 		: std:: cout << this->getName () << " tries to do a speak but they are already KO" << std::endl;
 }

@@ -4,7 +4,18 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Bureaucrat::Bureaucrat () {}
+Bureaucrat::Bureaucrat (std::string const name, t_ll grade) : _name (name) {
+
+	try {
+		if (grade < 1 || grade > 150)
+			throw grade;
+		else
+			_grade = (__uint8_t) grade;
+	}
+	catch (t_ull& exception) {
+
+	}
+}
 
 Bureaucrat::Bureaucrat (Bureaucrat const& original) {}
 
