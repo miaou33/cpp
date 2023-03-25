@@ -6,16 +6,12 @@
 
 Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
 
-	try {
-		if (grade < _highest_grade || grade > _lowest_grade)
-			throw (grade);
+	if (grade < _highest_grade)
+		throw Bureaucrat::GradeTooHighException ();
+	else if (grade > _lowest_grade)
+		throw Bureaucrat::GradeTooLowException ();
+	else
 		_grade = grade;
-	}
-	catch (int wrong_grade) {
-		wrong_grade > _lowest_grade ?
-			throw (Bureaucrat::GradeTooLowException ())
-			: throw (Bureaucrat::GradeTooHighException ());
-	}
 }
 
 Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
@@ -54,11 +50,6 @@ void				Bureaucrat::upperGrade () {}
 /*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
-const char*	Bureaucrat::Exception::what () const throw () {
-
-	return ("Bureaucrat exception");
-}
-
 const char*	Bureaucrat::GradeTooHighException::what () const throw () {
 
 	return ("Grade after 150 doesnt exist. 150 is the minimum");
@@ -73,8 +64,8 @@ const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 /*	NON MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
-std::ostream&	operator<< (std::ostream& ostream, Bureaucrat const& toDisplay) {
+std::ostream&	operator<< (std::ostream& o, Bureaucrat const& toDisplay) {
 
-	ostream << toDisplay.getName () << ", bureaucrat grade " << toDisplay.getGrade ();
-	return ostream;
+	o << toDisplay.getName () << ", bureaucrat grade " << toDisplay.getGrade ();
+	return o;
 }
