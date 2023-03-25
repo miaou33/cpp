@@ -84,12 +84,9 @@ void	ClapTrap::attack (const std::string& target)
 {
 	if (_HP)
 	{
-		_PP ?
+		_PP-- ?
 			std::cout << _name << " attacks " << target << std::endl
 			: std::cout << _name << " cant attack " << target << " coz no PP" << std::endl;
-
-		t_ll res = (t_ll) _PP--;
-		_PP = res >= 0 ? (t_ui) res : 0;
 
 	}
 	else
