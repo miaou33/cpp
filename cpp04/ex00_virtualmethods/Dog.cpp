@@ -22,10 +22,10 @@ Dog::~Dog () {
 }
 
 // OPERATOR =
-Dog&	Dog::operator= (Dog const& toBecome) {
+Dog&	Dog::operator= (Dog const& rhs) {
 
-	if (this != &toBecome)
-		_type = toBecome.getType ();
+	if (this != &rhs)
+		_type = rhs.getType ();
 	return *this;
 }
 

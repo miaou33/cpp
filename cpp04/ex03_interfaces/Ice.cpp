@@ -12,10 +12,10 @@ Ice::Ice (Ice const& original) : AMateria (original) {}
 
 Ice::~Ice () {}
 
-Ice& Ice::operator= (Ice const& toBecome) {
+Ice& Ice::operator= (Ice const& rhs) {
 
-	if (this != &toBecome)
-		_type = toBecome.getType ();
+	if (this != &rhs)
+		_type = rhs.getType ();
 	return *this;
 }
 
@@ -29,7 +29,7 @@ std::string const& Ice::getType () const {
 }
 
 /******************************************************************************************************/
-/*	MEMBER FUNCTIONS																				  */
+/*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
 Ice*	Ice::clone () const {

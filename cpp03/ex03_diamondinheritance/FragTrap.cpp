@@ -78,7 +78,7 @@ void	FragTrap::setDefaultAD () {
 
 
 /* ************************************************* */
-/* 						OTHERS						 */
+/* 						NON MB FUNCTIONS			 */
 /* ************************************************* */
 
 void	FragTrap::attack (const std::string& target)

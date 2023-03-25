@@ -22,10 +22,10 @@ WrongCat::~WrongCat () {
 }
 
 // OPERATOR = 
-WrongCat&	WrongCat::operator= (WrongCat const& toBecome) {
+WrongCat&	WrongCat::operator= (WrongCat const& rhs) {
 
-	if (this != &toBecome)
-		_type = toBecome.getType ();
+	if (this != &rhs)
+		_type = rhs.getType ();
 	return *this;
 }
 

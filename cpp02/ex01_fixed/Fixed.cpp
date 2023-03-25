@@ -66,7 +66,7 @@ void	Fixed::setRawBits (int const raw) {
 
 
 /* ************************************************* */
-/* 					   OTHERS						 */
+/* 					   NON MB FUNCTIONS			 */
 /* ************************************************* */
 
 std::ostream&	operator<< (std::ostream& o, Fixed const& right) {

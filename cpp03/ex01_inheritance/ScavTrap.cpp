@@ -54,7 +54,7 @@ ScavTrap&	ScavTrap::operator= (ClapTrap const& source) {
 }
 
 /* ************************************************* */
-/* 						OTHERS						 */
+/* 						NON MB FUNCTIONS			 */
 /* ************************************************* */
 
 void	ScavTrap::attack (const std::string& target)

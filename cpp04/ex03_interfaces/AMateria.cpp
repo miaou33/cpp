@@ -10,10 +10,10 @@ AMateria::AMateria (AMateria const& original) : _type (original.getType ()) {}
 
 AMateria::~AMateria () {}
 
-AMateria& AMateria::operator= (AMateria const& toBecome) {
+AMateria& AMateria::operator= (AMateria const& rhs) {
 
-	if (this != &toBecome)
-		_type = toBecome.getType ();
+	if (this != &rhs)
+		_type = rhs.getType ();
 	return *this;
 }
 
@@ -27,7 +27,7 @@ std::string const& AMateria::getType () const {
 }
 
 /**************************************************************************************/
-/*	MEMBER FUNCTIONS																  */
+/*	OTHER MB FUNCTIONS																  */
 /**************************************************************************************/
 
 void	AMateria::use (ICharacter& target) {

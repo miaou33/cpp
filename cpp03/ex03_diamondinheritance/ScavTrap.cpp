@@ -78,7 +78,7 @@ void	ScavTrap::setDefaultAD () {
 
 
 /* ************************************************* */
-/* 						OTHERS						 */
+/* 						NON MB FUNCTIONS			 */
 /* ************************************************* */
 
 void	ScavTrap::attack (const std::string& target)

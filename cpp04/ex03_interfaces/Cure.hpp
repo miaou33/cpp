@@ -11,12 +11,12 @@ class Cure : public AMateria {
 		Cure (std::string const& type);
 		Cure (Cure const& original);
 		virtual ~Cure ();
-		Cure& operator= (Cure const& toBecome);
+		Cure& operator= (Cure const& rhs);
 
 		// GETTER
 		std::string const&	getType () const;
 
-		// MEMBER FUNCTIONS
+		// OTHER MB FUNCTIONS
 		virtual Cure*		clone () const;
 		virtual void 		use (ICharacter& target);
 

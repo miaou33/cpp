@@ -11,12 +11,12 @@ class Ice : public AMateria {
 		Ice (std::string const& type);
 		Ice (Ice const& original);
 		virtual ~Ice ();
-		Ice& operator= (Ice const& toBecome);
+		Ice& operator= (Ice const& rhs);
 
 		// GETTER
 		std::string const&	getType () const;
 
-		// MEMBER FUNCTIONS
+		// OTHER MB FUNCTIONS
 		virtual Ice*		clone () const;
 		virtual void 		use (ICharacter& target);
 

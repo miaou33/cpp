@@ -21,10 +21,10 @@ Animal::~Animal () {
 }
 
 // OPERATOR=
-Animal&	Animal::operator= (Animal const& toBecome) {
+Animal&	Animal::operator= (Animal const& rhs) {
 
-	if (this != &toBecome)
-		_type = toBecome.getType ();
+	if (this != &rhs)
+		_type = rhs.getType ();
 	return *this;
 }
 

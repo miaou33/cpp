@@ -24,12 +24,12 @@ Cat::~Cat () {
 }
 
 // OPERATOR = 
-Cat&			Cat::operator= (Cat const& toBecome) {
+Cat&			Cat::operator= (Cat const& rhs) {
 
-	if (this != &toBecome)
+	if (this != &rhs)
 	{
-		_type = toBecome.getType ();
-		(*_brain) = *(toBecome.getBrain ());
+		_type = rhs.getType ();
+		(*_brain) = *(rhs.getBrain ());
 	}
 	announce ("assignment operator");
 	return *this;

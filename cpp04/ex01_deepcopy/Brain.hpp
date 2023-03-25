@@ -13,7 +13,7 @@ class	Brain {
 		Brain ();
 		Brain (Brain const& original);
 		~Brain ();
-		Brain&	operator= (Brain const& toBecome);
+		Brain&	operator= (Brain const& rhs);
 		
 		std::string*	getIdeas () const;
 		std::string		getIdea (int i) const;

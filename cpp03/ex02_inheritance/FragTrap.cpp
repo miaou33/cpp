@@ -54,7 +54,7 @@ FragTrap&	FragTrap::operator= (ClapTrap const& source) {
 }
 
 /* ************************************************* */
-/* 						OTHERS						 */
+/* 						NON MB FUNCTIONS			 */
 /* ************************************************* */
 
 void	FragTrap::attack (const std::string& target)

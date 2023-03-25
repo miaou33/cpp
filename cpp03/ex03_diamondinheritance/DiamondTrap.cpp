@@ -49,7 +49,7 @@ std::string const	DiamondTrap::getName () const {
 
 
 /* ************************************************* */
-/* 						OTHERS						 */
+/* 						NON MB FUNCTIONS			 */
 /* ************************************************* */
 
 void	DiamondTrap::whoAmI (void) {

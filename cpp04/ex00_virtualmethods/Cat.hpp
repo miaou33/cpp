@@ -12,7 +12,7 @@ class	Cat : public Animal {
 		Cat ();
 		Cat (Cat const& original);
 		virtual ~Cat ();
-		Cat& operator= (Cat const& toBecome);
+		Cat& operator= (Cat const& rhs);
 
 		// OTHER
 		virtual void	announce (std::string const func) const;

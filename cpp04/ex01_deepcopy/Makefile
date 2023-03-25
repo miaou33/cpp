@@ -42,13 +42,13 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
-	@echo -e -e "\n${UNDER}created${END}: ${NAME}"
+	@echo -e -e -e "\n${UNDER}created${END}: ${NAME}"
 
 -include ${DEPS}
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo -e -e "${UNDER}created${END}: ${@:%=%}"
+	@echo -e -e -e "${UNDER}created${END}: ${@:%=%}"
 	@${CC} ${CXXFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
@@ -60,11 +60,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo -e -e "${UNDER}deleted${END}: objs & deps"
+	@echo -e -e -e "${UNDER}deleted${END}: objs & deps"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo -e -e "${UNDER}deleted${END}: ${NAME}\n"
+	@echo -e -e -e "${UNDER}deleted${END}: ${NAME}\n"
 
 gitm:
 	git add .

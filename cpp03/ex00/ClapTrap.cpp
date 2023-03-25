@@ -77,7 +77,7 @@ ClapTrap&	ClapTrap::operator= (ClapTrap const& source) {
 }
 
 /* ************************************************* */
-/* 						OTHERS				 		 */
+/* 						NON MB FUNCTIONS	 		 */
 /* ************************************************* */
 
 void	ClapTrap::attack (const std::string& target)

@@ -8,11 +8,11 @@ class nClass {
 		nClass ();
 		nClass (nClass const& original);
 		virtual ~nClass ();
-		nClass& operator= (nClass const& toBecome);
+		nClass& operator= (nClass const& rhs);
 
 		// GETTER
 
-		// MEMBER FUNCTIONS
+		// OTHER MB FUNCTIONS
 
 };
 

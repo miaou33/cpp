@@ -4,48 +4,76 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Bureaucrat::Bureaucrat (std::string const name, t_ll grade) : _name (name) {
+Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
 
 	try {
-		if (grade < 1 || grade > 150)
-			throw grade;
-		else
-			_grade = (__uint8_t) grade;
+		if (grade < _highest_grade || grade > _lowest_grade)
+			throw (grade);
+		_grade = grade;
 	}
-	catch (t_ull& exception) {
-
+	catch (int wrong_grade) {
+		wrong_grade > _lowest_grade ?
+			throw (Bureaucrat::GradeTooLowException ())
+			: throw (Bureaucrat::GradeTooHighException ());
 	}
 }
 
-Bureaucrat::Bureaucrat (Bureaucrat const& original) {}
+Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
+
+	*this = original;
+}
 
 Bureaucrat::~Bureaucrat () {}
 
-Bureaucrat& Bureaucrat::operator= (Bureaucrat const& toBecome) {
+Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 
+	std::cout << "Warning : name not assigned to '" << rhs.getName () << "' coz name is const" << std::endl;
+	_grade = rhs.getGrade ();
+	return *this;
 }
 
 /******************************************************************************************************/
 /*	GETTERS SETTERS																					  */
 /******************************************************************************************************/
 
-std::string const&	Bureaucrat::getName () const {}
+std::string const&	Bureaucrat::getName () const {
 
-__uint8_t const&	Bureaucrat::getGrade () const {}
+	return ((std::string const &) _name);
+}
+
+int const&			Bureaucrat::getGrade () const {
+
+	return ((int const &) _grade);
+}
 
 void				Bureaucrat::lowerGrade () {}
 
 void				Bureaucrat::upperGrade () {}
 
 /******************************************************************************************************/
-/*	MEMBER FUNCTIONS																				  */
+/*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
+const char*	Bureaucrat::Exception::what () const throw () {
+
+	return ("Bureaucrat exception");
+}
+
+const char*	Bureaucrat::GradeTooHighException::what () const throw () {
+
+	return ("Grade after 150 doesnt exist. 150 is the minimum");
+}
+
+const char*	Bureaucrat::GradeTooLowException::what () const throw () {
+
+	return ("Grade lesser than 1 doesnt exist. 1 is maximum");
+}
+
 /******************************************************************************************************/
-/*	OTHERS																							  */
+/*	NON MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
-std::ostream&	operator<< (std::ostream ostream, Bureaucrat const& toDisplay) {
+std::ostream&	operator<< (std::ostream& ostream, Bureaucrat const& toDisplay) {
 
 	ostream << toDisplay.getName () << ", bureaucrat grade " << toDisplay.getGrade ();
 	return ostream;

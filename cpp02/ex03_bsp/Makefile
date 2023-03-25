@@ -40,13 +40,13 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
-	@echo "\ncreated: ${NAME}"
+	@echo -e "\ncreated: ${NAME}"
 
 -include ${DEPS}
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo "created: ${@:%=%}"
+	@echo -e "created: ${@:%=%}"
 	@${CC} ${CXXFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
@@ -58,11 +58,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo "deleted: objs & deps"
+	@echo -e "deleted: objs & deps"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo "deleted: ${NAME}\n"
+	@echo -e "deleted: ${NAME}\n"
 
 gitm:
 	git add .

@@ -23,12 +23,12 @@ Brain::~Brain () {
 }
 
 // OPERATOR = 
-Brain&	Brain::operator= (Brain const& toBecome) {
+Brain&	Brain::operator= (Brain const& rhs) {
 
-	if (this != &toBecome)
+	if (this != &rhs)
 	{
 		for (int i = 0; i < 100; i++)
-			_ideas [i] = toBecome.getIdea (i);
+			_ideas [i] = rhs.getIdea (i);
 	}
 	return *this;
 }

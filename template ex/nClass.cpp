@@ -10,7 +10,7 @@ nClass::nClass (nClass const& original) {}
 
 nClass::~nClass () {}
 
-nClass& nClass::operator= (nClass const& toBecome) {
+nClass& nClass::operator= (nClass const& rhs) {
 
 }
 
@@ -19,5 +19,5 @@ nClass& nClass::operator= (nClass const& toBecome) {
 /******************************************************************************************************/
 
 /******************************************************************************************************/
-/*	MEMBER FUNCTIONS																				  */
+/*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/

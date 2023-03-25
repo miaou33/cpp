@@ -12,10 +12,10 @@ Cure::Cure (Cure const& original) : AMateria (original) {}
 
 Cure::~Cure () {}
 
-Cure& Cure::operator= (Cure const& toBecome) {
+Cure& Cure::operator= (Cure const& rhs) {
 
-	if (this != &toBecome)
-		_type = toBecome.getType ();
+	if (this != &rhs)
+		_type = rhs.getType ();
 	return *this;
 }
 
@@ -29,7 +29,7 @@ std::string const& Cure::getType () const {
 }
 
 /******************************************************************************************************/
-/*	MEMBER FUNCTIONS																				  */
+/*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
 Cure*	Cure::clone () const {

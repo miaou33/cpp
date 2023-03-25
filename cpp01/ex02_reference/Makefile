@@ -50,11 +50,11 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
-	@echo "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
+	@echo -e "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
+	@echo -e "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
 	@${CC} ${CXXFLAGS} -o $@ -c $<
 
 ################################################################################
@@ -66,11 +66,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo "${UNDER}${RED}deleted${END}${RED}: objs${END}"
+	@echo -e "${UNDER}${RED}deleted${END}${RED}: objs${END}"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}\n"
+	@echo -e "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}\n"
 
 gitm:
 	git add .

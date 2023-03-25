@@ -15,12 +15,12 @@ class AMateria {
 		AMateria (std::string const& type);
 		AMateria (AMateria const& original);
 		virtual ~AMateria ();
-		AMateria& operator= (AMateria const& toBecome);
+		AMateria& operator= (AMateria const& rhs);
 
 		// GETTER
 		std::string const&	getType () const;
 
-		// MEMBER FUNCTIONS
+		// OTHER MB FUNCTIONS
 		virtual AMateria*	clone () const = 0;
  		virtual void		use (ICharacter& target);
 

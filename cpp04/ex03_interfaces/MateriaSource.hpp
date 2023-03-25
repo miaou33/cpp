@@ -15,12 +15,12 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource ();
 		MateriaSource (MateriaSource const& original);
 		virtual ~MateriaSource ();
-		MateriaSource& operator= (MateriaSource const& toBecome);
+		MateriaSource& operator= (MateriaSource const& rhs);
 
 		// GETTER
 		AMateria 			*getMateria (int i) const;
 
-		// MEMBER FUNCTIONS
+		// OTHER MB FUNCTIONS
 		bool				is_in_source (int i) const;
 		virtual void		learnMateria (AMateria *);
 		virtual AMateria*	createMateria (std::string const& type);

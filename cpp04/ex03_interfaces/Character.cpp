@@ -33,19 +33,19 @@ Character::~Character () {
 	}
 }
 
-Character& Character::operator= (Character const& toBecome) {
+Character& Character::operator= (Character const& rhs) {
 
-	if (this != &toBecome)
+	if (this != &rhs)
 	{
-		_name = toBecome.getName ();
+		_name = rhs.getName ();
 		_nb_equiped = 0;
 		for (int i = 0; i < _bag_max; i++)
 		{
 			if (_bag[i])
 				delete _bag [i];
-			if (toBecome.getMateria (i))
+			if (rhs.getMateria (i))
 			{
-				_bag [i] = toBecome.getMateria(i)->clone();
+				_bag [i] = rhs.getMateria(i)->clone();
 				_nb_equiped++;
 			}
 		}
@@ -70,7 +70,7 @@ AMateria*			Character::getMateria (int i) const {
 }
 
 /**************************************************************************************/
-/*	MEMBER FUNCTIONS																  */
+/*	OTHER MB FUNCTIONS																  */
 /**************************************************************************************/
 
 bool	Character::is_in_bag (int i) const {

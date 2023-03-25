@@ -33,18 +33,18 @@ MateriaSource::~MateriaSource () {
 	}
 }
 
-MateriaSource&	MateriaSource::operator= (MateriaSource const& toBecome) {
+MateriaSource&	MateriaSource::operator= (MateriaSource const& rhs) {
 
-	if (this != &toBecome)
+	if (this != &rhs)
 	{
 		_nb_learned = 0;
 		for (int i = 0; i < _materia_source_max; i++)
 		{
 			if (_materia_source [i])
 				delete _materia_source [i];
-			if (toBecome.getMateria (i))
+			if (rhs.getMateria (i))
 			{
-				_materia_source [i] = toBecome.getMateria(i)->clone ();
+				_materia_source [i] = rhs.getMateria(i)->clone ();
 				_nb_learned++;
 			}
 		}
@@ -64,7 +64,7 @@ AMateria*			MateriaSource::getMateria (int i) const {
 }
 
 /**************************************************************************************/
-/*	MEMBER FUNCTIONS																  */
+/*	OTHER MB FUNCTIONS																  */
 /**************************************************************************************/
 
 bool	MateriaSource::is_in_source (int i) const {
