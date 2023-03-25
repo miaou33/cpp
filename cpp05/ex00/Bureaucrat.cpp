@@ -6,12 +6,8 @@
 
 Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
 
-	if (grade < _highest_grade)
-		throw Bureaucrat::GradeTooHighException ();
-	else if (grade > _lowest_grade)
-		throw Bureaucrat::GradeTooLowException ();
-	else
-		_grade = grade;
+	checkGrade (grade);
+	_grade = grade;
 }
 
 Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
@@ -42,22 +38,36 @@ int const&			Bureaucrat::getGrade () const {
 	return ((int const &) _grade);
 }
 
-void				Bureaucrat::lowerGrade () {}
+void				Bureaucrat::lowerGrade () {
 
-void				Bureaucrat::upperGrade () {}
+	checkGrade (++_grade);
+}
+
+void				Bureaucrat::upperGrade () {
+
+	checkGrade (--_grade);
+}
 
 /******************************************************************************************************/
 /*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
+void		Bureaucrat::checkGrade (int grade) const {
+
+	if (grade < _highest_grade)
+		throw Bureaucrat::GradeTooHighException ();
+	else if (grade > _lowest_grade)
+		throw Bureaucrat::GradeTooLowException ();
+}
+
 const char*	Bureaucrat::GradeTooHighException::what () const throw () {
 
-	return ("Grade after 150 doesnt exist. 150 is the minimum");
+	return ("Grade lesser than 1 doesnt exist. 1 is maximum");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 
-	return ("Grade lesser than 1 doesnt exist. 1 is maximum");
+	return ("Grade after 150 doesnt exist. 150 is the minimum");
 }
 
 /******************************************************************************************************/

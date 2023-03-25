@@ -30,6 +30,9 @@ class Bureaucrat {
 		void				lowerGrade ();
 		void				upperGrade ();
 
+		// CHECKER
+		void				checkGrade (int grade) const;
+
 		// NESTED EXCEPTIONS
 		class GradeTooHighException : public std::exception {
 
@@ -43,8 +46,6 @@ class Bureaucrat {
 				virtual const char* what() const throw();
 
 		};
-
-
 };
 
 std::ostream&	operator<< (std::ostream& ostream, Bureaucrat const& toDisplay);
