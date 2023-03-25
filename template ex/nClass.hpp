@@ -1,6 +1,10 @@
 #ifndef NCLASS_HPP
 # define NCLASS_HPP
 
+# include <string>
+# include <iostream>
+# include "colors.hpp"
+
 class nClass {
 
 	public:
