@@ -34,13 +34,13 @@ class Bureaucrat {
 		};
 		static const int	highest_grade = 1;
 		static const int	lowest_grade = 150;
-		static bool			verbose;
 
 
 	private:
 
 		std::string const	_name;
 		int					_grade;
+		static bool			_verbose;
 
 		void				announce (std::string const func) const;
 		void				checkGrade (int grade) const;

@@ -8,20 +8,20 @@ Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
 
 	checkGrade (grade);
 	_grade = grade;
-	if (verbose)
+	if (_verbose)
 		announce ("Constructor");
 }
 
 Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
 
 	_grade = original.getGrade ();
-	if (verbose)
+	if (_verbose)
 		announce ("Copy constructor");
 }
 
 Bureaucrat::~Bureaucrat () {
 
-	if (verbose)
+	if (_verbose)
 		announce ("Destructor");
 }
 
@@ -31,7 +31,7 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 	{
 		std::cout << "Warning : name not assigned to '" << rhs.getName () << "' coz name is const" << std::endl;
 		_grade = rhs.getGrade ();
-		if (verbose)
+		if (_verbose)
 			announce ("Assignment operator");
 	}
 	return *this;
@@ -91,12 +91,12 @@ void		Bureaucrat::announce (std::string const func) const {
 
 const char*	Bureaucrat::GradeTooHighException::what () const throw () {
 
-	return ("Grade lesser than 1 doesnt exist. 1 is maximum");
+	return ("Grade too high");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 
-	return ("Grade after 150 doesnt exist. 150 is the minimum");
+	return ("Grade too low");
 }
 
 /******************************************************************************************************/
@@ -113,4 +113,4 @@ std::ostream&	operator<< (std::ostream& o, Bureaucrat const& toDisplay) {
 /*	VERBOSE 																						  */
 /******************************************************************************************************/
 
-bool Bureaucrat::verbose = false;
+bool Bureaucrat::_verbose = false;

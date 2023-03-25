@@ -5,6 +5,9 @@
 # include <iostream>
 # include <exception>
 # include "colors.hpp"
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -20,6 +23,8 @@ class Bureaucrat {
 		void				lowerGrade ();
 		void				upperGrade ();
 
+		void				signForm (Form& form);
+
 		class GradeTooHighException : public std::exception {
 
 			public:
@@ -34,13 +39,13 @@ class Bureaucrat {
 		};
 		static const int	highest_grade = 1;
 		static const int	lowest_grade = 150;
-		static bool			verbose;
 
 
 	private:
 
 		std::string const	_name;
 		int					_grade;
+		static const bool	_verbose = false;
 
 		void				announce (std::string const func) const;
 		void				checkGrade (int grade) const;

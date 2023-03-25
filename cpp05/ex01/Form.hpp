@@ -3,10 +3,12 @@
 
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form {
 
 	public:
-		Form (std::string name, int signing_grade, int exec_grade);
+		Form (std::string name, int sign_grade, int exec_grade);
 		Form (Form const& original);
 		virtual ~Form ();
 		Form& operator= (Form const& rhs);
@@ -15,6 +17,8 @@ class Form {
 		bool const&			isSigned () const;
 		int	const&			getSignGrade () const;
 		int const&			getExecGrade () const;
+
+		void				beSigned (Bureaucrat const& bureaucrat);
 
 		class GradeTooHighException : public std::exception {
 
@@ -30,10 +34,12 @@ class Form {
 	private:
 		std::string const	_name;
 		bool				_is_signed;
-		int					_sign_grade;
-		int					_exec_grade;
+		int	const			_grade_to_sign;
+		int	const			_grade_to_execute;
+		static const bool	_verbose = false;
 
 		void				checkGrade (int grade) const;
+		void				announce (std::string const func) const;
 };
 
 std::ostream&	operator<< (std::ostream& o, Form const& rhs);
