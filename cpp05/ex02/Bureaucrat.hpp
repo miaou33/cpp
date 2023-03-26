@@ -46,7 +46,7 @@ class Bureaucrat {
 
 		std::string const	_name;
 		int					_grade;
-		static const bool	_verbose = false;
+		static const bool	_verbose = true;
 
 		void				announce (std::string const func) const;
 		void				checkGrade (int grade) const;

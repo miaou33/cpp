@@ -12,7 +12,7 @@ AForm::AForm (std::string name, int sign_grade, int exec_grade) :	_name (name),
 	checkGrade (_grade_to_sign);
 	checkGrade (_grade_to_execute);
 	if (_verbose)
-		announce ("Constructor");
+		announce ("Form constructor");
 }
 
 AForm::AForm (AForm const& original) :	_name (original.getName ()),
@@ -21,13 +21,13 @@ AForm::AForm (AForm const& original) :	_name (original.getName ()),
 
 	_is_signed = (bool) original.isSigned ();
 	if (_verbose)
-		announce ("Copy constructor");
+		announce ("Form copy constructor");
 }
 
 AForm::~AForm () {
 
 	if (_verbose)
-		announce ("Destructor");
+		announce ("Form destructor");
 }
 
 AForm& AForm::operator= (AForm const& rhs) {
@@ -39,7 +39,7 @@ AForm& AForm::operator= (AForm const& rhs) {
 		std::cout << "Warning : exec grade not assigned coz it is const" << std::endl;
 		_is_signed = rhs.isSigned ();
 		if (_verbose)
-			announce ("Assignment operator");
+			announce ("Form assignment operator");
 	}
 	return *this;
 }
@@ -89,8 +89,7 @@ void	AForm::checkGrade (int grade) const {
 
 void		AForm::announce (std::string const func) const {
 
-	std::cout << _GREEN << func << _END 
-		<< ": " << _name << " form, grade needed to sign : " << _grade_to_sign << " | grade needed to exec : " << _grade_to_execute << std::endl;
+	std::cout << _GREY << func << ": " << _name << " form, grade needed to sign : " << _grade_to_sign << " | grade needed to exec : " << _grade_to_execute << _END << std::endl;
 }
 
 /******************************************************************************************************/

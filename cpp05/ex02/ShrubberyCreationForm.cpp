@@ -8,20 +8,20 @@ ShrubberyCreationForm::ShrubberyCreationForm (std::string target) : AForm ("Shru
 
 	_target = target;
 	if (_verbose)
-		announce ("Shrubbery Constructor");
+		announce ("Shrubbery constructor");
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm (ShrubberyCreationForm const& original) : AForm (original) {
 
 	_target = original.getTarget ();
 	if (_verbose)
-		announce ("Shrubbery Copy constructor");
+		announce ("Shrubbery copy constructor");
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm () {
 
 	if (_verbose)
-		announce ("Shrubbery Destructor");
+		announce ("Shrubbery destructor");
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator= (ShrubberyCreationForm const& rhs) {
@@ -34,7 +34,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator= (ShrubberyCreationForm c
 		_is_signed = rhs.isSigned ();
 		_target = rhs.getTarget ();
 		if (_verbose)
-			announce ("Shrubbery Assignment operator");
+			announce ("Shrubbery assignment operator");
 	}
 	return *this;
 }
@@ -94,6 +94,7 @@ void				ShrubberyCreationForm::execute (Bureaucrat const& executor) {
 		throw AForm::FormNotSignedException ();
 	if (executor.getGrade () > _grade_to_execute)
 		throw AForm::GradeTooLowException ();
+
 	std::string		filename = _target + "shrubbery";
 	draw_a_tree_on_file (filename);
 }

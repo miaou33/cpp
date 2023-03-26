@@ -17,7 +17,8 @@ S_EXT = .cpp
 SRC_FILES =	main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
-			ShrubberyCreationForm.cpp
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 

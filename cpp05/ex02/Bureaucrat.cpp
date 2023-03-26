@@ -9,20 +9,20 @@ Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
 	checkGrade (grade);
 	_grade = grade;
 	if (_verbose)
-		announce ("Constructor");
+		announce ("Bureaucrat constructor");
 }
 
 Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
 
 	_grade = original.getGrade ();
 	if (_verbose)
-		announce ("Copy constructor");
+		announce ("Bureaucrat copy constructor");
 }
 
 Bureaucrat::~Bureaucrat () {
 
 	if (_verbose)
-		announce ("Destructor");
+		announce ("Bureaucrat destructor");
 }
 
 Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
@@ -32,7 +32,7 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 		std::cout << "Warning : name not assigned to '" << rhs.getName () << "' coz name is const" << std::endl;
 		_grade = rhs.getGrade ();
 		if (_verbose)
-			announce ("Assignment operator");
+			announce ("Bureaucrat assignment operator");
 	}
 	return *this;
 }
@@ -90,7 +90,7 @@ void	Bureaucrat::executeForm (AForm& form) const {
 		std::cout << _GREEN << "Executed" << _END << ": " << form.getName () << " by bureaucrat " << _name << std::endl;
 	}
 	catch (std::exception& e) {
-		std::cout << _RED << "Not executed" << _END << ": " << form.getName () << "by bureaucrat " << _name
+		std::cout << _RED << "Not executed" << _END << ": " << form.getName () << " by bureaucrat " << _name
 					<< ".\n\t-> Cause: " << e.what () << std::endl;
 	}
 }
@@ -109,8 +109,8 @@ void		Bureaucrat::checkGrade (int grade) const {
 
 void		Bureaucrat::announce (std::string const func) const {
 
-	std::cout << _GREEN << func << _END 
-		<< ": " << _name << " bureaucrat, grade " << _grade << std::endl;
+	std::cout << _GREY << func 
+		<< ": " << _name << " , grade " << _grade << _END << std::endl;
 }
 
 /******************************************************************************************************/

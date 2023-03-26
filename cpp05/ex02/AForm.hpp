@@ -42,7 +42,7 @@ class AForm {
 		bool				_is_signed;
 		int	const			_grade_to_sign;
 		int	const			_grade_to_execute;
-		static const bool	_verbose = false;
+		static const bool	_verbose = true;
 
 		virtual void		checkGrade (int grade) const;
 		virtual void		announce (std::string const func) const;
