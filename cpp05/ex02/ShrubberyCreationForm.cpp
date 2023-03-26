@@ -48,20 +48,14 @@ std::string const&	ShrubberyCreationForm::getTarget () const {
 	return (std::string const&) _target;
 }
 
-void				ShrubberyCreationForm::execute (Bureaucrat const& executor) {
+static void			draw_a_tree_on_file (std::string filename) {
 
-	if (!_is_signed)
-		throw AForm::FormNotSignedException ();
-	if (executor.getGrade () > _grade_to_execute)
-		throw AForm::GradeTooLowException ();
-
-	std::string		filename = _target + "shrubbery";
-	std::ofstream	trees (filename.c_str ());
-	std::string tree =
+	std::fstream	file;
+	std::string 	tree =
 "            .        +          .      .          .    \n"
 "     .            _        .                    .      \n"
 "  ,              /;-._,-.____        ,-----.__         \n"
-" ((        .    (_:#::_.:::. `-._   /:, /-._, `._,     \n"
+"           .    (_:#::_.:::. `-._   /:, /-._, `._,     \n"
 "  `                 \\   _|`\"=:_::.`.);  \\ __/ /      \n"
 "                      ,    `./  \\:. `.   )==-'  .     \n"
 "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           .\n"
@@ -82,9 +76,35 @@ void				ShrubberyCreationForm::execute (Bureaucrat const& executor) {
 "              O       |:::/{ }  |                  (o  \n"
 "               )  ___/#\\::`/ (O \"==._____   O, (O  /`\"\n"
 "          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~\n"
-"      ~~~~~~~~~~~~~~~~~~~~~~~\\W~~~~~~~~~~~~\\|/~~)      ";
+"      ~~~~~~~~~~~~~~~~~~~~~~~\\W~~~~~~~~~~~~\\|/~~)      \n";
 
-	trees << tree;
+
+	file.open (filename.c_str (), std::ios_base::app);
+	if (file.fail ())
+	{
+		std::perror ("File opening failed");
+		throw ShrubberyCreationForm::FileOpeningFailed ();
+	}
+	file << tree;
+}
+
+void				ShrubberyCreationForm::execute (Bureaucrat const& executor) {
+
+	if (!_is_signed)
+		throw AForm::FormNotSignedException ();
+	if (executor.getGrade () > _grade_to_execute)
+		throw AForm::GradeTooLowException ();
+	std::string		filename = _target + "shrubbery";
+	draw_a_tree_on_file (filename);
+}
+
+/******************************************************************************************************/
+/*	EXCEPTIONS 																						  */
+/******************************************************************************************************/
+
+const char*	ShrubberyCreationForm::FileOpeningFailed::what () const throw () {
+
+	return ("\033[31mShrubbery creation form exception reeched\033[0m: cannot be executed for internal reasons");
 }
 
 

@@ -106,12 +106,12 @@ void		Bureaucrat::announce (std::string const func) const {
 
 const char*	Bureaucrat::GradeTooHighException::what () const throw () {
 
-	return ("Bureaucrat: Grade too high");
+	return ("\033[31mBureaucrat exception reached\033[0m: Grade too high");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 
-	return ("Bureaucrat: Grade too low");
+	return ("\033[31mBureaucrat exception reached\033[0m: Grade too low");
 }
 
 /******************************************************************************************************/

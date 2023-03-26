@@ -78,7 +78,8 @@ void	Bureaucrat::signForm (AForm& form) {
 	}
 	catch (std::exception& e) {
 
-		std::cout << _RED << "Not signed" << _END << ": " << form.getName () << " by bureaucrat " << _name << " coz grade too low >_<" << std::endl;
+		std::cout << _RED << "Not signed" << _END << ": " << form.getName () << " by bureaucrat " << _name
+					<< ".\n\t-> Cause: " << e.what () << std::endl;
 	}
 }
 
@@ -86,9 +87,11 @@ void	Bureaucrat::executeForm (AForm& form) const {
 
 	try {
 		form.execute (*this);
+		std::cout << _GREEN << "Executed" << _END << ": " << form.getName () << " by bureaucrat " << _name << std::endl;
 	}
 	catch (std::exception& e) {
-		std::cout << e.what () << std::endl;
+		std::cout << _RED << "Not executed" << _END << ": " << form.getName () << "by bureaucrat " << _name
+					<< ".\n\t-> Cause: " << e.what () << std::endl;
 	}
 }
 
@@ -116,12 +119,12 @@ void		Bureaucrat::announce (std::string const func) const {
 
 const char*	Bureaucrat::GradeTooHighException::what () const throw () {
 
-	return ("Bureaucrat: Grade too high");
+	return ("\033[31mBureaucrat exception reached\033[0m: Grade too high");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 
-	return ("Bureaucrat: Grade too low");
+	return ("\033[31mBureaucrat exception reached\033[0m: Grade too low");
 }
 
 /******************************************************************************************************/
@@ -130,6 +133,6 @@ const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 
 std::ostream&	operator<< (std::ostream& o, Bureaucrat const& toDisplay) {
 
-	o << toDisplay.getName () << ", bureaucrat grade " << toDisplay.getGrade ();
+	o << _PURPLE << toDisplay.getName () << _END << ", bureaucrat grade " << toDisplay.getGrade ();
 	return o;
 }

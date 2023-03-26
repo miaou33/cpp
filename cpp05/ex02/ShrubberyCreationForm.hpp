@@ -15,6 +15,13 @@ class ShrubberyCreationForm : virtual public AForm {
 		std::string const&	getTarget () const;
 		virtual void		execute (Bureaucrat const& executor);
 
+		class FileOpeningFailed : public std::exception {
+
+			public:
+				virtual const char* what() const throw();
+
+		};
+
 	private:
 		std::string			_target;
 };

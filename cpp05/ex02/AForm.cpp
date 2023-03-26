@@ -99,17 +99,17 @@ void		AForm::announce (std::string const func) const {
 
 const char*	AForm::GradeTooHighException::what () const throw () {
 
-	return ("Form: Bureaucrat's grade too high");
+	return ("\033[31mForm exception reeched\033[0m: Bureaucrat's grade too high");
 }
 
 const char*	AForm::GradeTooLowException::what () const throw () {
 
-	return ("Form: Bureaucrat's grade too low");
+	return ("\033[31mForm exception reeched\033[0m: Bureaucrat's grade too low\033[0m");
 }
 
 const char*	AForm::FormNotSignedException::what () const throw () {
 
-	return ("Form: cannot be executed coz not signed");
+	return ("\033[31mForm exception reeched\033[0m: cannot be executed coz not signed");
 }
 
 /******************************************************************************************************/

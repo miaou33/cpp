@@ -99,12 +99,12 @@ void		Form::announce (std::string const func) const {
 
 const char*	Form::GradeTooHighException::what () const throw () {
 
-	return ("Form: Bureaucrat's grade too high");
+	return ("\033[31mForm exception reeched\033[0m: Bureaucrat's grade too high");
 }
 
 const char*	Form::GradeTooLowException::what () const throw () {
 
-	return ("Form: Bureaucrat's grade too low");
+	return ("\033[31mForm exception reeched\033[0m: Bureaucrat's grade too low");
 }
 
 /******************************************************************************************************/
