@@ -18,7 +18,8 @@ SRC_FILES =	main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
 			ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 

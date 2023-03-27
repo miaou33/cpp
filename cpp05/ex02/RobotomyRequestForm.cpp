@@ -50,15 +50,15 @@ std::string const&	RobotomyRequestForm::getTarget () const {
 
 void				RobotomyRequestForm::execute (Bureaucrat const& executor) {
 
-	if (!_is_signed)
-		throw AForm::FormNotSignedException ();
-	if (executor.getGrade () > _grade_to_execute)
-		throw AForm::GradeTooLowException ();
+	AForm::checkExecutability (executor);
+	
+	std::cout << "* Drill noise ....... *" << std::endl;
 
-	std::cout << "Bzzzzzzzzzzzzz..." << std::endl;
-	std::rand () % 2 ?
-		throw RobotomyRequestForm::RobotomyFailed ()
-		: std::cout << _target << " successfully robotomized" << std::endl;
+	srand (time (NULL));
+	if (rand () % 2)
+		std::cout << _target << " successfully robotomized :O" << std::endl;
+	else
+		throw RobotomyRequestForm::RobotomyFailed ();
 }
 
 /******************************************************************************************************/
@@ -68,16 +68,5 @@ void				RobotomyRequestForm::execute (Bureaucrat const& executor) {
 const char*	RobotomyRequestForm::RobotomyFailed::what () const throw () {
 
 	return ("\033[31mRobotomy exception reeched\033[0m: robotomy failed sorry");
-}
-
-
-/******************************************************************************************************/
-/*	DISPLAY																							  */
-/******************************************************************************************************/
-
-std::ostream&	operator<< (std::ostream& o, RobotomyRequestForm const& toDisplay) {
-
-	o << toDisplay.getName () << " form, grade needed to sign : " << toDisplay.getSignGrade () << " | grade needed to exec : " << toDisplay.getExecGrade () << std::endl;
-	return o;
 }
 

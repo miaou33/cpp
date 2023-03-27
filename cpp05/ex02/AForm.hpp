@@ -15,6 +15,7 @@ class AForm {
 
 		std::string const&	getName () const;
 		bool const&			isSigned () const;
+		void				checkExecutability (Bureaucrat const& bureaucrat);
 		int	const&			getSignGrade () const;
 		int const&			getExecGrade () const;
 

@@ -90,10 +90,7 @@ static void			draw_a_tree_on_file (std::string filename) {
 
 void				ShrubberyCreationForm::execute (Bureaucrat const& executor) {
 
-	if (!_is_signed)
-		throw AForm::FormNotSignedException ();
-	if (executor.getGrade () > _grade_to_execute)
-		throw AForm::GradeTooLowException ();
+	AForm::checkExecutability (executor);
 
 	std::string		filename = _target + "shrubbery";
 	draw_a_tree_on_file (filename);
@@ -106,16 +103,5 @@ void				ShrubberyCreationForm::execute (Bureaucrat const& executor) {
 const char*	ShrubberyCreationForm::FileOpeningFailed::what () const throw () {
 
 	return ("\033[31mShrubbery creation form exception reeched\033[0m: cannot be executed for internal reasons");
-}
-
-
-/******************************************************************************************************/
-/*	DISPLAY																							  */
-/******************************************************************************************************/
-
-std::ostream&	operator<< (std::ostream& o, ShrubberyCreationForm const& toDisplay) {
-
-	o << toDisplay.getName () << " form, grade needed to sign : " << toDisplay.getSignGrade () << " | grade needed to exec : " << toDisplay.getExecGrade () << std::endl;
-	return o;
 }
 

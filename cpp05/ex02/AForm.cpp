@@ -75,6 +75,14 @@ void				AForm::beSigned (Bureaucrat const& bureaucrat) {
 		: throw AForm::GradeTooLowException ();
 }
 
+void				AForm::checkExecutability (Bureaucrat const& executor) {
+
+	if (!_is_signed)
+		throw AForm::FormNotSignedException ();
+	if (executor.getGrade () > _grade_to_execute)
+		throw AForm::GradeTooLowException ();
+}
+
 /******************************************************************************************************/
 /*	PRIVATE UTILS 																					  */
 /******************************************************************************************************/

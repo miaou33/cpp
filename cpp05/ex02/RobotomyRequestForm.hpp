@@ -26,6 +26,4 @@ class RobotomyRequestForm : virtual public AForm {
 		std::string			_target;
 };
 
-std::ostream&	operator<< (std::ostream& o, RobotomyRequestForm const& rhs);
-
 # endif
