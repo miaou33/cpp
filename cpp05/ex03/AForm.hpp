@@ -13,14 +13,27 @@ class AForm {
 		virtual ~AForm ();
 		AForm& operator= (AForm const& rhs);
 
-		std::string const&	getName () const;
-		bool const&			isSigned () const;
-		void				checkExecutability (Bureaucrat const& bureaucrat);
-		int	const&			getSignGrade () const;
-		int const&			getExecGrade () const;
+		std::string const&				getName () const;
+		virtual std::string const&		getTarget () const = 0;
+		bool const&						isSigned () const;
+		void							checkExecutability (Bureaucrat const& bureaucrat);
+		int	const&						getSignGrade () const;
+		int const&						getExecGrade () const;
 
-		virtual void		beSigned (Bureaucrat const& bureaucrat);
-		virtual void		execute (Bureaucrat const& executor) = 0;
+		virtual void					beSigned (Bureaucrat const& bureaucrat);
+		virtual void					execute (Bureaucrat const& executor) = 0;
+
+	protected:
+		std::string const				_name;
+		bool							_is_signed;
+		int	const						_grade_to_sign;
+		int	const						_grade_to_execute;
+		static const bool				_verbose = false;
+
+		virtual void					checkGrade (int grade) const;
+		virtual void					announce (std::string const func) const;
+	
+	public:
 
 		class GradeTooHighException : public std::exception {
 
@@ -37,16 +50,6 @@ class AForm {
 			public:
 				virtual const char*	what () const throw ();
 		};
-
-	protected:
-		std::string const	_name;
-		bool				_is_signed;
-		int	const			_grade_to_sign;
-		int	const			_grade_to_execute;
-		static const bool	_verbose = false;
-
-		virtual void		checkGrade (int grade) const;
-		virtual void		announce (std::string const func) const;
 };
 
 std::ostream&	operator<< (std::ostream& o, AForm const& rhs);
