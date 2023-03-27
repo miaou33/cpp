@@ -7,7 +7,7 @@
 class	Animal {
 
 	protected:
-		std::string	_type;
+		std::string		_type;
 
 	public:
 		// CONSTRUCTORS / DESTRUCTOR / OPERATOR= OVERLOAD
@@ -17,7 +17,7 @@ class	Animal {
 		Animal&	operator= (Animal const& right);
 		
 		// GETTER
-		std::string getType () const;
+		std::string 	getType () const;
 
 		// OTHER
 		virtual void	announce (std::string const func) const;
