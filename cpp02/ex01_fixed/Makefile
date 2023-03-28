@@ -32,7 +32,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 #DISPLAY
-ECHO = echo -e
+ECHO = $(if $(filter -e,$(MAKEFLAGS)),echo, echo -e)
 
 ################################################################################
 #                                MAIN RULES								       #
