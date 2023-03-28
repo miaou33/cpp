@@ -29,9 +29,12 @@ O_EXT = .o
 OBJS = ${subst ${SRC_DIR}/, ${BUILD_DIR}/, ${SRCS:%${S_EXT}=%${O_EXT}}}
 
 #COMPILING
-CC = c++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 #-fsanitize=address
 RM = rm -rf
+
+#DISPLAY
+ECHO = echo -e
 
 ################################################################################
 #                                MAIN RULES								       #
@@ -40,13 +43,13 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
-	@echo -e "\ncreated: ${NAME}"
+	@${ECHO} "\ncreated: ${NAME}"
 
 -include ${DEPS}
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo -e "created: ${@:%=%}"
+	@${ECHO} "created: ${@:%=%}"
 	@${CC} ${CXXFLAGS} -MMD -o $@ -c $<
 
 ################################################################################
@@ -58,11 +61,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo -e "deleted: objs & deps"
+	@${ECHO} "deleted: objs & deps"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo -e "deleted: ${NAME}\n"
+	@${ECHO} "deleted: ${NAME}\n"
 
 gitm:
 	git add .

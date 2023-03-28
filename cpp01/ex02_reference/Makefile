@@ -39,9 +39,12 @@ O_EXT = .o
 OBJS = ${subst ${SRC_DIR}/, ${BUILD_DIR}/, ${SRCS:%${S_EXT}=%${O_EXT}}}
 
 #COMPILING
-CC = c++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
+
+#DISPLAY
+ECHO = echo -e
 
 ################################################################################
 #                                MAIN RULES								       #
@@ -50,11 +53,11 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
-	@echo -e "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
+	@${ECHO} "\n${UNDER}${PURPLE}created${END}${PURPLE}: ${NAME}${END}"
 
 ${BUILD_DIR}/%${O_EXT}: ${SRC_DIR}/%${S_EXT}
 	@mkdir -p ${dir $@}
-	@echo -e "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
+	@${ECHO} "${UNDER}${PURPLE}created${END}${PURPLE}: ${@:%=%}${END}"
 	@${CC} ${CXXFLAGS} -o $@ -c $<
 
 ################################################################################
@@ -66,11 +69,11 @@ val: ${NAME}
 
 clean:
 	@${RM} ${BUILD_DIR}
-	@echo -e "${UNDER}${RED}deleted${END}${RED}: objs${END}"
+	@${ECHO} "${UNDER}${RED}deleted${END}${RED}: objs${END}"
 
 fclean: clean
 	@${RM} ${NAME}
-	@echo -e "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}\n"
+	@${ECHO} "${UNDER}${RED}deleted${END}${RED}: ${NAME}${END}\n"
 
 gitm:
 	git add .
