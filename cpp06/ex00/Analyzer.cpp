@@ -53,9 +53,20 @@ float				Analyzer::getFloatCast () const { return _float_cast; }
 
 void				Analyzer::findType (std::string const& input) {
 
+	if (input.length () == 1 && input [0] == '0')
+	{
+		_type = isint;
+		_int_cast = 0;
+		return ;
+	}
+	
 	char	*p;
+	long	res;
 
-	strtol (input.c_str (), &p, 10);
+	if ((res = strtod (input.c_str (), &p, 10)) && res > INT32_MIN && res <= INT32_MAX)
+	{
+
+	}
 	_int_cast = *p ? 0 : 
 //	{
 		_type = ischar;
