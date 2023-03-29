@@ -15,7 +15,7 @@ BUILD_DIR  = ./objs
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
-			Class.cpp 
+			Analyzer.cpp 
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
@@ -28,7 +28,7 @@ O_EXT = .o
 OBJS = ${subst ${SRC_DIR}/, ${BUILD_DIR}/, ${SRCS:%${S_EXT}=%${O_EXT}}}
 
 #COMPILING
-CXX = c++
+CC = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 #-fsanitize=address
 RM = rm -rf
 
