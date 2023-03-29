@@ -16,12 +16,12 @@ int	main (void)
 
 	AMateria*	tmp;
 
-/* 	// ERROR HANDLING
+	// ERROR HANDLING
 	src->learnMateria(NULL);
 	
 	tmp = new Cure ();
 	src->learnMateria(tmp);
-	delete (tmp); */
+	delete (tmp);
 
 	std::cout << std::endl;
 	
@@ -36,14 +36,14 @@ int	main (void)
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-/* 	// ERROR HANDLING
+	// ERROR HANDLING
 	me->equip(NULL);
 	
 	tmp = src->createMateria("blabla");
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	delete tmp;
- */
+
 	std::cout << std::endl;
 	
 	ICharacter* bob = new Character("bob");

@@ -33,7 +33,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 #-fsanitize=address
 RM = rm -rf
 
 #DISPLAY
-ECHO = $(if $(filter -e,$(MAKEFLAGS)),echo, echo -e)
+ECHO = echo #$(if $(filter -e,$(MAKEFLAGS)),echo, echo -e)
 
 ################################################################################
 #                                MAIN RULES								       #
