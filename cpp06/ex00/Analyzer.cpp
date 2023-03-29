@@ -4,8 +4,9 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Analyzer::Analyzer (std::string input) : _input (input) {
+Analyzer::Analyzer () {
 
+	_type = -1;
 	_char_cast = 0;
 	_int_cast = 0;
 	_double_cast = 0.0;
@@ -23,7 +24,7 @@ Analyzer& Analyzer::operator= (Analyzer const& rhs) {
 
 	if (this != &rhs)
 	{
-		_input = rhs.getInput ();
+		_type = rhs.getType ();
 		_char_cast = rhs.getCharCast ();
 		_int_cast = rhs.getIntCast ();
 		_double_cast = rhs.getDoubleCast ();
@@ -36,7 +37,7 @@ Analyzer& Analyzer::operator= (Analyzer const& rhs) {
 /*	GETTERS SETTERS																	  				  */
 /******************************************************************************************************/
 
-std::string const&	Analyzer::getInput () const { return _input; }
+int					Analyzer::getType () const { return _type; }
 
 char				Analyzer::getCharCast () const { return _char_cast; }
 
@@ -49,6 +50,21 @@ float				Analyzer::getFloatCast () const { return _float_cast; }
 /******************************************************************************************************/
 /*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
+
+void				Analyzer::findType (std::string const& input) {
+
+	char	*p;
+
+	strtol (input.c_str (), &p, 10);
+	_int_cast = *p ? 0 : 
+//	{
+		_type = ischar;
+/* 		return ;
+	}
+	if ( */
+
+	std::cout << _type << std::endl;	
+}
 
 /******************************************************************************************************/
 /*	EXCEPTIONS																						  */

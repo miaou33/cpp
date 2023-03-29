@@ -10,19 +10,20 @@ class Analyzer {
 	public:
 
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
-		Analyzer (std::string input);
+		Analyzer ();
 		Analyzer (Analyzer const& original);
 		virtual ~Analyzer ();
 		Analyzer& operator= (Analyzer const& rhs);
 
 		// GETTER
-		std::string const&	getInput () const;
+		int					getType () const;
 		char				getCharCast () const;
 		int					getIntCast () const;
 		double				getDoubleCast () const;
 		float				getFloatCast () const;
 
 		// OTHER MB FUNCTIONS
+		void				findType (std::string const& input);
 	
 	private:
 
@@ -33,7 +34,7 @@ class Analyzer {
 			isdouble
 		};
 
-		std::string		_input;
+		int				_type;
 		char			_char_cast;
 		int				_int_cast;
 		float			_float_cast;
