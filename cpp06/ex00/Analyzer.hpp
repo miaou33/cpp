@@ -38,6 +38,13 @@ class Analyzer {
 		int				_int_cast;
 		float			_float_cast;
 		double			_double_cast;
+	
+	public:
+
+		class WrongArgument : public std::exception {
+
+			virtual char const*	what () const throw ();
+		};
 };
 
 

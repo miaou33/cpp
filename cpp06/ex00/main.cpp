@@ -2,9 +2,14 @@
 
 int	main (int ac, char **av)
 {
-	if (ac != 2)
-	{
-		std::cout << "Format: " << av[0] << " <litteral>" << std::endl;
+	try {
+		if (ac != 2)
+			throw Analyzer::WrongArgument ();
+		std::cout << av[1] << std::endl;
+	}
+	catch (std::exception& e) {
+
+		std::cout << e.what () << std::endl;
 		return 1;
 	}
 	return 0;

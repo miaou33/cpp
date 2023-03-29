@@ -42,7 +42,7 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CXXFLAGS} ${OBJS} -o ${NAME}
-	@${ECHO} \n${UNDER}created${END}: ${NAME}"
+	@${ECHO} "\n${UNDER}created${END}: ${NAME}"
 
 -include ${DEPS}
 
