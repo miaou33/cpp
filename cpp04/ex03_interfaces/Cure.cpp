@@ -25,7 +25,7 @@ Cure& Cure::operator= (Cure const& rhs) {
 
 std::string const& Cure::getType () const {
 
-	return (std::string const&) _type;
+	return _type;
 }
 
 /******************************************************************************************************/

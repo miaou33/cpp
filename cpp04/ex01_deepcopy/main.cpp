@@ -13,27 +13,53 @@ int	main (void)
 		animalArray [i] = new Dog ();
 		animalArray [arrayHalf + i] = new Cat ();
 	}
+	
+	std::cout << std::endl;
 	animalArray[3]->makeSound ();
 	animalArray[9]->makeSound ();
+	std::cout << std::endl;
 
 	for (int i = 0; i < 10; i++)
 		delete animalArray [i];
+
+	const Animal *	animal = new Animal ();
+	const Animal *	dog = new Dog ();
+	const Animal *	cat = new Cat ();
+	
+	std::cout << std::endl;
+	std::cout << animal->getType () << "'s sound : ";
+	animal->makeSound ();
+	std::cout << dog->getType () << "'s sound : ";
+	dog->makeSound ();
+	std::cout << cat->getType () << "'s sound : ";
+	cat->makeSound ();
+	std::cout << std::endl;
+
+	delete dog;
+	delete cat;
+	delete animal;
 	
 	std::cout << std::endl;
 	
-	Cat *	kitty = new Cat ();
-	Cat * kitty2 = new Cat (*kitty);
-	Cat * kitty3 = new Cat ();
-	*kitty3 = *kitty;
-	std::cout << "kitty = " << &kitty << std::endl;
-	std::cout << "kitty2 = " << &kitty2 << std::endl;
-	kitty->setIdea (0, "iii");
-	kitty->displayIdea (0);
+	Cat *	kitty1 = new Cat ();
+	Cat *	kitty2 = new Cat (*kitty1);
+	Cat *	kitty3 = new Cat ();
+	*kitty3 = *kitty1;
+
+	std::cout << std::endl;
+	std::cout << "kitty1, kitty2, kitty3's default ideas :" << std::endl;
+	kitty1->displayIdea (0);
 	kitty2->displayIdea (0);
 	kitty3->displayIdea (0);
-	Animal animal ;
+	std::cout << "changing kitty1's idea to 'miaou' ..." << std::endl;
+	kitty1->setIdea (0, "miaou");
+	std::cout << "kitty1, kitty2, kitty3's new ideas :" << std::endl;
+	kitty1->displayIdea (0);
+	kitty2->displayIdea (0);
+	kitty3->displayIdea (0);
+	std::cout << std::endl;
 
-	delete kitty;
+	delete kitty1;
 	delete kitty2;
 	delete kitty3;
 	return 0;

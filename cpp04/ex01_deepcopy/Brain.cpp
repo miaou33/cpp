@@ -7,7 +7,7 @@
 Brain::Brain () {
 
 	for (int i = 0; i < 100; i++)
-		_ideas [i] = "?";
+		_ideas [i] = "*nothing*";
 	announce ("constructor");
 }
 
@@ -37,7 +37,7 @@ Brain&	Brain::operator= (Brain const& rhs) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-std::string	Brain::getIdea (int i) const {
+std::string	const& Brain::getIdea (int i) const {
 	
 	return _ideas [i];
 }

@@ -10,12 +10,14 @@ int	main (void)
 	const Animal *	dog = new Dog ();
 	const Animal *	cat = new Cat ();
 	
-	std::cout << animal->getType () << "'s sound :\n\t";
+	std::cout << std::endl;
+	std::cout << animal->getType () << "'s sound : ";
 	animal->makeSound ();
-	std::cout << dog->getType () << "'s sound :\n\t";
+	std::cout << dog->getType () << "'s sound : ";
 	dog->makeSound ();
-	std::cout << cat->getType () << "'s sound :\n\t";
+	std::cout << cat->getType () << "'s sound : ";
 	cat->makeSound ();
+	std::cout << std::endl;
 
 	delete dog;
 	delete cat;
@@ -28,10 +30,12 @@ int	main (void)
 	const WrongAnimal *	wanimal = new WrongAnimal ();
 	const WrongAnimal *	wcat = new WrongCat ();
 	
-	std::cout << wanimal->getType () << "'s sound :\n\t";
+	std::cout << std::endl;
+	std::cout << wanimal->getType () << "'s sound : ";
 	wanimal->makeSound ();
-	std::cout << wcat->getType () << "'s sound :\n\t";
+	std::cout << wcat->getType () << "'s sound : ";
 	wcat->makeSound ();
+	std::cout << std::endl;
 	
 	delete wcat;
 	delete wanimal;

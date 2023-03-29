@@ -17,7 +17,7 @@ class	WrongAnimal {
 		WrongAnimal&	operator= (WrongAnimal const& right);
 		
 		// GETTER
-		std::string getType () const;
+		std::string const& 	getType () const;
 
 		// OTHER
 		void	announce (std::string const func) const;

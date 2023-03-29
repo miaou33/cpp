@@ -23,7 +23,7 @@ AMateria& AMateria::operator= (AMateria const& rhs) {
 
 std::string const& AMateria::getType () const {
 
-	return (std::string const&) _type;
+	return _type;
 }
 
 /**************************************************************************************/

@@ -18,7 +18,7 @@ class	Cat : public AAnimal {
 
 		Cat				&operator= (Cat const& rhs);
 
-		Brain			*getBrain () const;
+		Brain*			getBrain () const;
 		std::string		getIdea (int i) const;
 		void			setIdea (int i, std::string idea);
 		void			displayIdea (int i) const;

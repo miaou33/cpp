@@ -32,7 +32,7 @@ Animal&	Animal::operator= (Animal const& rhs) {
 /* 					GETTERS / SETTERS				 */
 /* ************************************************* */
 
-std::string	Animal::getType () const { return _type; }
+std::string const&	Animal::getType () const { return _type; }
 
 
 /* ************************************************* */

@@ -17,11 +17,11 @@ class	Animal {
 		Animal&	operator= (Animal const& right);
 		
 		// GETTER
-		std::string 	getType () const;
+		std::string const& 	getType () const;
 
 		// OTHER
-		virtual void	announce (std::string const func) const;
-		virtual void	makeSound () const;
+		virtual void		announce (std::string const func) const;
+		virtual void		makeSound () const;
 };
 
 

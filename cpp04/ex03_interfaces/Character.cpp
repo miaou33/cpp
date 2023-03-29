@@ -59,7 +59,7 @@ Character& Character::operator= (Character const& rhs) {
 
 std::string const&	Character::getName () const {
 
-	return (std::string const&) _name;
+	return _name;
 }
 
 AMateria*			Character::getMateria (int i) const {

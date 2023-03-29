@@ -25,7 +25,7 @@ Ice& Ice::operator= (Ice const& rhs) {
 
 std::string const& Ice::getType () const {
 
-	return (std::string const&) _type;
+	return _type;
 }
 
 /******************************************************************************************************/

@@ -16,9 +16,9 @@ class	AAnimal {
 		
 		AAnimal		&operator= (AAnimal const& right);
 
-		std::string 		getType () const;
-		virtual void		announce (std::string const func) const;
-		virtual void		makeSound () const = 0;
+		std::string const& 		getType () const;
+		virtual void			announce (std::string const func) const;
+		virtual void			makeSound () const = 0;
 };
 
 

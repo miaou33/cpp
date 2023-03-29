@@ -15,11 +15,11 @@ class	Brain {
 		~Brain ();
 		Brain&	operator= (Brain const& rhs);
 		
-		std::string*	getIdeas () const;
-		std::string		getIdea (int i) const;
-		void			setIdea (int i, std::string idea); 
-		void			announce (std::string const func) const;
-		void			displayIdea (int i) const;
+		std::string*		getIdeas () const;
+		std::string	const&	getIdea (int i) const;
+		void				setIdea (int i, std::string idea); 
+		void				announce (std::string const func) const;
+		void				displayIdea (int i) const;
 };
 
 
