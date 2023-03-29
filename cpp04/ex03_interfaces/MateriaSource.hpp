@@ -18,7 +18,7 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource& operator= (MateriaSource const& rhs);
 
 		// GETTER
-		AMateria 			*getMateria (int i) const;
+		AMateria* 			getMateria (int i) const;
 
 		// OTHER MB FUNCTIONS
 		bool				is_in_source (int i) const;

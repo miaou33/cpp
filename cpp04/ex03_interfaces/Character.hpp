@@ -6,10 +6,10 @@
 class Character : virtual public ICharacter {
 
 	private:
-		std::string			_name;
-		static const int	_bag_max = 4;
-		int					_nb_equiped;
-		AMateria			*_bag [_bag_max];
+		std::string					_name;
+		static const int			_bag_max = 4;
+		int							_nb_equiped;
+		AMateria					*_bag [_bag_max];
 	
 	public:
 	 	// CONSTRUCTOR DESTRUCTOR ASSIGNMENT
@@ -20,13 +20,13 @@ class Character : virtual public ICharacter {
 
 		// GETTERS
 		virtual std::string const&	getName () const;
-		AMateria 					*getMateria (int i) const;
+		virtual AMateria* 			getMateria (int i) const;
 
 		// OTHER MB FUNCTIONS
-		bool			is_in_bag (int i) const;
-		virtual void	equip (AMateria* m);
-		virtual void	unequip (int idx);
-		virtual void	use (int idx, ICharacter& target);
+		bool						is_in_bag (int i) const;
+		virtual void				equip (AMateria* m);
+		virtual void				unequip (int idx);
+		virtual void				use (int idx, ICharacter& target);
 };
 
 #endif

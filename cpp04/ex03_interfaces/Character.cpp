@@ -82,24 +82,35 @@ bool	Character::is_in_bag (int i) const {
 
 void	Character::equip (AMateria* m) {
 
-	if (m && _nb_equiped < _bag_max)
+	if (!m || _nb_equiped >= _bag_max)
 	{
-		int i = 0;
-		while (_bag [i] && i < _bag_max)
-			i++;
-		_bag [i] = m;
-		_nb_equiped++;
-		std::cout << _name << " equiped " << m->getType ()
-					<< "\n\t-> number of materias in bag = " << _nb_equiped << std::endl;
+		!m ?
+			std::cout << "Error: null ptr" << std::endl
+			: std::cout << _name << " cannot equip more materias. Bag full" << std::endl;
+		return ;
 	}
+
+	int i = 0;
+	
+	while (_bag [i] && i < _bag_max)
+		i++;
+	_bag [i] = m;
+	_nb_equiped++;
+	std::cout << _name << " equiped " << m->getType ()
+				<< "\n\t-> number of materias in bag = " << _nb_equiped << std::endl;
 }
 
 void	Character::unequip (int idx) {
 
+	std::string	type;
+
 	if (is_in_bag (idx) && _bag [idx])
 	{
+		type = _bag [idx] -> getType ();
 		_bag [idx] = NULL;
 		_nb_equiped--;
+		std::cout << _name << " unequiped " << type
+					<< "\n\t-> number of materias in bag = " << _nb_equiped << std::endl;
 	}
 }
 

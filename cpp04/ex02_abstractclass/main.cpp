@@ -42,9 +42,9 @@ int	main (void)
 	
 	std::cout << std::endl;
 	
-	Cat *	kitty1 = new Cat ();
-	Cat *	kitty2 = new Cat (*kitty1);
-	Cat *	kitty3 = new Cat ();
+	Cat*	kitty1 = new Cat ();
+	Cat*	kitty2 = new Cat (*kitty1);
+	Cat*	kitty3 = new Cat ();
 	*kitty3 = *kitty1;
 
 	std::cout << std::endl;

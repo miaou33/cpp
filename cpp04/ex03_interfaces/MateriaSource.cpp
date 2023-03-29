@@ -47,6 +47,8 @@ MateriaSource&	MateriaSource::operator= (MateriaSource const& rhs) {
 				_materia_source [i] = rhs.getMateria(i)->clone ();
 				_nb_learned++;
 			}
+			else
+				_materia_source [i] = NULL;
 		}
 	}
 	return *this;
@@ -76,24 +78,30 @@ bool	MateriaSource::is_in_source (int i) const {
 
 void		MateriaSource::learnMateria (AMateria *m) {
 
-	if (_nb_learned < _materia_source_max)
+	if (!m || _nb_learned >= _materia_source_max)
 	{
-		int i = 0;
-		while (_materia_source [i] && i < _materia_source_max)
-			i++;
-		_materia_source [i] = m;
-		_nb_learned++;
+		!m ?
+			std::cout << "Error: null ptr" << std::endl
+			:std::cout << "Cant learn this materia : max reached" << std::endl;
+		return ;
 	}
+	
+	int i = 0;
+
+	while (_materia_source [i] && i < _materia_source_max)
+		i++;
+	_materia_source [i] = m;
+	_nb_learned++;
+	std::cout << "Learned by materia source : " << m->getType () << std::endl;
 }
 
 AMateria*	MateriaSource::createMateria (std::string const& type) {
 
-	int i = 0;
-	while (_materia_source [i] && i < _materia_source_max)
+	for (int i = 0; i < _materia_source_max; i++)
 	{
 		if (_materia_source [i]->getType () == type)
 			return (_materia_source [i]->clone ());
-		i++;
 	}
+	std::cout << "Materia " << type << " doesnt exist" << std::endl;
 	return  (NULL);
 }

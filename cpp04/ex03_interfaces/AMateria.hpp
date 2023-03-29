@@ -8,7 +8,7 @@ class ICharacter;
 class AMateria {
 
 	protected:
-		std::string		_type;
+		std::string			_type;
 
 	public:
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
