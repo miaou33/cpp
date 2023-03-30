@@ -3,6 +3,9 @@
 
 # include <string>
 # include <iostream>
+# include <stdlib.h>
+# include <stdio.h>
+# include <bits/stdc++.h>
 # include "colors.hpp"
 
 class Analyzer {
@@ -16,14 +19,16 @@ class Analyzer {
 		Analyzer& operator= (Analyzer const& rhs);
 
 		// GETTER
-		int					getType () const;
-		char				getCharCast () const;
-		int					getIntCast () const;
-		double				getDoubleCast () const;
-		float				getFloatCast () const;
+		int				getType () const;
+		char			getCharCast () const;
+		int				getIntCast () const;
+		double			getDoubleCast () const;
+		float			getFloatCast () const;
 
 		// OTHER MB FUNCTIONS
-		void				findType (std::string const& input);
+		void			convert (std::string const& input);
+
+		void			print () const;
 	
 	private:
 
@@ -39,6 +44,12 @@ class Analyzer {
 		int				_int_cast;
 		float			_float_cast;
 		double			_double_cast;
+		
+		void			convert (char c);
+		void			convert (int d);
+		
+		void			print (char c) const;
+		void			print (int d) const;
 	
 	public:
 

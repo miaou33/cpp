@@ -8,9 +8,8 @@ int	main (int ac, char **av)
 			throw Analyzer::WrongArgument ();
 		
 		Analyzer	analyzer;
-		analyzer.findType (av[1]);
-		std::cout << av[1] << std::endl;
-	
+		analyzer.convert (av[1]);
+		analyzer.print ();
 	}
 	
 	catch (std::exception& e) {

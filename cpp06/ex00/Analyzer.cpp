@@ -48,33 +48,72 @@ double				Analyzer::getDoubleCast () const { return _double_cast; }
 float				Analyzer::getFloatCast () const { return _float_cast; }
 
 /******************************************************************************************************/
-/*	OTHER MB FUNCTIONS																				  */
+/*	CONVERT																							  */
 /******************************************************************************************************/
 
-void				Analyzer::findType (std::string const& input) {
+void				Analyzer::convert (std::string const& input) {
 
-	if (input.length () == 1 && input [0] == '0')
+	if (input.length () == 1)
 	{
-		_type = isint;
-		_int_cast = 0;
+		isdigit (input [0]) ?
+			convert ((int) (input [0] - 48))
+			: convert (input [0]);
 		return ;
 	}
 	
 	char	*p;
 	long	res;
-
-	if ((res = strtod (input.c_str (), &p, 10)) && res > INT32_MIN && res <= INT32_MAX)
+/* 	if (input.firs) */ // search if f a la fin
+	if (res = std::strtod (input.c_str (), &p, 10))
 	{
+		if (res >= INT_MIN && res <= INT_MAX)
+		{
+		    _type = isint;
+		    _int_cast = static_cast <int> (res);
+		    convert (_int_cast);
+		    return ;
+		}
+		_type = double;
+		convert (res);
 
 	}
-	_int_cast = *p ? 0 : 
-//	{
-		_type = ischar;
-/* 		return ;
-	}
-	if ( */
+}
 
-	std::cout << _type << std::endl;	
+void				Analyzer::convert (char c) {
+
+	_char_cast = c;
+	_int_cast = c - 48;
+}
+
+void				Analyzer::convert (int d) {
+
+	_char_cast = isascii (d) ? d : 0;
+	_int_cast = d;
+}
+
+void				Analyzer::print () const {
+
+	print (_char_cast);
+	print (_int_cast);
+}
+
+/******************************************************************************************************/
+/*	PRINT																							  */
+/******************************************************************************************************/
+
+void				Analyzer::print (char c) const {
+
+	std::cout << "Char : ";
+	
+/* 	std::cout << "\'" << c << "\'" << std::endl; */
+	isprint (c) ? 
+		std::cout << "\'" << c << "\'" << std::endl
+		: std::cout << "Not printable" << std::endl;
+}
+
+void				Analyzer::print (int d) const {
+
+	std::cout << "Int : " << d << std::endl;
 }
 
 /******************************************************************************************************/
