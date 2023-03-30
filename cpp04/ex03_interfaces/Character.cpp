@@ -21,6 +21,8 @@ Character::Character (Character const& original) : _name (original.getName ()) {
 			_bag [i] = original.getMateria (i)->clone ();
 			_nb_equiped ++;
 		}
+		else
+			_bag [i] = NULL;
 	}
 }
 
@@ -48,6 +50,8 @@ Character& Character::operator= (Character const& rhs) {
 				_bag [i] = rhs.getMateria(i)->clone();
 				_nb_equiped++;
 			}
+			else
+				_bag [i] = NULL;
 		}
 	}
 	return *this;

@@ -21,6 +21,8 @@ MateriaSource::MateriaSource (MateriaSource const& original) {
 			_materia_source [i] = original.getMateria (i)->clone ();
 			_nb_learned++;
 		}
+		else
+			_materia_source [i] = NULL;
 	}
 }
 

@@ -58,8 +58,9 @@ void				Analyzer::convert (std::string const& input) {
 		isdigit (input [0]) ?
 			convert ((int) (input [0] - 48))
 			: convert (input [0]);
-		return ;
 	}
+	else
+	{
 	static std::string const valid_characters = "0123456789.f";
 
 	if (input.find_first_not_of (valid_characters) != std::string::npos)
@@ -83,6 +84,7 @@ void				Analyzer::convert (std::string const& input) {
 		convert (res);
 
 	} */
+	}
 	print ();
 }
 
