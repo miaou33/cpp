@@ -4,9 +4,18 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+AForm::AForm () :	_name ("Void form"),
+					_grade_to_sign (Bureaucrat::highest_grade),
+					_grade_to_execute (Bureaucrat::highest_grade) {
+
+	_is_signed = 0;
+	if (_verbose)
+		announce ("Form constructor");
+}
+
 AForm::AForm (std::string name, int sign_grade, int exec_grade) :	_name (name),
-																_grade_to_sign (sign_grade),
-																_grade_to_execute (exec_grade) {
+																	_grade_to_sign (sign_grade),
+																	_grade_to_execute (exec_grade) {
 
 	_is_signed = 0;
 	checkGrade (_grade_to_sign);
@@ -16,8 +25,8 @@ AForm::AForm (std::string name, int sign_grade, int exec_grade) :	_name (name),
 }
 
 AForm::AForm (AForm const& original) :	_name (original.getName ()),
-									_grade_to_sign (original.getSignGrade ()),
-									_grade_to_execute (original.getExecGrade ()) {
+										_grade_to_sign (original.getSignGrade ()),
+										_grade_to_execute (original.getExecGrade ()) {
 
 	_is_signed = (bool) original.isSigned ();
 	if (_verbose)

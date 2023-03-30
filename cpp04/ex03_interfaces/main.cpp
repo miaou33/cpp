@@ -65,9 +65,18 @@ int	main (void)
 	me->use (2, *bob);
 
 	std::cout << std::endl;
+
+	Character me1 ("me1");
+	tmp = src->createMateria ("ice");
+	me1.equip (tmp);
+	Character me2 (me1);
+	me1.unequip (0);
+	delete tmp;
+	me1.use (0, *bob);
+	me2.use (0, *bob);
 	
-	delete bob;
 	delete me;
+	delete bob;
 	delete src;
 	return 0;
 }

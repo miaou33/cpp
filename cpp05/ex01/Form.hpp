@@ -8,6 +8,7 @@ class Bureaucrat;
 class Form {
 
 	public:
+	 	Form ();
 		Form (std::string name, int sign_grade, int exec_grade);
 		Form (Form const& original);
 		virtual ~Form ();

@@ -4,6 +4,13 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+PresidentialPardonForm::PresidentialPardonForm () : AForm ("PresidentialPardonForm", 25, 5) {
+
+	_target = "nobody";
+	if (_verbose)
+		announce ("Presidential pardon constructor");
+}
+
 PresidentialPardonForm::PresidentialPardonForm (std::string target) : AForm ("PresidentialPardonForm", 25, 5) {
 
 	_target = target;

@@ -4,6 +4,13 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+RobotomyRequestForm::RobotomyRequestForm () : AForm ("RobotomyRequestForm", 72, 45) {
+
+	_target = "nobody";
+	if (_verbose)
+		announce ("Robotomy constructor");
+}
+
 RobotomyRequestForm::RobotomyRequestForm (std::string target) : AForm ("RobotomyRequestForm", 72, 45) {
 
 	_target = target;

@@ -4,6 +4,15 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+Form::Form () :	_name ("Void form"),
+				_grade_to_sign (Bureaucrat::highest_grade),
+				_grade_to_execute (Bureaucrat::highest_grade) {
+
+	_is_signed = 0;
+	if (_verbose)
+		announce ("Constructor");
+}
+
 Form::Form (std::string name, int sign_grade, int exec_grade) :	_name (name),
 																_grade_to_sign (sign_grade),
 																_grade_to_execute (exec_grade) {

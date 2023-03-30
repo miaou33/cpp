@@ -4,6 +4,13 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+Bureaucrat::Bureaucrat () : _name ("No name") {
+
+	_grade = lowest_grade;
+	if (_verbose)
+		announce ("Constructor");
+}
+
 Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
 
 	checkGrade (grade);

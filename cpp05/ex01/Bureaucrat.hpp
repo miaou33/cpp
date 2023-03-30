@@ -13,6 +13,7 @@ class Bureaucrat {
 
 	public:
 
+		Bureaucrat ();
 		Bureaucrat (std::string const name, int grade);
 		Bureaucrat (Bureaucrat const& original);
 		virtual ~Bureaucrat ();

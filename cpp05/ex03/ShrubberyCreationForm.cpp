@@ -4,6 +4,13 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+ShrubberyCreationForm::ShrubberyCreationForm () : AForm ("ShrubberyCreationForm", 145, 137) {
+
+	_target = "nobody";
+	if (_verbose)
+		announce ("Shrubbery constructor");
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm (std::string target) : AForm ("ShrubberyCreationForm", 145, 137) {
 
 	_target = target;
