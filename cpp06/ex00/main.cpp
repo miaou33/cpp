@@ -9,7 +9,6 @@ int	main (int ac, char **av)
 		
 		Analyzer	analyzer;
 		analyzer.convert (av[1]);
-		analyzer.print ();
 	}
 	
 	catch (std::exception& e) {

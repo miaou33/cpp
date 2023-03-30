@@ -5,6 +5,7 @@
 # include <iostream>
 # include <stdlib.h>
 # include <stdio.h>
+# include <cstddef>
 # include <bits/stdc++.h>
 # include "colors.hpp"
 
@@ -27,8 +28,6 @@ class Analyzer {
 
 		// OTHER MB FUNCTIONS
 		void			convert (std::string const& input);
-
-		void			print () const;
 	
 	private:
 
@@ -46,14 +45,21 @@ class Analyzer {
 		double			_double_cast;
 		
 		void			convert (char c);
-		void			convert (int d);
+		void			convert (int i);
+		void			convert (double d);
+		void			print () const;
 		
-		void			print (char c) const;
-		void			print (int d) const;
-	
 	public:
 
 		class WrongArgument : public std::exception {
+
+			virtual char const*	what () const throw ();
+		};
+		class InvalidInput : public std::exception {
+
+			virtual char const*	what () const throw ();
+		};
+		class NonDisplayableChar : public std::exception {
 
 			virtual char const*	what () const throw ();
 		};
