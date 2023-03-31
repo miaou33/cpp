@@ -7,8 +7,8 @@ int	main (int ac, char **av)
 		if (ac != 2)
 			throw Multicaster::WrongArgument ();
 		
-		Multicaster	Multicaster;
-		Multicaster.convert (av[1]);
+		Multicaster	multicaster (av[1]);
+		multicaster.displayCasts ();
 	}
 	
 	catch (std::exception& e) {

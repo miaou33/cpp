@@ -9,7 +9,7 @@ int	main (void)
 		<< "Welcome to ur Phone Book" << std::endl \
 		<< "Possible commands :" << std::endl \
 		<< "- ADD to create a new contact" << std::endl \
-		<< "- SEARCH to print the list of contacts and pick one you wanna look" << std::endl \
+		<< "- SEARCH to displayCasts the list of contacts and pick one you wanna look" << std::endl \
 		<< "- EXIT to quit (it erase all the contacts)\n" << std::endl;
 	while (command != "EXIT")
 	{

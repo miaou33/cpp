@@ -15,19 +15,19 @@ class Multicaster {
 
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
 		Multicaster ();
+		Multicaster (std::string const& string);
 		Multicaster (Multicaster const& original);
 		virtual ~Multicaster ();
 		Multicaster& operator= (Multicaster const& rhs);
 
 		// GETTER
-		int				getType () const;
 		char			getCharCast () const;
 		int				getIntCast () const;
 		double			getDoubleCast () const;
 		float			getFloatCast () const;
 
 		// OTHER MB FUNCTIONS
-		void			convert (std::string const& input);
+		void			displayCasts ();
 	
 	private:
 
@@ -38,16 +38,21 @@ class Multicaster {
 			isdouble
 		};
 
-		int				_type;
-		char			_char_cast;
-		int				_int_cast;
-		float			_float_cast;
-		double			_double_cast;
+  		std::string		_param;
+		size_t			_param_len;
+		char			_c;
+		int				_i;
+		float			_f;
+		double			_d;
+
+		void			initCasts ();
+		void			parse ();
+		void			convert ();
+		void			fromChar ();
+		void			fromInt ();
+		void			display () const;
 		
-		void			convert (char c);
-		void			convert (int i);
-		void			convert (double d);
-		void			print () const;
+		void 	displayException (std::exception& e);
 		
 	public:
 
@@ -55,11 +60,11 @@ class Multicaster {
 
 			virtual char const*	what () const throw ();
 		};
-		class InvalidInput : public std::exception {
+		class InvalidString : public std::exception {
 
 			virtual char const*	what () const throw ();
 		};
-		class NonDisplayableChar : public std::exception {
+		class NonDisplayable : public std::exception {
 
 			virtual char const*	what () const throw ();
 		};

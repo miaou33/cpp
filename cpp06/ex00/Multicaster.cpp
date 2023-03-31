@@ -6,11 +6,16 @@
 
 Multicaster::Multicaster () {
 
-	_type = -1;
-	_char_cast = 0;
-	_int_cast = 0;
-	_double_cast = 0.0;
-	_float_cast = 0.0f;
+	_param = "";
+	_param_len = 0;
+	initCasts ();
+}
+
+Multicaster::Multicaster (std::string const& string) {
+
+	_param = string;
+	_param_len = string.length ();
+	initCasts ();
 }
 
 Multicaster::Multicaster (Multicaster const& original) {
@@ -24,11 +29,10 @@ Multicaster& Multicaster::operator= (Multicaster const& rhs) {
 
 	if (this != &rhs)
 	{
-		_type = rhs.getType ();
-		_char_cast = rhs.getCharCast ();
-		_int_cast = rhs.getIntCast ();
-		_double_cast = rhs.getDoubleCast ();
-		_float_cast = rhs.getFloatCast ();
+		_c = rhs.getCharCast ();
+		_i = rhs.getIntCast ();
+		_d = rhs.getDoubleCast ();
+		_f = rhs.getFloatCast ();
 	}
 	return *this;
 }
@@ -37,109 +41,119 @@ Multicaster& Multicaster::operator= (Multicaster const& rhs) {
 /*	GETTERS SETTERS																	  				  */
 /******************************************************************************************************/
 
-int					Multicaster::getType () const { return _type; }
+char				Multicaster::getCharCast () const { return _c; }
 
-char				Multicaster::getCharCast () const { return _char_cast; }
+int					Multicaster::getIntCast () const { return _i; }
 
-int					Multicaster::getIntCast () const { return _int_cast; }
+double				Multicaster::getDoubleCast () const { return _d; }
 
-double				Multicaster::getDoubleCast () const { return _double_cast; }
+float				Multicaster::getFloatCast () const { return _f; }
 
-float				Multicaster::getFloatCast () const { return _float_cast; }
+void				Multicaster::initCasts () {
+
+	_c = 0;
+	_i = 0;
+	_d = 0.0;
+	_f = 0.0f;
+}
 
 /******************************************************************************************************/
 /*	CONVERT																							  */
 /******************************************************************************************************/
 
-void				Multicaster::convert (std::string const& input) {
+void				Multicaster::convert () {
 
-	if (input.length () == 1)
+	switch (_param_len)
 	{
-		isdigit (input [0]) ?
-			convert ((int) (input [0] - 48))
-			: convert (input [0]);
+		case 0:
+			fromInt ();
+			break;
+		case 1:
+			std::isdigit (_param [0]) ? fromInt () : fromChar ();
+			break;
+		default:
+			parse ();
 	}
-	else
-	{
-	static std::string const valid_characters = "0123456789.f";
 
-	if (input.find_first_not_of (valid_characters) != std::string::npos)
-		throw Multicaster::InvalidInput ();
-
-	
-/* 	char	*p;
-	double	res;
- 	if (input.firs)  // search if f a la fin
-	if ((res = std::strtod (input.c_str (), &p)))
-	{
-		if (res >= INT_MIN && res <= INT_MAX)
-		{
-			if (!input.find_first_of ('.', 
-		    _type = isint;
-		    _int_cast = static_cast <int> (res);
-		    convert (_int_cast);
-		    return ;
-		}
-		_type = isdouble;
-		convert (res);
-
-	} */
-	}
-	print ();
 }
 
-void				Multicaster::convert (char c) {
+void				Multicaster::fromChar () {
 
-	_char_cast = c;
-	_int_cast = c - 48;
+	std::cout << "Type is char" << std::endl;
+	_c = _param [0];
+	_i = static_cast <int> (_c);
+	_f = static_cast <float> (_c);
+	_d = static_cast <double> (_c);
+
 }
 
-void				Multicaster::convert (int i) {
+void				Multicaster::fromInt () {
 
-	_char_cast = isascii (i) ? i : 0;
-	_int_cast = i;
-	_double_cast = static_cast <double> (i);
+	std::cout << "Type is int" << std::endl;
+	_i = std::atoi (_param.c_str ());
+	_c = isascii (_i) ? _i : 0;
+	_f = static_cast <float> (_i);
+	_d = static_cast <double> (_i);
 }
 
-void				Multicaster::convert (double d) {
+void				Multicaster::parse () {
 
-	_char_cast = 0;
-//	_int_cast = d >= INT_MIN && d <= INT_MAX ? d : ;
-	_double_cast = d;
+	std::cout << "Parse" << std::endl;
 }
 
 /******************************************************************************************************/
-/*	PRINT																							  */
+/*	displayCasts																							  */
 /******************************************************************************************************/
 
-void				Multicaster::print () const {
+void				Multicaster::displayCasts () {
+
 
 	try {
-		isprint (_char_cast) ? 
-			std::cout << "Char: \'" << _char_cast << "\'" << std::endl
-			: throw Multicaster::NonDisplayableChar ();		
+		convert ();
+		display ();
 	}
 	catch (std::exception& e) {
-		std::cout << e.what () << std::endl;
+		displayException (e);
 	}
+}
+
+void				Multicaster::display () {
 	
+	try {
+		std::cout << "Char: ";
+		isprint (_c) ?
+			std::cout << _c << std::endl
+			: throw NonDisplayable ();
+	}
+	catch (std::exception& e) {
+
+		displayException (e);
+	}
+	std::cout << "Int: " << _i << std::endl;
+	std::cout << "Float: " << _f << std::endl;
+	std::cout << "Double: " << _d << std::endl;
 }
 
 /******************************************************************************************************/
 /*	EXCEPTIONS																						  */
 /******************************************************************************************************/
 
+void				Multicaster::displayException (std::exception& e) {
+
+	std::cout << e.what () << std::endl;
+}
+
 char const*			Multicaster::WrongArgument::what () const throw () {
 
 	return ("Wrong argument. Format : ./convert <literal>");
 }
 
-char const*			Multicaster::InvalidInput::what () const throw () {
+char const*			Multicaster::InvalidString::what () const throw () {
 
-	return ("Invalid input. Please enter a literal");
+	return ("Invalid string. Please enter a literal");
 }
 
-char const*			Multicaster::NonDisplayableChar::what () const throw () {
+char const*			Multicaster::NonDisplayable::what () const throw () {
 
-	return ("Char: Non displayable");
+	return ("Non displayable");
 }
