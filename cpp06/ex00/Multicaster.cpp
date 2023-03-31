@@ -51,6 +51,7 @@ float				Multicaster::getFloatCast () const { return _f; }
 
 void				Multicaster::initCasts () {
 
+	_type = -1;
 	_c = 0;
 	_i = 0;
 	_d = 0.0;
@@ -66,14 +67,25 @@ void				Multicaster::convert () {
 	switch (_param_len)
 	{
 		case 0:
-			fromInt ();
+			_type = charType;
 			break;
 		case 1:
-			std::isdigit (_param [0]) ? fromInt () : fromChar ();
+			_type = std::isdigit (_param [0]) ? 
+						intType 
+						: charType;
 			break;
 		default:
-			parse ();
+			_param.find_first_not_of ("0123456789.f") != std::string::npos ?
+						strParse () 
+						: digitParse ();
 	}
+	void	(Multicaster::*castType [4]) () = {
+													&Multicaster::fromChar, 
+													&Multicaster::fromInt,
+													&Multicaster::fromFloat,
+													&Multicaster::fromDouble
+												};
+	_type != -1 ? (this->*castType [_type]) () : throw InvalidString ();
 
 }
 
@@ -96,9 +108,24 @@ void				Multicaster::fromInt () {
 	_d = static_cast <double> (_i);
 }
 
-void				Multicaster::parse () {
+void				Multicaster::fromFloat () {
 
-	std::cout << "Parse" << std::endl;
+	//_i = std::numeric_limits <int>::max ();//static_cast <int> (_f);
+}
+void				Multicaster::fromDouble () {
+
+
+}
+
+void				Multicaster::digitParse () {
+
+	std::cout << "Digit param parse" << std::endl;
+	
+}
+
+void				Multicaster::strParse () {
+
+	std::cout << "Special param parse" << std::endl;
 }
 
 /******************************************************************************************************/
@@ -117,7 +144,7 @@ void				Multicaster::displayCasts () {
 	}
 }
 
-void				Multicaster::display () {
+void				Multicaster::display () const {
 	
 	try {
 		std::cout << "Char: ";
@@ -125,11 +152,18 @@ void				Multicaster::display () {
 			std::cout << _c << std::endl
 			: throw NonDisplayable ();
 	}
-	catch (std::exception& e) {
-
-		displayException (e);
+	catch (std::exception& e) { 
+		displayException (e); 
 	}
-	std::cout << "Int: " << _i << std::endl;
+	try {
+		std::cout << "Int: ";
+		_i != std::numeric_limits <int> :: max () ?
+			std::cout << _i << std::endl
+			: throw Impossible ();
+	}
+	catch (std::exception& e) { 
+		displayException (e); 
+	}
 	std::cout << "Float: " << _f << std::endl;
 	std::cout << "Double: " << _d << std::endl;
 }
@@ -138,7 +172,7 @@ void				Multicaster::display () {
 /*	EXCEPTIONS																						  */
 /******************************************************************************************************/
 
-void				Multicaster::displayException (std::exception& e) {
+void				Multicaster::displayException (std::exception& e) const {
 
 	std::cout << e.what () << std::endl;
 }
@@ -151,6 +185,11 @@ char const*			Multicaster::WrongArgument::what () const throw () {
 char const*			Multicaster::InvalidString::what () const throw () {
 
 	return ("Invalid string. Please enter a literal");
+}
+
+char const*			Multicaster::Impossible::what () const throw () {
+
+	return ("Impossible");
 }
 
 char const*			Multicaster::NonDisplayable::what () const throw () {

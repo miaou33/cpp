@@ -1,12 +1,14 @@
 #ifndef MULTICASTER_HPP
 # define MULTICASTER_HPP
 
-# include <string>
+# include <bits/stdc++.h>
+# include <cstddef>
 # include <iostream>
+# include <limits>
 # include <stdlib.h>
 # include <stdio.h>
-# include <cstddef>
-# include <bits/stdc++.h>
+# include <string>
+
 # include "colors.hpp"
 
 class Multicaster {
@@ -32,27 +34,31 @@ class Multicaster {
 	private:
 
 		enum e_type {
-			ischar = 0,
-			isint,
-			isfloat,
-			isdouble
+			charType = 0,
+			intType,
+			floatType,
+			doubleType
 		};
 
   		std::string		_param;
 		size_t			_param_len;
+		int				_type;
 		char			_c;
 		int				_i;
 		float			_f;
 		double			_d;
 
 		void			initCasts ();
-		void			parse ();
 		void			convert ();
+		void			strParse ();
+		void			digitParse ();
 		void			fromChar ();
 		void			fromInt ();
+		void			fromFloat ();
+		void			fromDouble ();
 		void			display () const;
 		
-		void 	displayException (std::exception& e);
+		void 			displayException (std::exception& e) const;
 		
 	public:
 
@@ -65,6 +71,10 @@ class Multicaster {
 			virtual char const*	what () const throw ();
 		};
 		class NonDisplayable : public std::exception {
+
+			virtual char const*	what () const throw ();
+		};
+		class Impossible : public std::exception {
 
 			virtual char const*	what () const throw ();
 		};
