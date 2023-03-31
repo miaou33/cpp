@@ -1,5 +1,5 @@
-#ifndef ANALYZER_HPP
-# define ANALYZER_HPP
+#ifndef MULTICASTER_HPP
+# define MULTICASTER_HPP
 
 # include <string>
 # include <iostream>
@@ -9,15 +9,15 @@
 # include <bits/stdc++.h>
 # include "colors.hpp"
 
-class Analyzer {
+class Multicaster {
 
 	public:
 
 		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
-		Analyzer ();
-		Analyzer (Analyzer const& original);
-		virtual ~Analyzer ();
-		Analyzer& operator= (Analyzer const& rhs);
+		Multicaster ();
+		Multicaster (Multicaster const& original);
+		virtual ~Multicaster ();
+		Multicaster& operator= (Multicaster const& rhs);
 
 		// GETTER
 		int				getType () const;

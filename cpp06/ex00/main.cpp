@@ -1,14 +1,14 @@
-#include "Analyzer.hpp"
+#include "Multicaster.hpp"
 
 int	main (int ac, char **av)
 {
 	try {
 		
 		if (ac != 2)
-			throw Analyzer::WrongArgument ();
+			throw Multicaster::WrongArgument ();
 		
-		Analyzer	analyzer;
-		analyzer.convert (av[1]);
+		Multicaster	Multicaster;
+		Multicaster.convert (av[1]);
 	}
 	
 	catch (std::exception& e) {
