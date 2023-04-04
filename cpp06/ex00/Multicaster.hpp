@@ -79,6 +79,10 @@ class Multicaster {
 
 			virtual char const*	what () const throw ();
 		};
+/* 		class OutOfRangeValue: public std::exception {
+
+			virtual char const*	what () const throw ();
+		}; */
 };
 
 
