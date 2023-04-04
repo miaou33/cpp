@@ -52,6 +52,7 @@ class Multicaster {
 		void			convert ();
 		void			strParse ();
 		void			digitParse ();
+		void			checkOnlyOne (char c, size_t first);
 		void			fromChar ();
 		void			fromInt ();
 		void			fromFloat ();

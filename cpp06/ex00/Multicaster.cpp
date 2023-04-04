@@ -75,7 +75,7 @@ void				Multicaster::convert () {
 						: charType;
 			break;
 		default:
-			_param.find_first_not_of ("0123456789.f") != std::string::npos ?
+			_param.find_first_not_of ("-0123456789.f") != std::string::npos ?
 						strParse () 
 						: digitParse ();
 	}
@@ -86,12 +86,11 @@ void				Multicaster::convert () {
 													&Multicaster::fromDouble
 												};
 	_type != -1 ? (this->*castType [_type]) () : throw InvalidString ();
-
 }
 
 void				Multicaster::fromChar () {
 
-	std::cout << "Type is char" << std::endl;
+	std::cout << "from char" << std::endl;
 	_c = _param [0];
 	_i = static_cast <int> (_c);
 	_f = static_cast <float> (_c);
@@ -101,7 +100,10 @@ void				Multicaster::fromChar () {
 
 void				Multicaster::fromInt () {
 
-	std::cout << "Type is int" << std::endl;
+	std::cout << "from int" << std::endl;
+	char *p;
+	long n = std::strtol (_param.c_str (), &p, 10);
+	if (n == )
 	_i = std::atoi (_param.c_str ());
 	_c = isascii (_i) ? _i : 0;
 	_f = static_cast <float> (_i);
@@ -118,22 +120,39 @@ void				Multicaster::fromDouble () {
 	std::cout << "from double" << std::endl; 
 }
 
+void				Multicaster::checkOnlyOne (char c, size_t first) {
+
+	if (_param.find_last_of (c) != first)
+		throw InvalidString();
+}
+
 void				Multicaster::digitParse () {
+
+	size_t	found;
 
 	std::cout << "Digit param parse" << std::endl;
 
-	size_t first_found_f = _param.find_first_of ('f'); 
-	std::cout << "npos = " << std::string::npos << std::endl; 
-	std::cout << "first_found_f = " << first_found_f << std::endl; 
-
-	if (first_found_f != std::string::npos)
+	found = _param.find_first_of ('-');
+	if (found != std::string::npos && found != 0)
+		throw InvalidString ();
+	
+	found = _param.find_first_of ('f'); 
+	if (found != std::string::npos)
 	{
-		std::cout << "FOUND F" << std::endl;
-		size_t last_found_f = _param.find_last_of ('f');
-		std::cout << "last founf f = " << last_found_f << std::endl;
-		last_found_f == first_found_f ? fromFloat () : throw InvalidString ();
-
+		if (found != _param_len - 1)
+			throw InvalidString ();
+		checkOnlyOne ('f', found);
+		fromFloat ();
+		return;
 	}
+	found = _param.find_first_of ('.');
+	if (found != std::string::npos)
+	{
+		checkOnlyOne ('.', found);
+		fromDouble ();
+		return;
+	}
+	fromInt ();
 
 /* 	if (_param.find_first_of ('.') != _param.find_last_of ('.') 
 		|| 
