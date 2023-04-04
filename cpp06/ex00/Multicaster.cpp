@@ -111,16 +111,35 @@ void				Multicaster::fromInt () {
 void				Multicaster::fromFloat () {
 
 	//_i = std::numeric_limits <int>::max ();//static_cast <int> (_f);
+	std::cout << "from float" << std::endl; 
 }
 void				Multicaster::fromDouble () {
 
-
+	std::cout << "from double" << std::endl; 
 }
 
 void				Multicaster::digitParse () {
 
 	std::cout << "Digit param parse" << std::endl;
-	
+
+	size_t first_found_f = _param.find_first_of ('f'); 
+	std::cout << "npos = " << std::string::npos << std::endl; 
+	std::cout << "first_found_f = " << first_found_f << std::endl; 
+
+	if (first_found_f != std::string::npos)
+	{
+		std::cout << "FOUND F" << std::endl;
+		size_t last_found_f = _param.find_last_of ('f');
+		std::cout << "last founf f = " << last_found_f << std::endl;
+		last_found_f == first_found_f ? fromFloat () : throw InvalidString ();
+
+	}
+
+/* 	if (_param.find_first_of ('.') != _param.find_last_of ('.') 
+		|| 
+		|| first_found_f != _param_len)
+
+	first_found_f ? fromFloat () : fromDouble (); */
 }
 
 void				Multicaster::strParse () {
