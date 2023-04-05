@@ -115,6 +115,15 @@ void				Multicaster::fromFloat () {
 	//_i = std::numeric_limits <int>::max ();//static_cast <int> (_f);
 	std::cout << "from float" << std::endl; 
 	_type = floatType;
+	_f = std::atof (_param.c_str ());
+	if (errno == ERANGE)
+		throw OutOfRangeValue ();
+	if (_f >= std::numeric_limits<int>::min () && _f <= std::numeric_limits<int>::max ())
+		_i = static_cast <int> (_f);
+	else
+		_i = std::numeric_limits<int>::max ();
+	_c = isascii (_i) ? _i : 0;
+	_d = static_cast <double> (_f);
 }
 void				Multicaster::fromDouble () {
 
@@ -122,7 +131,7 @@ void				Multicaster::fromDouble () {
 	_type = doubleType;
 }
 
-void				Multicaster::checkOnlyOne (char c, size_t first) {
+void				Multicaster::checkOnlyOne (char c, size_t first) const {
 
 	if (_param.find_last_of (c) != first)
 		throw InvalidString();
@@ -134,12 +143,14 @@ void				Multicaster::digitParse () {
 
 	std::cout << "Digit param parse" << std::endl;
 
-	found = _param.find_first_of ('-');
-	if (found != std::string::npos && found != 0)
-		throw InvalidString ();
+	if ((found = _param.find_first_of ('-')) != std::string::npos)
+	{
+		if (found != 0)
+			throw InvalidString ();
+		checkOnlyOne ('-', found);
+	}
 	
-	found = _param.find_first_of ('f'); 
-	if (found != std::string::npos)
+	if ((found = _param.find_first_of ('f')) != std::string::npos)
 	{
 		if (found != _param_len - 1)
 			throw InvalidString ();
@@ -147,8 +158,8 @@ void				Multicaster::digitParse () {
 		fromFloat ();
 		return;
 	}
-	found = _param.find_first_of ('.');
-	if (found != std::string::npos)
+
+	if ((found = _param.find_first_of ('.')) != std::string::npos)
 	{
 		checkOnlyOne ('.', found);
 		fromDouble ();
@@ -158,8 +169,7 @@ void				Multicaster::digitParse () {
 	char *p;
 	long n = std::strtol (_param.c_str (), &p, 10);
 	if (errno == ERANGE || n < std::numeric_limits<int>::min ()
-						|| n > std::numeric_limits<int>::max ())
-	{
+						|| n > std::numeric_limits<int>::max ()) {
 		fromDouble ();
 		return;
 	}
@@ -241,4 +251,7 @@ char const*			Multicaster::NonDisplayable::what () const throw () {
 	return ("Non displayable");
 }
 
-/* char const*			Multicaster:: */
+char const*			Multicaster::OutOfRangeValue::what () const throw () {
+
+	return ("Out of range value");
+}

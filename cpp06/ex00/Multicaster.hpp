@@ -52,7 +52,7 @@ class Multicaster {
 		void			convert ();
 		void			strParse ();
 		void			digitParse ();
-		void			checkOnlyOne (char c, size_t first);
+		void			checkOnlyOne (char c, size_t first) const;
 		void			fromChar ();
 		void			fromInt ();
 		void			fromFloat ();
@@ -79,10 +79,10 @@ class Multicaster {
 
 			virtual char const*	what () const throw ();
 		};
-/* 		class OutOfRangeValue: public std::exception {
+		class OutOfRangeValue: public std::exception {
 
 			virtual char const*	what () const throw ();
-		}; */
+		};
 };
 
 
