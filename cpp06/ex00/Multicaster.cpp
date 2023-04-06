@@ -106,7 +106,7 @@ void				Multicaster::toInt () {
 	std::cout << "to int" << std::endl;
 
 	_type = intType;
-	_i = std::atoi (_param.c_str ());
+	_i = std::stoi (_param.c_str ());
 	_c = isascii (_i) ? _i : 0;
 	_f = static_cast <float> (_i);
 	_d = static_cast <double> (_i);
