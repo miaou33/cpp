@@ -70,27 +70,29 @@ void				Multicaster::convert () {
 			_type = charType;
 			break;
 		case 1:
-			_type = std::isdigit (_param [0]) ? 
-						intType 
-						: charType;
+			_type = std::isdigit (_param [0]) ?
+				intType
+				: charType;
 			break;
 		default:
 			_param.find_first_not_of ("-0123456789.f") != std::string::npos ?
-						strParse () 
-						: digitParse ();
+				specialParse ()
+				: digitParse ();
 	}
-	void	(Multicaster::*castType [4]) () = {
-													&Multicaster::fromChar, 
-													&Multicaster::fromInt,
-													&Multicaster::fromFloat,
-													&Multicaster::fromDouble
+/* 	void	(Multicaster::*castType [4]) () = {
+													&Multicaster::toChar, 
+													&Multicaster::toInt,
+													&Multicaster::toFloat,
+													&Multicaster::toDouble
 												};
-	_type != -1 ? (this->*castType [_type]) () : throw InvalidString ();
+	_type != -1 ? (this->*castType [_type]) () : throw InvalidString (); */
+	if (_type == -1)
+		throw InvalidString ();
 }
 
-void				Multicaster::fromChar () {
+void				Multicaster::toChar () {
 
-	std::cout << "from char" << std::endl;
+	std::cout << "to char" << std::endl;
 	_type = charType;
 	_c = _param [0];
 	_i = static_cast <int> (_c);
@@ -99,9 +101,9 @@ void				Multicaster::fromChar () {
 
 }
 
-void				Multicaster::fromInt () {
+void				Multicaster::toInt () {
 
-	std::cout << "from int" << std::endl;
+	std::cout << "to int" << std::endl;
 
 	_type = intType;
 	_i = std::atoi (_param.c_str ());
@@ -110,12 +112,11 @@ void				Multicaster::fromInt () {
 	_d = static_cast <double> (_i);
 }
 
-void				Multicaster::fromFloat () {
+void				Multicaster::toFloat () {
 
 	//_i = std::numeric_limits <int>::max ();//static_cast <int> (_f);
-	std::cout << "from float" << std::endl; 
-	_type = floatType;
-	_f = std::atof (_param.c_str ());
+	std::cout << "to float" << std::endl; 
+	_f = std::strtof (_param.c_str (), NULL);
 	if (errno == ERANGE)
 		throw OutOfRangeValue ();
 	if (_f >= std::numeric_limits<int>::min () && _f <= std::numeric_limits<int>::max ())
@@ -125,16 +126,9 @@ void				Multicaster::fromFloat () {
 	_c = isascii (_i) ? _i : 0;
 	_d = static_cast <double> (_f);
 }
-void				Multicaster::fromDouble () {
+void				Multicaster::toDouble () {
 
-	std::cout << "from double" << std::endl; 
-	_type = doubleType;
-}
-
-void				Multicaster::checkOnlyOne (char c, size_t first) const {
-
-	if (_param.find_last_of (c) != first)
-		throw InvalidString();
+	std::cout << "to double" << std::endl; 
 }
 
 void				Multicaster::digitParse () {
@@ -145,24 +139,23 @@ void				Multicaster::digitParse () {
 
 	if ((found = _param.find_first_of ('-')) != std::string::npos)
 	{
-		if (found != 0)
+		if (found != 0 || _param.find_last_of ('-') != found)
 			throw InvalidString ();
-		checkOnlyOne ('-', found);
 	}
 	
 	if ((found = _param.find_first_of ('f')) != std::string::npos)
 	{
-		if (found != _param_len - 1)
+		if (found != _param_len - 1 || _param.find_last_of ('f') != found)
 			throw InvalidString ();
-		checkOnlyOne ('f', found);
-		fromFloat ();
+		_type = floatType;
 		return;
 	}
 
 	if ((found = _param.find_first_of ('.')) != std::string::npos)
 	{
-		checkOnlyOne ('.', found);
-		fromDouble ();
+		if (_param.find_last_of ('.') != found)
+			throw InvalidString ();
+		_type = doubleType;
 		return;
 	}
 	
@@ -170,13 +163,13 @@ void				Multicaster::digitParse () {
 	long n = std::strtol (_param.c_str (), &p, 10);
 	if (errno == ERANGE || n < std::numeric_limits<int>::min ()
 						|| n > std::numeric_limits<int>::max ()) {
-		fromDouble ();
+		_type = doubleType;
 		return;
 	}
-	fromInt ();
+	_type = intType;
 }
 
-void				Multicaster::strParse () {
+void				Multicaster::specialParse () {
 
 	std::cout << "Special param parse" << std::endl;
 }
@@ -202,9 +195,7 @@ void				Multicaster::display () const {
 	std::cout << "DISPLAY:" << std::endl;
 	try {
 		std::cout << "Char: ";
-		isprint (_c) ?
-			std::cout << _c << std::endl
-			: throw NonDisplayable ();
+		toChar ();
 	}
 	catch (std::exception& e) { 
 		displayException (e); 

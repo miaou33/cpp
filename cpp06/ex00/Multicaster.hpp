@@ -50,13 +50,12 @@ class Multicaster {
 
 		void			initCasts ();
 		void			convert ();
-		void			strParse ();
+		void			specialParse ();
 		void			digitParse ();
-		void			checkOnlyOne (char c, size_t first) const;
-		void			fromChar ();
-		void			fromInt ();
-		void			fromFloat ();
-		void			fromDouble ();
+		void			toChar ();
+		void			toInt ();
+		void			toFloat ();
+		void			toDouble ();
 		void			display () const;
 		
 		void 			displayException (std::exception& e) const;
