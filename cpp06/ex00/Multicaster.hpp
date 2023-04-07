@@ -52,20 +52,22 @@ class Multicaster {
 		void			findType ();
 		void			specialParse ();
 		void			digitParse ();
+
 		void			fromChar ();
 		void			fromInt ();
 		void			fromFloat ();
 		void			fromDouble ();
+
+		void			convert ();
 		void			toChar ();
 		void			toInt ();
 		void			toFloat ();
 		void			toDouble ();
-
-		void			displayCasts ();
 		void			display (char c) const;
 		void			display (int i) const;
 		void			display (float f) const;
 		void			display (double d) const;
+		void			display (std::string const& s) const;
 		
 		void 			displayException (std::exception& e) const;
 		
