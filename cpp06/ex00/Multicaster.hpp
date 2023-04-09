@@ -40,23 +40,18 @@ class Multicaster {
             doubleType
         };
 
-        std::string      _param;
-        size_t           _param_len;
-        int              _type;
-        char             _c;
-        int              _i;
-        float            _f;
-        double           _d;
+        std::string     _param;
+        size_t          _param_len;
+        int             _type;
+        char            _c;
+        int             _i;
+        float           _f;
+        double          _d;
 
         void            initCasts ();
         void            findType ();
         void            specialParse ();
         void            digitParse ();
-
-        void            fromChar ();
-        void            fromInt ();
-        void            fromFloat ();
-        void            fromDouble ();
 
         void            convert ();
         void            toChar ();
@@ -67,9 +62,10 @@ class Multicaster {
         void            display (int i) const;
         void            display (float f) const;
         void            display (double d) const;
-        void            display (std::string const& ) const;
+        void            display (std::string const& s) const;
+        void            announce (std::string const& s) const;
         
-        void             displayException (std::exception& e) const;
+        void            displayException (std::exception& e) const;
         
     public:
 

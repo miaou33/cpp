@@ -127,6 +127,25 @@ void                Multicaster::displayCasts () {
 
     try {
         findType ();
+        /*******DEBUG*******/
+        switch (_type)
+        {
+            case charType:
+                display ("CHAR TYPE");
+                break;
+            case intType:
+                display ("INT TYPE");
+                break;
+            case floatType:
+                display ("FLOAT TYPE");
+                break;
+            case doubleType:
+                display ("DOUBLE TYPE");
+                break;
+            default:
+                throw InvalidString ();
+        }
+        /*******END*******/ 
         errno = 0;
         switch (_type)
         {
@@ -146,6 +165,7 @@ void                Multicaster::displayCasts () {
                 throw InvalidString ();
         }
         errno == ERANGE ? throw OutOfRangeValue () : convert ();
+
     }
     catch (std::exception& e) {
         displayException (e);
@@ -155,28 +175,28 @@ void                Multicaster::displayCasts () {
 void                Multicaster::convert () {
     
     try {
-        display ("Char: ");
+        announce ("Char: ");
         toChar ();
     }
     catch (std::exception& e) { 
         displayException (e); 
     }
     try {
-        display ("Int: ");
+        announce ("Int: ");
         toInt ();
     }
     catch (std::exception& e) { 
         displayException (e); 
     }
     try {
-        display ("Float: ");
+        announce ("Float: ");
         toFloat ();
     }
     catch (std::exception& e) { 
         displayException (e); 
     }
     try {
-        display ("Double: ");
+        announce ("Double: ");
         toDouble ();
     }
     catch (std::exception& e) { 
@@ -201,7 +221,7 @@ void                Multicaster::toChar () {
             isascii (static_cast <int> (_d)) ? display (static_cast <char> (_d)) : throw Impossible (); 
             break;
         default:
-             throw InvalidString ();
+            throw InvalidString ();
             break;
     }
 }
@@ -211,36 +231,71 @@ void                Multicaster::toInt () {
     switch (_type)
     {
         case charType:
-             display (static_cast <int> (_c));
+            display (static_cast <int> (_c));
             break;
         case intType:
             display (_i);
             break;
         case floatType:
-             (_f >= INT_MIN && _f <= INT_MAX) ? display (static_cast <int> (_f)) : throw Impossible ();
+            (_f >= (float) INT_MIN && _f <= (float) INT_MAX) ? display (static_cast <int> (_f)) : throw Impossible ();
             break;
         case doubleType:
-            (_d >= INT_MIN && _d <= INT_MAX) ? display (static_cast <char> (_d)) : throw Impossible (); 
+            (_d >= (double) INT_MIN && _d <= (double) INT_MAX) ? display (static_cast <int> (_d)) : throw Impossible (); 
             break;
         default:
-             throw InvalidString ();
+            throw InvalidString ();
             break;
     }
-/*     _c = isascii (_i) ? _i : 0;
-    _f = static_cast <float> (_i);
-    _d = static_cast <double> (_i); */
 }
 
 void                Multicaster::toFloat () {
 
-/*     if (_f >= std::numeric_limits<int>::min () && _f <= std::numeric_limits<int>::max ())
-        _i = static_cast <int> (_f);
-    else
-        throw OutOfRangeValue (); */
+    switch (_type)
+    {
+        case charType:
+            display (static_cast <float> (_c)); 
+            break;
+        case intType:
+            display (static_cast <float> (_i)); 
+            break;
+        case floatType:
+            display (_f);
+            break;
+        case doubleType:
+            (_d >= static_cast <double> (FLT_MIN) && _d <= static_cast <double> (FLT_MAX)) ?
+                display (static_cast <float> (_d)) : throw Impossible (); 
+            break;
+        default:
+            throw InvalidString ();
+            break;
+    }
 }
 
 void                Multicaster::toDouble () {
 
+    switch (_type)
+    {
+        case charType:
+            display (static_cast <double> (_c)); 
+            break;
+        case intType:
+            display (static_cast <double> (_i)); 
+            break;
+        case floatType:
+            display (static_cast <double> (_f)); 
+            break;
+        case doubleType:
+            display (_d);
+            break;
+        default:
+            throw InvalidString ();
+            break;
+    }
+}
+
+void                Multicaster::announce (std::string const& s) const {
+
+    std::cout << s;
 }
 
 void                Multicaster::display (char c) const {
@@ -257,12 +312,18 @@ void                Multicaster::display (int i) const {
 
 void                Multicaster::display (float f) const {
 
-    std::cout << f << std::endl;
+    std::cout << f;
+    if (f - (int)f == 0)
+       std::cout << ".0";
+    std::cout << "f" << std::endl;
 }
 
 void                Multicaster::display (double d) const {
 
-    std::cout << d << std::endl;
+    std::cout << d;
+    if (d - (int)d == 0)
+       std::cout << ".0";
+    std::cout << std::endl;
 }
 
 void                Multicaster::display (std::string const& s) const {
