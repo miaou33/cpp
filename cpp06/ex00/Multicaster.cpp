@@ -125,6 +125,7 @@ void                Multicaster::specialParse () {
 
 void                Multicaster::displayCasts () {
 
+    std::cout << "\nUSE OPERATORS!!!\n" << std::endl;
     try {
         findType ();
         /*******DEBUG*******/
@@ -262,7 +263,7 @@ void                Multicaster::toFloat () {
             display (_f);
             break;
         case doubleType:
-            (_d >= static_cast <double> (FLT_MIN) && _d <= static_cast <double> (FLT_MAX)) ?
+            (_d >= (double) FLT_MIN && _d <= (double) FLT_MAX) ?
                 display (static_cast <float> (_d)) : throw Impossible (); 
             break;
         default:
