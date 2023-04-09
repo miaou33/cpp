@@ -107,8 +107,8 @@ void                Multicaster::digitParse () {
     
     char *p;
     long n = std::strtol (_param.c_str (), &p, 10);
-    if (errno == ERANGE || n <= std::numeric_limits<int>::min ()
-                        || n >= std::numeric_limits<int>::max ()) {
+    if (errno == ERANGE || n < std::numeric_limits<int>::min ()
+                        || n > std::numeric_limits<int>::max ()) {
         throw InvalidString ();
     }
     _type = intType;

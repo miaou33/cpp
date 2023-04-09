@@ -40,13 +40,13 @@ class Multicaster {
             doubleType
         };
 
-          std::string        _param;
-        size_t            _param_len;
-        int                _type;
-        char            _c;
-        int                _i;
+        std::string      _param;
+        size_t           _param_len;
+        int              _type;
+        char             _c;
+        int              _i;
         float            _f;
-        double            _d;
+        double           _d;
 
         void            initCasts ();
         void            findType ();
