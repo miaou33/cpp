@@ -15,14 +15,13 @@ class Multicaster {
 
     public:
 
-        // CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
         Multicaster ();
         Multicaster (std::string const& string);
         Multicaster (Multicaster const& original);
         virtual ~Multicaster ();
-        Multicaster& operator= (Multicaster const& rhs);
 
-        // GETTER
+        Multicaster&        operator= (Multicaster const& rhs);
+
         std::string const&  getParam () const;
         size_t              getParamLen () const;
         int                 getType () const;
@@ -31,9 +30,30 @@ class Multicaster {
         double              getDoubleCast () const;
         float               getFloatCast () const;
 
-        // OTHER MB FUNCTIONS
-        void            displayCasts ();
+        void                displayCasts ();
     
+        class WrongArgument : public std::exception {
+
+            virtual char const*    what () const throw ();
+        };
+        class InvalidString : public std::exception {
+
+            virtual char const*    what () const throw ();
+        };
+        class NonDisplayable : public std::exception {
+
+            virtual char const*    what () const throw ();
+        };
+        class Impossible : public std::exception {
+
+            virtual char const*    what () const throw ();
+        };
+        class OutOfRangeValue: public std::exception {
+
+            virtual char const*    what () const throw ();
+        };
+
+
     private:
 
         enum e_type {
@@ -62,34 +82,10 @@ class Multicaster {
         void            toInt ();
         void            toFloat ();
         void            toDouble ();
-
-        
-        
-    public:
-
-        class WrongArgument : public std::exception {
-
-            virtual char const*    what () const throw ();
-        };
-        class InvalidString : public std::exception {
-
-            virtual char const*    what () const throw ();
-        };
-        class NonDisplayable : public std::exception {
-
-            virtual char const*    what () const throw ();
-        };
-        class Impossible : public std::exception {
-
-            virtual char const*    what () const throw ();
-        };
-        class OutOfRangeValue: public std::exception {
-
-            virtual char const*    what () const throw ();
-        };
 };
 
 
+void    special_float_double_parse (std::string const& s);
 void    neg_parse (std::string const& s);
 bool    float_parse (std::string const& s, size_t s_len);
 bool    double_parse (std::string const& s);

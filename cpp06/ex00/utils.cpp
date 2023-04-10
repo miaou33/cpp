@@ -37,6 +37,18 @@ void    display_exception (std::exception& e) {
     std::cout << e.what () << std::endl;
 }
 
+void    special_float_double_parse (std::string const& s) {
+
+    static std::string  valid_specials [] = {"nan", "nanf", "inf", "inff", "-inf", "-inff", "+inf", "+inff"}; 
+    
+    for (size_t i = 0; i < 8; i++)
+    {
+        if (s == valid_specials [i])
+            return;
+    }
+    throw Multicaster::InvalidString ();
+}
+
 void    neg_parse (std::string const& s) {
 
     size_t    found;

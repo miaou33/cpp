@@ -67,6 +67,35 @@ void                Multicaster::initCasts () {
 }
 
 /******************************************************************************************************/
+/*    EXCEPTIONS                                                                                      */
+/******************************************************************************************************/
+
+char const*            Multicaster::WrongArgument::what () const throw () {
+
+    return ("Wrong argument. Format : ./convert <literal>");
+}
+
+char const*            Multicaster::InvalidString::what () const throw () {
+
+    return ("Invalid string. Please enter a literal thas is either a char, an int, a float or a double");
+}
+
+char const*            Multicaster::Impossible::what () const throw () {
+
+    return ("Impossible");
+}
+
+char const*            Multicaster::NonDisplayable::what () const throw () {
+
+    return ("Non displayable");
+}
+
+char const*            Multicaster::OutOfRangeValue::what () const throw () {
+
+    return ("Out of range value");
+}
+
+/******************************************************************************************************/
 /*    DISPLAY                                                                                         */
 /******************************************************************************************************/
 
@@ -92,13 +121,19 @@ void                Multicaster::displayCasts () {
             default:
                 throw InvalidString ();
         }
-        errno == ERANGE ? throw OutOfRangeValue () : convert ();
+        errno == ERANGE ?
+            throw OutOfRangeValue ()
+            : convert ();
 
     }
     catch (std::exception& e) {
         display_exception (e);
     }
 }
+
+/******************************************************************************************************/
+/*    CONVERT                                                                                         */
+/******************************************************************************************************/
 
 void                Multicaster::convert () {
     
@@ -221,10 +256,6 @@ void                Multicaster::toDouble () {
     }
 }
 
-/******************************************************************************************************/
-/*    CONVERT                                                                                         */
-/******************************************************************************************************/
-
 void                Multicaster::findType () {
 
     switch (_param_len)
@@ -250,35 +281,8 @@ void                Multicaster::digitParse () {
 
 void                Multicaster::specialParse () {
 
+    special_float_double_parse (_param);
     _type = std::strtof (_param.c_str (), NULL) ? floatType : _type;
     _type = (_type == noType && std::strtod (_param.c_str (), NULL)) ? doubleType : _type;
 }
 
-/******************************************************************************************************/
-/*    EXCEPTIONS                                                                                      */
-/******************************************************************************************************/
-
-char const*            Multicaster::WrongArgument::what () const throw () {
-
-    return ("Wrong argument. Format : ./convert <literal>");
-}
-
-char const*            Multicaster::InvalidString::what () const throw () {
-
-    return ("Invalid string. Please enter a literal thas is either a char, an int, a float or a double");
-}
-
-char const*            Multicaster::Impossible::what () const throw () {
-
-    return ("Impossible");
-}
-
-char const*            Multicaster::NonDisplayable::what () const throw () {
-
-    return ("Non displayable");
-}
-
-char const*            Multicaster::OutOfRangeValue::what () const throw () {
-
-    return ("Out of range value");
-}
