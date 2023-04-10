@@ -15,7 +15,8 @@ BUILD_DIR  = ./objs
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
-			Multicaster.cpp
+			Multicaster.cpp \
+			utils.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 

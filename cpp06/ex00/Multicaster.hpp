@@ -58,14 +58,8 @@ class Multicaster {
         void            toInt ();
         void            toFloat ();
         void            toDouble ();
-        void            display (char c) const;
-        void            display (int i) const;
-        void            display (float f) const;
-        void            display (double d) const;
-        void            display (std::string const& s) const;
-        void            announce (std::string const& s) const;
+
         
-        void            displayException (std::exception& e) const;
         
     public:
 
@@ -91,5 +85,13 @@ class Multicaster {
         };
 };
 
+
+void            announce (std::string const& s);
+void            display (char c);
+void            display (int i);
+void            display (float f);
+void            display (double d);
+void            display (std::string const& s);
+void            displayException (std::exception& e);
 
 # endif
