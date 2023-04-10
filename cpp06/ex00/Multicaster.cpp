@@ -29,6 +29,8 @@ Multicaster& Multicaster::operator= (Multicaster const& rhs) {
 
     if (this != &rhs)
     {
+        _param = rhs.getParam ();
+        _type = rhs.getType ();
         _c = rhs.getCharCast ();
         _i = rhs.getIntCast ();
         _d = rhs.getDoubleCast ();
@@ -40,6 +42,12 @@ Multicaster& Multicaster::operator= (Multicaster const& rhs) {
 /******************************************************************************************************/
 /*    GETTERS SETTERS                                                                                 */
 /******************************************************************************************************/
+
+std::string const&  Multicaster::getParam () const { return _param; }
+
+size_t              Multicaster::getParamLen () const { return _param_len; }
+
+int                 Multicaster::getType () const { return _type; }
 
 char                Multicaster::getCharCast () const { return _c; }
 

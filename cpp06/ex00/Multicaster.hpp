@@ -23,10 +23,13 @@ class Multicaster {
         Multicaster& operator= (Multicaster const& rhs);
 
         // GETTER
-        char            getCharCast () const;
-        int             getIntCast () const;
-        double          getDoubleCast () const;
-        float           getFloatCast () const;
+        std::string const&  getParam () const;
+        size_t              getParamLen () const;
+        int                 getType () const;
+        char                getCharCast () const;
+        int                 getIntCast () const;
+        double              getDoubleCast () const;
+        float               getFloatCast () const;
 
         // OTHER MB FUNCTIONS
         void            displayCasts ();

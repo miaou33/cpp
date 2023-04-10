@@ -7,16 +7,16 @@
 
 class nClass {
 
-	public:
-		// CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
-		nClass ();
-		nClass (nClass const& original);
-		virtual ~nClass ();
-		nClass& operator= (nClass const& rhs);
+    public:
+        // CONSTRUCTOR DESTRUCTOR ASSIGNMENT 
+        nClass ();
+        nClass (nClass const& original);
+        virtual ~nClass ();
+        nClass& operator= (nClass const& rhs);
 
-		// GETTER
+        // GETTER
 
-		// OTHER MB FUNCTIONS
+        // OTHER MB FUNCTIONS
 
 };
 

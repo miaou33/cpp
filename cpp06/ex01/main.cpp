@@ -1,6 +1,6 @@
 #include "nClass.hpp"
 
-int	main (void)
+int    main (void)
 {
 
 }
