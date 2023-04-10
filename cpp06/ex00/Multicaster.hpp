@@ -24,9 +24,9 @@ class Multicaster {
 
         // GETTER
         char            getCharCast () const;
-        int                getIntCast () const;
-        double            getDoubleCast () const;
-        float            getFloatCast () const;
+        int             getIntCast () const;
+        double          getDoubleCast () const;
+        float           getFloatCast () const;
 
         // OTHER MB FUNCTIONS
         void            displayCasts ();
@@ -34,7 +34,8 @@ class Multicaster {
     private:
 
         enum e_type {
-            charType = 0,
+            noType = -1,
+            charType,
             intType,
             floatType,
             doubleType
@@ -86,12 +87,17 @@ class Multicaster {
 };
 
 
-void            announce (std::string const& s);
-void            display (char c);
-void            display (int i);
-void            display (float f);
-void            display (double d);
-void            display (std::string const& s);
-void            displayException (std::exception& e);
+void    neg_parse (std::string const& s);
+bool    float_parse (std::string const& s, size_t s_len);
+bool    double_parse (std::string const& s);
+bool    int_parse (std::string const& s);
+
+void    announce (std::string const& s);
+void    display (char c);
+void    display (int i);
+void    display (float f);
+void    display (double d);
+void    display (std::string const& s);
+void    display_exception (std::exception& e);
 
 # endif

@@ -13,6 +13,7 @@ int    main (int ac, char **av)
     
     catch (std::exception& e) {
 
+        display_exception (e); 
         return 1;
     }
 

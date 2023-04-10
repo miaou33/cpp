@@ -9,7 +9,7 @@ void    display (char c) {
 
     if (!isprint (c))
         throw Multicaster::NonDisplayable ();
-    std::cout << c << std::endl;
+    std::cout << "\'" << c << "\'" << std::endl;
 }
 
 void    display (int i) {
@@ -19,18 +19,12 @@ void    display (int i) {
 
 void    display (float f) {
 
-    std::cout << f;
-    if (f - (int)f == 0)
-       std::cout << ".0";
-    std::cout << "f" << std::endl;
+    std::cout << std::fixed << std::setprecision (1) << f << "f" << std::endl;
 }
 
 void    display (double d) {
 
-    std::cout << d;
-    if (d - (int)d == 0)
-       std::cout << ".0";
-    std::cout << std::endl;
+    std::cout << std::fixed << std::setprecision (1) << d << std::endl;
 }
 
 void    display (std::string const& s) {
@@ -38,7 +32,57 @@ void    display (std::string const& s) {
     std::cout << s << std::endl;
 }
 
-void    displayException (std::exception& e) {
+void    display_exception (std::exception& e) {
 
     std::cout << e.what () << std::endl;
+}
+
+void    neg_parse (std::string const& s) {
+
+    size_t    found;
+
+    if (((found = s.find_first_of ('-')) != std::string::npos) 
+            && (found != 0 || s.find_last_of ('-') != found))
+    {
+        throw Multicaster::InvalidString ();
+    }
+} 
+
+bool    float_parse (std::string const& s, size_t s_len) {
+
+    size_t    found;
+
+    if ((found = s.find_first_of ('f')) != std::string::npos)
+    {
+        if (found != s_len - 1 || s.find_last_of ('f') != found)
+            throw Multicaster::InvalidString ();
+        return true;
+    }
+    return false;
+}
+
+bool    double_parse (std::string const& s) {
+
+    size_t    found;
+
+    if ((found = s.find_first_of ('.')) != std::string::npos)
+    {
+        if (s.find_last_of ('.') != found)
+            throw Multicaster::InvalidString ();
+        return true;
+    }
+    return false;
+}
+
+bool    int_parse (std::string const& s) {
+
+    char *p;
+    long n = std::strtol (s.c_str (), &p, 10);
+
+    if (errno == ERANGE || n < std::numeric_limits<int>::min ()
+                        || n > std::numeric_limits<int>::max ())
+    {
+        throw Multicaster::InvalidString ();
+    }
+    return true;
 }

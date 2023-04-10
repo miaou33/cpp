@@ -51,7 +51,7 @@ float               Multicaster::getFloatCast () const { return _f; }
 
 void                Multicaster::initCasts () {
 
-    _type = -1;
+    _type = noType;
     _c = 0;
     _i = 0;
     _d = 0.0;
@@ -66,23 +66,6 @@ void                Multicaster::displayCasts () {
 
     try {
         findType ();
-/*         switch (_type)
-        {
-            case charType:
-                display ("CHAR TYPE");
-                break;
-            case intType:
-                display ("INT TYPE");
-                break;
-            case floatType:
-                display ("FLOAT TYPE");
-                break;
-            case doubleType:
-                display ("DOUBLE TYPE");
-                break;
-            default:
-                throw InvalidString ();
-        } */
         errno = 0;
         switch (_type)
         {
@@ -105,7 +88,7 @@ void                Multicaster::displayCasts () {
 
     }
     catch (std::exception& e) {
-        displayException (e);
+        display_exception (e);
     }
 }
 
@@ -141,7 +124,7 @@ void                Multicaster::toChar () {
         }
     }
     catch (std::exception& e) { 
-        displayException (e); 
+        display_exception (e); 
     }
 }
 
@@ -169,7 +152,7 @@ void                Multicaster::toInt () {
         }
     }
     catch (std::exception& e) { 
-        displayException (e); 
+        display_exception (e); 
     }
 }
 
@@ -198,7 +181,7 @@ void                Multicaster::toFloat () {
         }
     }
     catch (std::exception& e) { 
-        displayException (e); 
+        display_exception (e); 
     }
 }
 
@@ -226,7 +209,7 @@ void                Multicaster::toDouble () {
         }
     }
     catch (std::exception& e) { 
-        displayException (e); 
+        display_exception (e); 
     }
 }
 
@@ -251,44 +234,16 @@ void                Multicaster::findType () {
 
 void                Multicaster::digitParse () {
 
-    size_t    found;
-
-    std::cout << "Digit param parse" << std::endl;
-
-    if (((found = _param.find_first_of ('-')) != std::string::npos) 
-            && (found != 0 || _param.find_last_of ('-') != found))
-    {
-        throw InvalidString ();
-    }
-    
-    if ((found = _param.find_first_of ('f')) != std::string::npos)
-    {
-        if (found != _param_len - 1 || _param.find_last_of ('f') != found)
-            throw InvalidString ();
-        _type = floatType;
-        return;
-    }
-
-    if ((found = _param.find_first_of ('.')) != std::string::npos)
-    {
-        if (_param.find_last_of ('.') != found)
-            throw InvalidString ();
-        _type = doubleType;
-        return;
-    }
-    
-    char *p;
-    long n = std::strtol (_param.c_str (), &p, 10);
-    if (errno == ERANGE || n < std::numeric_limits<int>::min ()
-                        || n > std::numeric_limits<int>::max ()) {
-        throw InvalidString ();
-    }
-    _type = intType;
+    neg_parse (_param); 
+    _type = (float_parse (_param, _param_len) == true) ? floatType : _type;
+    _type = (_type == noType && double_parse (_param) == true) ? doubleType : _type;
+    _type = (_type == noType && int_parse (_param) == true) ? intType : _type;
 }
 
 void                Multicaster::specialParse () {
 
-    std::cout << "Special param parse" << std::endl;
+    _type = std::strtof (_param.c_str (), NULL) ? floatType : _type;
+    _type = (_type == noType && std::strtod (_param.c_str (), NULL)) ? doubleType : _type;
 }
 
 /******************************************************************************************************/
