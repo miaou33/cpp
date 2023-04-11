@@ -8,6 +8,7 @@ int    main ()
     data.s = "test";
     data.i = 43;
     data.ptr = &data.s;
+    //data.ptr = NULL;
 
     std::cout << std::endl;
     std::cout << "Before serialization :" << std::endl;

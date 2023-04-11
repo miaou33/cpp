@@ -54,9 +54,15 @@ static AForm*	makePresPardonForm (std::string target) {
 
 AForm*	Intern::makeForm (std::string form_name, std::string target) {
 
-	static std::string const	valid_forms [] = { "shrubbery creation", "robotomy request", "presidential pardon" };
-	AForm*						(*funcPtr []) (std::string target) = { &makeShrubberyForm, &makeRobotomyForm, &makePresPardonForm };
 	size_t						i = 0;
+	static std::string const	valid_forms [] = {      "shrubbery creation", 
+                                                        "robotomy request", 
+                                                        "presidential pardon" };
+
+	AForm*						(*funcPtr []) (std::string target) = { 
+                                                        &makeShrubberyForm, 
+                                                        &makeRobotomyForm, 
+                                                        &makePresPardonForm };
 
 	while (i < valid_forms->size () && valid_forms [i] != form_name)
 		i++;
