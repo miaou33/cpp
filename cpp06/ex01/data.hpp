@@ -9,6 +9,6 @@ typedef struct s_data {
     std::string     s;
     int             i;
     std::string     *ptr;
-}               t_data;
+}               Data;
 
 #endif
