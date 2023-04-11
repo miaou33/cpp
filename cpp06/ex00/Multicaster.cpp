@@ -153,13 +153,16 @@ void                Multicaster::toChar () {
                 display (_c);
                 break;
             case intType:
-                isascii (_i) ? display (static_cast <char> (_i)) : throw Impossible ();
+                isascii (_i) ?
+					display (static_cast <char> (_i)) : throw Impossible ();
                 break;
             case floatType:
-                isascii (static_cast <int> (_f)) ? display (static_cast <char> (_f)) : throw Impossible (); 
+                isascii (static_cast <int> (_f)) ?
+					display (static_cast <char> (_f)) : throw Impossible (); 
                 break;
             case doubleType:
-                isascii (static_cast <int> (_d)) ? display (static_cast <char> (_d)) : throw Impossible (); 
+                isascii (static_cast <int> (_d)) ?
+					display (static_cast <char> (_d)) : throw Impossible (); 
                 break;
             default:
                 throw InvalidString ();
@@ -184,10 +187,12 @@ void                Multicaster::toInt () {
                 display (_i);
                 break;
             case floatType:
-                (_f >= (float) INT_MIN && _f <= (float) INT_MAX) ? display (static_cast <int> (_f)) : throw Impossible ();
+                (_f >= (float) INT_MIN && _f <= (float) INT_MAX) ?
+					display (static_cast <int> (_f)) : throw Impossible ();
                 break;
             case doubleType:
-                (_d >= (double) INT_MIN && _d <= (double) INT_MAX) ? display (static_cast <int> (_d)) : throw Impossible (); 
+                (_d >= (double) INT_MIN && _d <= (double) INT_MAX) ? 
+					display (static_cast <int> (_d)) : throw Impossible (); 
                 break;
             default:
                 throw InvalidString ();
@@ -215,7 +220,7 @@ void                Multicaster::toFloat () {
                 display (_f);
                 break;
             case doubleType:
-                (_d >= (double) FLT_MIN && _d <= (double) FLT_MAX) ?
+                (_d >= FLT_MIN && _d <= FLT_MAX) ?
                     display (static_cast <float> (_d)) : throw Impossible (); 
                 break;
             default:
@@ -274,15 +279,20 @@ void                Multicaster::findType () {
 void                Multicaster::digitParse () {
 
     neg_parse (_param); 
-    _type = (float_parse (_param, _param_len) == true) ? floatType : _type;
-    _type = (_type == noType && double_parse (_param) == true) ? doubleType : _type;
-    _type = (_type == noType && int_parse (_param) == true) ? intType : _type;
+    _type = (float_parse (_param, _param_len) == true) ?
+		floatType : _type;
+    _type = (_type == noType && double_parse (_param) == true) ?
+		doubleType : _type;
+    _type = (_type == noType && int_parse (_param) == true) ?
+		intType : _type;
 }
 
 void                Multicaster::specialParse () {
 
     special_float_double_parse (_param);
-    _type = std::strtof (_param.c_str (), NULL) ? floatType : _type;
-    _type = (_type == noType && std::strtod (_param.c_str (), NULL)) ? doubleType : _type;
+    _type = std::strtof (_param.c_str (), NULL) ?
+		floatType : _type;
+    _type = (_type == noType && std::strtod (_param.c_str (), NULL)) ?
+		doubleType : _type;
 }
 
