@@ -2,7 +2,10 @@
 # define IDENTIFY_HPP
 
 # include <cstdlib>
+# include <exception>
+# include <typeinfo>
 
+# include "utils.hpp"
 # include "Base.hpp"
 # include "A.hpp"
 # include "B.hpp"
