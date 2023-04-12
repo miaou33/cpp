@@ -1,14 +1,8 @@
 #ifndef B_HPP
 # define B_HPP
 
-# include <string>
-# include <iostream>
-# include "colors.hpp"
+# include "Base.hpp"
 
-class B {
-
-	public:
-		virtual ~B ();
-};
+class B : public Base {};
 
 # endif
