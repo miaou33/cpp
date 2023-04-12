@@ -28,30 +28,30 @@ Base    *generate (void) {
 void    identify (Base *b) {
 
     if (dynamic_cast <A*> (b) != NULL)
-        std::cout << "Pointer to class A identified" << std::endl;
+        display ("Pointer to class A identified");
     else if (dynamic_cast <B*> (b) != NULL)
-        std::cout << "Pointer to class B identified" << std::endl;
+        display ("Pointer to class B identified");
     else if (dynamic_cast <C*> (b) != NULL)
-        std::cout << "Pointer to class C identified" << std::endl;
+        display ("Pointer to class C identified");
 }
 
 void    identify (Base &b) {
 
     try {
         (void) dynamic_cast <A&> (b);
-        std::cout << "Reference to class A identified" << std::endl;
+        display ("Reference to class A identified");
     }
     catch (std::bad_cast& e) {}
 
     try {
         (void) dynamic_cast <B&> (b);
-        std::cout << "Reference to Class B identified" << std::endl;
+        display ("Reference to Class B identified");
     }
     catch (std::bad_cast& e) {}
 
     try {
         (void) dynamic_cast <C&> (b);
-        std::cout << "Reference to Class C identified" << std::endl;
+        display ("Reference to Class C identified");
     }
     catch (std::bad_cast& e) {}
 }
