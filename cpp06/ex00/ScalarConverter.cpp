@@ -1,31 +1,31 @@
-# include "Multicaster.hpp"
+# include "ScalarConverter.hpp"
 
 /******************************************************************************************************/
 /*    CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR                                                      */
 /******************************************************************************************************/
 
-Multicaster::Multicaster () {
+ScalarConverter::ScalarConverter () {
 
     _param = "";
     _param_len = 0;
     initCasts ();
 }
 
-Multicaster::Multicaster (std::string const& string) {
+ScalarConverter::ScalarConverter (std::string const& string) {
 
     _param = string;
     _param_len = string.length ();
     initCasts ();
 }
 
-Multicaster::Multicaster (Multicaster const& original) {
+ScalarConverter::ScalarConverter (ScalarConverter const& original) {
 
     *this = original;
 }
 
-Multicaster::~Multicaster () {}
+ScalarConverter::~ScalarConverter () {}
 
-Multicaster& Multicaster::operator= (Multicaster const& rhs) {
+ScalarConverter& ScalarConverter::operator= (ScalarConverter const& rhs) {
 
     if (this != &rhs)
     {
@@ -43,21 +43,21 @@ Multicaster& Multicaster::operator= (Multicaster const& rhs) {
 /*    GETTERS SETTERS                                                                                 */
 /******************************************************************************************************/
 
-std::string const&  Multicaster::getParam () const { return _param; }
+std::string const&  ScalarConverter::getParam () const { return _param; }
 
-size_t              Multicaster::getParamLen () const { return _param_len; }
+size_t              ScalarConverter::getParamLen () const { return _param_len; }
 
-int                 Multicaster::getType () const { return _type; }
+int                 ScalarConverter::getType () const { return _type; }
 
-char                Multicaster::getCharCast () const { return _c; }
+char                ScalarConverter::getCharCast () const { return _c; }
 
-int                 Multicaster::getIntCast () const { return _i; }
+int                 ScalarConverter::getIntCast () const { return _i; }
 
-double              Multicaster::getDoubleCast () const { return _d; }
+double              ScalarConverter::getDoubleCast () const { return _d; }
 
-float               Multicaster::getFloatCast () const { return _f; }
+float               ScalarConverter::getFloatCast () const { return _f; }
 
-void                Multicaster::initCasts () {
+void                ScalarConverter::initCasts () {
 
     _type = noType;
     _c = 0;
@@ -70,27 +70,27 @@ void                Multicaster::initCasts () {
 /*    EXCEPTIONS                                                                                      */
 /******************************************************************************************************/
 
-char const*            Multicaster::WrongArgument::what () const throw () {
+char const*            ScalarConverter::WrongArgument::what () const throw () {
 
     return ("Wrong argument. Format : ./convert <literal>");
 }
 
-char const*            Multicaster::InvalidString::what () const throw () {
+char const*            ScalarConverter::InvalidString::what () const throw () {
 
     return ("Invalid string. Please enter a literal thas is either a char, an int, a float or a double");
 }
 
-char const*            Multicaster::Impossible::what () const throw () {
+char const*            ScalarConverter::Impossible::what () const throw () {
 
     return ("Impossible");
 }
 
-char const*            Multicaster::NonDisplayable::what () const throw () {
+char const*            ScalarConverter::NonDisplayable::what () const throw () {
 
     return ("Non displayable");
 }
 
-char const*            Multicaster::OutOfRangeValue::what () const throw () {
+char const*            ScalarConverter::OutOfRangeValue::what () const throw () {
 
     return ("Out of range value");
 }
@@ -99,7 +99,7 @@ char const*            Multicaster::OutOfRangeValue::what () const throw () {
 /*    DISPLAY                                                                                         */
 /******************************************************************************************************/
 
-void                Multicaster::displayCasts () {
+void                ScalarConverter::displayCasts () {
 
     try {
         findType ();
@@ -135,7 +135,7 @@ void                Multicaster::displayCasts () {
 /*    CONVERT                                                                                         */
 /******************************************************************************************************/
 
-void                Multicaster::convert () {
+void                ScalarConverter::convert () {
     
     toChar ();
     toInt ();
@@ -143,7 +143,7 @@ void                Multicaster::convert () {
     toDouble ();
 }
 
-void                Multicaster::toChar () {
+void                ScalarConverter::toChar () {
 
     try {
         announce ("Char: ");
@@ -174,7 +174,7 @@ void                Multicaster::toChar () {
     }
 }
 
-void                Multicaster::toInt () {
+void                ScalarConverter::toInt () {
 
     try {
         announce ("Int: ");
@@ -204,7 +204,7 @@ void                Multicaster::toInt () {
     }
 }
 
-void                Multicaster::toFloat () {
+void                ScalarConverter::toFloat () {
 
     try {
         announce ("Float: ");
@@ -233,7 +233,7 @@ void                Multicaster::toFloat () {
     }
 }
 
-void                Multicaster::toDouble () {
+void                ScalarConverter::toDouble () {
 
     try {
         announce ("Double: ");
@@ -261,7 +261,7 @@ void                Multicaster::toDouble () {
     }
 }
 
-void                Multicaster::findType () {
+void                ScalarConverter::findType () {
 
     switch (_param_len)
     {
@@ -276,7 +276,7 @@ void                Multicaster::findType () {
     }
 }
 
-void                Multicaster::digitParse () {
+void                ScalarConverter::digitParse () {
 
     neg_parse (_param); 
     _type = (float_parse (_param, _param_len) == true) ?
@@ -287,7 +287,7 @@ void                Multicaster::digitParse () {
 		intType : _type;
 }
 
-void                Multicaster::specialParse () {
+void                ScalarConverter::specialParse () {
 
     special_float_double_parse (_param);
     _type = std::strtof (_param.c_str (), NULL) ?

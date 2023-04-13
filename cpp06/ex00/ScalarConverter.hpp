@@ -1,5 +1,5 @@
-#ifndef MULTICASTER_HPP
-# define MULTICASTER_HPP
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
 # include <bits/stdc++.h>
 # include <iostream>
@@ -8,16 +8,16 @@
 # include <stdio.h>
 # include <string>
 
-class Multicaster {
+class ScalarConverter {
 
     public:
 
-        Multicaster ();
-        Multicaster (std::string const& string);
-        Multicaster (Multicaster const& original);
-        virtual ~Multicaster ();
+        ScalarConverter ();
+        ScalarConverter (std::string const& string);
+        ScalarConverter (ScalarConverter const& original);
+        virtual ~ScalarConverter ();
 
-        Multicaster&        operator= (Multicaster const& rhs);
+        ScalarConverter&        operator= (ScalarConverter const& rhs);
 
         std::string const&  getParam () const;
         size_t              getParamLen () const;
