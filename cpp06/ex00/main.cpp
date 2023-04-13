@@ -1,14 +1,13 @@
-#include "Multicaster.hpp"
+#include "ScalarConverter.hpp"
 
 int    main (int ac, char **av)
 {
     try {
         
         if (ac != 2)
-            throw Multicaster::WrongArgument ();
+            throw ScalarConverter::WrongArgument ();
         
-        Multicaster    multicaster (av[1]);
-        multicaster.displayCasts ();
+        ScalarConverter::convert (av [1]);
     }
     
     catch (std::exception& e) {

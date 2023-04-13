@@ -8,7 +8,7 @@ void    announce (std::string const& s) {
 void    display (char c) {
 
     if (!isprint (c))
-        throw Multicaster::NonDisplayable ();
+        display ("Non displayable");
     std::cout << "\'" << c << "\'" << std::endl;
 }
 
@@ -46,7 +46,7 @@ void    special_float_double_parse (std::string const& s) {
         if (s == valid_specials [i])
             return;
     }
-    throw Multicaster::InvalidString ();
+    throw Multicaster::InvalidInput ();
 }
 
 void    neg_parse (std::string const& s) {
@@ -56,7 +56,7 @@ void    neg_parse (std::string const& s) {
     if (((found = s.find_first_of ('-')) != std::string::npos) 
             && (found != 0 || s.find_last_of ('-') != found))
     {
-        throw Multicaster::InvalidString ();
+        throw Multicaster::InvalidInput ();
     }
 } 
 
@@ -67,7 +67,7 @@ bool    float_parse (std::string const& s, size_t s_len) {
     if ((found = s.find_first_of ('f')) != std::string::npos)
     {
         if (found != s_len - 1 || s.find_last_of ('f') != found)
-            throw Multicaster::InvalidString ();
+            throw Multicaster::InvalidInput ();
         return true;
     }
     return false;
@@ -80,7 +80,7 @@ bool    double_parse (std::string const& s) {
     if ((found = s.find_first_of ('.')) != std::string::npos)
     {
         if (s.find_last_of ('.') != found)
-            throw Multicaster::InvalidString ();
+            throw Multicaster::InvalidInput ();
         return true;
     }
     return false;
@@ -94,7 +94,7 @@ bool    int_parse (std::string const& s) {
     if (errno == ERANGE || n < std::numeric_limits<int>::min ()
                         || n > std::numeric_limits<int>::max ())
     {
-        throw Multicaster::InvalidString ();
+        throw Multicaster::InvalidInput ();
     }
     return true;
 }
