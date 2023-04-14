@@ -75,7 +75,7 @@ char const*            Multicaster::WrongArgument::what () const throw () {
     return ("Wrong argument. Format : ./convert <literal>");
 }
 
-char const*            Multicaster::InvalidInput::what () const throw () {
+char const*            Multicaster::InvalidLitteral::what () const throw () {
 
     return ("Invalid string. Please enter a literal thas is either a char, an int, a float or a double");
 }
@@ -90,10 +90,7 @@ char const*            Multicaster::NonDisplayable::what () const throw () {
     return ("Non displayable");
 }
 
-char const*            Multicaster::OutOfRangeValue::what () const throw () {
-
-    return ("Out of range value");
-}
+yu
 
 /******************************************************************************************************/
 /*    DISPLAY                                                                                         */
@@ -119,7 +116,7 @@ void                Multicaster::displayCasts () {
                 _d = std::strtod (_param.c_str (), NULL);
                 break;
             default:
-                throw InvalidInput ();
+                throw InvalidLitteral ();
         }
         errno == ERANGE ?
             throw OutOfRangeValue ()
@@ -165,7 +162,7 @@ void                Multicaster::toChar () {
 					display (static_cast <char> (_d)) : throw Impossible (); 
                 break;
             default:
-                throw InvalidInput ();
+                throw InvalidLitteral ();
                 break;
         }
     }
@@ -195,7 +192,7 @@ void                Multicaster::toInt () {
 					display (static_cast <int> (_d)) : throw Impossible (); 
                 break;
             default:
-                throw InvalidInput ();
+                throw InvalidLitteral ();
                 break;
         }
     }
@@ -224,7 +221,7 @@ void                Multicaster::toFloat () {
                     display (static_cast <float> (_d)) : throw Impossible (); 
                 break;
             default:
-                throw InvalidInput ();
+                throw InvalidLitteral ();
                 break;
         }
     }
@@ -252,7 +249,7 @@ void                Multicaster::toDouble () {
                 display (_d);
                 break;
             default:
-                throw InvalidInput ();
+                throw InvalidLitteral ();
                 break;
         }
     }

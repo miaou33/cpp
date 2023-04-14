@@ -15,8 +15,7 @@ BUILD_DIR  = ./objs
 #SOURCES
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
-			Multicaster.cpp \
-			utils.cpp
+			ScalarConverter.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
@@ -34,7 +33,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 #-fsanitize=address
 RM = rm -rf
 
 #DISPLAY
-ECHO = echo #$(if $(filter -e,$(MAKEFLAGS)),echo, echo -e)
+ECHO = echo -e#$(if $(filter -e,$(MAKEFLAGS)),echo, echo -e)
 
 ################################################################################
 #								MAIN RULES									   #
