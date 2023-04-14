@@ -242,21 +242,21 @@ void                ScalarConverter::findType () {
 
 void                ScalarConverter::digitParse () {
 
-    neg_parse (_input); 
-    setType ((float_parse (_input, _input_len) == true) ?
+    neg_lex (_input); 
+    setType ((float_lex (_input, _input_len) == true) ?
 		floatType : _type);
-    setType ((_type == noType && double_parse (_input) == true) ?
+    setType ((_type == noType && double_lex (_input) == true) ?
 		doubleType : _type);
-    setType ((_type == noType && int_parse (_input) == true) ?
+    setType ((_type == noType && int_lex (_input) == true) ?
 		intType : _type);
 }
 
 void                ScalarConverter::specialParse () {
 
-    special_float_double_parse (_input);
-    _type = std::strtof (_input.c_str (), NULL) ?
-		floatType : _type;
-    _type = (_type == noType && std::strtod (_input.c_str (), NULL)) ?
-		doubleType : _type;
+    pseudo_litteral_lex (_input);
+    setType (std::strtof (_input.c_str (), NULL) ?
+		floatType : _type);
+    setType (_type = (_type == noType && std::strtod (_input.c_str (), NULL)) ?
+		doubleType : _type);
 }
 

@@ -37,7 +37,7 @@ void    display_exception (std::exception& e) {
     std::cout << e.what () << std::endl;
 }
 
-void    special_float_double_parse (std::string const& s) {
+void    pseudo_litteral_lex (std::string const& s) {
 
     static std::string  valid_specials [] = {"nan", "nanf", "inf", "inff", "-inf", "-inff", "+inf", "+inff"}; 
     
@@ -49,7 +49,7 @@ void    special_float_double_parse (std::string const& s) {
     throw ScalarConverter::InvalidLitteral ();
 }
 
-void    neg_parse (std::string const& s) {
+void    neg_lex (std::string const& s) {
 
     size_t    found;
 
@@ -60,7 +60,7 @@ void    neg_parse (std::string const& s) {
     }
 } 
 
-bool    float_parse (std::string const& s, size_t s_len) {
+bool    float_lex (std::string const& s, size_t s_len) {
 
     size_t    found;
 
@@ -73,7 +73,7 @@ bool    float_parse (std::string const& s, size_t s_len) {
     return false;
 }
 
-bool    double_parse (std::string const& s) {
+bool    double_lex (std::string const& s) {
 
     size_t    found;
 
@@ -86,7 +86,7 @@ bool    double_parse (std::string const& s) {
     return false;
 }
 
-bool    int_parse (std::string const& s) {
+bool    int_lex (std::string const& s) {
 
     char *p;
     long n = std::strtol (s.c_str (), &p, 10);
