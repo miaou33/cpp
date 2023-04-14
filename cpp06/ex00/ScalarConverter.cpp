@@ -25,7 +25,7 @@ double          ScalarConverter::_d = 0.0;
 float           ScalarConverter::_f = 0.0f;
 
 /******************************************************************************************************/
-/*    GETTERS SETTERS                                                                                 */
+/*   SETTERS                                                                                 */
 /******************************************************************************************************/
 
 void            ScalarConverter::setInput (std::string const& param) { _input = param; }
@@ -42,48 +42,37 @@ void            ScalarConverter::setFloat (float f) { _f = f; }
 
 void            ScalarConverter::setDouble (double d) { _d = d; }
 
-void            ScalarConverter::resetScalars () {
-
-    _input = "";
-    _input_len = 0;
-    _type = noType;
-    _c = 0;
-    _i = 0;
-    _d = 0.0;
-    _f = 0.0f;
-}
-
 /******************************************************************************************************/
 /*    EXCEPTIONS                                                                                      */
 /******************************************************************************************************/
 
-char const*            ScalarConverter::WrongArgument::what () const throw () {
+char const*     ScalarConverter::WrongArgument::what () const throw () {
 
     return ("Error: Wrong argument. Format : ./convert <literal>");
 }
 
-char const*            ScalarConverter::InvalidLitteral::what () const throw () {
+char const*     ScalarConverter::InvalidLitteral::what () const throw () {
 
     return ("Error: Invalid string. Please enter a literal thas is either a char, an int, a float or a double");
 }
 
-char const*            ScalarConverter::Impossible::what () const throw () {
+char const*     ScalarConverter::Impossible::what () const throw () {
 
     return ("Impossible");
 }
 
-char const*            ScalarConverter::NonDisplayable::what () const throw () {
+char const*     ScalarConverter::NonDisplayable::what () const throw () {
 
     return ("Non displayable");
 }
 
-char const*            ScalarConverter::OutOfRangeValue::what () const throw () {
+char const*     ScalarConverter::OutOfRangeValue::what () const throw () {
 
     return ("Error: Out of range value");
 }
 
 /******************************************************************************************************/
-/*    DISPLAY                                                                                         */
+/*    CONVERT                                                                                         */
 /******************************************************************************************************/
 
 void                ScalarConverter::convert (std::string const& input) {
@@ -117,10 +106,6 @@ void                ScalarConverter::convert (std::string const& input) {
     toFloat ();
     toDouble ();
 }
-
-/******************************************************************************************************/
-/*    CONVERT                                                                                         */
-/******************************************************************************************************/
 
 void                ScalarConverter::toChar () {
 
