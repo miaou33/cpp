@@ -19,15 +19,10 @@ class ScalarConverter {
 
         ScalarConverter&    operator= (ScalarConverter const& rhs);
 
-        static void         setParam ();
-        static void         setParamLen ();
-        static void         setType ();
-        static void         setCharCast ();
-        static void         setIntCast ();
-        static void         setDoubleCast ();
-        static void         setFloatCast ();
 
-        void                displayCasts ();
+
+        static void         convert (std::string const& input);
+        void                displays ();
     
         class WrongArgument : public std::exception {
 
@@ -45,7 +40,7 @@ class ScalarConverter {
 
             virtual char const*    what () const throw ();
         };
-        class OutOfRangeValue: public std::exception {
+        class OutOfRangeValue : public std::exception {
 
             virtual char const*    what () const throw ();
         };
@@ -61,24 +56,31 @@ class ScalarConverter {
             doubleType
         };
 
-        static std::string     _param;
-        static size_t          _param_len;
-        static int             _type;
-        static char            _c;
-        static int             _i;
-        static float           _f;
-        static double          _d;
+        static std::string      _input;
+        static size_t           _input_len;
+        static int              _type;
+        static char             _c;
+        static int              _i;
+        static float            _f;
+        static double           _d;
 
-        void            initCasts ();
-        void            findType ();
-        void            specialParse ();
-        void            digitParse ();
+        static void         setInput (std::string const& param);
+        static void         setInputLen (size_t len);
+        static void         setType (int type);
+        static void         setChar (char c);
+        static void         setInt (int i);
+        static void         setFloat (float f);
+        static void         setDouble (double d);
+        static void         resetScalars ();
 
-        void            convert ();
-        void            toChar ();
-        void            toInt ();
-        void            toFloat ();
-        void            toDouble ();
+       static void            findType ();
+       static void            specialParse ();
+       static void            digitParse ();
+
+       static void            toChar ();
+       static void            toInt ();
+       static void            toFloat ();
+       static void            toDouble ();
 };
 
 

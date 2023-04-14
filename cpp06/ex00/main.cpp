@@ -2,14 +2,16 @@
 
 int    main (int ac, char **av)
 {
-    if (ac != 2)
-    {
-        std::cout << "Error: Wrong argument" << std::endl;
+    try {
+        if (ac != 2)
+            throw ScalarConverter::WrongArgument ();
+        ScalarConverter::convert (av [1]);
+    }
+    catch (std::exception& e) {
+
+        display_exception (e);
         return 1;
     }
-    ScalarConverter s;
-
-    s.convert (av [1]);
 
     return 0;
 }

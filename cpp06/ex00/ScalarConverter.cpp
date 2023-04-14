@@ -15,27 +15,37 @@ ScalarConverter& ScalarConverter::operator= (ScalarConverter const& rhs) {
     (void) rhs;
     return *this;
 }
+    
+std::string     ScalarConverter::_input = "";
+size_t          ScalarConverter::_input_len = 0;
+int             ScalarConverter::_type = noType;
+char            ScalarConverter::_c = 0;
+int             ScalarConverter::_i = 0;
+double          ScalarConverter::_d = 0.0;
+float           ScalarConverter::_f = 0.0f;
 
 /******************************************************************************************************/
 /*    GETTERS SETTERS                                                                                 */
 /******************************************************************************************************/
 
-std::string const&  ScalarConverter::setParam () { return _param; }
+void            ScalarConverter::setInput (std::string const& param) { _input = param; }
 
-size_t              ScalarConverter::setParamLen () { return _param_len; }
+void            ScalarConverter::setInputLen (size_t len) { _input_len = len; }
 
-int                 ScalarConverter::setType () { return _type; }
+void            ScalarConverter::setType (int type) { _type = type; }
 
-char                ScalarConverter::setCharCast () { return _c; }
+void            ScalarConverter::setChar (char c) { _c = c; }
 
-int                 ScalarConverter::setIntCast () { return _i; }
+void            ScalarConverter::setInt (int i) { _i = i; }
 
-double              ScalarConverter::setDoubleCast () { return _d; }
+void            ScalarConverter::setFloat (float f) { _f = f; }
 
-float               ScalarConverter::setFloatCast () { return _f; }
+void            ScalarConverter::setDouble (double d) { _d = d; }
 
-void                ScalarConverter::initCasts () {
+void            ScalarConverter::resetScalars () {
 
+    _input = "";
+    _input_len = 0;
     _type = noType;
     _c = 0;
     _i = 0;
@@ -49,12 +59,12 @@ void                ScalarConverter::initCasts () {
 
 char const*            ScalarConverter::WrongArgument::what () const throw () {
 
-    return ("Wrong argument. Format : ./convert <literal>");
+    return ("Error: Wrong argument. Format : ./convert <literal>");
 }
 
 char const*            ScalarConverter::InvalidLitteral::what () const throw () {
 
-    return ("Invalid string. Please enter a literal thas is either a char, an int, a float or a double");
+    return ("Error: Invalid string. Please enter a literal thas is either a char, an int, a float or a double");
 }
 
 char const*            ScalarConverter::Impossible::what () const throw () {
@@ -67,55 +77,50 @@ char const*            ScalarConverter::NonDisplayable::what () const throw () {
     return ("Non displayable");
 }
 
-yu
+char const*            ScalarConverter::OutOfRangeValue::what () const throw () {
+
+    return ("Error: Out of range value");
+}
 
 /******************************************************************************************************/
 /*    DISPLAY                                                                                         */
 /******************************************************************************************************/
 
-void                ScalarConverter::displayCasts () {
+void                ScalarConverter::convert (std::string const& input) {
 
-    try {
-        findType ();
-        errno = 0;
-        switch (_type)
-        {
-            case charType:
-                _c = _param [0];
-                break;
-            case intType:
-                _i = atoi (_param.c_str ());
-                break;
-            case floatType:
-                _f = std::strtof (_param.c_str (), NULL);
-                break;
-            case doubleType:
-                _d = std::strtod (_param.c_str (), NULL);
-                break;
-            default:
-                throw InvalidLitteral ();
-        }
-        errno == ERANGE ?
-            throw OutOfRangeValue ()
-            : convert ();
+    setInput (input);
+    setInputLen (input.length ());
 
+    findType ();
+    errno = 0;
+    switch (_type)
+    {
+        case charType:
+            setChar(_input [0]);
+            break;
+        case intType:
+            setInt (atoi (_input.c_str ()));
+            break;
+        case floatType:
+            setFloat (std::strtof (_input.c_str (), NULL));
+            break;
+        case doubleType:
+            setDouble (std::strtod (_input.c_str (), NULL));
+            break;
+        default:
+            throw InvalidLitteral ();
     }
-    catch (std::exception& e) {
-        display_exception (e);
-    }
-}
-
-/******************************************************************************************************/
-/*    CONVERT                                                                                         */
-/******************************************************************************************************/
-
-void                ScalarConverter::convert () {
-    
+    if (errno == ERANGE)
+        throw OutOfRangeValue ();
     toChar ();
     toInt ();
     toFloat ();
     toDouble ();
 }
+
+/******************************************************************************************************/
+/*    CONVERT                                                                                         */
+/******************************************************************************************************/
 
 void                ScalarConverter::toChar () {
 
@@ -237,36 +242,36 @@ void                ScalarConverter::toDouble () {
 
 void                ScalarConverter::findType () {
 
-    switch (_param_len)
+    switch (_input_len)
     {
         case 0:
-            _type = charType;
+            setType (charType);
             break;
         case 1:
-            _type = std::isdigit (_param [0]) ? intType : charType;
+            setType (std::isdigit (_input [0]) ? intType : charType);
             break;
         default:
-            _param.find_first_not_of ("-0123456789.f") != std::string::npos ? specialParse () : digitParse ();
+            _input.find_first_not_of ("-0123456789.f") != std::string::npos ? specialParse () : digitParse ();
     }
 }
 
 void                ScalarConverter::digitParse () {
 
-    neg_parse (_param); 
-    _type = (float_parse (_param, _param_len) == true) ?
-		floatType : _type;
-    _type = (_type == noType && double_parse (_param) == true) ?
-		doubleType : _type;
-    _type = (_type == noType && int_parse (_param) == true) ?
-		intType : _type;
+    neg_parse (_input); 
+    setType ((float_parse (_input, _input_len) == true) ?
+		floatType : _type);
+    setType ((_type == noType && double_parse (_input) == true) ?
+		doubleType : _type);
+    setType ((_type == noType && int_parse (_input) == true) ?
+		intType : _type);
 }
 
 void                ScalarConverter::specialParse () {
 
-    special_float_double_parse (_param);
-    _type = std::strtof (_param.c_str (), NULL) ?
+    special_float_double_parse (_input);
+    _type = std::strtof (_input.c_str (), NULL) ?
 		floatType : _type;
-    _type = (_type == noType && std::strtod (_param.c_str (), NULL)) ?
+    _type = (_type == noType && std::strtod (_input.c_str (), NULL)) ?
 		doubleType : _type;
 }
 
