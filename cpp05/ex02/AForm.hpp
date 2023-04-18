@@ -39,13 +39,14 @@ class AForm {
 				virtual const char*	what () const throw ();
 		};
 
-	protected:
+	private:
 		std::string const	_name;
-		bool				_is_signed;
 		int	const			_grade_to_sign;
 		int	const			_grade_to_execute;
-		static const bool	_verbose = false;
 
+	protected:
+		bool				_is_signed;
+		static const bool	_verbose = false;
 		virtual void		checkGrade (int grade) const;
 		virtual void		announce (std::string const func) const;
 };
