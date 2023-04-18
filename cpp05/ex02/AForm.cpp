@@ -4,52 +4,44 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-AForm::AForm () :	_name ("Void form"),
-					_grade_to_sign (Bureaucrat::highest_grade),
-					_grade_to_execute (Bureaucrat::highest_grade) {
+AForm::AForm () :	
 
+	_name ("Void form"),
+	_target ("Nobody"),
+	_grade_to_sign (Bureaucrat::highest_grade),
+	_grade_to_execute (Bureaucrat::highest_grade)
+{
 	_is_signed = 0;
-	if (_verbose)
-		announce ("Form constructor");
 }
 
-AForm::AForm (std::string name, int sign_grade, int exec_grade) :	_name (name),
-																_grade_to_sign (sign_grade),
-																_grade_to_execute (exec_grade) {
+AForm::AForm (std::string name, std::string const& target, int sign_grade, int exec_grade) :
 
+	_name (name),
+	_target (target),
+	_grade_to_sign (sign_grade),
+	_grade_to_execute (exec_grade)
+{
 	_is_signed = 0;
 	checkGrade (_grade_to_sign);
 	checkGrade (_grade_to_execute);
-	if (_verbose)
-		announce ("Form constructor");
 }
 
-AForm::AForm (AForm const& original) :	_name (original.getName ()),
-									_grade_to_sign (original.getSignGrade ()),
-									_grade_to_execute (original.getExecGrade ()) {
+AForm::AForm (AForm const& original) :
 
+	_name (original.getName ()),
+	_target (original.getTarget ()),
+	_grade_to_sign (original.getSignGrade ()),
+	_grade_to_execute (original.getExecGrade ())
+{
 	_is_signed = (bool) original.isSigned ();
-	if (_verbose)
-		announce ("Form copy constructor");
 }
 
-AForm::~AForm () {
-
-	if (_verbose)
-		announce ("Form destructor");
-}
+AForm::~AForm () {}
 
 AForm& AForm::operator= (AForm const& rhs) {
 
 	if (this != &rhs)
-	{
-		std::cout << "Warning : name not assigned coz it is const" << std::endl;
-		std::cout << "Warning : sign grade not assigned coz it is const" << std::endl;
-		std::cout << "Warning : exec grade not assigned coz it is const" << std::endl;
-		_is_signed = rhs.isSigned ();
-		if (_verbose)
-			announce ("Form assignment operator");
-	}
+		std::cout << "Warning : attributes cant be assigned coz they are const\nAssignation not done" << std::endl;
 	return *this;
 }
 
@@ -62,17 +54,22 @@ std::string const&	AForm::getName () const {
 	return (std::string const &)_name;
 }
 
-bool const&			AForm::isSigned () const {
+std::string const&	AForm::getTarget () const {
 
-	return (bool const &) _is_signed;
+	return (std::string const&) _target;
 }
 
-int	const&			AForm::getSignGrade () const {
+bool				AForm::isSigned () const {
+
+	return _is_signed;
+}
+
+int					AForm::getSignGrade () const {
 
 	return (int const&) _grade_to_sign;
 }
 
-int const&			AForm::getExecGrade () const {
+int					AForm::getExecGrade () const {
 
 	return (int const&) _grade_to_execute;
 }

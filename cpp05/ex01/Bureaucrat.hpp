@@ -27,26 +27,17 @@ class Bureaucrat {
 		void				signForm (Form& form);
 
 		class GradeTooHighException : public std::exception {
-
-			public:
-				virtual const char* what() const throw();
-
-		};
+			public: virtual const char* what() const throw(); };
 		class GradeTooLowException : public std::exception {
+			public: virtual const char* what() const throw(); };
 
-			public:
-				virtual const char* what() const throw();
-
-		};
 		static int const	highest_grade = 1;
 		static int const	lowest_grade = 150;
-
 
 	private:
 
 		std::string const	_name;
 		int					_grade;
-		static bool const	_verbose = false;
 
 		void				announce (std::string const func) const;
 		void				checkGrade (int grade) const;

@@ -16,11 +16,11 @@ class Bureaucrat {
 		Bureaucrat ();
 		Bureaucrat (std::string const name, int grade);
 		Bureaucrat (Bureaucrat const& original);
-		virtual ~Bureaucrat ();
+		~Bureaucrat ();
 		Bureaucrat& operator= (Bureaucrat const& rhs);
 
 		std::string const&	getName () const;
-		int const&			getGrade () const;
+		int					getGrade () const;
 		void				lowerGrade ();
 		void				upperGrade ();
 
@@ -28,26 +28,17 @@ class Bureaucrat {
 		void				executeForm (AForm& form) const;
 
 		class GradeTooHighException : public std::exception {
-
-			public:
-				virtual const char* what() const throw();
-
-		};
+			public: virtual const char* what() const throw(); };
 		class GradeTooLowException : public std::exception {
+			public: virtual const char* what() const throw(); };
 
-			public:
-				virtual const char* what() const throw();
-
-		};
-		static const int	highest_grade = 1;
-		static const int	lowest_grade = 150;
-
+		static int const	highest_grade = 1;
+		static int const	lowest_grade = 150;
 
 	private:
 
 		std::string const	_name;
 		int					_grade;
-		static const bool	_verbose = false;
 
 		void				announce (std::string const func) const;
 		void				checkGrade (int grade) const;

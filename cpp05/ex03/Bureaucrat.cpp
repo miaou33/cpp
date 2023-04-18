@@ -4,33 +4,29 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Bureaucrat::Bureaucrat () : _name ("No name") {
+Bureaucrat::Bureaucrat () :
 
+	_name ("No name")
+{
 	_grade = lowest_grade;
-	if (_verbose)
-		announce ("Constructor");
 }
 
-Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
+Bureaucrat::Bureaucrat (std::string const name, int grade) :
 
+	_name (name)
+{
 	checkGrade (grade);
 	_grade = grade;
-	if (_verbose)
-		announce ("Bureaucrat constructor");
 }
 
-Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
+Bureaucrat::Bureaucrat (Bureaucrat const& original) :
 
+	_name (original.getName ())
+{
 	_grade = original.getGrade ();
-	if (_verbose)
-		announce ("Bureaucrat copy constructor");
 }
 
-Bureaucrat::~Bureaucrat () {
-
-	if (_verbose)
-		announce ("Bureaucrat destructor");
-}
+Bureaucrat::~Bureaucrat () {}
 
 Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 
@@ -38,8 +34,6 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 	{
 		std::cout << "Warning : name not assigned to '" << rhs.getName () << "' coz name is const" << std::endl;
 		_grade = rhs.getGrade ();
-		if (_verbose)
-			announce ("Bureaucrat assignment operator");
 	}
 	return *this;
 }
@@ -50,10 +44,10 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 
 std::string const&	Bureaucrat::getName () const {
 
-	return ((std::string const &) _name);
+	return (_name);
 }
 
-int const&			Bureaucrat::getGrade () const {
+int					Bureaucrat::getGrade () const {
 
 	return ((int const &) _grade);
 }
@@ -78,26 +72,28 @@ void				Bureaucrat::upperGrade () {
 
 void	Bureaucrat::signForm (AForm& form) {
 
-	try {
-
+	try
+	{
 		form.beSigned (*this);
-		std::cout << _PURPLE << _BOLD << "Signed" << _END << ": " << form.getName () << " by bureaucrat " << _name << std::endl;
+		std::cout << _GREEN << "Signed" << _END << ": " << form.getName () << " by bureaucrat " << _name << std::endl;
 	}
-	catch (std::exception& e) {
-
-		std::cout << _BLUE << _BOLD << "Not signed" << _END << ": " << form.getName () << " by bureaucrat " << _name
+	catch (std::exception& e)
+	{
+		std::cout << _RED << "Not signed" << _END << ": " << form.getName () << " by bureaucrat " << _name
 					<< ".\n\t-> Cause: " << e.what () << std::endl;
 	}
 }
 
 void	Bureaucrat::executeForm (AForm& form) const {
 
-	try {
+	try
+	{
 		form.execute (*this);
-		std::cout << _PURPLE << _BOLD << "Executed" << _END << ": " << form.getName () << " on " << form.getTarget () << " by bureaucrat " << _name << std::endl;
+		std::cout << _GREEN << "Executed" << _END << ": " << form.getName () << " by bureaucrat " << _name << std::endl;
 	}
-	catch (std::exception& e) {
-		std::cout << _BLUE << _BOLD << "Not executed" << _END << ": " << form.getName () << " by bureaucrat " << _name
+	catch (std::exception& e)
+	{
+		std::cout << _RED << "Not executed" << _END << ": " << form.getName () << " by bureaucrat " << _name
 					<< ".\n\t-> Cause: " << e.what () << std::endl;
 	}
 }
@@ -126,12 +122,12 @@ void		Bureaucrat::announce (std::string const func) const {
 
 const char*	Bureaucrat::GradeTooHighException::what () const throw () {
 
-	return ("Bureaucrat exception reached: Grade too high");
+	return ("\033[31mBureaucrat exception reached\033[0m: Grade too high");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 
-	return ("Bureaucrat exception reached: Grade too low");
+	return ("\033[31mBureaucrat exception reached\033[0m: Grade too low");
 }
 
 /******************************************************************************************************/
@@ -140,6 +136,6 @@ const char*	Bureaucrat::GradeTooLowException::what () const throw () {
 
 std::ostream&	operator<< (std::ostream& o, Bureaucrat const& toDisplay) {
 
-	o << _YELLOW << _BOLD << toDisplay.getName () << _END << ", bureaucrat grade " << toDisplay.getGrade ();
+	o << _PURPLE << toDisplay.getName () << _END << ", bureaucrat grade " << toDisplay.getGrade ();
 	return o;
 }

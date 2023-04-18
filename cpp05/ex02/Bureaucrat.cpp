@@ -4,33 +4,29 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Bureaucrat::Bureaucrat () : _name ("No name") {
+Bureaucrat::Bureaucrat () :
 
+	_name ("No name")
+{
 	_grade = lowest_grade;
-	if (_verbose)
-		announce ("Constructor");
 }
 
-Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
+Bureaucrat::Bureaucrat (std::string const name, int grade) :
 
+	_name (name)
+{
 	checkGrade (grade);
 	_grade = grade;
-	if (_verbose)
-		announce ("Bureaucrat constructor");
 }
 
-Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
+Bureaucrat::Bureaucrat (Bureaucrat const& original) :
 
+	_name (original.getName ())
+{
 	_grade = original.getGrade ();
-	if (_verbose)
-		announce ("Bureaucrat copy constructor");
 }
 
-Bureaucrat::~Bureaucrat () {
-
-	if (_verbose)
-		announce ("Bureaucrat destructor");
-}
+Bureaucrat::~Bureaucrat () {}
 
 Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 
@@ -38,8 +34,6 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 	{
 		std::cout << "Warning : name not assigned to '" << rhs.getName () << "' coz name is const" << std::endl;
 		_grade = rhs.getGrade ();
-		if (_verbose)
-			announce ("Bureaucrat assignment operator");
 	}
 	return *this;
 }
@@ -50,10 +44,10 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 
 std::string const&	Bureaucrat::getName () const {
 
-	return ((std::string const &) _name);
+	return (_name);
 }
 
-int const&			Bureaucrat::getGrade () const {
+int					Bureaucrat::getGrade () const {
 
 	return ((int const &) _grade);
 }
@@ -78,13 +72,13 @@ void				Bureaucrat::upperGrade () {
 
 void	Bureaucrat::signForm (AForm& form) {
 
-	try {
-
+	try
+	{
 		form.beSigned (*this);
 		std::cout << _GREEN << "Signed" << _END << ": " << form.getName () << " by bureaucrat " << _name << std::endl;
 	}
-	catch (std::exception& e) {
-
+	catch (std::exception& e)
+	{
 		std::cout << _RED << "Not signed" << _END << ": " << form.getName () << " by bureaucrat " << _name
 					<< ".\n\t-> Cause: " << e.what () << std::endl;
 	}
@@ -92,11 +86,13 @@ void	Bureaucrat::signForm (AForm& form) {
 
 void	Bureaucrat::executeForm (AForm& form) const {
 
-	try {
+	try
+	{
 		form.execute (*this);
 		std::cout << _GREEN << "Executed" << _END << ": " << form.getName () << " by bureaucrat " << _name << std::endl;
 	}
-	catch (std::exception& e) {
+	catch (std::exception& e)
+	{
 		std::cout << _RED << "Not executed" << _END << ": " << form.getName () << " by bureaucrat " << _name
 					<< ".\n\t-> Cause: " << e.what () << std::endl;
 	}

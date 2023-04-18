@@ -18,7 +18,6 @@ int	main (void)
 		boss.signForm (shrub);
 		lowerguy.executeForm (shrub);
 		boss.executeForm (shrub);
-	//	middleguy.executeForm (robotomy);
 
 		std::cout << std::endl;
 		RobotomyRequestForm		robotomy ("Randomguy");
@@ -27,7 +26,7 @@ int	main (void)
 		boss.executeForm (robotomy);
 
 		std::cout << std::endl;
-		PresidentialPardonForm	prespard ("prisoner");
+		PresidentialPardonForm	prespard ("The prisoner");
 		boss.executeForm (prespard);
 		middleguy.signForm (prespard);
 		boss.signForm (prespard);

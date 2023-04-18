@@ -4,40 +4,36 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Form::Form () :	_name ("Void form"),
-				_grade_to_sign (Bureaucrat::highest_grade),
-				_grade_to_execute (Bureaucrat::highest_grade) {
+Form::Form () :
 
+	_name ("Void form"),
+	_grade_to_sign (Bureaucrat::highest_grade),
+	_grade_to_execute (Bureaucrat::highest_grade)
+{
 	_is_signed = 0;
-	if (_verbose)
-		announce ("Constructor");
 }
 
-Form::Form (std::string name, int sign_grade, int exec_grade) :	_name (name),
-																_grade_to_sign (sign_grade),
-																_grade_to_execute (exec_grade) {
+Form::Form (std::string name, int sign_grade, int exec_grade) :
 
+	_name (name),
+	_grade_to_sign (sign_grade),
+	_grade_to_execute (exec_grade)
+{
 	_is_signed = 0;
 	checkGrade (_grade_to_sign);
 	checkGrade (_grade_to_execute);
-	if (_verbose)
-		announce ("Constructor");
 }
 
-Form::Form (Form const& original) :	_name (original.getName ()),
-									_grade_to_sign (original.getSignGrade ()),
-									_grade_to_execute (original.getExecGrade ()) {
+Form::Form (Form const& original) :
 
+	_name (original.getName ()),
+	_grade_to_sign (original.getSignGrade ()),
+	_grade_to_execute (original.getExecGrade ())
+{
 	_is_signed = (bool) original.isSigned ();
-	if (_verbose)
-		announce ("Copy constructor");
 }
 
-Form::~Form () {
-
-	if (_verbose)
-		announce ("Destructor");
-}
+Form::~Form () {}
 
 Form& Form::operator= (Form const& rhs) {
 
@@ -47,8 +43,6 @@ Form& Form::operator= (Form const& rhs) {
 		std::cout << "Warning : sign grade not assigned coz it is const" << std::endl;
 		std::cout << "Warning : exec grade not assigned coz it is const" << std::endl;
 		_is_signed = rhs.isSigned ();
-		if (_verbose)
-			announce ("Assignment operator");
 	}
 	return *this;
 }

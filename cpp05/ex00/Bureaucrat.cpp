@@ -7,30 +7,24 @@
 Bureaucrat::Bureaucrat () : _name ("No name") {
 
 	_grade = lowest_grade;
-	if (_verbose)
-		announce ("Constructor");
 }
 
-Bureaucrat::Bureaucrat (std::string const name, int grade) : _name (name) {
+Bureaucrat::Bureaucrat (std::string const name, int grade) :
 
+	_name (name) 
+{
 	checkGrade (grade);
 	_grade = grade;
-	if (_verbose)
-		announce ("Constructor");
 }
 
-Bureaucrat::Bureaucrat (Bureaucrat const& original) : _name (original.getName ()) {
+Bureaucrat::Bureaucrat (Bureaucrat const& original) :
 
+	_name (original.getName ())
+{
 	_grade = original.getGrade ();
-	if (_verbose)
-		announce ("Copy constructor");
 }
 
-Bureaucrat::~Bureaucrat () {
-
-	if (_verbose)
-		announce ("Destructor");
-}
+Bureaucrat::~Bureaucrat () {}
 
 Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 
@@ -38,8 +32,6 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 	{
 		std::cout << "Warning : name not assigned to '" << rhs.getName () << "' coz name is const" << std::endl;
 		_grade = rhs.getGrade ();
-		if (_verbose)
-			announce ("Assignment operator");
 	}
 	return *this;
 }
@@ -50,12 +42,12 @@ Bureaucrat& Bureaucrat::operator= (Bureaucrat const& rhs) {
 
 std::string const&	Bureaucrat::getName () const {
 
-	return ((std::string const &) _name);
+	return (_name);
 }
 
-int const&			Bureaucrat::getGrade () const {
+int					Bureaucrat::getGrade () const {
 
-	return ((int const &) _grade);
+	return (_grade);
 }
 
 void				Bureaucrat::lowerGrade () {
@@ -116,8 +108,3 @@ std::ostream&	operator<< (std::ostream& o, Bureaucrat const& toDisplay) {
 	return o;
 }
 
-/******************************************************************************************************/
-/*	VERBOSE 																						  */
-/******************************************************************************************************/
-
-bool Bureaucrat::_verbose = false;

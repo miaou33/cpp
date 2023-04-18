@@ -22,22 +22,15 @@ class Form {
 		void				beSigned (Bureaucrat const& bureaucrat);
 
 		class GradeTooHighException : public std::exception {
-
-			public:
-				virtual const char*	what () const throw ();
-		};
+			public: virtual const char*	what () const throw (); };
 		class GradeTooLowException : public std::exception {
-
-			public:
-				virtual const char*	what () const throw ();
-		};
+			public: virtual const char*	what () const throw (); };
 
 	private:
 		std::string const	_name;
 		bool				_is_signed;
 		int	const			_grade_to_sign;
 		int	const			_grade_to_execute;
-		static const bool	_verbose = false;
 
 		void				checkGrade (int grade) const;
 		void				announce (std::string const func) const;

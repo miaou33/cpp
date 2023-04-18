@@ -13,11 +13,8 @@ class PresidentialPardonForm : virtual public AForm {
 		virtual ~PresidentialPardonForm ();
 		PresidentialPardonForm& operator= (PresidentialPardonForm const& rhs);
 
-		virtual std::string const&	getTarget () const;
-		virtual void				execute (Bureaucrat const& executor);
-
-	private:
-		std::string			_target;
+		std::string const&	getTarget () const;
+		virtual void		execute (Bureaucrat const& executor);
 };
 
 # endif

@@ -13,18 +13,10 @@ class ShrubberyCreationForm : virtual public AForm {
 		virtual ~ShrubberyCreationForm ();
 		ShrubberyCreationForm& operator= (ShrubberyCreationForm const& rhs);
 
-		std::string const&	getTarget () const;
 		virtual void		execute (Bureaucrat const& executor);
 
 		class FileOpeningFailed : public std::exception {
-
-			public:
-				virtual const char* what() const throw();
-
-		};
-
-	private:
-		std::string			_target;
+			public: virtual const char* what() const throw(); };
 };
 
 # endif

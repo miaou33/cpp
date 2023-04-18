@@ -4,56 +4,27 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-ShrubberyCreationForm::ShrubberyCreationForm () : AForm ("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm () : 
+		AForm ("ShrubberyCreationForm", "Nobody", 145, 137) {}
 
-	_target = "nobody";
-	if (_verbose)
-		announce ("Shrubbery constructor");
-}
+ShrubberyCreationForm::ShrubberyCreationForm (std::string target) :
+		AForm ("ShrubberyCreationForm", target, 145, 137) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm (std::string target) : AForm ("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm (ShrubberyCreationForm const& original) :
+		AForm (original) {}
 
-	_target = target;
-	if (_verbose)
-		announce ("Shrubbery constructor");
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm (ShrubberyCreationForm const& original) : AForm (original) {
-
-	_target = original.getTarget ();
-	if (_verbose)
-		announce ("Shrubbery copy constructor");
-}
-
-ShrubberyCreationForm::~ShrubberyCreationForm () {
-
-	if (_verbose)
-		announce ("Shrubbery destructor");
-}
+ShrubberyCreationForm::~ShrubberyCreationForm () {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator= (ShrubberyCreationForm const& rhs) {
 
 	if (this != &rhs)
-	{
-		std::cout << "Warning : name not assigned coz it is const" << std::endl;
-		std::cout << "Warning : sign grade not assigned coz it is const" << std::endl;
-		std::cout << "Warning : exec grade not assigned coz it is const" << std::endl;
-		_is_signed = rhs.isSigned ();
-		_target = rhs.getTarget ();
-		if (_verbose)
-			announce ("Shrubbery assignment operator");
-	}
+		std::cout << "Warning : attributes cant be assigned coz they are const\nAssignation not done" << std::endl;
 	return *this;
 }
 
 /******************************************************************************************************/
-/*	GETTERS SETTERS																	  				  */
+/*	METHODS																							  */
 /******************************************************************************************************/
-
-std::string const&	ShrubberyCreationForm::getTarget () const {
-
-	return (std::string const&) _target;
-}
 
 static void			draw_a_tree_on_file (std::string filename) {
 
@@ -99,7 +70,7 @@ void				ShrubberyCreationForm::execute (Bureaucrat const& executor) {
 
 	AForm::checkExecutability (executor);
 
-	std::string		filename = _target + "shrubbery";
+	std::string		filename = AForm::getTarget () + "shrubbery";
 	draw_a_tree_on_file (filename);
 }
 

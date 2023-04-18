@@ -4,32 +4,18 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-Intern::Intern () {
-
-	if (_verbose)
-		announce ("Intern constructor");
-}
+Intern::Intern () { }
 
 Intern::Intern (Intern const& original) {
 
 	(void) original;
-	if (_verbose)
-		announce ("Intern copy constructor");
 }
 
-Intern::~Intern () {
-
-	if (_verbose)
-		announce ("Intern destructor");
-}
+Intern::~Intern () {}
 
 Intern& Intern::operator= (Intern const& rhs) {
 
-	if (this != &rhs)
-	{
-		if (_verbose)
-			announce ("Intern assignment operator");
-	}
+	(void) rhs;
 	return *this;
 }
 
