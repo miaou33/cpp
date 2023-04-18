@@ -11,7 +11,7 @@ class Form {
 	 	Form ();
 		Form (std::string name, int sign_grade, int exec_grade);
 		Form (Form const& original);
-		virtual ~Form ();
+		~Form ();
 		Form& operator= (Form const& rhs);
 
 		std::string const&	getName () const;

@@ -22,6 +22,7 @@ int	main (void)
 		std::cout << lowerguy << std::endl;
 		lowerguy.upperGrade ();
 		lowerguy.lowerGrade ();
+		lowerguy.lowerGrade ();
 		std::cout << lowerguy << std::endl;
 	}
 	catch (std::exception& e) {
@@ -31,6 +32,7 @@ int	main (void)
 	std::cout << std::endl;
 
 	try {
+		std::cout << "trying to create usurpateur1 with grade 439..." << std::endl;
 		Bureaucrat	usurpateur1 ("Usurpateur1", 439);
 		std::cout << usurpateur1 << std::endl;
 		usurpateur1.upperGrade ();
@@ -44,6 +46,7 @@ int	main (void)
 	std::cout << std::endl;
 	
 	try {
+		std::cout << "trying to create usurpateur2 with grade -1..." << std::endl;
 		Bureaucrat	usurpateur2 ("Usurpateur2", -1);
 		std::cout << usurpateur2 << std::endl;
 		usurpateur2.upperGrade ();

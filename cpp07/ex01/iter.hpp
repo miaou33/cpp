@@ -5,6 +5,8 @@
 # include <iostream>
 
 template <>
-void    iter () {}
+void    iter () {
+
+}
 
 # endif

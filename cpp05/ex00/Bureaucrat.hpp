@@ -13,11 +13,11 @@ class Bureaucrat {
 		Bureaucrat ();
 		Bureaucrat (std::string const name, int grade);
 		Bureaucrat (Bureaucrat const& original);
-		virtual ~Bureaucrat ();
+		~Bureaucrat ();
 		Bureaucrat& operator= (Bureaucrat const& rhs);
 
-		static const int	highest_grade = 1;
-		static const int	lowest_grade = 150;
+		static int const	highest_grade = 1;
+		static int const	lowest_grade = 150;
 
 		std::string const&	getName () const;
 		int const&			getGrade () const;
