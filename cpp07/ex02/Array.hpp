@@ -12,28 +12,30 @@ class Array {
 
 	public:
 
-		Array <T> () : _size (0), _array (NULL) {}
+		T*		array;
 
-		Array <T> (t_ui n) : _size (n), _array (new T [n]) {
+		Array <T> () : array (NULL), _size (0) {}
+
+		Array <T> (t_ui n) : array (new T [n]), _size (n) {
 		
 			for (t_ui i = 0; i < n; ++i)
-				_array [i] = T ();
+				array [i] = T ();
 		}
 
-		Array (Array const& original) : _array (NULL) {
+		Array (Array const& original) : array (NULL) {
 			
 			_size = original.size ();
 			if (_size > 0)
 			{
-				_array = new T [_size];
+				array = new T [_size];
 				for (t_ui i = 0; i < _size; ++i)
-					_array [i] = original.getArray () [i];
+					array [i] = original.array [i];
 			}
 		}
 
 		~Array () {
 
-			delete [] _array;
+			delete [] array;
 		}
 
 		Array const&	operator= (Array const& rhs) {
@@ -41,13 +43,13 @@ class Array {
 			if (this != &rhs)
 			{
 				if (_size > 0)
-					delete [] _array;
+					delete [] array;
 				_size = rhs.size ();
 				if (_size > 0)
 				{
-					_array = new T [_size];
+					array = new T [_size];
 					for (t_ui i = 0; i < _size; ++i)
-						_array [i] = rhs.getContent ();
+						array [i] = rhs.array [i];
 				}
 			}
 			return *this;
@@ -57,15 +59,27 @@ class Array {
 
 			if (index >= _size)
 				throw std::out_of_range ();
-			return _array [index];
+			return array [index];
 		}
 
 		t_ui			size () { return _size; }
-		T const*		getArray () { return _array; }
 
 	private:
-		T*		_array;
 		t_ui	_size;
 };
+
+template <class T>
+std::ostream&		operator<< (std::ostream& o, Array <T>& rhs)
+{
+	if (rhs.size ())
+	{
+		for (t_ui i = 0; i < rhs.size (); ++i)
+			std::cout << rhs.array [i] << std::endl;
+	}
+	else {
+		std::cout << "NULL" << std::endl;
+	}
+	return o;
+}
 
 # endif
