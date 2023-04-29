@@ -55,7 +55,7 @@ class Array {
 			return array [index];
 		}
 
-		t_ui const&			size () const { return _size; }
+		t_ui			size () const { return _size; }
 
 
 	private:
