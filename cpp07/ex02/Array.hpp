@@ -12,7 +12,6 @@ class Array {
 
 	public:
 
-
 		Array <T> () : array (NULL), _size (0) {}
 
 		Array <T> (t_ui n) : array (new T [n]), _size (n) {
