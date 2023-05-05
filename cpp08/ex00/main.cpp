@@ -1,11 +1,14 @@
 #include "easyfind.hpp"
+#include <cstddef>
 #include <iostream>
 #include <vector>
 
 int main()
 {
 	int intList [] = { 1, 2, 3, 4, 5 }; 
-    std::vector<int> v (intList, intList + sizeof (intList) / sizeof (int));
+	int	size = sizeof (intList) / sizeof (int);
+    std::vector<int> v (intList, intList + size);
+
     int x = 3;
     try {
         std::vector<int>::iterator it = easyfind(v, x);
