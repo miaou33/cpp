@@ -5,6 +5,8 @@
 # include <iostream>
 # include <stdexcept>
 
+# define t_ui unsigned int
+
 template <class T>
 class Array {
 
