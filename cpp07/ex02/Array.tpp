@@ -11,7 +11,7 @@ Array <T>::Array (t_ui n) : array (new T [n]), _size (n) {
 }
 
 template <class T>
-Array <T>::Array (Array <T> const& original) : array (NULL) {
+Array <T>::Array (Array const& original) : array (NULL) {
 	
 	*this = original;
 }
@@ -23,7 +23,7 @@ Array <T>::~Array () {
 }
 
 template <class T>
-Array <T> const&	Array <T>::operator= (Array <T> const& rhs) {
+Array <T> const&	Array <T>::operator= (Array const& rhs) {
 
 	if (this != &rhs)
 	{
@@ -41,7 +41,7 @@ Array <T> const&	Array <T>::operator= (Array <T> const& rhs) {
 }
 
 template <class T>
-T&	Array <T>::operator[] (t_ui const index) const {
+T&					Array <T>::operator[] (t_ui const index) const {
 
 	if (index >= _size)
 		throw std::out_of_range ("index not in array");
@@ -49,7 +49,8 @@ T&	Array <T>::operator[] (t_ui const index) const {
 }
 
 template <class T>
-t_ui	Array <T>::size () const { return _size; }
+t_ui				Array <T>::size () const { return _size; }
+
 
 template <class T>
 std::ostream&		operator<< (std::ostream& o, Array <T>& rhs)
