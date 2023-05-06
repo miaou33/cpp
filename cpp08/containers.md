@@ -1,10 +1,9 @@
+## LISTE DES CONTAINEURS D'ENTIERS MIS A PART CONTAINEURS ASSOCIATIFS :
 
 | Container	            | Description	                                                                            | Accès aux éléments                                        |
 |-----------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | std::vector	        | Tableau dynamique qui peut stocker un nombre variable d'entiers.	                        | operator[], at(), data(), itérateurs                      |
 |                       |   > peut etre redimensionné a la volee                                                    |                                                           |
-| std::array	        | Tableau statique qui peut stocker un nombre fixe d'entiers déterminé à la compilation.	| operator[], at(), data(), itérateurs                      |
-|                       |   > elements stockes dans un bloc continu de memoire                                      |                                                           |
 | std::deque	        | File à deux extrémités qui peut stocker un nombre variable d'entiers.	                    | operator[], at(), front(), back(), data(), itérateurs     |
 |                       |   > permet insert et suppr facile des elem a l avant et arriere                           |                                                           |
 |                       |   > elems dans blocs de memoire separes                                                   |                                                           |
@@ -18,4 +17,8 @@
 |                       |   > généralement implémenté en utilisant conteneur sous-jacent eg. std::deque / std::list |                                                           |
 | std::priority_queue   | File de priorité qui stocke les éléments dans un ordre trié                               | top(), pas d'accès direct aux autres éléments             |
 |                       |   > généralement implémenté en utilisant conteneur sous-jacent eg. std::deque / std::list |                                                           |
+| Since C++11           |                                                                                           |                                                           |
+|-----------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| std::array	        | Tableau statique qui peut stocker un nombre fixe d'entiers déterminé à la compilation.	| operator[], at(), data(), itérateurs                      |
+|                       |   > elements stockes dans un bloc continu de memoire                                      |                                                           |
 
