@@ -1,0 +1,1 @@
+- getter pour shortest/longest

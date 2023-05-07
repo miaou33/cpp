@@ -10,6 +10,8 @@
 # include <stdexcept>
 # include <algorithm>
 # include <limits>
+# include <cstddef>
+# include <iterator>
 
 class Span {
 
@@ -23,8 +25,8 @@ class Span {
 		std::vector <int> const&	getSpan () const;
 		t_ui						getN () const;
 
-		void						addNumber ();
-		t_ull						shortestSpan ();
+		void						addNumber (int n);
+		t_ull				shortestSpan ();
 
 	private:
 		std::vector <int>	_span;
