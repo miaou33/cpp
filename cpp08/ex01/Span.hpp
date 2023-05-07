@@ -26,7 +26,8 @@ class Span {
 		t_ui						getN () const;
 
 		void						addNumber (int n);
-		t_ull				shortestSpan ();
+		t_ull						shortestSpan ();
+		t_ull						longestSpan () const;
 
 	private:
 		std::vector <int>	_span;

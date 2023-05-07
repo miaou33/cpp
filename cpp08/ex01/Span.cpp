@@ -56,3 +56,10 @@ t_ull						Span::shortestSpan () {
 	}
 	return _shortestSpan;
 }
+
+t_ull						Span::longestSpan () const {
+
+	if (_span.size () <= 1)
+		throw std::logic_error ("Span has less than 2 numbers");
+	return _span [_span.size () - 1] - _span [0];
+}
