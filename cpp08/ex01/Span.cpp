@@ -45,7 +45,7 @@ void						Span::addNumber () {
 	_span.push_back (rand ());
 }
 
-t_ui						Span::shortestSpan () {
+t_ull						Span::shortestSpan () {
 
 	if (_span.size () <= 1)
 		throw std::logic_error ("Span has less than 2 numbers");
