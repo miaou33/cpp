@@ -34,9 +34,10 @@ class Span {
 		void						addNumbers (t_ull count, InputIt range_min, InputIt range_max) 
 		{
 			InputIt	tmp = range_min;
+			bool same_nb = (tmp == range_max) ? true : false;
 			while (count)
 			{
-				while (count && tmp != range_max)
+				while (count && (same_nb || tmp != range_max))
 				{
 					addNumber (*tmp++);
 					count--;

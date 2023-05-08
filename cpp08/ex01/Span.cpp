@@ -32,7 +32,6 @@ t_ui						Span::getN () const { return _max; }
 
 void						Span::addNumber (int n) {
 
-	std::cout << "span size = " << _span.size () << std::endl;
 	if (_span.size () == _max)
 		throw std::length_error ("Span is full!");
 	_span.push_back (n);
