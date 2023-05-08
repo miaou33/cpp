@@ -39,8 +39,19 @@ t_ui						Span::getN () const { return _max; }
 void						Span::addNumber (int n) {
 
 	if (_span.size () == _max)
-		throw std::length_error ("Span is fi!");
+		throw std::length_error ("Span is full!");
 	_span.push_back (n);
+}
+
+template <typename InputIt>
+void						Span::addNumbers (t_ull count, InputIt range_min, InputIt range_max) {
+
+	srand (time (NULL));
+	while (count-- && range_min != range_max)
+	{
+		addNumber (*range_min);
+		range_min ++;
+	}
 }
 
 t_ull						Span::shortestSpan () {

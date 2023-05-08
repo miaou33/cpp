@@ -3,12 +3,12 @@
 
 int main()
 {
-	Span	span (3);
+	int numbers_list [5] = {12, 21, 1, -2, 3};
+	std::vector <int> v (numbers_list, numbers_list + 5);
+	Span	span (8);
 
 	try {
-		span.addNumber (3);
-		span.addNumber (1);
-		span.addNumber (32);
+		span.addNumbers <std::vector<int>::iterator> (8, v.begin (), v.end ());
 		std::cout << "span [0] = " << span.getSpan () [0] << std::endl;
 		std::cout << "span [1] = " << span.getSpan () [1] << std::endl;
 		std::cout << "span [2] = " << span.getSpan () [2] << std::endl;

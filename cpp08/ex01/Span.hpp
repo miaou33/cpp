@@ -26,6 +26,8 @@ class Span {
 		t_ui						getN () const;
 
 		void						addNumber (int n);
+		template <typename InputIt>
+		void						addNumbers (t_ull count, InputIt range_min, InputIt range_max);
 		t_ull						shortestSpan ();
 		t_ull						longestSpan () const;
 
