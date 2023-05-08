@@ -14,11 +14,6 @@ class ScalarConverter {
 
     public:
 
-        ScalarConverter ();
-        ScalarConverter (ScalarConverter const& original);
-        virtual ~ScalarConverter ();
-        ScalarConverter& operator= (ScalarConverter const& rhs);
-
         /* CONVERSION METHOD */
         static void         convert (std::string const& input);
     
@@ -30,6 +25,11 @@ class ScalarConverter {
         class OutOfRangeValue : public std::exception { virtual char const* what () const throw (); };
 
     private:
+
+        ScalarConverter ();
+        ScalarConverter (ScalarConverter const& original);
+        virtual ~ScalarConverter ();
+        ScalarConverter& operator= (ScalarConverter const& rhs);
 
         enum e_type {
             noType = -1,

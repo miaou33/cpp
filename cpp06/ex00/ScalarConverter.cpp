@@ -184,8 +184,8 @@ void                ScalarConverter::toFloat () {
                 display (_f);
                 break;
             case doubleType:
-                (_d >= FLT_MIN && _d <= FLT_MAX) ?
-                    display (static_cast <float> (_d)) : throw Impossible (); 
+                (_d >= (double) std::numeric_limits<float>::max () * -1 && _d <= (double) std::numeric_limits<float>::max () ) ?
+                    display (static_cast <float> (_d)) : throw Impossible ();
                 break;
             default:
                 throw InvalidLitteral ();
