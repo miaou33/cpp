@@ -15,4 +15,5 @@
 
 ## static_cast<type> (expr)
 > performs a nonpolymorphic cast.
-    > for example, it can be used to cast a base class pointer into a derived class pointer.
+> for example, it can be used to cast a base class pointer into a derived class pointer.
+> or to cast numeric values
