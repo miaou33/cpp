@@ -12,6 +12,7 @@
 # include <limits>
 # include <cstddef>
 # include <iterator>
+# include <iostream>
 
 class Span {
 
@@ -26,10 +27,23 @@ class Span {
 		t_ui						getN () const;
 
 		void						addNumber (int n);
-		template <typename InputIt>
-		void						addNumbers (t_ull count, InputIt range_min, InputIt range_max);
 		t_ull						shortestSpan ();
 		t_ull						longestSpan () const;
+
+		template <typename InputIt>
+		void						addNumbers (t_ull count, InputIt range_min, InputIt range_max) 
+		{
+			InputIt	tmp = range_min;
+			while (count)
+			{
+				while (count && tmp != range_max)
+				{
+					addNumber (*tmp++);
+					count--;
+				}
+				tmp = range_min;
+			}
+		}
 
 	private:
 		std::vector <int>	_span;

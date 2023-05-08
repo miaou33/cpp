@@ -3,15 +3,16 @@
 
 int main()
 {
-	int numbers_list [5] = {12, 21, 1, -2, 3};
-	std::vector <int> v (numbers_list, numbers_list + 5);
-	Span	span (8);
+	int intList [] = {-1000, 4000, 3000, 0, 90000};
+	size_t listLength = sizeof (intList) / sizeof (int);
+	std::vector <int> v (intList, intList + listLength);
+	t_ull	n = 4343;
+	Span	span (n);
 
 	try {
-		span.addNumbers <std::vector<int>::iterator> (8, v.begin (), v.end ());
-		std::cout << "span [0] = " << span.getSpan () [0] << std::endl;
-		std::cout << "span [1] = " << span.getSpan () [1] << std::endl;
-		std::cout << "span [2] = " << span.getSpan () [2] << std::endl;
+		span.addNumbers (n, v.begin (), v.end ());
+		for (t_ull i = 0; i < n; i++)
+			std::cout << "span [" << i << "] = " << span.getSpan () [i] << std::endl;
 		std::cout << "shortest span = " << span.shortestSpan () << std::endl;
 		std::cout << "longest span = " << span.longestSpan () << std::endl;
 	}
