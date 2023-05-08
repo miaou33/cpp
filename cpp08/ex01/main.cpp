@@ -6,7 +6,7 @@ int main()
 	int intList [] = {-1000, 4000, 3000, 0, 90000};
 	size_t listLength = sizeof (intList) / sizeof (int);
 	std::vector <int> v (intList, intList + listLength);
-	t_ull	n = 4343;
+	t_ull	n = 5;
 	Span	span (n);
 
 	try {

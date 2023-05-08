@@ -48,7 +48,6 @@ class Span {
 	private:
 		std::vector <int>	_span;
 		t_ull				_max;
-		t_ull				_shortestSpan;
 
 };
 

@@ -4,15 +4,9 @@
 /*						CONSTR / DESTR							*/
 /****************************************************************/
 
-Span::Span () : _max (0) {
+Span::Span () : _max (0) {}
 
-	_shortestSpan = std::numeric_limits<t_ull>::max();
-}
-
-Span::Span (t_ui N) : _max (N) { 
-
-	_shortestSpan = std::numeric_limits<t_ull>::max();
-}
+Span::Span (t_ui N) : _max (N) {}
 
 Span::Span (Span const& original) { *this = original; }
 
@@ -38,7 +32,7 @@ t_ui						Span::getN () const { return _max; }
 
 void						Span::addNumber (int n) {
 
-	std::cout << "Span.size = " << _span.size () << std::endl;
+	std::cout << "span size = " << _span.size () << std::endl;
 	if (_span.size () == _max)
 		throw std::length_error ("Span is full!");
 	_span.push_back (n);
@@ -48,19 +42,23 @@ t_ull						Span::shortestSpan () {
 
 	if (_span.size () <= 1)
 		throw std::logic_error ("Span has less than 2 numbers");
-	std::sort (_span.begin (), _span.end ());
 
-	for (t_ull i = 0; i < _span.size () - 1; i++)
+	std::vector <int> sorted (_span);
+	std::sort (sorted.begin (), sorted.end ());
+	t_ull shortest = sorted [1] - sorted [0];
+	for (t_ull i = 2; i < sorted.size (); i++)
 	{
-		t_ull tmp = _span [i + 1] - _span [i];
-		_shortestSpan = tmp < _shortestSpan ? tmp : _shortestSpan ;
+		t_ull tmp = sorted [i] - sorted [i - 1];
+		shortest = tmp < shortest ? tmp : shortest ;
 	}
-	return _shortestSpan;
+	return shortest;
 }
 
 t_ull						Span::longestSpan () const {
 
 	if (_span.size () <= 1)
 		throw std::logic_error ("Span has less than 2 numbers");
-	return _span [_span.size () - 1] - _span [0];
+	int min = *std::min_element (_span.begin (), _span.end ());
+	int max = *std::max_element (_span.begin (), _span.end ());
+	return max - min;
 }
