@@ -4,20 +4,25 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-MutantStack::MutantStack () {}
+template <typename T>
+MutantStack <T>::MutantStack () {}
 
-MutantStack::MutantStack (MutantStack const& original) {}
+template <typename T>
+MutantStack <T>::MutantStack (MutantStack <T> const& original) { *this = original; }
 
-MutantStack::~MutantStack () {}
+template <typename T>
+MutantStack <T>::~MutantStack () {}
 
-MutantStack& MutantStack::operator= (MutantStack const& rhs) {
-
-}
+template <typename T>
+MutantStack <T>& MutantStack <T>::operator= (MutantStack <T> const& rhs) { return *this; }
 
 /******************************************************************************************************/
 /*	GETTERS SETTERS																	  				  */
 /******************************************************************************************************/
 
-/******************************************************************************************************/
-/*	OTHER MB FUNCTIONS																				  */
-/******************************************************************************************************/
+template <typename T>
+const_iterator	MutantStack <T>::begin () const { return std::stack <T>::c.begin () }
+
+template <typename T>
+const_iterator	MutantStack <T>::end () const { return std::stack <T>::c.end () }
+
