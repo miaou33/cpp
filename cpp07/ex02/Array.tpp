@@ -11,7 +11,6 @@ Array <T>::Array (t_ui n) : array (new T [n]), _size (n) {
 }
 
 template <class T>
-
 Array <T>::Array (Array const& original) : array (NULL) {
 	
 	*this = original;

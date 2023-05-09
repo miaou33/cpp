@@ -9,18 +9,23 @@ template <typename T>
 class MutantStack : public std::stack <T> {
 
 	public:
-		MutantStack ();
-		MutantStack (MutantStack <T> const& original);
-		MutantStack& operator= (MutantStack const& rhs);
-		virtual ~MutantStack ();
+		MutantStack () {}
+		MutantStack (MutantStack <T> const& original) : std::stack <T> (original) {}
+		MutantStack& operator= (MutantStack const& rhs) { 
+			if (this != &rhs) 
+				this->c = rhs.c;
+			return *this;
+		}
+		virtual ~MutantStack () {}
 
 		typedef typename std::stack <T>::container_type::iterator iterator;
 		typedef typename std::stack <T>::container_type::const_iterator const_iterator;
 
-		const_iterator	begin () const;
-		const_iterator	end () const;
-};
+		iterator begin() { return std::stack<T>::c.begin(); }
+		iterator end() { return std::stack<T>::c.end(); }
 
-# include "MutantStack.tpp"
+		const_iterator begin() const { return std::stack<T>::c.begin(); }
+		const_iterator end() const { return std::stack<T>::c.end(); }
+};
 
 # endif

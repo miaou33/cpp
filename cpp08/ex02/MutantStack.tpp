@@ -21,8 +21,26 @@ MutantStack <T>& MutantStack <T>::operator= (MutantStack <T> const& rhs) { retur
 /******************************************************************************************************/
 
 template <typename T>
-const_iterator	MutantStack <T>::begin () const { return std::stack <T>::c.begin () }
+typename MutantStack <T>::const_iterator		MutantStack <T>::begin () const { 
+
+	return std::stack <T>::c.begin ();
+}
 
 template <typename T>
-const_iterator	MutantStack <T>::end () const { return std::stack <T>::c.end () }
+typename MutantStack <T>::const_iterator		MutantStack <T>::end () const {
+
+	return std::stack <T>::c.end ();
+}
+
+template <typename T>
+typename MutantStack <T>::iterator		MutantStack <T>::begin () const { 
+
+	return std::stack <T>::c.begin ();
+}
+
+template <typename T>
+typename MutantStack <T>::iterator		MutantStack <T>::end () const {
+
+	return std::stack <T>::c.end ();
+}
 
