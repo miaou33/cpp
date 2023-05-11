@@ -7,8 +7,13 @@
 template <typename T>
 void swap (T* a, T* b) {
 
-    T   tmp = *a;
+	if (!a || !b)
+	{
+		std::cout << "Null pointer. Aborting" << std::endl;
+		return ;
+	}
 
+    T tmp = *a;
     *a = *b;
     *b = tmp;
 }

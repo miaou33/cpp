@@ -1,24 +1,34 @@
 #include "Array.hpp"
+#include <cstdlib>
+#define MAX_VAL 750
 
-int main () {
-
+int main(int, char**)
+{
 	try {
 
 		Array <int> nullArray;
 		std::cout << "initialized nullArray =\n" << nullArray << std::endl;
-		//std::cout << nullArray [8] << std::endl;
+		std::cout << nullArray [8] << std::endl;
+	}
+	catch (std::exception& o) {
 
+		std::cout << o.what () << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	try {
 		t_ui	n = 3;
 		Array <int> intArray (n);
-		Array <int> intArrayCopy (intArray);
+		//Array <int> intArrayCopy (intArray);
 		std::cout << "intArray =\n" << intArray << std::endl;
-		std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
+		//std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
 		std::cout << "changing intArray [0] to 1, intArray [1] to 4 and intArray [2] to 3... " << std::endl;
 		intArray [0] = 1;
 		intArray [1] = 4;
 		intArray [2] = 3;
-		std::cout << "intArray =\n" << intArray << std::endl;
-		std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
+		//std::cout << "intArray =\n" << intArray << std::endl;
+		//std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
 
 		Array <std::string> strArray (n);
 		for (t_ui i = 0; i < n; ++i) { strArray [i] = "blablablablablabla"; }
@@ -33,7 +43,7 @@ int main () {
 		std::cout << "strArrayCopy =\n" << strArrayCopy << std::endl;
 
 	}
-	catch (std::out_of_range& o) {
+	catch (std::exception& o) {
 
 		std::cout << o.what () << std::endl;
 	}

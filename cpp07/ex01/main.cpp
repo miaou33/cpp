@@ -1,10 +1,9 @@
 #include "iter.hpp"
 
 template <typename T>
-void addOne (T& value) { value += 1; }
+void addNB (T& value) { value += 1; }
 
-template <typename T>
-void addMEH (T& value) { value += "MEH"; }
+void addSTR (std::string& value) { value += "MEH"; }
 
 int main () {
 
@@ -24,20 +23,20 @@ int main () {
 
     std::cout << std::endl;
 
-    iter (intArray, 5, addOne <int>);
-    iter (doubleArray, 5, addOne <double>);
-    iter (stringArray, 3, addMEH <std::string>);
+    iter (intArray, 5, addNB <int>);
+    iter (doubleArray, 5, addNB <double>);
+    iter (stringArray, 3, addSTR);
 
-    std::cout << "   Int array before iter: ";
+    std::cout << "   Int array after iter: ";
     for (int i = 0; i  < 5; i++) { std::cout << intArray[i] << " "; }
     std::cout << std::endl;
-    std::cout << "Double array before iter: ";
+    std::cout << "Double array after iter: ";
     for (int i = 0; i  < 5; i++) { std::cout << doubleArray[i] << " "; }
     std::cout << std::endl;
-    std::cout << "String array before iter: ";
+    std::cout << "String array after iter: ";
     for (int i = 0; i  < 3; i++) { std::cout << stringArray[i] << " "; }
     std::cout << std::endl;
-
+	
     return 0;
 }
 
