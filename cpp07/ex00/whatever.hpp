@@ -5,17 +5,11 @@
 # include <iostream>
 
 template <typename T>
-void swap (T* a, T* b) {
+void swap (T& a, T& b) {
 
-	if (!a || !b)
-	{
-		std::cout << "Null pointer. Aborting" << std::endl;
-		return ;
-	}
-
-    T tmp = *a;
-    *a = *b;
-    *b = tmp;
+    T tmp = a;
+    a = b;
+    b = tmp;
 }
 
 template <typename T>

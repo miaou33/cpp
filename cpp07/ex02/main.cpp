@@ -20,15 +20,15 @@ int main(int, char**)
 	try {
 		t_ui	n = 3;
 		Array <int> intArray (n);
-		//Array <int> intArrayCopy (intArray);
+		Array <int> intArrayCopy (intArray);
 		std::cout << "intArray =\n" << intArray << std::endl;
-		//std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
+		std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
 		std::cout << "changing intArray [0] to 1, intArray [1] to 4 and intArray [2] to 3... " << std::endl;
 		intArray [0] = 1;
 		intArray [1] = 4;
 		intArray [2] = 3;
-		//std::cout << "intArray =\n" << intArray << std::endl;
-		//std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
+		std::cout << "intArray =\n" << intArray << std::endl;
+		std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
 
 		Array <std::string> strArray (n);
 		for (t_ui i = 0; i < n; ++i) { strArray [i] = "blablablablablabla"; }
@@ -38,7 +38,7 @@ int main(int, char**)
 		std::cout << "changing strArray [0] to 'ddd' and strArray [2] to 'miao'... " << std::endl;
 		strArray [0] = "ddd";
 		strArray [2] = "miao";
-		//strArray [4] = "bla";
+		strArray [4] = "bla";
 		std::cout << "strArray =\n" << strArray << std::endl;
 		std::cout << "strArrayCopy =\n" << strArrayCopy << std::endl;
 
