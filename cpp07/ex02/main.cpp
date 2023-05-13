@@ -1,7 +1,7 @@
 # include "Array.hpp"
 # include "colors.hpp"
 # include <cstdlib>
-#include <ostream>
+# include <ostream>
 
 int main(int, char**)
 {
