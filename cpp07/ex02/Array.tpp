@@ -57,11 +57,17 @@ std::ostream&		operator<< (std::ostream& o, Array <T>& rhs)
 {
 	if (rhs.size ())
 	{
+		std::cout << "{ ";
 		for (t_ui i = 0; i < rhs.size (); ++i)
-			std::cout << rhs [i] << std::endl;
+		{
+			std::cout << rhs [i];
+			if (i != rhs.size () - 1)
+				std::cout << ", ";
+		}
+		std::cout << " }";
 	}
 	else {
-		std::cout << "NULL" << std::endl;
+		std::cout << "NULL";
 	}
 	return o;
 }

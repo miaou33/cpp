@@ -1,13 +1,14 @@
-#include "Array.hpp"
-#include <cstdlib>
-#define MAX_VAL 750
+# include "Array.hpp"
+# include "colors.hpp"
+# include <cstdlib>
+#include <ostream>
 
 int main(int, char**)
 {
 	try {
 
 		Array <int> nullArray;
-		std::cout << "initialized nullArray =\n" << nullArray << std::endl;
+		std::cout << _PURPLE << "initialized nullArray = " << _END << nullArray << std::endl;
 		std::cout << nullArray [8] << std::endl;
 	}
 	catch (std::exception& o) {
@@ -21,26 +22,28 @@ int main(int, char**)
 		t_ui	n = 3;
 		Array <int> intArray (n);
 		Array <int> intArrayCopy (intArray);
-		std::cout << "intArray =\n" << intArray << std::endl;
-		std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
-		std::cout << "changing intArray [0] to 1, intArray [1] to 4 and intArray [2] to 3... " << std::endl;
+		std::cout << _PURPLE << "intArray = " << _END << intArray << std::endl;
+		std::cout << _PURPLE << "intArrayCopy= " << _END << intArrayCopy << std::endl;
+		std::cout << _PURPLE << "changing intArray..." << _END << std::endl;
 		intArray [0] = 1;
 		intArray [1] = 4;
 		intArray [2] = 3;
-		std::cout << "intArray =\n" << intArray << std::endl;
-		std::cout << "intArrayCopy=\n" << intArrayCopy << std::endl;
+		std::cout << _PURPLE << "intArray = " << _END << intArray << std::endl;
+		std::cout << _PURPLE << "intArrayCopy= " << _END << intArrayCopy << std::endl;
+		
+		std::cout << std::endl;
 
 		Array <std::string> strArray (n);
 		for (t_ui i = 0; i < n; ++i) { strArray [i] = "blablablablablabla"; }
 		Array <std::string> strArrayCopy (strArray);
-		std::cout << "strArray =\n" << strArray << std::endl;
-		std::cout << "strArrayCopy =\n" << strArrayCopy << std::endl;
-		std::cout << "changing strArray [0] to 'ddd' and strArray [2] to 'miao'... " << std::endl;
+		std::cout << _PURPLE << "strArray = " << _END << strArray << std::endl;
+		std::cout << _PURPLE << "strArrayCopy = " << _END << strArrayCopy << std::endl;
+		std::cout << _PURPLE << "changing strArray..." << _END << std::endl;
 		strArray [0] = "ddd";
+		strArray [1] = "aa";
 		strArray [2] = "miao";
-		strArray [4] = "bla";
-		std::cout << "strArray =\n" << strArray << std::endl;
-		std::cout << "strArrayCopy =\n" << strArrayCopy << std::endl;
+		std::cout << _PURPLE << "strArray = " << _END << strArray << std::endl;
+		std::cout << _PURPLE << "strArrayCopy = " << _END << strArrayCopy << std::endl;
 
 	}
 	catch (std::exception& o) {
