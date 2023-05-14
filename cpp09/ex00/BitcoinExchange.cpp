@@ -1,30 +1,7 @@
 # include "BitcoinExchange.hpp"
 
 /******************************************************************************************************/
-/*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
-/******************************************************************************************************/
-
-BitcoinExchange::BitcoinExchange () {}
-
-BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
-
-BitcoinExchange& BitcoinExchange::operator= (BitcoinExchange const& rhs) {
-
-	if (this != &rhs)
-	{
-
-	}
-	return *this;
-}
-
-BitcoinExchange::~BitcoinExchange () {}
-
-/******************************************************************************************************/
-/*	GETTERS SETTERS																	  				  */
-/******************************************************************************************************/
-
-/******************************************************************************************************/
-/*	OTHER MB FUNCTIONS																				  */
+/*	*/
 /******************************************************************************************************/
 
 void	check_file (std::ifstream& file) {

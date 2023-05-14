@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <map>
 
 //void	parse_file (std::ifstream& file, std::string sep) {
 //
@@ -14,12 +15,6 @@ int	main (int ac, char **av) {
 	try {
 		std::ifstream prices ("data.csv");
 		check_file (prices);
-	}
-	catch (const std::exception& e) {
-		std::cerr << _RED << "Error: " << _END << "data.csv: " << e.what () << std::endl;
-		return 1;
-	}
-	try {
 		std::ifstream amount (av[1]);
 		check_file (amount);
 	}

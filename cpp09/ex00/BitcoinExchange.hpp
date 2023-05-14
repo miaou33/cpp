@@ -10,19 +10,6 @@
 #include <string>
 #include "colors.hpp"
 
-class BitcoinExchange {
-
-	public:
-
-		BitcoinExchange ();
-		BitcoinExchange (BitcoinExchange const& original);
-		BitcoinExchange& operator= (BitcoinExchange const& rhs);
-		~BitcoinExchange ();
-
-	private:
-
-};
-
 void	check_file (std::ifstream& file);
 
 # endif
