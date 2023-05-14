@@ -1,14 +1,14 @@
-# include "nClass.hpp"
+# include "BitcoinExchange.hpp"
 
 /******************************************************************************************************/
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-nClass::nClass () {}
+BitcoinExchange::BitcoinExchange () {}
 
-nClass::nClass (nClass const& original) { *this = original; }
+BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
 
-nClass& nClass::operator= (nClass const& rhs) {
+BitcoinExchange& BitcoinExchange::operator= (BitcoinExchange const& rhs) {
 
 	if (this != &rhs)
 	{
@@ -17,7 +17,7 @@ nClass& nClass::operator= (nClass const& rhs) {
 	return *this;
 }
 
-nClass::~nClass () {}
+BitcoinExchange::~BitcoinExchange () {}
 
 /******************************************************************************************************/
 /*	GETTERS SETTERS																	  				  */
@@ -26,3 +26,14 @@ nClass::~nClass () {}
 /******************************************************************************************************/
 /*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
+
+void	check_file (std::ifstream& file) {
+
+	if (file.fail ()) 
+		throw std::invalid_argument (strerror (errno));
+	
+	file.seekg (0, std::ios::end);
+	if (!file.good ())
+		throw std::invalid_argument ("Regular file expected");
+}
+

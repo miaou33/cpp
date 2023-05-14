@@ -11,7 +11,7 @@ class nClass {
 		nClass ();
 		nClass (nClass const& original);
 		nClass& operator= (nClass const& rhs);
-		virtual ~nClass ();
+		~nClass ();
 
 	private:
 
