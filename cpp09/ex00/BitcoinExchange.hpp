@@ -22,15 +22,20 @@ class BitcoinExchange {
 		~BitcoinExchange ();
 
 		class WrongFormat : public std::exception {
-			public: virtual const char* what() const throw(); };
 
-		class WrongData {
 			public:
-				WrongData (std::string const& message);
-				virtual ~WrongData ();
 				virtual const char* what() const throw();
+		};
+		class FileError : public std::exception {
+
+			public:
+				FileError (std::string const& message, std::string const& error_desc);
+				virtual ~FileError () throw ();
+				virtual const char* what() const throw();
+
 			private:
 				std::string	_errorMessage;
+
 		};
 		class WrongInput : public std::exception {
 			public: virtual const char* what() const throw(); };
@@ -44,9 +49,9 @@ class BitcoinExchange {
 		std::stringstream	_price;
 		std::string			_line;
 
+		std::string			check_file (std::ifstream& file);
 
 };
 
-void	check_file (std::ifstream& file);
 
 # endif

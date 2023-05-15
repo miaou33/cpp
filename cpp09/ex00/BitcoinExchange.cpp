@@ -9,9 +9,14 @@ BitcoinExchange::BitcoinExchange () {}
 BitcoinExchange::BitcoinExchange (char* const& input) {
 
 		std::ifstream prices ("data.csv");
-		check_file (prices);
+		std::string error = check_file (prices);
+		if (!error.empty ())
+			throw FileError ("data.csv", error);
+
 		std::ifstream amount (input);
-		check_file (amount);
+		error = check_file (amount);
+		if (!error.empty ())
+			throw FileError (input, error);
 
 		while (std::getline (prices, _line))
 		{
@@ -43,31 +48,41 @@ BitcoinExchange::~BitcoinExchange () {}
 /*	*/
 /******************************************************************************************************/
 
-void	check_file (std::ifstream& file) {
+std::string		BitcoinExchange::check_file (std::ifstream& file) {
 
 	if (file.fail ()) 
-		throw std::invalid_argument (strerror (errno));
+		return (strerror (errno));
 	
 	file.seekg (0, std::ios::end);
 	if (!file.good ())
-		throw std::invalid_argument ("Regular file expected");
+		return ("Regular file expected");
+
+	return ("");
 }
 
 /******************************************************************************************************/
 /*	EXCEPTIONS																						  */
 /******************************************************************************************************/
-BitcoinExchange::WrongData (std::string const& message) : BitcoinExchange::WrongData::_errorMessage (message + "") {}
 
+// WRONG FORMAT
 const char*	BitcoinExchange::WrongFormat::what () const throw () {
 
 	return ("Format: ./btc <bitcoin price database> <amount/date database>");
 }
 
-const char*	BitcoinExchange::WrongData::what () const throw () {
+// WRONG DATA
+BitcoinExchange::FileError::FileError (std::string const& filename, std::string const& error_desc)
 
-	return ("Invalid data file: ");
+	: _errorMessage ("'" + filename + "' : " + error_desc) {}
+
+BitcoinExchange::FileError::~FileError () throw () {}
+
+const char*	BitcoinExchange::FileError::what () const throw () {
+
+	return (_errorMessage.c_str ());
 }
 
+// WRONG INPUT
 const char*	BitcoinExchange::WrongInput::what () const throw () {
 
 	return ("Invalid input file: ");

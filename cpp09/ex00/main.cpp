@@ -15,7 +15,7 @@ int	main (int ac, char **av) {
 			throw BitcoinExchange::WrongFormat ();
 		BitcoinExchange btc (av [1]);
 	}
-	catch (const std::exception& e) {
+	catch (std::exception const& e) {
 		std::cerr << _RED << "Error: " << _END << e.what () << std::endl;
 		return 1;
 	}
