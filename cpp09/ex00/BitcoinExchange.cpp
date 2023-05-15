@@ -8,17 +8,12 @@ BitcoinExchange::BitcoinExchange () {}
 
 BitcoinExchange::BitcoinExchange (char* const& input) {
 
-		std::ifstream prices ("data.csv");
-		std::string error = check_file (prices);
-		if (!error.empty ())
-			throw FileError ("data.csv", error);
+		_error = "";
 
-		std::ifstream amount (input);
-		error = check_file (amount);
-		if (!error.empty ())
-			throw FileError (input, error);
+		open_check ("data.csv", _data);
+		open_check (input, _input);
 
-		while (std::getline (prices, _line))
+		while (std::getline (_data, _line))
 		{
 			_day << _line;
 			std::cout << _day.str () << std::endl;
@@ -48,16 +43,16 @@ BitcoinExchange::~BitcoinExchange () {}
 /*	*/
 /******************************************************************************************************/
 
-std::string		BitcoinExchange::check_file (std::ifstream& file) {
+void		BitcoinExchange::open_check (std::string const& name, std::ifstream& file) {
+
+	file.open (name.c_str ());
 
 	if (file.fail ()) 
-		return (strerror (errno));
+		throw FileError (name, strerror (errno));
 	
-	file.seekg (0, std::ios::end);
-	if (!file.good ())
-		return ("Regular file expected");
-
-	return ("");
+	struct stat fileInfo;
+    if (stat(name.c_str(), &fileInfo) == 0)
+		throw FileError (name, "Regular file expected");
 }
 
 /******************************************************************************************************/

@@ -12,7 +12,7 @@ int	main (int ac, char **av) {
 
 	try {
 		if (ac != 2) 
-			throw BitcoinExchange::WrongFormat ();
+			throw BitcoinExchange::WrongArg ();
 		BitcoinExchange btc (av [1]);
 	}
 	catch (std::exception const& e) {

@@ -11,7 +11,7 @@
 #include <string>
 #include <sstream>
 #include "colors.hpp"
-
+#include <sys/stat.h>
 
 class BitcoinExchange {
 
@@ -43,13 +43,16 @@ class BitcoinExchange {
 	private:
 		BitcoinExchange ();
 
+		std::ifstream		_data;
+		std::ifstream		_input;
 		std::stringstream	_day;
 		std::stringstream	_month;
 		std::stringstream	_year;
 		std::stringstream	_price;
 		std::string			_line;
+		std::string			_error;
 
-		std::string			check_file (std::ifstream& file);
+		void				open_check (std::string const& name, std::ifstream& file);
 
 };
 
