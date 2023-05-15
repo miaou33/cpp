@@ -16,7 +16,7 @@ class MutantStack : public std::stack <T> {
 				this->c = rhs.c;
 			return *this;
 		}
-		~MutantStack () {}
+		virtual ~MutantStack () {}
 
 		typedef typename std::stack <T>::container_type::iterator iterator;
 		typedef typename std::stack <T>::container_type::const_iterator const_iterator;

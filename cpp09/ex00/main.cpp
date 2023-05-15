@@ -1,5 +1,7 @@
 #include "BitcoinExchange.hpp"
 #include <map>
+#include <sstream>
+#include <string>
 
 //void	parse_file (std::ifstream& file, std::string sep) {
 //
@@ -8,15 +10,10 @@
 
 int	main (int ac, char **av) {
 
-	if (ac != 2) {
-		std::cerr << _RED << "Error: " << _END << "Format: ./btc <bitcoin price database> <amount/date database>" << std::endl;
-		return 1;
-	}
 	try {
-		std::ifstream prices ("data.csv");
-		check_file (prices);
-		std::ifstream amount (av[1]);
-		check_file (amount);
+		if (ac != 2) 
+			throw BitcoinExchange::WrongFormat ();
+		BitcoinExchange btc (av [1]);
 	}
 	catch (const std::exception& e) {
 		std::cerr << _RED << "Error: " << _END << e.what () << std::endl;
