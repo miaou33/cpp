@@ -51,7 +51,6 @@ T&					Array <T>::operator[] (t_ui const index) const {
 template <class T>
 t_ui				Array <T>::size () const { return _size; }
 
-
 template <class T>
 std::ostream&		operator<< (std::ostream& o, Array <T>& rhs)
 {
