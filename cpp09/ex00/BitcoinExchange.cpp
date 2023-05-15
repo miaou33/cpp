@@ -8,22 +8,10 @@ BitcoinExchange::BitcoinExchange () {}
 
 BitcoinExchange::BitcoinExchange (char* const& input) {
 
-		_error = "";
+		openCheckValid ("data.csv", _data);
+		openCheckValid (input, _input);
 
-		open_check ("data.csv", _data);
-		open_check (input, _input);
-
-		while (std::getline (_data, _line))
-		{
-			_day << _line;
-			std::cout << _day.str () << std::endl;
-			_month << _line;
-			std::cout << _month.str () << std::endl;
-			_year << _line;
-			std::cout << _year.str () << std::endl;
-			_price << _line;
-			std::cout << _price.str () << std::endl;
-		}
+		parseData ();
 }
 
 BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
@@ -43,7 +31,7 @@ BitcoinExchange::~BitcoinExchange () {}
 /*	*/
 /******************************************************************************************************/
 
-void		BitcoinExchange::open_check (std::string const& name, std::ifstream& file) {
+void		BitcoinExchange::openCheckValid (std::string const& name, std::ifstream& file) {
 
 	file.open (name.c_str ());
 
@@ -51,8 +39,31 @@ void		BitcoinExchange::open_check (std::string const& name, std::ifstream& file)
 		throw FileError (name, strerror (errno));
 	
 	struct stat fileInfo;
-    if (stat(name.c_str(), &fileInfo) == 0)
+    if (stat(name.c_str(), &fileInfo) == 0 && S_ISDIR (fileInfo.st_mode))
 		throw FileError (name, "Regular file expected");
+}
+
+void		BitcoinExchange::parseData () {
+
+	std::getline (_data, _line); //skip the first title line
+	std::string	date_str;
+	while (std::getline (_data, date_str, ',')) {
+    std::tm time = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // Initialiser la structure tm
+    std::istringstream iss(date_str);
+    int year, month, day;
+    char delimiter;
+
+    if (iss >> year >> delimiter >> month >> delimiter >> day) {
+        time.tm_year = year - 1900;
+        time.tm_mon = month - 1;
+        time.tm_mday = day;
+
+        std::time_t dateInSeconds = std::mktime(&time);
+        throw BitcoinExchange::ParseError (name, "Wrong date");
+    }
+
+    return false; // La conversion a échoué, la date est invalide
+	}
 }
 
 /******************************************************************************************************/

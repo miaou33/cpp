@@ -50,9 +50,9 @@ class BitcoinExchange {
 		std::stringstream	_year;
 		std::stringstream	_price;
 		std::string			_line;
-		std::string			_error;
 
-		void				open_check (std::string const& name, std::ifstream& file);
+		void				openCheckValid (std::string const& name, std::ifstream& file);
+		void				parseData ();
 
 };
 
