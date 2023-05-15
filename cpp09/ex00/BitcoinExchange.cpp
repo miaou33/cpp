@@ -64,13 +64,13 @@ std::string		BitcoinExchange::check_file (std::ifstream& file) {
 /*	EXCEPTIONS																						  */
 /******************************************************************************************************/
 
-// WRONG FORMAT
-const char*	BitcoinExchange::WrongFormat::what () const throw () {
+// WRONG ARGUMENTS
+const char*	BitcoinExchange::WrongArg::what () const throw () {
 
 	return ("Format: ./btc <bitcoin price database> <amount/date database>");
 }
 
-// WRONG DATA
+// WRONG FILE
 BitcoinExchange::FileError::FileError (std::string const& filename, std::string const& error_desc)
 
 	: _errorMessage ("'" + filename + "' : " + error_desc) {}
@@ -82,8 +82,3 @@ const char*	BitcoinExchange::FileError::what () const throw () {
 	return (_errorMessage.c_str ());
 }
 
-// WRONG INPUT
-const char*	BitcoinExchange::WrongInput::what () const throw () {
-
-	return ("Invalid input file: ");
-}

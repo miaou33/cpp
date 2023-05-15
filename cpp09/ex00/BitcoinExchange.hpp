@@ -21,7 +21,7 @@ class BitcoinExchange {
 		BitcoinExchange& operator= (BitcoinExchange const& rhs);
 		~BitcoinExchange ();
 
-		class WrongFormat : public std::exception {
+		class WrongArg : public std::exception {
 
 			public:
 				virtual const char* what() const throw();
