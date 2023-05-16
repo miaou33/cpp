@@ -1,6 +1,7 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+#include <cstddef>
 #include <cstring>
 #include <ctime>
 #include <errno.h>
@@ -67,6 +68,8 @@ class BitcoinExchange {
 		void				checkDate (std::string date_str, std::string filename);
 		void				checkPrice (std::string price_str);
 
+		bool    double_lex (std::string const& s);
+		bool    int_lex (std::string const& s);
 };
 
 
