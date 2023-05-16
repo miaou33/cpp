@@ -12,19 +12,20 @@ BitcoinExchange::BitcoinExchange (char* const& input) {
 	openCheckValid ("data.csv", _data);
 	openCheckValid (input, _input);
 
-	std::getline (_data, _line); //skip the first title line
 	std::string	line;
+	std::getline (_data, line); //skip the first title line
 	std::string date_str;
-	std::string price_str;
+	std::string value_str;
+	float		price;
 	size_t		sep_pos;
 	while (std::getline (_data, line))
 	{
 		sep_pos = line.find (',');
 		date_str = line.substr (0, sep_pos);
-		price_str = line.substr (sep_pos + 1);
+		value_str = line.substr (sep_pos + 1);
 		try {
 			checkDate (date_str, "data.csv");
-			//checkPrice (price_str, "data.csv");
+			price = getValue ();
 			std::cout << "date OK! " << date_str << std::endl;
 		}
 		catch (BitcoinExchange::ParseError& e) {
@@ -87,38 +88,26 @@ void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
 	throw BitcoinExchange::ParseError (filename, "Error: bad input => ", date_str);
 }
 
-void		BitcoinExchange::checkPrice (std::string price_str) {
+float		BitcoinExchange::getValue (std::string const& value_str, std::string const& filename) {
 
-	if (price_str.find_first_not_of ("01234567890.-") != std::string::npos)
-		throw BitcoinExchange::ParseError ("data.csv", "Error: bad input => ", price_str);
-		
-	//if (price < 0)
-	if (std::strtof (price_str.c_str (), NULL))
-		return ;
+	if (value_str.find_first_not_of ("01234567890.-") != std::string::npos)
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
 
-}
-
-bool		BitcoinExchange::double_lex (std::string const& s) {
-
-    size_t    found;
-
-    if ((found = s.find_first_of ('.')) != std::string::npos && (s.find_last_of ('.') != found))
-        return false;
-    }
-    return false;
-}
-
-bool		BitcoinExchange::int_lex (std::string const& s) {
+    size_t found = value_str.find_first_of ('.');
+    if (found != std::string::npos && (value_str.find_last_of ('.') != found))
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
+	
+	found = value_str.find_first_of ('-');
+	if (found != std::string::npos && (found != 0 || value_str.find_last_of ('-') != found))
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
 
     char *p;
-    long n = std::strtol (s.c_str (), &p, 10);
-
-    if (errno == ERANGE || n < std::numeric_limits<int>::min ()
-                        || n > std::numeric_limits<int>::max ())
-    {
-        throw ScalarConverter::OutOfRangeValue ();
-    }
-    return true;
+    double n = std::strtof (value_str.c_str (), &p);
+    if (errno == ERANGE || n > std::numeric_limits<float>::max ())
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
+	if (n < 0)
+		throw BitcoinExchange::ParseError (filename, "Error: not a positive number => ", value_str);
+    return n;
 }
 
 /******************************************************************************************************/

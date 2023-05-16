@@ -1,19 +1,20 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-#include <cstddef>
-#include <cstring>
-#include <ctime>
-#include <errno.h>
-#include <exception>
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-#include <stdexcept>
-#include <string>
-#include <sstream>
-#include <sys/stat.h>
-#include "colors.hpp"
+# include <cstddef>
+# include <cstring>
+# include <ctime>
+# include <errno.h>
+# include <exception>
+# include <filesystem>
+# include <fstream>
+# include <iostream>
+# include <limits>
+# include <stdexcept>
+# include <string>
+# include <sstream>
+# include <sys/stat.h>
+# include "colors.hpp"
 
 class BitcoinExchange {
 
@@ -58,18 +59,10 @@ class BitcoinExchange {
 
 		std::ifstream		_data;
 		std::ifstream		_input;
-		std::stringstream	_day;
-		std::stringstream	_month;
-		std::stringstream	_year;
-		std::stringstream	_price;
-		std::string			_line;
 
 		void				openCheckValid (std::string const& name, std::ifstream& file);
 		void				checkDate (std::string date_str, std::string filename);
-		void				checkPrice (std::string price_str);
-
-		bool    double_lex (std::string const& s);
-		bool    int_lex (std::string const& s);
+		float				getValue (std::string const& value_str, std::string const& filename);
 };
 
 
