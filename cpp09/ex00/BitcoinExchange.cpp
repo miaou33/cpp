@@ -7,25 +7,30 @@
 
 BitcoinExchange::BitcoinExchange () {}
 
-BitcoinExchange::BitcoinExchange (char* const& input) {
+BitcoinExchange::BitcoinExchange (char* const& arg) {
 
-	openCheckValid ("data.csv", _data);
-	openCheckValid (input, _input);
+	std::ifstream		data;
+	std::ifstream		input;
+
+	openCheckValid ("data.csv", data);
+	openCheckValid (arg, input);
+
 
 	std::string	line;
-	std::getline (_data, line); //skip the first title line
 	std::string date_str;
 	std::string value_str;
 	float		price;
 	size_t		sep_pos;
-	while (std::getline (_data, line))
+
+	std::getline (data, line); //skip the first title line
+	while (std::getline (data, line))
 	{
 		sep_pos = line.find (',');
 		date_str = line.substr (0, sep_pos);
 		value_str = line.substr (sep_pos + 1);
 		try {
 			checkDate (date_str, "data.csv");
-			price = getValue ();
+			price = getValue (value_str, "data.csv");
 			std::cout << "date OK! " << date_str << std::endl;
 		}
 		catch (BitcoinExchange::ParseError& e) {

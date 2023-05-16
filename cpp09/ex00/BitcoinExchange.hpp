@@ -57,8 +57,7 @@ class BitcoinExchange {
 	private:
 		BitcoinExchange ();
 
-		std::ifstream		_data;
-		std::ifstream		_input;
+		std::map <std::string, float>	_datamap;
 
 		void				openCheckValid (std::string const& name, std::ifstream& file);
 		void				checkDate (std::string date_str, std::string filename);
