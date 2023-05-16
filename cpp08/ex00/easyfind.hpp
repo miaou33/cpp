@@ -18,8 +18,3 @@ typename T::iterator easyfind (T& container, int value)
 }
 
 #endif
-
-/*
-** typename devant T pour signifier au compilateur qu'iterator est un type
-** > sinon, ne pourrait pas savoir s'il s'agit d'une classe ou d'un type de donnees 
-*/
