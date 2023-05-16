@@ -2,6 +2,7 @@
 # define BITCOINEXCHANGE_HPP
 
 #include <cstring>
+#include <ctime>
 #include <errno.h>
 #include <exception>
 #include <filesystem>
@@ -10,8 +11,8 @@
 #include <stdexcept>
 #include <string>
 #include <sstream>
-#include "colors.hpp"
 #include <sys/stat.h>
+#include "colors.hpp"
 
 class BitcoinExchange {
 
@@ -37,6 +38,17 @@ class BitcoinExchange {
 				std::string	_errorMessage;
 
 		};
+		class ParseError : public std::exception {
+
+			public:
+				ParseError (std::string const& message, std::string const& error_desc, std::string const& error_source);
+				virtual ~ParseError () throw ();
+				virtual const char* what() const throw();
+
+			private:
+				std::string	_errorMessage;
+
+		};
 		class WrongInput : public std::exception {
 			public: virtual const char* what() const throw(); };
 
@@ -52,7 +64,8 @@ class BitcoinExchange {
 		std::string			_line;
 
 		void				openCheckValid (std::string const& name, std::ifstream& file);
-		void				parseData ();
+		void				checkDate (std::string date_str, std::string filename);
+		void				checkPrice (std::string price_str);
 
 };
 

@@ -11,7 +11,21 @@ BitcoinExchange::BitcoinExchange (char* const& input) {
 		openCheckValid ("data.csv", _data);
 		openCheckValid (input, _input);
 
-		parseData ();
+	std::getline (_data, _line); //skip the first title line
+	std::string	line;
+	std::string date_str;
+	std::string price_str;
+	while (std::getline (_data, line))
+	{
+		try {
+			date_str = line.substr (0, line.find (','));
+			checkDate (date_str, "data.csv");
+			std::cout << "date OK! " << date_str << std::endl;
+		}
+		catch (BitcoinExchange::ParseError& e) {
+			std::cout << e.what () << std::endl;
+		}
+	}
 }
 
 BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
@@ -43,28 +57,35 @@ void		BitcoinExchange::openCheckValid (std::string const& name, std::ifstream& f
 		throw FileError (name, "Regular file expected");
 }
 
-void		BitcoinExchange::parseData () {
+void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
 
-	std::getline (_data, _line); //skip the first title line
-	std::string	date_str;
-	while (std::getline (_data, date_str, ',')) {
-    std::tm time = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // Initialiser la structure tm
     std::istringstream iss(date_str);
     int year, month, day;
-    char delimiter;
+    char delimiter1;
+    char delimiter2;
 
-    if (iss >> year >> delimiter >> month >> delimiter >> day) {
-        time.tm_year = year - 1900;
-        time.tm_mon = month - 1;
-        time.tm_mday = day;
-
-        std::time_t dateInSeconds = std::mktime(&time);
-        throw BitcoinExchange::ParseError (name, "Wrong date");
-    }
-
-    return false; // La conversion a échoué, la date est invalide
+    if (iss >> year >> delimiter1 >> month >> delimiter2 >> day)
+	{
+		if (delimiter1 == '-' && delimiter2 == '-' &&
+			year >= 2009 && month >= 1 && month <= 12 && day >= 1 && day <= 31 && 
+			!((month == 4 || month == 6 || month == 9 || month == 11) && day > 30))
+		{
+			if (month == 2) {
+				bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+				if ((isLeapYear && day > 29) || (!isLeapYear && day > 28)) {
+					throw BitcoinExchange::ParseError(filename, "Error: bad input => ", date_str);
+				}
+			}
+			return ;
+		}
 	}
+	throw BitcoinExchange::ParseError (filename, "Error: bad input => ", date_str);
 }
+
+//void		BitcoinExchange::checkPrice () {
+//
+//	
+//}
 
 /******************************************************************************************************/
 /*	EXCEPTIONS																						  */
@@ -84,6 +105,18 @@ BitcoinExchange::FileError::FileError (std::string const& filename, std::string 
 BitcoinExchange::FileError::~FileError () throw () {}
 
 const char*	BitcoinExchange::FileError::what () const throw () {
+
+	return (_errorMessage.c_str ());
+}
+
+// PARSE ERROR
+BitcoinExchange::ParseError::ParseError (std::string const& filename, std::string const& error_desc, std::string const& error_source)
+
+	: _errorMessage ("'" + filename + "' : " + error_desc + error_source) {}
+
+BitcoinExchange::ParseError::~ParseError () throw () {}
+
+const char*	BitcoinExchange::ParseError::what () const throw () {
 
 	return (_errorMessage.c_str ());
 }
