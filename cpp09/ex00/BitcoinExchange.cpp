@@ -1,5 +1,4 @@
 # include "BitcoinExchange.hpp"
-#include <cstdlib>
 
 /******************************************************************************************************/
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
@@ -7,36 +6,13 @@
 
 BitcoinExchange::BitcoinExchange () {}
 
-BitcoinExchange::BitcoinExchange (char* const& arg) {
+BitcoinExchange::BitcoinExchange () {
 
 	std::ifstream		data;
-	std::ifstream		input;
 
 	openCheckValid ("data.csv", data);
-	openCheckValid (arg, input);
-
-
-	std::string	line;
-	std::string date_str;
-	std::string value_str;
-	float		price;
-	size_t		sep_pos;
-
-	std::getline (data, line); //skip the first title line
-	while (std::getline (data, line))
-	{
-		sep_pos = line.find (',');
-		date_str = line.substr (0, sep_pos);
-		value_str = line.substr (sep_pos + 1);
-		try {
-			checkDate (date_str, "data.csv");
-			price = getValue (value_str, "data.csv");
-			std::cout << "date OK! " << date_str << std::endl;
-		}
-		catch (BitcoinExchange::ParseError& e) {
-			std::cout << e.what () << std::endl;
-		}
-	}
+	fillExchangeRateMap ();
+	data.close ();
 }
 
 BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
@@ -68,6 +44,50 @@ void		BitcoinExchange::openCheckValid (std::string const& name, std::ifstream& f
 		throw FileError (name, "Regular file expected");
 }
 
+void		BitcoinExchange::fillExchangeRateMap () {
+
+	std::ifstream	data;
+	std::string		line;
+	std::string 	date;
+	char			coma;
+	double			exchange_rate;
+	size_t			sep_pos;
+	
+	std::getline (data, line); //skip the first title line
+	while (std::getline (data, line))
+	{
+		std::istringstream	iss (line);
+		if (!(iss >> date >> coma >> exchange_rate))
+			throw std::runtime_error ("Problem occured while parsing data.csv\n--> Please verify file is not corrupted");
+		_priceMap [date] = exchange_rate;
+	}
+}
+
+void		BitcoinExchange::getValues (char* const& arg) {
+
+	std::ifstream	input;
+	std::string		line;
+	std::string 	date_str;
+	std::string 	amount_str;
+	size_t			sep_pos;
+	
+	openCheckValid (arg, input);
+	std::getline (file, line); //skip the first title line
+	while (std::getline (file, line))
+	{
+		sep_pos = line.find (sep);
+		date_str = line.substr (0, sep_pos);
+		amount_str = line.substr (sep_pos + sep.length ());
+		try {
+			checkDate (date_str, filename);
+			price = getValue (amount_str, filename);
+		}
+		catch (BitcoinExchange::ParseError& e) {
+			std::cout << e.what () << std::endl;
+		}
+	}
+}
+
 void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
 
     std::istringstream iss(date_str);
@@ -93,25 +113,28 @@ void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
 	throw BitcoinExchange::ParseError (filename, "Error: bad input => ", date_str);
 }
 
-float		BitcoinExchange::getValue (std::string const& value_str, std::string const& filename) {
 
-	if (value_str.find_first_not_of ("01234567890.-") != std::string::npos)
-		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
+float		BitcoinExchange::getValue (std::string const& amount_str, std::string const& filename) {
 
-    size_t found = value_str.find_first_of ('.');
-    if (found != std::string::npos && (value_str.find_last_of ('.') != found))
-		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
+	if (amount_str.find_first_not_of ("01234567890.-") != std::string::npos)
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
+
+    size_t found = amount_str.find_first_of ('.');
+    if (found != std::string::npos && (amount_str.find_last_of ('.') != found))
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
 	
-	found = value_str.find_first_of ('-');
-	if (found != std::string::npos && (found != 0 || value_str.find_last_of ('-') != found))
-		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
+	found = amount_str.find_first_of ('-');
+	if (found != std::string::npos && (found != 0 || amount_str.find_last_of ('-') != found))
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
 
     char *p;
-    double n = std::strtof (value_str.c_str (), &p);
+    double n = std::strtof (amount_str.c_str (), &p);
     if (errno == ERANGE || n > std::numeric_limits<float>::max ())
-		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", value_str);
+		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
 	if (n < 0)
-		throw BitcoinExchange::ParseError (filename, "Error: not a positive number => ", value_str);
+		throw BitcoinExchange::ParseError (filename, "Error: not a positive number => ", amount_str);
+	//if (filename != "data.csv" && n > 1000)
+	//	throw BitcoinExchange::ParseError (filename, "Error: too large value => ", amount_str);
     return n;
 }
 

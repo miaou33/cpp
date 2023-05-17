@@ -2,6 +2,7 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <cstddef>
+# include <cstdlib>
 # include <cstring>
 # include <ctime>
 # include <errno.h>
@@ -10,6 +11,7 @@
 # include <fstream>
 # include <iostream>
 # include <limits>
+# include <map>
 # include <stdexcept>
 # include <string>
 # include <sstream>
@@ -19,11 +21,15 @@
 class BitcoinExchange {
 
 	public:
-		BitcoinExchange (char* const& input_filename);
+		BitcoinExchange ();
 		BitcoinExchange (BitcoinExchange const& original);
 		BitcoinExchange& operator= (BitcoinExchange const& rhs);
 		~BitcoinExchange ();
 
+		// METHODS---------------------------------------------------
+		void	getValues (char* const& arg);
+
+		// EXCEPTIONS------------------------------------------------
 		class WrongArg : public std::exception {
 
 			public:
@@ -55,11 +61,11 @@ class BitcoinExchange {
 			public: virtual const char* what() const throw(); };
 
 	private:
-		BitcoinExchange ();
-
-		std::map <std::string, float>	_datamap;
+		std::map <std::string, float>	_priceMap;
 
 		void				openCheckValid (std::string const& name, std::ifstream& file);
+		void				fillMap (std::string const& filename, std::ifstream& file);
+		void				fillExchangeRateMap ();
 		void				checkDate (std::string date_str, std::string filename);
 		float				getValue (std::string const& value_str, std::string const& filename);
 };

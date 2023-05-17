@@ -3,17 +3,14 @@
 #include <sstream>
 #include <string>
 
-//void	parse_file (std::ifstream& file, std::string sep) {
-//
-//
-//}
-
 int	main (int ac, char **av) {
 
 	try {
 		if (ac != 2) 
 			throw BitcoinExchange::WrongArg ();
-		BitcoinExchange btc (av [1]);
+
+		BitcoinExchange btc;
+		btc.getValues (av [1]);
 	}
 	catch (std::exception const& e) {
 		std::cerr << _RED << "Error: " << _END << e.what () << std::endl;
