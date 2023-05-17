@@ -6,15 +6,6 @@
 
 BitcoinExchange::BitcoinExchange () {}
 
-BitcoinExchange::BitcoinExchange () {
-
-	std::ifstream		data;
-
-	openCheckValid ("data.csv", data);
-	fillExchangeRateMap ();
-	data.close ();
-}
-
 BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
 
 BitcoinExchange& BitcoinExchange::operator= (BitcoinExchange const& rhs) {
@@ -44,23 +35,29 @@ void		BitcoinExchange::openCheckValid (std::string const& name, std::ifstream& f
 		throw FileError (name, "Regular file expected");
 }
 
-void		BitcoinExchange::fillExchangeRateMap () {
+void		BitcoinExchange::fillPriceMap () {
 
-	std::ifstream	data;
-	std::string		line;
-	std::string 	date;
-	char			coma;
-	double			exchange_rate;
-	size_t			sep_pos;
+	std::ifstream		data;
+	std::string			line;
+	std::string 		date;
+	std::string			exchange_rate_str;
+	double				exchange_rate;
+	static std::string	date_fmt = "XXXX-XX-XX";
+	static size_t		date_fmt_sz = date_fmt.length ();
 	
+	openCheckValid ("data.csv", data);
 	std::getline (data, line); //skip the first title line
 	while (std::getline (data, line))
 	{
-		std::istringstream	iss (line);
-		if (!(iss >> date >> coma >> exchange_rate))
-			throw std::runtime_error ("Problem occured while parsing data.csv\n--> Please verify file is not corrupted");
-		_priceMap [date] = exchange_rate;
+		date = line.substr (0, date_fmt_sz - 1);
+		std::cout << date << " ";//------------------------debug
+		exchange_rate_str = line.substr (date_fmt_sz + 1);
+		std::istringstream iss (exchange_rate_str);
+		iss >> exchange_rate;
+		std::cout << exchange_rate << std::endl;//------------------------debug
+        _priceMap.insert (std::make_pair (date, exchange_rate));
 	}
+	data.close ();
 }
 
 void		BitcoinExchange::getValues (char* const& arg) {
@@ -69,18 +66,24 @@ void		BitcoinExchange::getValues (char* const& arg) {
 	std::string		line;
 	std::string 	date_str;
 	std::string 	amount_str;
+	float			value;
+	double			price;
 	size_t			sep_pos;
 	
+	fillPriceMap ();
+
 	openCheckValid (arg, input);
-	std::getline (file, line); //skip the first title line
-	while (std::getline (file, line))
+	std::getline (input, line); //skip the first title line
+	while (std::getline (input, line))
 	{
-		sep_pos = line.find (sep);
+		sep_pos = line.find (" | ");
 		date_str = line.substr (0, sep_pos);
-		amount_str = line.substr (sep_pos + sep.length ());
+		amount_str = line.substr (sep_pos + 3);
 		try {
-			checkDate (date_str, filename);
-			price = getValue (amount_str, filename);
+			checkDate (date_str, arg);
+			value = getValue (amount_str, arg);
+			price = getPrice (date_str);
+			std::cout << date_str << " => " << value << " = " << value * price << std::endl;
 		}
 		catch (BitcoinExchange::ParseError& e) {
 			std::cout << e.what () << std::endl;
@@ -116,26 +119,45 @@ void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
 
 float		BitcoinExchange::getValue (std::string const& amount_str, std::string const& filename) {
 
-	if (amount_str.find_first_not_of ("01234567890.-") != std::string::npos)
-		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
+    size_t	found_point = amount_str.find_first_of ('.');
+	size_t	found_dash = amount_str.find_first_of ('-');
 
-    size_t found = amount_str.find_first_of ('.');
-    if (found != std::string::npos && (amount_str.find_last_of ('.') != found))
+	if (amount_str.find_first_not_of ("01234567890.-") != std::string::npos
+		|| (found_point != std::string::npos && (amount_str.find_last_of ('.') != found_point))
+		|| (found_dash != std::string::npos && (found_dash != 0 || amount_str.find_last_of ('-') != found_dash)))
+	{
 		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
-	
-	found = amount_str.find_first_of ('-');
-	if (found != std::string::npos && (found != 0 || amount_str.find_last_of ('-') != found))
-		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
+	}	
 
-    char *p;
-    double n = std::strtof (amount_str.c_str (), &p);
-    if (errno == ERANGE || n > std::numeric_limits<float>::max ())
-		throw BitcoinExchange::ParseError (filename, "Error: bad input => ", amount_str);
-	if (n < 0)
+    float value = std::strtof (amount_str.c_str (), NULL);
+	if (value < 0)
 		throw BitcoinExchange::ParseError (filename, "Error: not a positive number => ", amount_str);
-	//if (filename != "data.csv" && n > 1000)
-	//	throw BitcoinExchange::ParseError (filename, "Error: too large value => ", amount_str);
-    return n;
+    if (value > 1000)
+		throw BitcoinExchange::ParseError (filename, "Error: too large number", amount_str);
+    return value;
+}
+
+
+float		BitcoinExchange::getPrice (std::string const& date_str) const {
+
+	std::map<std::string, float>::const_iterator it = _priceMap.begin ();
+	std::map<std::string, float>::const_iterator ite = _priceMap.end ();
+	//typedef std::map<std::string, float>::iterator const_iterator;
+	
+	(void)it;
+	(void)ite;
+	//f = _priceMap.find (date_str);
+	//if (f != ite)
+	//	return f->second;
+	return 0;
+	//if (find 
+	//std::map<std::string, float>::iterator it = _priceMap.begin ();
+	//std::map<std::string, float>::iterator ite = _priceMap.end ();
+
+	//while (it != ite)
+	//{
+	//	if (it->first == date_str)
+	//}
 }
 
 /******************************************************************************************************/
