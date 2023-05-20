@@ -1,6 +1,6 @@
-#include "nClass.hpp"
+#include "RPN.hpp"
 
-int	main (void)
+int	main (int ac, char** av)
 {
-
+	if (ac != 1)
 }
