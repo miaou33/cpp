@@ -40,14 +40,14 @@ int main ()
 	std::list<int> l (intList, intList + size);
 	try {
 		std::list<int>::iterator it = easyfind (l, 5);
-        std::cout << "Element found at index " << std::distance (it, l.begin ()) << std::endl;
+        std::cout << "Element found at index " << std::distance (l.begin (), it) << std::endl;
 	}
 	catch (const std::exception& e) {
         std::cerr << e.what () << std::endl;
 	}
 	try {
 		std::list<int>::iterator it = easyfind (l, 3);
-        std::cout << "Element found at index " << std::distance (it, l.begin ()) << std::endl;
+        std::cout << "Element found at index " << std::distance (l.begin (), it) << std::endl;
 	}
 	catch (const std::exception& e) {
         std::cerr << e.what () << std::endl;

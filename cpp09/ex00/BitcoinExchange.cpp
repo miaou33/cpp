@@ -10,10 +10,7 @@ BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = ori
 
 BitcoinExchange& BitcoinExchange::operator= (BitcoinExchange const& rhs) {
 
-	if (this != &rhs)
-	{
-
-	}
+	if (this != &rhs) { _priceMap = rhs.getPriceMap (); }
 	return *this;
 }
 
@@ -22,6 +19,8 @@ BitcoinExchange::~BitcoinExchange () {}
 /******************************************************************************************************/
 /*	*/
 /******************************************************************************************************/
+
+std::map<std::string, float> const&		BitcoinExchange::getPriceMap () const { return _priceMap; }
 
 void		BitcoinExchange::openCheckValid (std::string const& name, std::ifstream& file) {
 
@@ -50,11 +49,11 @@ void		BitcoinExchange::fillPriceMap () {
 	while (std::getline (data, line))
 	{
 		date = line.substr (0, date_fmt_sz - 1);
-		std::cout << date << " ";//------------------------debug
+//		std::cout << date << " ";//------------------------debug
 		exchange_rate_str = line.substr (date_fmt_sz + 1);
 		std::istringstream iss (exchange_rate_str);
 		iss >> exchange_rate;
-		std::cout << exchange_rate << std::endl;//------------------------debug
+		//std::cout << exchange_rate << std::endl;//------------------------debug
         _priceMap.insert (std::make_pair (date, exchange_rate));
 	}
 	data.close ();
@@ -93,14 +92,13 @@ void		BitcoinExchange::getValues (char* const& arg) {
 
 void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
 
-    std::istringstream iss(date_str);
-    int year, month, day;
-    char delimiter1;
-    char delimiter2;
+    std::istringstream		iss(date_str);
+    int						year, month, day;
+    char					delim1, delim2;
 
-    if (iss >> year >> delimiter1 >> month >> delimiter2 >> day)
+    if (iss >> year >> delim1 >> month >> delim2 >> day)
 	{
-		if (delimiter1 == '-' && delimiter2 == '-' &&
+		if (delim1 == '-' && delim2 == '-' &&
 			year >= 2009 && month >= 1 && month <= 12 && day >= 1 && day <= 31 && 
 			!((month == 4 || month == 6 || month == 9 || month == 11) && day > 30))
 		{
@@ -133,31 +131,20 @@ float		BitcoinExchange::getValue (std::string const& amount_str, std::string con
 	if (value < 0)
 		throw BitcoinExchange::ParseError (filename, "Error: not a positive number => ", amount_str);
     if (value > 1000)
-		throw BitcoinExchange::ParseError (filename, "Error: too large number", amount_str);
+		throw BitcoinExchange::ParseError (filename, "Error: too large number => ", amount_str);
     return value;
 }
 
 
-float		BitcoinExchange::getPrice (std::string const& date_str) const {
+float		BitcoinExchange::getPrice (std::string const& date_str) {
 
-	std::map<std::string, float>::const_iterator it = _priceMap.begin ();
-	std::map<std::string, float>::const_iterator ite = _priceMap.end ();
-	//typedef std::map<std::string, float>::iterator const_iterator;
-	
-	(void)it;
-	(void)ite;
-	//f = _priceMap.find (date_str);
-	//if (f != ite)
-	//	return f->second;
-	return 0;
-	//if (find 
-	//std::map<std::string, float>::iterator it = _priceMap.begin ();
-	//std::map<std::string, float>::iterator ite = _priceMap.end ();
-
-	//while (it != ite)
-	//{
-	//	if (it->first == date_str)
-	//}
+	std::map<std::string, float>::iterator it = _priceMap.lower_bound (date_str);
+	if (it != _priceMap.begin () && it != _priceMap.end ())
+	{
+		--it;	
+		return it->second;
+	}
+	throw BitcoinExchange::ParseError("Error: bad input =>", date_str, "");
 }
 
 /******************************************************************************************************/

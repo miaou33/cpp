@@ -28,7 +28,8 @@ class BitcoinExchange {
 		~BitcoinExchange ();
 
 		// METHODS---------------------------------------------------
-		void	getValues (char* const& arg);
+		std::map<std::string, float> const&	getPriceMap () const;
+		void								getValues (char* const& arg);
 
 		// EXCEPTIONS------------------------------------------------
 		class WrongArg : public std::exception {
@@ -63,7 +64,7 @@ class BitcoinExchange {
 		void				fillMap (std::string const& filename, std::ifstream& file);
 		void				fillPriceMap ();
 		void				checkDate (std::string date_str, std::string filename);
-		float				getPrice (std::string const& date_str) const;
+		float				getPrice (std::string const& date_str);
 		float				getValue (std::string const& value_str, std::string const& filename);
 };
 
