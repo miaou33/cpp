@@ -57,26 +57,23 @@ void		BitcoinExchange::fillPriceMap () {
 	data.close ();
 }
 
-void		BitcoinExchange::getValues (char* const& arg) {
+void		BitcoinExchange::printValues (std::ifstream& input, std::string filename) {
 
-	std::ifstream	input;
 	std::string		line;
 	std::string 	date_str;
 	std::string 	amount_str;
 	float			value;
 	double			price;
 	size_t			sep_pos;
-	
-	fillPriceMap ();
-	openCheckValid (arg, input);
+
 	std::getline (input, line);
 	while (std::getline (input, line))
 	{
 		sep_pos = line.find (" | ");
 		date_str = line.substr (0, sep_pos);
 		try {
-			checkDate (date_str, arg);
-			value = getValue (line.substr (sep_pos + 3), arg);
+			checkDate (date_str, filename);
+			value = getValue (line.substr (sep_pos + 3), filename);
 			price = getPrice (date_str);
 			std::cout << date_str << " => " << value << " = " << value * price << std::endl;
 		}
@@ -85,8 +82,17 @@ void		BitcoinExchange::getValues (char* const& arg) {
 		}
 	}
 }
+void		BitcoinExchange::getValues (char* const& arg) {
 
-void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
+	std::ifstream	input;
+	
+	fillPriceMap ();
+	openCheckValid (arg, input);
+	printValues (input, arg);
+}
+
+
+void		BitcoinExchange::checkDate (std::string date_str, std::string filename) const {
 
     std::istringstream		iss(date_str);
     int						year, month, day;
@@ -111,7 +117,7 @@ void		BitcoinExchange::checkDate (std::string date_str, std::string filename) {
 }
 
 
-float		BitcoinExchange::getValue (std::string const& amount_str, std::string const& filename) {
+float		BitcoinExchange::getValue (std::string const& amount_str, std::string const& filename) const {
 
     size_t	found_point = amount_str.find_first_of ('.');
 	size_t	found_dash = amount_str.find_first_of ('-');

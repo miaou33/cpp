@@ -63,9 +63,10 @@ class BitcoinExchange {
 		void				openCheckValid (std::string const& name, std::ifstream& file);
 		void				fillMap (std::string const& filename, std::ifstream& file);
 		void				fillPriceMap ();
-		void				checkDate (std::string date_str, std::string filename);
+		void				checkDate (std::string date_str, std::string filename) const;
 		float				getPrice (std::string const& date_str);
-		float				getValue (std::string const& value_str, std::string const& filename);
+		float				getValue (std::string const& value_str, std::string const& filename) const;
+		void				printValues (std::ifstream& input, std::string filename);
 };
 
 
