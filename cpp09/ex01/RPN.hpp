@@ -1,8 +1,8 @@
 #ifndef RPN_HPP
 # define RPN_HPP
 
-# include <cstdint>
 # include <iostream>
+# include <sstream>
 # include <stack>
 # include <string>
 
@@ -14,11 +14,24 @@ class RPN {
 		RPN& operator= (RPN const& rhs);
 		~RPN ();
 
-		std::stack <uint8_t>	getOperandStack () const;
-		void	evaluateExpression (std::string expression);
+		void	evaluateExpression (std::string const& expression);
+
+		//exceptions
+		class Error : public std::exception {
+			public:
+				Error (std::string const& error_desc);
+				virtual ~Error () throw ();
+				virtual const char* what() const throw();
+			private:
+				std::string	_errorMessage;
+		};
 
 	private:
-		std::stack <uint8_t>	_operandStack;
+		std::stack <long long>	_operandStack;
+		long long						performOperation (long long operand1, long long operand2, char operation);
+		bool							isOperator (std::string const& token);
+		bool 							isNumeric (std::string const& token);
+
 };
 
 # endif
