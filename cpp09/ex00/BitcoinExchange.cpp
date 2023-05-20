@@ -81,7 +81,7 @@ void		BitcoinExchange::getValues (char* const& arg) {
 			std::cout << date_str << " => " << value << " = " << value * price << std::endl;
 		}
 		catch (BitcoinExchange::ParseError& e) {
-			std::cout << e.what () << std::endl;
+			std::cerr << e.what () << std::endl;
 		}
 	}
 }
