@@ -27,10 +27,10 @@ class RPN {
 		};
 
 	private:
-		std::stack <int>		_operandStack;
-		int						performOperation (int operand1, int operand2, char operation);
-		bool					isOperator (std::string const& token);
-		bool 					isNumeric (std::string const& token);
+		std::stack <int>	_operandStack;
+		int					performOperation (int operand1, int operand2, char operation);
+		bool				isOperator (std::string const& token);
+		bool 				isNumeric (std::string const& token);
 
 };
 
