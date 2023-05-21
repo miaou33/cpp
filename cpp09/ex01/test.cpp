@@ -32,9 +32,12 @@ int evaluateRPN(const std::string& expression) {
     std::string token;
     while (iss >> token) {
         if (isNumeric(token)) {
+			std::cout<< "token = " << token << std::endl;
             int operand;
             std::istringstream(token) >> operand;
             operandStack.push(operand);
+			std::cout << "operand = " << operand << std::endl;
+			std::cout << "operandStack.top () = " << operandStack.top () << std::endl;
         } else if (isOperator(token)) {
             if (operandStack.size() < 2) {
                 std::cout << "Error: Not enough operands." << std::endl;
@@ -63,7 +66,7 @@ int evaluateRPN(const std::string& expression) {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 1) {
+    if (argc != 2) {
         std::cout << "Error: Format: ./BTC <arg>" << std::endl;
         return 0;
     }

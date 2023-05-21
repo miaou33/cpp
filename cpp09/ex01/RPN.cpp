@@ -16,7 +16,7 @@ RPN::~RPN () {}
 /*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
 
-long long RPN::performOperation (long long operand1, long long operand2, char operation) {
+int RPN::performOperation (int operand1, int operand2, char operation) {
 
     switch (operation) {
         case '+':
@@ -44,16 +44,15 @@ void	RPN::evaluateExpression (std::string const& expression) {
 
 	std::istringstream	iss (expression);
 	std::string			token;
-	long long			operand, operand1, operand2;
-	long long			res;
+	int					new_operand, operand1, operand2 = 0;
+	int			res;
 
 	while (iss >> token)
 	{
 		if (isNumeric (token))
 		{
-			if (!std::istringstream (token) >> operand)
-				throw RPN::Error ("Not a valid number");
-			_operandStack.push (operand);
+			std::istringstream (token) >> new_operand;
+			_operandStack.push (new_operand);
 		}
 		else if (isOperator (token)) {
 
