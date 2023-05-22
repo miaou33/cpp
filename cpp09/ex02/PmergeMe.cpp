@@ -8,14 +8,7 @@ PmergeMe::PmergeMe () {}
 
 PmergeMe::PmergeMe (PmergeMe const& original) { *this = original; }
 
-PmergeMe& PmergeMe::operator= (PmergeMe const& rhs) {
-
-	if (this != &rhs)
-	{
-
-	}
-	return *this;
-}
+PmergeMe& PmergeMe::operator= (PmergeMe const& rhs) { if (this != &rhs) {} return *this; }
 
 PmergeMe::~PmergeMe () {}
 
