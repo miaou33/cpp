@@ -1,14 +1,14 @@
-# include "nClass.hpp"
+# include "PmergeMe.hpp"
 
 /******************************************************************************************************/
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-nClass::nClass () {}
+PmergeMe::PmergeMe () {}
 
-nClass::nClass (nClass const& original) { *this = original; }
+PmergeMe::PmergeMe (PmergeMe const& original) { *this = original; }
 
-nClass& nClass::operator= (nClass const& rhs) {
+PmergeMe& PmergeMe::operator= (PmergeMe const& rhs) {
 
 	if (this != &rhs)
 	{
@@ -17,7 +17,7 @@ nClass& nClass::operator= (nClass const& rhs) {
 	return *this;
 }
 
-nClass::~nClass () {}
+PmergeMe::~PmergeMe () {}
 
 /******************************************************************************************************/
 /*	GETTERS SETTERS																	  				  */
