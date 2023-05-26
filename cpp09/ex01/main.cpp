@@ -9,8 +9,8 @@ int	main (int ac, char** av)
 		r.evaluateExpression (av[1]);	
 	}
 	catch (const std::exception& e) {
-		
 		std::cout << e.what () << std::endl;
+		return 1;
 	}
 	return 0;
 }
