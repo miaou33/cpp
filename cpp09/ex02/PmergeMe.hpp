@@ -2,7 +2,9 @@
 # define PMERGEME_HPP
 
 # include "colors.hpp"
+# include <cstdlib>
 # include <exception>
+# include <limits>
 # include <list>
 # include <string>
 # include <iostream>
@@ -11,13 +13,8 @@
 class PmergeMe {
 
 	public:
+		static void	sort (int ac, char** av);
 
-		PmergeMe ();
-		PmergeMe (PmergeMe const& original);
-		PmergeMe& operator= (PmergeMe const& rhs);
-		~PmergeMe ();
-
-		//Exceptions
 		class Error : public std::exception {
 			public:
 				Error (std::string const& error_desc);
@@ -28,8 +25,25 @@ class PmergeMe {
 		};
 
 	private:
-		std::vector <int>	_vecContainer;
-		std::list <int>		_listContainer;
+		PmergeMe ();
+		PmergeMe (PmergeMe const& original);
+		PmergeMe& operator= (PmergeMe const& rhs);
+		~PmergeMe ();
+
+		static bool 				isPositiveNumeric (std::string const& s);
+		static void					fillContainers (int ac, char** av);
+		static void					displayBefore ();
+		static void					displayAfter ();
+		template <typename Container>
+		static void					displayContainer (Container& c) {
+			
+			for (typename Container::const_iterator it = c.begin (); it != c.end (); ++it)
+				std::cout << *it << " ";
+			std::cout << std::endl;
+		}
+
+		static std::vector <int>	_vecContainer;
+		static std::list <int>		_listContainer;
 
 };
 
