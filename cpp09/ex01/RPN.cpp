@@ -4,6 +4,8 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
+std::stack <int>     RPN::_operandStack = std::stack <int> ();
+
 RPN::RPN () {}
 
 RPN::RPN (RPN const& original) { *this = original; }
@@ -15,30 +17,6 @@ RPN::~RPN () {}
 /******************************************************************************************************/
 /*	OTHER MB FUNCTIONS																				  */
 /******************************************************************************************************/
-
-int RPN::performOperation (int operand1, int operand2, char operation) {
-
-    switch (operation) {
-        case '+':
-            return operand1 + operand2;
-        case '-':
-            return operand1 - operand2;
-        case '*':
-            return operand1 * operand2;
-        case '/':
-            return operand1 / operand2;
-        default:
-            throw RPN::Error ("Operation invalid");
-    }
-}
-
-bool RPN::isOperator (std::string const& token) {
-    return (token == "+" || token == "-" || token == "*" || token == "/");
-}
-
-bool RPN::isNumeric (std::string const& token) {
-    return (token.find_first_not_of ("0123456789") == std::string::npos);
-}
 
 void	RPN::evaluateExpression (std::string const& expression) {
 
@@ -73,6 +51,30 @@ void	RPN::evaluateExpression (std::string const& expression) {
 	if (_operandStack.size () != 1)
 		throw RPN::Error("Invalid expression");
 	std::cout << _operandStack.top () << std::endl;
+}
+
+int RPN::performOperation (int operand1, int operand2, char operation) {
+
+    switch (operation) {
+        case '+':
+            return operand1 + operand2;
+        case '-':
+            return operand1 - operand2;
+        case '*':
+            return operand1 * operand2;
+        case '/':
+            return operand1 / operand2;
+        default:
+            throw RPN::Error ("Operation invalid");
+    }
+}
+
+bool RPN::isOperator (std::string const& token) {
+    return (token == "+" || token == "-" || token == "*" || token == "/");
+}
+
+bool RPN::isNumeric (std::string const& token) {
+    return (token.find_first_not_of ("0123456789") == std::string::npos);
 }
 
 /******************************************************************************************************/
