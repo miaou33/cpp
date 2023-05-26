@@ -4,7 +4,10 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-BitcoinExchange::BitcoinExchange () {}
+BitcoinExchange::BitcoinExchange () {
+
+	fillPriceMap ();
+}
 
 BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
 
@@ -21,6 +24,14 @@ BitcoinExchange::~BitcoinExchange () {}
 /******************************************************************************************************/
 
 std::map<std::string, float> const&		BitcoinExchange::getPriceMap () const { return _priceMap; }
+
+void		BitcoinExchange::getValues (char* const& arg) {
+
+	std::ifstream	input;
+	
+	openCheckValid (arg, input);
+	printValues (input, arg);
+}
 
 void		BitcoinExchange::openCheckValid (std::string const& name, std::ifstream& file) {
 
@@ -82,15 +93,6 @@ void		BitcoinExchange::printValues (std::ifstream& input, std::string filename) 
 		}
 	}
 }
-void		BitcoinExchange::getValues (char* const& arg) {
-
-	std::ifstream	input;
-	
-	fillPriceMap ();
-	openCheckValid (arg, input);
-	printValues (input, arg);
-}
-
 
 void		BitcoinExchange::checkDate (std::string date_str, std::string filename) const {
 
