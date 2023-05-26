@@ -33,7 +33,6 @@ class PmergeMe {
 		static bool 				isPositiveNumeric (std::string const& s);
 		static void					fillContainers (int ac, char** av);
 		static void					displayBefore ();
-		static void					displayAfter ();
 		template <typename Container>
 		static void					displayContainer (Container& c) {
 			
@@ -41,7 +40,10 @@ class PmergeMe {
 				std::cout << *it << " ";
 			std::cout << std::endl;
 		}
+		static double				vecMergeInsertionSort (int left, int right);
+		static void					vecInsertionSort (int left, int right);
 
+		static const int			_insertionThreshold = 10;
 		static std::vector <int>	_vecContainer;
 		static std::list <int>		_listContainer;
 
