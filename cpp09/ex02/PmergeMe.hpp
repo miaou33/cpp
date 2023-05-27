@@ -6,6 +6,7 @@
 # include <exception>
 # include <limits>
 # include <list>
+# include "sort.hpp"
 # include <string>
 # include <iostream>
 # include <vector>
@@ -13,7 +14,12 @@
 class PmergeMe {
 
 	public:
-		static void	sort (int ac, char** av);
+		PmergeMe ();
+		PmergeMe (PmergeMe const& original);
+		PmergeMe& operator= (PmergeMe const& rhs);
+		~PmergeMe ();
+
+		void	sort (int ac, char** av);
 
 		class Error : public std::exception {
 			public:
@@ -25,27 +31,19 @@ class PmergeMe {
 		};
 
 	private:
-		PmergeMe ();
-		PmergeMe (PmergeMe const& original);
-		PmergeMe& operator= (PmergeMe const& rhs);
-		~PmergeMe ();
-
-		static bool 				isPositiveNumeric (std::string const& s);
-		static void					fillContainers (int ac, char** av);
-		static void					displayBefore ();
+		bool 				isPositiveNumeric (std::string const& s);
+		void					fillContainers (int ac, char** av);
+		void					displayBefore ();
 		template <typename Container>
-		static void					displayContainer (Container& c) {
+		void					displayContainer (Container& c) {
 			
 			for (typename Container::const_iterator it = c.begin (); it != c.end (); ++it)
 				std::cout << *it << " ";
 			std::cout << std::endl;
 		}
-		static double				vecMergeInsertionSort (int left, int right);
-		static void					vecInsertionSort (int left, int right);
 
-		static const int			_insertionThreshold = 10;
-		static std::vector <int>	_vecContainer;
-		static std::list <int>		_listContainer;
+		std::vector <int>	_vecContainer;
+		std::list <int>		_listContainer;
 
 };
 

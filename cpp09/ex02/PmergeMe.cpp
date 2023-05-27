@@ -5,9 +5,6 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-std::vector <int>	PmergeMe::_vecContainer = std::vector <int> ();
-std::list <int>		PmergeMe::_listContainer = std::list <int> ();
-
 PmergeMe::PmergeMe () {}
 
 PmergeMe::PmergeMe (PmergeMe const& original) { *this = original; }
@@ -25,17 +22,17 @@ void	PmergeMe::sort (int ac, char** av) {
 	fillContainers (ac, av);
 	displayBefore ();
 
-    double vecTime = vecMergeInsertionSort(0, _vecContainer.size () - 1);
-    std::cout << _GREEN << "Sorted vector: " << _END;
-    displayContainer(_vecContainer);
-    std::cout << "Time to process a range of " << _vecContainer.size() << " elements with std::vector: " << vecTime << " us" << std::endl;
+	double vecTime = vec_merge_insert_sort (_vecContainer, 0, _vecContainer.size () - 1);
+	std::cout << _GREEN << "Sorted vector: " << _END;
+	displayContainer (_vecContainer);
+	std::cout << "Time to process a range of " << _vecContainer.size () << " elements with std::vector: " << vecTime << " us" << std::endl;
 
 //	std::cout << std::endl;
 //
-//    double listTime = lstMergeInsertionSort(_listContainer, _listContainer.begin(), _listContainer.end());
-//    std::cout << _GREEN << "Sorted list: " << _END;
-//    displayContainer(_listContainer);
-//    std::cout << "Time to process a range of " << _listContainer.size() << " elements with std::list: " << listTime << " us" << std::endl;
+//	double listTime = lstMergeInsertionSort (_listContainer, _listContainer.begin (), _listContainer.end ());
+//	std::cout << _GREEN << "Sorted list: " << _END;
+//	displayContainer (_listContainer);
+//	std::cout << "Time to process a range of " << _listContainer.size () << " elements with std::list: " << listTime << " us" << std::endl;
 
 }
 
@@ -44,7 +41,7 @@ void	PmergeMe::fillContainers (int ac, char** av) {
 	for (int i = 1; i < ac; ++i) {
 		if (!isPositiveNumeric (av [i]))
 			throw PmergeMe::Error ("Invalid input. Only positive integers are allowed.");
-		long long num = std::atoll(av [i]);
+		long long num = std::atoll (av [i]);
 		if (num == 0 || num > std::numeric_limits <int>::max ())
 			throw PmergeMe::Error ("Invalid input. Only positive integers are allowed.");
 		int elem = static_cast <int> (num);
@@ -54,7 +51,7 @@ void	PmergeMe::fillContainers (int ac, char** av) {
 }
 
 bool PmergeMe::isPositiveNumeric (std::string const& s) {
-    return (s.find_first_not_of ("0123456789") == std::string::npos);
+	return (s.find_first_not_of ("0123456789") == std::string::npos);
 }
 
 void	PmergeMe::displayBefore () {
@@ -66,33 +63,6 @@ void	PmergeMe::displayBefore () {
 //	displayContainer (_listContainer);
 //	std::cout << std::endl;
 }
-
-void merge(std::vector<int>& arr, int left, int mid, int right) { }
-
-double	PmergeMe::vecMergeInsertionSort (int left, int right) {
-
-    clock_t startTime = clock();
-
-	if (left < right)
-	{
-		if (right - left + 1 <= _insertionThreshold)
-		{
-			//vecInsertionSort (left, right);
-			//displayContainer (_vecContainer);
-		}
-		else 
-		{
-			int mid = left + (right - left) / 2;
-			vecMergeInsertionSort (left, mid);
-			vecMergeInsertionSort (mid + 1, right);
-			merge (_vecContainer, left, mid, right);
-		}
-	}
-	clock_t endTime = clock();
-    return static_cast <double> (endTime - startTime) / CLOCKS_PER_SEC * 1000000.0;
-}
-
-void	PmergeMe::vecInsertionSort (int left, int right) { }
 
 /******************************************************************************************************/
 /*	EXCEPTIONS																						  */
