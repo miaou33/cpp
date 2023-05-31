@@ -24,16 +24,16 @@ double	vec_merge_insert_sort (std::vector <int>& arr, int left, int right) {
 
 void	vec_insertion_sort (std::vector <int>& arr, int left, int right) {
 
-	for (int i = left + 1; i <= right; i++)
+	for (int j = left + 1; j <= right; j++)
 	{
-		int key = arr [i];
-		int j = i - 1;
-		while (j >= left && arr [j] > key)
+		int key = arr [j];
+		int i = j - 1;
+		while (i >= left && arr [i] > key)
 		{
-			arr [j + 1] = arr [j];
-			j--;
+			arr [i + 1] = arr [i];
+			i--;
 		}
-		arr [j + 1] = key;
+		arr [i + 1] = key;
 	}
 }
 
