@@ -16,7 +16,8 @@ BUILD_DIR  = ./objs
 S_EXT = .cpp
 SRC_FILES =	main.cpp \
 			PmergeMe.cpp \
-			vector_sort.cpp
+			sort_vector.cpp \
+			sort_list.cpp
 			
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC_FILES}}
 
