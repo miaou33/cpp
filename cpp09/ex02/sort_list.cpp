@@ -1,17 +1,27 @@
 # include "sort.hpp"
 
-double	lst_merge_insert_sort (std::list <int>& arr, std::list <int>& left, std::list <int>& right) {
+double	lst_merge_insert_sort (std::list <int>& list) {
 
 	clock_t startTime = clock ();
 
-	std::list<int>::iterator leftIt = left.begin ();
-	std::list<int>::iterator rightIt = right.begin ();
-
-	while (leftIt != rightIt)
+	if (list.size () > 1)
 	{
-		
-	}
+		std::list <int> left;
+		std::list <int> right;
 
+		bool switch_list = 0;
+		std::list <int> :: iterator it = list.begin ();
+		while (it != list.end ())
+		{
+			switch_list ? left.push_back (*it) : right.push_back (*it);
+			switch_list = !switch_list;
+			++it;
+		}
+		lst_merge_insert_sort (left);
+		lst_merge_insert_sort (right);
+		list.clear ();
+		merge (list, left, right);
+	}
 	clock_t endTime = clock ();
 	return static_cast <double> (endTime - startTime) / CLOCKS_PER_SEC * 1000000.0;
 }
@@ -31,15 +41,15 @@ double	lst_merge_insert_sort (std::list <int>& arr, std::list <int>& left, std::
 //	}
 //}
 //
-//void lst_merge (std::list <int>& arr, std::list <int>& left, std::list <int>& mid, std::list <int>& right) {
-//
-////	std::list<int>::iterator leftIt = left.begin ();
-////	std::list<int>::iterator rightIt = right.begin ();
-////
-////	while (leftIt != rightIt)
-////	{
-////		
-////	}
+void lst_merge (std::list <int>& arr, std::list <int>& left, std::list <int>& mid, std::list <int>& right) {
+
+	std::list<int>::iterator leftIt = left.begin ();
+	std::list<int>::iterator rightIt = right.begin ();
+
+	while (leftIt != rightIt)
+	{
+		
+	}
 //	int end1 = mid - left + 1;
 //	std::list <int> L (end1);
 //
@@ -70,5 +80,5 @@ double	lst_merge_insert_sort (std::list <int>& arr, std::list <int>& left, std::
 //
 //	while (j < end2)
 //		arr [k++] = R [j++];
-//}
-//
+}
+

@@ -38,7 +38,8 @@ void	PmergeMe::sort (int ac, char** av) {
 
 void	PmergeMe::fillContainers (int ac, char** av) {
 
-	for (int i = 1; i < ac; ++i) {
+	for (int i = 1; i < ac; ++i)
+	{
 		if (!isPositiveNumeric (av [i]))
 			throw PmergeMe::Error ("Invalid input. Only positive integers are allowed.");
 		long long num = std::atoll (av [i]);
@@ -51,6 +52,7 @@ void	PmergeMe::fillContainers (int ac, char** av) {
 }
 
 bool PmergeMe::isPositiveNumeric (std::string const& s) {
+
 	return (s.find_first_not_of ("0123456789") == std::string::npos);
 }
 
