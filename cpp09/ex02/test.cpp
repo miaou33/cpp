@@ -1,7 +1,7 @@
 #include <iostream>
 #include <list>
 
-void merge(std::list<int>& list, std::list<int>& left, std::list<int>& right)
+void merge (std::list<int>& list, std::list<int>& left, std::list<int>& right)
 {
 	std::list<int>::iterator leftIt = left.begin ();
 	std::list<int>::iterator rightIt = right.begin ();
@@ -10,12 +10,12 @@ void merge(std::list<int>& list, std::list<int>& left, std::list<int>& right)
 	{
 		if (*leftIt <= *rightIt)
 		{
-			list.push_back(*leftIt);
+			list.push_back (*leftIt);
 			++leftIt;
 		}
 		else
 		{
-			list.push_back(*rightIt);
+			list.push_back (*rightIt);
 			++rightIt;
 		}
 	}
@@ -23,20 +23,20 @@ void merge(std::list<int>& list, std::list<int>& left, std::list<int>& right)
 	// Ajouter les elements restants de la liste de gauche
 	while (leftIt != left.end ())
 	{
-		list.push_back(*leftIt);
+		list.push_back (*leftIt);
 		++leftIt;
 	}
 
 	// Ajouter les elements restants de la liste de droite
 	while (rightIt != right.end ())
 	{
-		list.push_back(*rightIt);
+		list.push_back (*rightIt);
 		++rightIt;
 	}
 }
 
 // Fonction de tri par insertion fusionne
-void mergeInsertionSort(std::list<int>& list) 
+void mergeInsertionSort (std::list<int>& list) 
 {
 	if (list.size () <= 1)
 	{
@@ -53,26 +53,26 @@ void mergeInsertionSort(std::list<int>& list)
 	{
 		if (switchList)
 		{
-			right.push_back(*it);
+			right.push_back (*it);
 		}
 		else
 		{
-			left.push_back(*it);
+			left.push_back (*it);
 		}
 		switchList = !switchList;
 		++it;
 	}
 
 	// Recursivement trier les deux moities
-	mergeInsertionSort(left);
-	mergeInsertionSort(right);
+	mergeInsertionSort (left);
+	mergeInsertionSort (right);
 
 	// Fusionner les deux moities triees
 	list.clear ();
-	merge(list, left, right);
+	merge (list, left, right);
 }
 
-void printList(const std::list<int>& list)
+void printList (const std::list<int>& list)
 {
 	std::list<int>::const_iterator it = list.begin ();
 	while (it != list.end ())
@@ -86,23 +86,23 @@ void printList(const std::list<int>& list)
 int main ()
 {
 	std::list<int> myList;
-	myList.push_back(7);
-	myList.push_back(2);
-	myList.push_back(5);
-	myList.push_back(3);
-	myList.push_back(9);
-	myList.push_back(1);
-	myList.push_back(4);
-	myList.push_back(6);
-	myList.push_back(8);
+	myList.push_back (7);
+	myList.push_back (2);
+	myList.push_back (5);
+	myList.push_back (3);
+	myList.push_back (9);
+	myList.push_back (1);
+	myList.push_back (4);
+	myList.push_back (6);
+	myList.push_back (8);
 
 	std::cout << "Liste originale: ";
-	printList(myList);
+	printList (myList);
 
-	mergeInsertionSort(myList);
+	mergeInsertionSort (myList);
 
 	std::cout << "Liste triee: ";
-	printList(myList);
+	printList (myList);
 
 	return 0;
 }
