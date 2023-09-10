@@ -1,19 +1,22 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# include "colors.hpp"
+# include <cmath>
 # include <cstdlib>
 # include <exception>
+# include <iostream>
 # include <limits>
 # include <list>
-# include "sort.hpp"
 # include <string>
-# include <iostream>
 # include <vector>
+
+# include "colors.hpp"
+# include "sort.hpp"
 
 class PmergeMe {
 
 	public:
+
 		PmergeMe ();
 		PmergeMe (PmergeMe const& original);
 		PmergeMe& operator= (PmergeMe const& rhs);
@@ -31,19 +34,22 @@ class PmergeMe {
 		};
 
 	private:
-		bool 				isPositiveNumeric (std::string const& s);
-		void					fillContainers (int ac, char** av);
-		void					displayBefore ();
+
+		std::vector <int>	_vecContainer;
+		std::list <int>		_listContainer;
+
+		bool	isPositiveNumeric (std::string const& s);
+		void	fillContainers (int ac, char** av);
+		void	displayBefore ();
+
 		template <typename Container>
-		void					displayContainer (Container& c) {
+		void	displayContainer (Container& c) {
 			
 			for (typename Container::const_iterator it = c.begin (); it != c.end (); ++it)
 				std::cout << *it << " ";
 			std::cout << std::endl;
 		}
 
-		std::vector <int>	_vecContainer;
-		std::list <int>		_listContainer;
 
 };
 

@@ -1,9 +1,6 @@
 # include "PmergeMe.hpp"
-#include <cmath>
 
-/******************************************************************************************************/
-/*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
-/******************************************************************************************************/
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::CONSTRUCTORS
 
 PmergeMe::PmergeMe () {}
 
@@ -13,9 +10,8 @@ PmergeMe& PmergeMe::operator= (PmergeMe const& rhs) { if (this != &rhs) {} retur
 
 PmergeMe::~PmergeMe () {}
 
-/******************************************************************************************************/
-/*	*/
-/******************************************************************************************************/
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::METHODS
 
 void	PmergeMe::sort (int ac, char** av) {
 
@@ -42,9 +38,11 @@ void	PmergeMe::fillContainers (int ac, char** av) {
 	{
 		if (!isPositiveNumeric (av [i]))
 			throw PmergeMe::Error ("Invalid input. Only positive integers are allowed.");
+
 		long long num = std::atoll (av [i]);
 		if (num == 0 || num > std::numeric_limits <int>::max ())
 			throw PmergeMe::Error ("Invalid input. Only positive integers are allowed.");
+
 		int elem = static_cast <int> (num);
 		_vecContainer.push_back (elem);
 		_listContainer.push_back (elem);
@@ -66,9 +64,8 @@ void	PmergeMe::displayBefore () {
 //	std::cout << std::endl;
 }
 
-/******************************************************************************************************/
-/*	EXCEPTIONS																						  */
-/******************************************************************************************************/
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::EXCEPTIONS
 
 PmergeMe::Error::Error (std::string const& error_desc)
 

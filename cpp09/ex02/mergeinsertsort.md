@@ -11,10 +11,10 @@
 
 # L'ALGO
 
-**En entrée**: une liste non vide d'éléments.
-**En sortie**: une liste triée de ces éléments.
+- **En entrée**: une liste non vide d'éléments.
+- **En sortie**: une liste triée de ces éléments.
 
-### Etape 1: Merge
+## Etape 1: Merge
 = fusionner = faire des paires
 - Si il y n'y a qu'un élément dans la liste: la retourner 
 - Sinon: 
@@ -22,28 +22,34 @@
     - trier les deux éléments de chaque paire
     - faire une liste de ces paires
 
-**Exemple** : `1, 8, 6, 3, 75, 20, 5`
-Recursion 0 -> `(1,8), (3,6), (20,75), (5)` 
-Recursion 1 -> `((3,6),(1,8)), ((5),(20,75))`
+**Exemple** :
+- `1, 8, 6, 3, 75, 20, 5`
+- Recursion 0 : `(1,8), (3,6), (20,75), (5)` 
+- Recursion 1 : `((3,6),(1,8)), ((5),(20,75))`
 
 **Explications**
 
-Je fais des paires d'éléments (e.g. en doublant la longueur de mes itérateurs), et je trie les deux éléments entre eux.
-A la fin de l’étape 1, j'ai une liste de paires d'éléments 
--> *dans l'explication de l’étape 3, cette paire sera notée P(a, b) avec a le petit élément, et b le grand*
+- Je fais des paires d'éléments (e.g. en doublant la longueur de mes itérateurs)
+- Je trie les deux éléments entre eux.
+
+A la fin de l’étape 1, j'ai une **liste de paires** d'éléments 
+
 Si on me donne le plus grand élément d'une paire, il faut que je puisse retourner le plus petit immédiatement 
+
 -> *c'est à dire sans faire de comparaisons, de parcours de liste (et donc de comparaisons...)... l’idée, c'est de faire le moins de comparaisons possible*
 
 
-### Etape 2: Récursion
+## Etape 2: Récursion
 - Appeler cet algorithme sur cette liste de paire.
 
-~~Explications~~
+**Explications**
+
 Je suis en train de coder un algo de tri. Quand j'aurais fini et que je l'aurais compilé, j'aurais une fonction qui, quand on lui passe une liste d'éléments,
 la trie. 
+
 Il se trouve que dans cet algorithme, j'ai besoin de trier une liste deux fois plus petite que celle reçue en entrée: j'utilise cette fonction.
 
-~~Pourquoi ça marche~~:  
+**Pourquoi ça marche:**
 - une **liste de taille 1 est par nature deja triée**
 - a force de **diviser la taille de notre liste par deux** (au fil des appels récursifs successifs), on va bien **arriver à une liste de taille 1**
 - la, la fonction pourra me renvoyer une liste triée. 
@@ -51,17 +57,18 @@ Il se trouve que dans cet algorithme, j'ai besoin de trier une liste deux fois p
 - l'appel récursif du dessus va recevoir une liste de taille 2 triée et pouvoir produire une liste triée de **taille 4**...
 - **j'ai maintenant une liste de paires d'éléments triée suivant le plus grand élément de chaque paire**
 
-~Une première observation ici~: le petit élément de la + petite paire (celui dont le + gd elem est + petit que tous les + gds elem des autres paires)
+**Une première observation ici**: le petit élément de la + petite paire (celui dont le + gd elem est + petit que tous les + gds elem des autres paires)
 est + petit que tous les éléments de cette liste (la liste des + grands éléments de chaque paire)
--> je vais donc pouvoir l'**insérer à l'étape trois sans avoir à effectuer aucune comparaison**
+
+--> je vais donc pouvoir l'**insérer à l'étape trois sans avoir à effectuer aucune comparaison**
 (Et c'est là qu'il faut pouvoir accéder à cet élément depuis l'élément avec lequel il a été appairé sans avoir à faire de comparaisons).
 
-~Une deuxième observation~: après une insertion, la liste sera toujours triée.
+**Une deuxième observation**: après une insertion, la liste sera toujours triée.
 
-~Une digression~: voir titre "recherche par dichotomie"
+**Une digression**: voir titre "recherche par dichotomie"
 
 
-### Etape 3:  Insert
+## Etape 3:  Insert
 - Extraire de la liste de paire (qui a donc été triée lors de l'appel récursif à l'étape 2) une liste triée des plus grands éléments de chaque paire. 
 - Insérer le plus petit élément de chaque paire dans la liste triée en suivant une progression de Jacobsthal.
 - Retourner la liste triée.
@@ -69,7 +76,7 @@ est + petit que tous les éléments de cette liste (la liste des + grands élém
 N.B. attention au terme "élément": lors de l'appel récursif, on appelle notre fonction sur une liste de paires d'éléments. 
 Pour l'instance de la fonction qui recevra cette liste de paires, cette liste est une liste d'éléments.
 
-~~Explications~~
+### Explications
 (voir knuth pdf!! schemas aident)
 
 En reprenant la notation des paires P(a, b):
@@ -93,7 +100,7 @@ Donc j’insère mes éléments suivant la suite de Jacobsthal'  j(n+1) = jn + 2
 
 Et j'ai une liste d'éléments triée à renvoyer.
 
-### Des liens pour aller plus loin:
+## Des liens pour aller plus loin:
 - [Pour implémenter Jacobsthal et apprendre des trucs sur les templates](https://medium.com/zerone-magazine/templates-and-compile-time-execution-c22234a6cd66)
 - [Pour y comprendre quelque chose à ces histoires de log](https://www.youtube.com/live/cEvgcoyZvB4?feature=share)
     > ce mec est un génie de pédagogie : pour tous ceux qui se disent qu'ils veulent rattraper leur niveau en maths, je ne saurais que trop conseiller sa chaîne Youtube
@@ -113,25 +120,25 @@ Combien de comparaisons je dois faire pour insérer par dichotomie un élément 
 On remarque que le nombre de comparaisons nécessaires augmente de un quand on passe d'une liste de taille 2^n-1 à une liste de taille 2^n. 
 
 Si je veux insérer un élément dans une liste de:
-- ~~0 élément~~: 
+- **0 élément**: 
         j'ai juste à l'insérer: 
-        ~~0~~ comparaisons
-- ~~1 élément~~: 
+        **0** comparaisons
+- **1 élément**: 
         j'ai une comparaison à faire et à insérer: 
-        ~~1~~ comparaison
-- ~~2 éléments~~: 
+        **1** comparaison
+- **2 éléments**: 
         une (si j'ai de la chance: je devais insérer 1 dans la liste (3,5), j'ai choisi de commencer par comparer avec 3, et j'ai pu l'insérer direct)
         ou deux comparaisons (si j'ai eu moins de chance: je devais insérer 4); 
         on se base sur le pire cas: 
-        ~~2~~ comparaisons
-- 3 éléments: 
+        **2** comparaisons
+- **3 éléments**: 
         une comparaison avec celui de milieu qui va me dire de quel côté me diriger, 
         une liste de un de chaque cote (et j'ai déjà noté que pour une liste de un, il me fallait une comparaison): 1 + 1 = 
         2 comparaisons
-- ~~4 éléments~~: 
+- **4 éléments**: 
         un peu comme pour les listes de deux éléments, ça va dépendre de si j'ai de la chance ou pas; 
         deux ou trois comparaison: 
-        ~~3~~ comparaisons
+        **3** comparaisons
 - 5 éléments: 
         une comparaison avec celui du milieu, une liste de deux de chaque côté: 
         3 comparaisons aussi
@@ -141,10 +148,10 @@ Si je veux insérer un élément dans une liste de:
 - 7 éléments: 
         une comparaison avec celui du milieu, une liste de trois de chaque côté: 
         3 comparaisons
-- ~~8 éléments~~ 
-        ~~4~~ comparaisons; 
+- **8 éléments** 
+        **4** comparaisons; 
 ...etc.
-- ~~16 elements:~~
-        ~~5~~ comparaisons 
+- **16 elements:**
+        **5** comparaisons 
 
 Et donc avec une recherche par dichotomie, rechercher dans une liste de 8 ou de 15 éléments, ça prend le même temps.

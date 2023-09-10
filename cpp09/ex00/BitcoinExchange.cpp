@@ -1,13 +1,8 @@
 # include "BitcoinExchange.hpp"
 
-/******************************************************************************************************/
-/*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
-/******************************************************************************************************/
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::CONSTRUCTORS / DESTRUCTORS
 
-BitcoinExchange::BitcoinExchange () {
-
-	fillPriceMap ();
-}
+BitcoinExchange::BitcoinExchange () { fillPriceMap (); }
 
 BitcoinExchange::BitcoinExchange (BitcoinExchange const& original) { *this = original; }
 
@@ -19,19 +14,21 @@ BitcoinExchange& BitcoinExchange::operator= (BitcoinExchange const& rhs) {
 
 BitcoinExchange::~BitcoinExchange () {}
 
-/******************************************************************************************************/
-/*	*/
-/******************************************************************************************************/
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::GETTERS
 
 std::map<std::string, float> const&		BitcoinExchange::getPriceMap () const { return _priceMap; }
 
-void		BitcoinExchange::getValues (char* const& arg) {
+void									BitcoinExchange::getValues (char* const& arg) {
 
 	std::ifstream	input;
 	
 	openCheckValid (arg, input);
 	printValues (input, arg);
 }
+
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::METHODS
 
 void		BitcoinExchange::openCheckValid (std::string const& name, std::ifstream& file) {
 
@@ -151,17 +148,13 @@ float		BitcoinExchange::getPrice (std::string const& date_str) {
 	throw BitcoinExchange::ParseError("Error: bad input =>", date_str, "");
 }
 
-/******************************************************************************************************/
-/*	EXCEPTIONS																						  */
-/******************************************************************************************************/
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::EXCEPTIONS
 
-// WRONG ARGUMENTS
 const char*	BitcoinExchange::WrongArg::what () const throw () {
 
 	return ("Format: ./btc <bitcoin price database> <amount/date database>");
 }
 
-// WRONG FILE
 BitcoinExchange::FileError::FileError (std::string const& filename, std::string const& error_desc)
 
 	: _errorMessage ("'" + filename + "' : " + error_desc) {}
@@ -173,8 +166,8 @@ const char*	BitcoinExchange::FileError::what () const throw () {
 	return (_errorMessage.c_str ());
 }
 
-// PARSE ERROR
-BitcoinExchange::ParseError::ParseError (std::string const& filename, std::string const& error_desc, std::string const& error_source)
+BitcoinExchange::ParseError::ParseError (std::string const& filename, std::string const& error_desc, 
+																					   std::string const& error_source)
 
 	: _errorMessage ("'" + filename + "' : " + error_desc + error_source) {}
 

@@ -3,6 +3,7 @@
 # include "MateriaSource.hpp"
 # include "Ice.hpp"
 # include "Cure.hpp"
+# include <vector>
 
 int	main (void)
 {
@@ -74,6 +75,7 @@ int	main (void)
 	delete tmp;
 	me1.use (0, *bob);
 	me2.use (0, *bob);
+	std::vector <AMateria*> tmp2 = me1.getMateria ();
 	
 	delete me;
 	delete bob;
