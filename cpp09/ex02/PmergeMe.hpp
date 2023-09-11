@@ -1,28 +1,38 @@
 #ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#define PMERGEME_HPP
 
+# include <algorithm>
 # include <cmath>
-# include <cstdlib>
 # include <exception>
 # include <iostream>
+# include <iterator>
 # include <limits>
 # include <list>
 # include <string>
 # include <vector>
 
 # include "colors.hpp"
-# include "sort.hpp"
 
-class PmergeMe {
+enum {
+	VEC,
+	LST
+};
 
+class PmergeMe
+{
 	public:
+		PmergeMe();
+		PmergeMe(PmergeMe const& rhs);
+		PmergeMe& operator=(PmergeMe const& rhs);
+		~PmergeMe();
 
-		PmergeMe ();
-		PmergeMe (PmergeMe const& original);
-		PmergeMe& operator= (PmergeMe const& rhs);
-		~PmergeMe ();
+		std::vector<int>	getVec() const;
+		std::list<int>		getLst() const;
+		clock_t				getStartTime(int const& index) const;
+		clock_t				getEndTime(int const& index) const;
 
-		void	sort (int ac, char** av);
+        void                checkArgs(int ac, char **av);
+        void                sort(int ac, char **av);
 
 		class Error : public std::exception {
 			public:
@@ -34,23 +44,22 @@ class PmergeMe {
 		};
 
 	private:
+		std::vector<int>	_vec;
+		std::list<int>		_lst;
 
-		std::vector <int>	_vecContainer;
-		std::list <int>		_listContainer;
+		clock_t				_startTime[2];
+		clock_t 			_endTime[2];
 
-		bool	isPositiveNumeric (std::string const& s);
-		void	fillContainers (int ac, char** av);
-		void	displayBefore ();
+		void				_sortVec(std::vector<int> &X);
+		void				_sortLst(std::list<int> &X);
 
-		template <typename Container>
-		void	displayContainer (Container& c) {
-			
-			for (typename Container::const_iterator it = c.begin (); it != c.end (); ++it)
-				std::cout << *it << " ";
-			std::cout << std::endl;
-		}
+        void                _sortHalfVec(std::vector<int> &S, std::vector<int> &remaining, const std::vector<int> &X);
+        void                _sortHalfLst(std::list<int> &S, std::list<int> &remaining, const std::list<int> &X);
 
+		void				_printVec(std::vector<int> const& X);
+		void				_printLst(std::list<int> const& X);
 
-};
+		bool				_isPositiveNumeric (std::string const& s);
+};	
 
-# endif
+#endif

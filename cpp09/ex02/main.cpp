@@ -4,8 +4,9 @@ int	main (int ac, char** av)
 {
 	try {
 		if (ac < 2)
-			throw PmergeMe::Error ("Format: ./PMergeMe <positive integer sequence>");	
+			throw PmergeMe::Error ("Format: ./PmergeMe <positive integer sequence>");	
 		PmergeMe s;
+        s.checkArgs(ac, av);
 		s.sort (ac, av);
 	}
 	catch (const std::exception& e) {
