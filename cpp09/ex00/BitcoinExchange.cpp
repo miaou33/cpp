@@ -60,7 +60,7 @@ void		BitcoinExchange::fillPriceMap () {
 		exchange_rate_str = line.substr (date_fmt_sz + 1);
 		std::istringstream iss (exchange_rate_str);
 		iss >> exchange_rate;
-        _priceMap.insert (std::make_pair (date, exchange_rate));
+        _priceMap[date] = exchange_rate;
 	}
 	data.close ();
 }
@@ -103,6 +103,8 @@ void		BitcoinExchange::checkDate (std::string date_str, std::string filename) co
 			year >= 2009 && month >= 1 && month <= 12 && day >= 1 && day <= 31 && 
 			!((month == 4 || month == 6 || month == 9 || month == 11) && day > 30))
 		{
+			if (year == 2009 && month == 1 && day == 1)
+				throw BitcoinExchange::ParseError (filename, "Error: bad input => ", date_str);
 			if (month == 2) {
 				bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 				if ((isLeapYear && day > 29) || (!isLeapYear && day > 28)) {
@@ -145,7 +147,8 @@ float		BitcoinExchange::getPrice (std::string const& date_str) {
 		--it;	
 		return it->second;
 	}
-	throw BitcoinExchange::ParseError("Error: bad input =>", date_str, "");
+	--it;
+	return it->second;
 }
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::EXCEPTIONS
