@@ -4,7 +4,7 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-std::stack <long long>     RPN::_operandStack = std::stack <long long> ();
+std::stack <long long>	 RPN::_operandStack = std::stack <long long> ();
 
 RPN::RPN () {}
 
@@ -67,10 +67,10 @@ long long RPN::performOperation(long long operand1, long long operand2, char ope
 				throw RPN::Error("Overflow");
 			return operand1 - operand2;
 		case '*':
-			if (operand1 > std::numeric_limits<long long>::max() / operand2
-					|| (operand1 < std::numeric_limits<long long>::min() / operand2)
+			if ((operand1 > 0 && operand2 > std::numeric_limits<long long>::max() / operand1) 
 					|| (operand1 < 0 && operand2 < 0 && operand1 < std::numeric_limits<long long>::max() / operand2)
-					|| (operand1 > 0 && operand2 < 0 && operand1 > std::numeric_limits<long long>::min() / operand2))
+					|| (operand1 > 0 && operand2 < 0 && operand1 < std::numeric_limits<long long>::min() / operand2)
+					|| (operand1 < 0 && operand2 > 0 && operand1 > std::numeric_limits<long long>::min() / operand2))
 				throw RPN::Error("Overflow");
 			return operand1 * operand2;
 		case '/':
@@ -83,11 +83,11 @@ long long RPN::performOperation(long long operand1, long long operand2, char ope
 }
 
 bool RPN::isOperator (std::string const& token) {
-    return (token == "+" || token == "-" || token == "*" || token == "/");
+	return (token == "+" || token == "-" || token == "*" || token == "/");
 }
 
 bool RPN::isValidNumeric (std::string const& token) {
-    return token.find_first_not_of ("0123456789") == std::string::npos && token.size () == 1;
+	return token.find_first_not_of ("0123456789") == std::string::npos && token.size () == 1;
 }
 
 /******************************************************************************************************/
