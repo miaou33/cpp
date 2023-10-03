@@ -4,7 +4,7 @@
 /*	CONSTRUCTOR DESTRUCTOR ASSIGNMENT OPERATOR														  */
 /******************************************************************************************************/
 
-std::stack <int>     RPN::_operandStack = std::stack <int> ();
+std::stack <long long>     RPN::_operandStack = std::stack <long long> ();
 
 RPN::RPN () {}
 
@@ -23,11 +23,11 @@ void	RPN::evaluateExpression (std::string const& expression) {
 	std::istringstream	iss (expression);
 	std::string			token;
 	int					new_operand, operand1, operand2 = 0;
-	int			res;
+	long long			res;
 
 	while (iss >> token)
 	{
-		if (isNumeric (token))
+		if (isValidNumeric (token))
 		{
 			std::istringstream (token) >> new_operand;
 			_operandStack.push (new_operand);
@@ -49,32 +49,45 @@ void	RPN::evaluateExpression (std::string const& expression) {
 			throw RPN::Error("Invalid expression");
 	}
 	if (_operandStack.size () != 1)
-		throw RPN::Error("Invalid expression");
+		throw RPN::Error("Not enough operators");
 	std::cout << _operandStack.top () << std::endl;
 }
 
-int RPN::performOperation (int operand1, int operand2, char operation) {
+long long RPN::performOperation(long long operand1, long long operand2, char operation) {
 
-    switch (operation) {
-        case '+':
-            return operand1 + operand2;
-        case '-':
-            return operand1 - operand2;
-        case '*':
-            return operand1 * operand2;
-        case '/':
-            return operand1 / operand2;
-        default:
-            throw RPN::Error ("Operation invalid");
-    }
+	switch (operation) {
+		case '+':
+			if ((operand1 > 0 && operand2 > std::numeric_limits<long long>::max() - operand1)
+					|| (operand2 < 0 && operand1 < std::numeric_limits<long long>::min() - operand2))
+				throw RPN::Error("Overflow");
+			return operand1 + operand2;
+		case '-':
+			if ((operand2 > 0 && operand1 < std::numeric_limits<long long>::min() + operand2)
+					|| (operand2 < 0 && operand1 > std::numeric_limits<long long>::max() + operand2))
+				throw RPN::Error("Overflow");
+			return operand1 - operand2;
+		case '*':
+			if (operand1 > std::numeric_limits<long long>::max() / operand2
+					|| (operand1 < std::numeric_limits<long long>::min() / operand2)
+					|| (operand1 < 0 && operand2 < 0 && operand1 < std::numeric_limits<long long>::max() / operand2)
+					|| (operand1 > 0 && operand2 < 0 && operand1 > std::numeric_limits<long long>::min() / operand2))
+				throw RPN::Error("Overflow");
+			return operand1 * operand2;
+		case '/':
+			if (operand2 == 0)
+				throw RPN::Error("Division by zero");
+			return operand1 / operand2;
+		default:
+			throw RPN::Error("Operation invalid");
+	}
 }
 
 bool RPN::isOperator (std::string const& token) {
     return (token == "+" || token == "-" || token == "*" || token == "/");
 }
 
-bool RPN::isNumeric (std::string const& token) {
-    return (token.find_first_not_of ("0123456789") == std::string::npos);
+bool RPN::isValidNumeric (std::string const& token) {
+    return token.find_first_not_of ("0123456789") == std::string::npos && token.size () == 1;
 }
 
 /******************************************************************************************************/

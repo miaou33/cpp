@@ -1,7 +1,9 @@
 #ifndef RPN_HPP
 # define RPN_HPP
 
+# include <cstdlib>
 # include <iostream>
+# include <limits>
 # include <sstream>
 # include <stack>
 # include <string>
@@ -27,11 +29,11 @@ class RPN {
 		RPN& operator= (RPN const& rhs);
 		~RPN ();
 
-		static int					performOperation (int operand1, int operand2, char operation);
-		static bool					isOperator (std::string const& token);
-		static bool 				isNumeric (std::string const& token);
+		static long long	performOperation (long long, long long, char);
+		static bool			isOperator (std::string const&);
+		static bool			isValidNumeric (std::string const&);
 
-		static std::stack <int>		_operandStack;
+		static std::stack <long long>	_operandStack;
 };
 
 # endif
