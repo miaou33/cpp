@@ -1,8 +1,6 @@
 [![en](https://img.shields.io/badge/lang-en-pink.svg)](https://github.com/nfauconn/cpp/blob/master/README.md)
 [![fr](https://img.shields.io/badge/lang-fr-purple.svg)](https://github.com/nfauconn/cpp/blob/master/README.fr.md)
 
-*C++ Programming Language* • *
-
 # CPP Modules
 
 This project is about discovering the C++ programming language. It is composed of 10 modules, each one covering a specific part of the language.
